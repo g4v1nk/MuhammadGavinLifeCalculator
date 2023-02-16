@@ -14,6 +14,7 @@ public class CommandLine {
 	        System.out.print("Enter current age: ");
 	        int currentAge = input.nextInt();
 
+	        //Life expectancy variable initialized to 0.
 	        int futureLifetime = 0;
 
 	        input.nextLine(); // Clears the buffer for the next input
@@ -24,6 +25,7 @@ public class CommandLine {
 	        System.out.print("Enter smoking habits (h(eavy), m(oderate), l(ight), or n(on-smoker)): ");
 	        String smokingHabits = input.nextLine();
 
+	        //Terminal illness variables initialized to "n".
 	        String alzheimers = "n";
 	        String creutzfeldtJakob = "n";
 	        String crohns = "n";
@@ -39,6 +41,7 @@ public class CommandLine {
 	        String terminalIllness = input.nextLine();
 
 	        if (terminalIllness.equals("y")) {
+	        	//Only ask if the user has Alzheimer's Disease if the user is at least age 65.
 	        	if (currentAge >= 65) {
 	  	          System.out.print("Alzheimer's Disease (y or n): ");
 		          alzheimers = input.nextLine();	
@@ -174,7 +177,7 @@ public class CommandLine {
 	        
 	        System.out.println();
 	        System.out.println("You are expected to live " + futureLifetime + " more years.");
-	        
+	   
 	        System.out.println();
 	        System.out.println("Current age: " + currentAge);
 	        System.out.println("Future lifetime: " + futureLifetime);
@@ -192,6 +195,7 @@ public class CommandLine {
 	        System.out.println("Duchenne Muscular Dystrophy: " + duchenneMD);
 	        System.out.println("Rabies: " + rabies);
 	        System.out.println();
+	        
 	        System.out.print("Type r to re-start the program: ");
 	        programRun = input.nextLine();
 	        System.out.println();
