@@ -39,8 +39,10 @@ public class CommandLine {
 	        String terminalIllness = input.nextLine();
 
 	        if (terminalIllness.equals("y")) {
-	          System.out.print("Alzheimer's Disease (y or n): ");
-	          alzheimers = input.nextLine();
+	        	if (currentAge >= 65) {
+	  	          System.out.print("Alzheimer's Disease (y or n): ");
+		          alzheimers = input.nextLine();	
+	        	}
 	          
 	          System.out.print("Creutzfeldt-Jakob Disease (y or n): ");
 	          creutzfeldtJakob = input.nextLine();
@@ -69,6 +71,69 @@ public class CommandLine {
 	          System.out.print("Rabies (y or n): ");
 	          rabies = input.nextLine();
 	        }
+	        
+	        if (currentAge >= 15 && currentAge <= 19 && gender.equals("f"))
+	        	futureLifetime = 69;
+	        if (currentAge >= 20 && currentAge <= 24 && gender.equals("f"))
+	        	futureLifetime = 64;
+	        if (currentAge >= 25 && currentAge <= 29 && gender.equals("f"))
+	        	futureLifetime = 59;
+	        if (currentAge >= 30 && currentAge <= 24 && gender.equals("f"))
+	        	futureLifetime = 54;
+	        if (currentAge >= 35 && currentAge <= 39 && gender.equals("f"))
+	        	futureLifetime = 49;
+	        if (currentAge >= 40 && currentAge <= 44 && gender.equals("f"))
+	        	futureLifetime = 45;
+	        if (currentAge >= 45 && currentAge <= 49 && gender.equals("f"))
+	        	futureLifetime = 40;
+	        if (currentAge >= 50 && currentAge <= 54 && gender.equals("f"))
+	        	futureLifetime = 35;
+	        if (currentAge >= 55 && currentAge <= 59 && gender.equals("f"))
+	        	futureLifetime = 30;
+	        if (currentAge >= 60 && currentAge <= 64 && gender.equals("f"))
+	        	futureLifetime = 26;
+	        if (currentAge >= 65 && currentAge <= 69 && gender.equals("f"))
+	        	futureLifetime = 22;
+	        if (currentAge >= 70 && currentAge <= 74 && gender.equals("f"))
+	        	futureLifetime = 17;
+	        if (currentAge >= 75 && currentAge <= 79 && gender.equals("f"))
+	        	futureLifetime = 13;
+	        if (currentAge >= 80 && currentAge <= 84 && gender.equals("f"))
+	        	futureLifetime = 10;
+	        if (currentAge >= 85 && gender.equals("f"))
+	        	futureLifetime = 7;
+	        
+	        if (currentAge >= 15 && currentAge <= 19 && gender.equals("m"))
+	        	futureLifetime = 65;
+	        if (currentAge >= 20 && currentAge <= 24 && gender.equals("m"))
+	        	futureLifetime = 60;
+	        if (currentAge >= 25 && currentAge <= 29 && gender.equals("m"))
+	        	futureLifetime = 56;
+	        if (currentAge >= 30 && currentAge <= 24 && gender.equals("m"))
+	        	futureLifetime = 51;
+	        if (currentAge >= 35 && currentAge <= 39 && gender.equals("m"))
+	        	futureLifetime = 46;
+	        if (currentAge >= 40 && currentAge <= 44 && gender.equals("m"))
+	        	futureLifetime = 41;
+	        if (currentAge >= 45 && currentAge <= 49 && gender.equals("m"))
+	        	futureLifetime = 37;
+	        if (currentAge >= 50 && currentAge <= 54 && gender.equals("m"))
+	        	futureLifetime = 32;
+	        if (currentAge >= 55 && currentAge <= 59 && gender.equals("m"))
+	        	futureLifetime = 28;
+	        if (currentAge >= 60 && currentAge <= 64 && gender.equals("m"))
+	        	futureLifetime = 23;
+	        if (currentAge >= 65 && currentAge <= 69 && gender.equals("m"))
+	        	futureLifetime = 19;
+	        if (currentAge >= 70 && currentAge <= 74 && gender.equals("m"))
+	        	futureLifetime = 15;
+	        if (currentAge >= 75 && currentAge <= 79 && gender.equals("m"))
+	        	futureLifetime = 12;
+	        if (currentAge >= 80 && currentAge <= 84 && gender.equals("m"))
+	        	futureLifetime = 9;
+	        if (currentAge >= 85 && gender.equals("m"))
+	        	futureLifetime = 6;
+	        
 	          System.out.println();
 	          System.out.println("Current age: " + currentAge);
 	          System.out.println("Future lifetime: " + futureLifetime);
