@@ -14,9 +14,6 @@ public class CommandLine {
 	        System.out.print("Enter current age: ");
 	        int currentAge = input.nextInt();
 
-	        //Life expectancy variable initialized to 0.
-	        int futureLifetime = 0;
-
 	        input.nextLine(); // Clears the buffer for the next input
 
 	        System.out.print("Enter gender (m or f): ");
@@ -24,6 +21,9 @@ public class CommandLine {
 
 	        System.out.print("Enter smoking habits (h(eavy), m(oderate), l(ight), or n(on-smoker)): ");
 	        String smokingHabits = input.nextLine();
+	        
+	        System.out.print("Enter terminal illness (y or n): ");
+	        String terminalIllness = input.nextLine();
 
 	        //Terminal illness variables initialized to "n".
 	        String alzheimers = "n";
@@ -37,9 +37,6 @@ public class CommandLine {
 	        String duchenneMD = "n";
 	        String rabies = "n";
 	        
-	        System.out.print("Enter terminal illness (y or n): ");
-	        String terminalIllness = input.nextLine();
-
 	        if (terminalIllness.equals("y")) {
 	        	//Only ask if the user has Alzheimer's Disease if the user is at least age 65.
 	        	if (currentAge >= 65) {
@@ -75,112 +72,18 @@ public class CommandLine {
 	          rabies = input.nextLine();
 	        }
 	        
-	        if (currentAge >= 15 && currentAge <= 19 && gender.equals("m"))
-	        	futureLifetime = 65;
-	        else if (currentAge >= 20 && currentAge <= 24 && gender.equals("m"))
-	        	futureLifetime = 60;
-	        else if (currentAge >= 25 && currentAge <= 29 && gender.equals("m"))
-	        	futureLifetime = 56;
-	        else if (currentAge >= 30 && currentAge <= 24 && gender.equals("m"))
-	        	futureLifetime = 51;
-	        else if (currentAge >= 35 && currentAge <= 39 && gender.equals("m"))
-	        	futureLifetime = 46;
-	        else if (currentAge >= 40 && currentAge <= 44 && gender.equals("m"))
-	        	futureLifetime = 41;
-	        else if (currentAge >= 45 && currentAge <= 49 && gender.equals("m"))
-	        	futureLifetime = 37;
-	        else if (currentAge >= 50 && currentAge <= 54 && gender.equals("m"))
-	        	futureLifetime = 32;
-	        else if (currentAge >= 55 && currentAge <= 59 && gender.equals("m"))
-	        	futureLifetime = 28;
-	        else if (currentAge >= 60 && currentAge <= 64 && gender.equals("m"))
-	        	futureLifetime = 23;
-	        else if (currentAge >= 65 && currentAge <= 69 && gender.equals("m"))
-	        	futureLifetime = 19;
-	        else if (currentAge >= 70 && currentAge <= 74 && gender.equals("m"))
-	        	futureLifetime = 15;
-	        else if (currentAge >= 75 && currentAge <= 79 && gender.equals("m"))
-	        	futureLifetime = 12;
-	        else if (currentAge >= 80 && currentAge <= 84 && gender.equals("m"))
-	        	futureLifetime = 9;
-	        else if (currentAge >= 85 && gender.equals("m"))
-	        	futureLifetime = 6;	        
+	        LifeExpectancy lifeExpectancy = new LifeExpectancy(currentAge, gender, smokingHabits, alzheimers,
+creutzfeldtJakob, crohns, cysticFibrosis, heartDisease, hepB, huntingtons, multipleSclerosis, duchenneMD, rabies);	
 	        
-	        else if (currentAge >= 15 && currentAge <= 19 && gender.equals("f"))
-	        	futureLifetime = 69;
-	        else if (currentAge >= 20 && currentAge <= 24 && gender.equals("f"))
-	        	futureLifetime = 64;
-	        else if (currentAge >= 25 && currentAge <= 29 && gender.equals("f"))
-	        	futureLifetime = 59;
-	        else if (currentAge >= 30 && currentAge <= 24 && gender.equals("f"))
-	        	futureLifetime = 54;
-	        else if (currentAge >= 35 && currentAge <= 39 && gender.equals("f"))
-	        	futureLifetime = 49;
-	        else if (currentAge >= 40 && currentAge <= 44 && gender.equals("f"))
-	        	futureLifetime = 45;
-	        else if (currentAge >= 45 && currentAge <= 49 && gender.equals("f"))
-	        	futureLifetime = 40;
-	        else if (currentAge >= 50 && currentAge <= 54 && gender.equals("f"))
-	        	futureLifetime = 35;
-	        else if (currentAge >= 55 && currentAge <= 59 && gender.equals("f"))
-	        	futureLifetime = 30;
-	        else if (currentAge >= 60 && currentAge <= 64 && gender.equals("f"))
-	        	futureLifetime = 26;
-	        else if (currentAge >= 65 && currentAge <= 69 && gender.equals("f"))
-	        	futureLifetime = 22;
-	        else if (currentAge >= 70 && currentAge <= 74 && gender.equals("f"))
-	        	futureLifetime = 17;
-	        else if (currentAge >= 75 && currentAge <= 79 && gender.equals("f"))
-	        	futureLifetime = 13;
-	        else if (currentAge >= 80 && currentAge <= 84 && gender.equals("f"))
-	        	futureLifetime = 10;
-	        else if (currentAge >= 85 && gender.equals("f"))
-	        	futureLifetime = 7;
 	        
-	        //We are assuming that the user enters at most one terminal illness.
-	        if (alzheimers.equals("y"))
-	        	futureLifetime = (int)((-6.0/25)*currentAge + 24.6);
-	        else if (creutzfeldtJakob.equals("y"))
-	        	futureLifetime = 1;
-	        else if (crohns.equals("y") && gender.equals("m"))
-	        	futureLifetime = 75 - currentAge;
-	        else if (crohns.equals("y") && gender.equals("f"))
-	        	futureLifetime = 78 - currentAge;
-	        else if (cysticFibrosis.equals("y"))
-	        	futureLifetime = 44 - currentAge;
-	        else if (heartDisease.equals("y"))
-	        	futureLifetime *= (1-0.08);
-	        else if (hepB.equals("y"))
-	        	futureLifetime -= 14;
-	        else if (huntingtons.equals("y"))
-	        	futureLifetime = 30;
-	        else if (multipleSclerosis.equals("y"))
-	        	futureLifetime -= 5;
-	        else if (duchenneMD.equals("y"))
-	        	futureLifetime = 30 - currentAge;
-	        else if (rabies.equals("y"))
-	        	futureLifetime = 0;
-	        
-	        if (smokingHabits.equals("h"))
-	        	futureLifetime -= 13;
-	        else if (smokingHabits.equals("m"))
-	        	futureLifetime -= 9;
-	        else if (smokingHabits.equals("l"))
-	        	futureLifetime -= 5;
-	        else if (smokingHabits.equals("n"))
-	        	futureLifetime -= 0;
-	        
-	        if (futureLifetime < 0)
-	        	futureLifetime = 0;
-	        else if (currentAge + futureLifetime > 100)
-	        	futureLifetime = 100 - currentAge;
+	        int yearsLeftToLive = lifeExpectancy.getLifeExpectancy();
 	        
 	        System.out.println();
-	        System.out.println("You are expected to live " + futureLifetime + " more years.");
+	        System.out.println("You are expected to live " + yearsLeftToLive + " more years.");
 	   
 	        System.out.println();
 	        System.out.println("Current age: " + currentAge);
-	        System.out.println("Future lifetime: " + futureLifetime);
+	        System.out.println("Future lifetime: " + yearsLeftToLive);
 	        System.out.println("Gender: " + gender);
 	        System.out.println("Smoking habits: " + smokingHabits);
 	        System.out.println("Terminal illness: " + terminalIllness);
