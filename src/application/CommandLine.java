@@ -24,34 +24,71 @@ public class CommandLine {
 	        System.out.print("Enter smoking habits (h(eavy), m(oderate), l(ight), or n(on-smoker)): ");
 	        String smokingHabits = input.nextLine();
 
-	        int smokerStatus = 0;
-	        if (smokingHabits.equals("h")) {
-	          smokerStatus = 3;
-	        } else if (smokingHabits.equals("m")) {
-	          smokerStatus = 2;
-	        } else if (smokingHabits.equals("l")) {
-	          smokerStatus = 1;
-	        } else if (smokingHabits.equals("n")) {
-	          smokerStatus = 0;
-	        }
-
+	        String alzheimers = "n";
+	        String creutzfeldtJakob = "n";
+	        String crohns = "n";
+	        String cysticFibrosis = "n";
+	        String hepB = "n";
+	        String heartDisease = "n";
+	        String huntingtons = "n";
+	        String multipleSclerosis = "n";
+	        String duchenneMD = "n";
+	        String rabies = "n";
+	        
 	        System.out.print("Enter terminal illness (y or n): ");
 	        String terminalIllness = input.nextLine();
 
 	        if (terminalIllness.equals("y")) {
-	          System.out.print("Alzheimer's disease (y or n): ");
-	          String alzheimers = input.nextLine();
-
-	          System.out.print("Cancer (y or n): ");
-	          String cancer = input.nextLine();
-
-	          if (cancer.equals("y")) {
-	            System.out.print("Bladder cancer (y or n): ");
-	            String bladderCancer = input.nextLine();
-	            // Repeat with other cancers
-	          }
-	          // Prompt the user for the rest of the terminal illnesses
+	          System.out.print("Alzheimer's Disease (y or n): ");
+	          alzheimers = input.nextLine();
+	          
+	          System.out.print("Creutzfeldt-Jakob Disease (y or n): ");
+	          creutzfeldtJakob = input.nextLine();
+	          
+	          System.out.print("Crohn's Disease (y or n): ");
+	          crohns = input.nextLine();
+	          
+	          System.out.print("Cystic Fibrosis (y or n): ");
+	          cysticFibrosis = input.nextLine();
+	          
+	          System.out.print("Hepatitis B (y or n): ");
+	          hepB = input.nextLine();
+	          
+	          System.out.print("Heart Disease (y or n): ");
+	          heartDisease = input.nextLine();
+	          
+	          System.out.print("Huntington's Disease (y or n): ");
+	          huntingtons = input.nextLine();
+	          
+	          System.out.print("Multiple Sclerosis (y or n): ");
+	          multipleSclerosis = input.nextLine();
+	          
+	          System.out.print("Duchenne Muscular Dystrophy (y or n): ");
+	          duchenneMD = input.nextLine();
+	          
+	          System.out.print("Rabies (y or n): ");
+	          rabies = input.nextLine();
 	        }
+	          System.out.println();
+	          System.out.println("Current age: " + currentAge);
+	          System.out.println("Future lifetime: " + futureLifetime);
+	          System.out.println("Gender: " + gender);
+	          System.out.println("Smoking habits: " + smokingHabits);
+	          System.out.println("Terminal illness: " + terminalIllness);
+	          System.out.println("Alzheimer's Disease: " + alzheimers);
+	          System.out.println("Creutzfeldt-Jakob Disease: " + creutzfeldtJakob);
+	          System.out.println("Crohn's Disease: " + crohns);
+	          System.out.println("Cystic Fibrosis: " + cysticFibrosis);
+	          System.out.println("Hepatitis B: " + hepB);
+	          System.out.println("Heart Disease: " + heartDisease);
+	          System.out.println("Huntington's Disease: " + huntingtons);
+	          System.out.println("Multiple Sclerosis: " + multipleSclerosis);
+	          System.out.println("Duchenne Muscular Dystrophy: " + duchenneMD);
+	          System.out.println("Rabies: " + rabies);
+	          System.out.println();
+	          System.out.print("Type r to re-start the program: ");
+	          programRun = input.nextLine();
+	          System.out.println();
 	      }
 	    }
 	  }
