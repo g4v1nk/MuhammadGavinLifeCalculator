@@ -158,26 +158,34 @@ public class CommandLine {
 	        else if (rabies.equals("y"))
 	        	futureLifetime = 0;
 	        
-	          System.out.println();
-	          System.out.println("Current age: " + currentAge);
-	          System.out.println("Future lifetime: " + futureLifetime);
-	          System.out.println("Gender: " + gender);
-	          System.out.println("Smoking habits: " + smokingHabits);
-	          System.out.println("Terminal illness: " + terminalIllness);
-	          System.out.println("Alzheimer's Disease: " + alzheimers);
-	          System.out.println("Creutzfeldt-Jakob Disease: " + creutzfeldtJakob);
-	          System.out.println("Crohn's Disease: " + crohns);
-	          System.out.println("Cystic Fibrosis: " + cysticFibrosis);
-	          System.out.println("Hepatitis B: " + hepB);
-	          System.out.println("Heart Disease: " + heartDisease);
-	          System.out.println("Huntington's Disease: " + huntingtons);
-	          System.out.println("Multiple Sclerosis: " + multipleSclerosis);
-	          System.out.println("Duchenne Muscular Dystrophy: " + duchenneMD);
-	          System.out.println("Rabies: " + rabies);
-	          System.out.println();
-	          System.out.print("Type r to re-start the program: ");
-	          programRun = input.nextLine();
-	          System.out.println();
+	        if (futureLifetime < 0)
+	        	futureLifetime = 0;
+	        else if (currentAge + futureLifetime > 100)
+	        	futureLifetime = 100 - currentAge;
+	        
+	        System.out.println();
+	        System.out.println("You are expected to live " + futureLifetime + " more years.");
+	        
+	        System.out.println();
+	        System.out.println("Current age: " + currentAge);
+	        System.out.println("Future lifetime: " + futureLifetime);
+	        System.out.println("Gender: " + gender);
+	        System.out.println("Smoking habits: " + smokingHabits);
+	        System.out.println("Terminal illness: " + terminalIllness);
+	        System.out.println("Alzheimer's Disease: " + alzheimers);
+	        System.out.println("Creutzfeldt-Jakob Disease: " + creutzfeldtJakob);
+	        System.out.println("Crohn's Disease: " + crohns);
+	        System.out.println("Cystic Fibrosis: " + cysticFibrosis);
+	        System.out.println("Hepatitis B: " + hepB);
+	        System.out.println("Heart Disease: " + heartDisease);
+	        System.out.println("Huntington's Disease: " + huntingtons);
+	        System.out.println("Multiple Sclerosis: " + multipleSclerosis);
+	        System.out.println("Duchenne Muscular Dystrophy: " + duchenneMD);
+	        System.out.println("Rabies: " + rabies);
+	        System.out.println();
+	        System.out.print("Type r to re-start the program: ");
+	        programRun = input.nextLine();
+	        System.out.println();
 	      }
 	    }
 	  }
