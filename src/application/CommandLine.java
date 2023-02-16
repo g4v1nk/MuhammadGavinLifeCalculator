@@ -158,6 +158,15 @@ public class CommandLine {
 	        else if (rabies.equals("y"))
 	        	futureLifetime = 0;
 	        
+	        if (smokingHabits.equals("h"))
+	        	futureLifetime -= 13;
+	        else if (smokingHabits.equals("m"))
+	        	futureLifetime -= 9;
+	        else if (smokingHabits.equals("l"))
+	        	futureLifetime -= 5;
+	        else if (smokingHabits.equals("n"))
+	        	futureLifetime -= 0;
+	        
 	        if (futureLifetime < 0)
 	        	futureLifetime = 0;
 	        else if (currentAge + futureLifetime > 100)
