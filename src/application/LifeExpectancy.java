@@ -1,6 +1,8 @@
 package application;
 
 public class LifeExpectancy {
+	/** This class represents the life expectancy of the program user.
+	 */
 	//Variables related to life expectancy defined here.
 	int currentAge;
 	String gender;
@@ -15,7 +17,6 @@ public class LifeExpectancy {
     String multipleSclerosis;
     String duchenneMD;
     String rabies;
-
 	
 	//Creating a constructor for life expectancy.
 	LifeExpectancy(int ageAtPresent, String sex, String smokingStatus, String alzheimersStatus,
@@ -37,6 +38,12 @@ public class LifeExpectancy {
 	}
 	
 	//Creating a method for calculating life expectancy.
+	/**
+	 * This method calculates your future lifetime in years based on your current age, gender,
+	 * smoking habits, and based on any terminal illnesses you have.
+	 * 
+	 * @return futureLifetime
+	 */
 	int getLifeExpectancy() {
 		
         //Life expectancy variable initialized to 0.

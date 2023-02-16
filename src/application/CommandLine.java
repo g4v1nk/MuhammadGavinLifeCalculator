@@ -1,6 +1,10 @@
 package application;
 import java.util.Scanner;
 public class CommandLine {
+	/** This class represents the command line input that the user enters.
+	 * 
+	 * @param args
+	 */
 
 	  public static void main(String[] args) {
 	    String programRun = "r";
@@ -75,30 +79,12 @@ public class CommandLine {
 	        LifeExpectancy lifeExpectancy = new LifeExpectancy(currentAge, gender, smokingHabits, alzheimers,
 creutzfeldtJakob, crohns, cysticFibrosis, heartDisease, hepB, huntingtons, multipleSclerosis, duchenneMD, rabies);	
 	        
-	        
 	        int yearsLeftToLive = lifeExpectancy.getLifeExpectancy();
 	        
 	        System.out.println();
 	        System.out.println("You are expected to live " + yearsLeftToLive + " more years.");
 	   
 	        System.out.println();
-	        System.out.println("Current age: " + currentAge);
-	        System.out.println("Future lifetime: " + yearsLeftToLive);
-	        System.out.println("Gender: " + gender);
-	        System.out.println("Smoking habits: " + smokingHabits);
-	        System.out.println("Terminal illness: " + terminalIllness);
-	        System.out.println("Alzheimer's Disease: " + alzheimers);
-	        System.out.println("Creutzfeldt-Jakob Disease: " + creutzfeldtJakob);
-	        System.out.println("Crohn's Disease: " + crohns);
-	        System.out.println("Cystic Fibrosis: " + cysticFibrosis);
-	        System.out.println("Hepatitis B: " + hepB);
-	        System.out.println("Heart Disease: " + heartDisease);
-	        System.out.println("Huntington's Disease: " + huntingtons);
-	        System.out.println("Multiple Sclerosis: " + multipleSclerosis);
-	        System.out.println("Duchenne Muscular Dystrophy: " + duchenneMD);
-	        System.out.println("Rabies: " + rabies);
-	        System.out.println();
-	        
 	        System.out.print("Type r to re-start the program: ");
 	        programRun = input.nextLine();
 	        System.out.println();
