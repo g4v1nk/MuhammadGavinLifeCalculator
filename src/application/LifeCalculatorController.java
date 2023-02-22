@@ -9,8 +9,15 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+
 public class LifeCalculatorController {
-	Stage applicationStage;
+
+    @FXML
+    void goToMainInputScene(ActionEvent event) {
+
+    }
+
+    Stage applicationStage;
 	
 	//Setting up the Main Input Scene.
 	
@@ -101,7 +108,5 @@ public class LifeCalculatorController {
 			huntingtonsContainer, multipleSclerosisContainer, rabiesContainer, doneTerminalIllnessButton);
 	
 	}
-	
 
-	
 }
