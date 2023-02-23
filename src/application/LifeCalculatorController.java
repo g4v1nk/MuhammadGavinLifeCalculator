@@ -64,63 +64,87 @@ public class LifeCalculatorController {
 	
 	Scene terminalIllnessInputScene = new Scene(new Label("Terminal Illness Input Scene"));
 	VBox terminalIllnessInputSceneContainer = new VBox(); {
+		
+		HBox alzheimersContainer = new HBox();
+		Label alzheimersLabel = new Label("Alzheimer's Disease: ");
+		ChoiceBox<String> alzheimersChoiceBox = new ChoiceBox<String>();
+		//Creating a yesOrNoList to set the ChoiceBox options for all the terminal illnesses.
+		ObservableList<String> yesOrNoList = alzheimersChoiceBox.getItems();
+		yesOrNoList.add(0, "No");
+		yesOrNoList.add(1, "Yes");
+		alzheimersChoiceBox.setValue("No");
+		alzheimersContainer.getChildren().addAll(alzheimersLabel, alzheimersChoiceBox);
 	
-	HBox alzheimersContainer = new HBox();
-	Label alzheimersLabel = new Label("Alzheimer's Disease: ");
-	ChoiceBox<String> alzheimersChoiceBox = new ChoiceBox<String>();
-	alzheimersContainer.getChildren().addAll(alzheimersLabel, alzheimersChoiceBox);
+		HBox creutzfeldtJakobContainer = new HBox();
+		Label creutzfeldtJakobLabel = new Label("Creutzfeldt-Jakob Disease: ");
+		ChoiceBox<String> creutzfeldtJakobChoiceBox = new ChoiceBox<String>();
+		//yesOrNoList already set up.
+		yesOrNoList = creutzfeldtJakobChoiceBox.getItems();
+		creutzfeldtJakobChoiceBox.setValue("No");
+		creutzfeldtJakobContainer.getChildren().addAll(creutzfeldtJakobLabel, creutzfeldtJakobChoiceBox);
 	
-	HBox creutzfeldtJakobContainer = new HBox();
-	Label creutzfeldtJakobLabel = new Label("Creutzfeldt-Jakob Disease: ");
-	ChoiceBox<String> creutzfeldtJakobChoiceBox = new ChoiceBox<String>();
-	creutzfeldtJakobContainer.getChildren().addAll(creutzfeldtJakobLabel, creutzfeldtJakobChoiceBox);
+		HBox crohnsContainer = new HBox();
+		Label crohnsLabel = new Label("Crohn's Disease: ");
+		ChoiceBox<String> crohnsChoiceBox = new ChoiceBox<String>();
+		yesOrNoList = crohnsChoiceBox.getItems();
+		crohnsChoiceBox.setValue("No");
+		crohnsContainer.getChildren().addAll(crohnsLabel, crohnsChoiceBox);
 	
-	HBox crohnsContainer = new HBox();
-	Label crohnsLabel = new Label("Crohn's Disease: ");
-	ChoiceBox<String> crohnsChoiceBox = new ChoiceBox<String>();
-	crohnsContainer.getChildren().addAll(crohnsLabel, crohnsChoiceBox);
+		HBox cysticFibrosisContainer = new HBox();
+		Label cysticFibrosisLabel = new Label("Cystic Fibrosis: ");
+		ChoiceBox<String> cysticFibrosisChoiceBox = new ChoiceBox<String>();
+		yesOrNoList = cysticFibrosisChoiceBox.getItems();
+		cysticFibrosisChoiceBox.setValue("No");
+		cysticFibrosisContainer.getChildren().addAll(cysticFibrosisLabel, cysticFibrosisChoiceBox);
 	
-	HBox cysticFibrosisContainer = new HBox();
-	Label cysticFibrosisLabel = new Label("Cystic Fibrosis: ");
-	ChoiceBox<String> cysticFibrosisChoiceBox = new ChoiceBox<String>();
-	cysticFibrosisContainer.getChildren().addAll(cysticFibrosisLabel, cysticFibrosisChoiceBox);
+		HBox duchenneMDContainer = new HBox();
+		Label duchenneMDLabel = new Label("Duchenne Muscular Dystrophy: ");
+		ChoiceBox<String> duchenneMDChoiceBox = new ChoiceBox<String>();
+		yesOrNoList = duchenneMDChoiceBox.getItems();
+		duchenneMDChoiceBox.setValue("No");
+		duchenneMDContainer.getChildren().addAll(duchenneMDLabel, duchenneMDChoiceBox);
 	
-	HBox duchenneMDContainer = new HBox();
-	Label duchenneMDLabel = new Label("Duchenne Muscular Dystrophy: ");
-	ChoiceBox<String> duchenneMDChoiceBox = new ChoiceBox<String>();
-	duchenneMDContainer.getChildren().addAll(duchenneMDLabel, duchenneMDChoiceBox);
+		HBox hepBContainer = new HBox();
+		Label hepBLabel = new Label("Hepatitis B: ");
+		ChoiceBox<String> hepBChoiceBox = new ChoiceBox<String>();
+		yesOrNoList = hepBChoiceBox.getItems();
+		hepBChoiceBox.setValue("No");
+		hepBContainer.getChildren().addAll(hepBLabel, hepBChoiceBox);
 	
-	HBox hepBContainer = new HBox();
-	Label hepBLabel = new Label("Hepatitis B: ");
-	ChoiceBox<String> hepBChoiceBox = new ChoiceBox<String>();
-	hepBContainer.getChildren().addAll(hepBLabel, hepBChoiceBox);
+		HBox heartDiseaseContainer = new HBox();
+		Label heartDiseaseLabel = new Label("Heart Disease: ");
+		ChoiceBox<String> heartDiseaseChoiceBox = new ChoiceBox<String>();
+		yesOrNoList = heartDiseaseChoiceBox.getItems();
+		heartDiseaseChoiceBox.setValue("No");
+		heartDiseaseContainer.getChildren().addAll(heartDiseaseLabel, heartDiseaseChoiceBox);
 	
-	HBox heartDiseaseContainer = new HBox();
-	Label heartDiseaseLabel = new Label("Heart Disease: ");
-	ChoiceBox<String> heartDiseaseChoiceBox = new ChoiceBox<String>();
-	heartDiseaseContainer.getChildren().addAll(heartDiseaseLabel, heartDiseaseChoiceBox);
+		HBox huntingtonsContainer = new HBox();
+		Label huntingtonsLabel = new Label("Huntington's Disease: ");
+		ChoiceBox<String> huntingtonsChoiceBox = new ChoiceBox<String>();
+		yesOrNoList = huntingtonsChoiceBox.getItems();
+		huntingtonsChoiceBox.setValue("No");
+		huntingtonsContainer.getChildren().addAll(huntingtonsLabel, huntingtonsChoiceBox);
 	
-	HBox huntingtonsContainer = new HBox();
-	Label huntingtonsLabel = new Label("Huntington's Disease: ");
-	ChoiceBox<String> huntingtonsChoiceBox = new ChoiceBox<String>();
-	huntingtonsContainer.getChildren().addAll(huntingtonsLabel, huntingtonsChoiceBox);
+		HBox multipleSclerosisContainer = new HBox();
+		Label multipleSclerosisLabel = new Label("Multiple Sclerosis: ");
+		ChoiceBox<String> multipleSclerosisChoiceBox = new ChoiceBox<String>();
+		yesOrNoList = multipleSclerosisChoiceBox.getItems();
+		multipleSclerosisChoiceBox.setValue("No");
+		multipleSclerosisContainer.getChildren().addAll(multipleSclerosisLabel, multipleSclerosisChoiceBox);
 	
-	HBox multipleSclerosisContainer = new HBox();
-	Label multipleSclerosisLabel = new Label("Multiple Sclerosis: ");
-	ChoiceBox<String> multipleSclerosisChoiceBox = new ChoiceBox<String>();
-	multipleSclerosisContainer.getChildren().addAll(multipleSclerosisLabel, multipleSclerosisChoiceBox);
+		HBox rabiesContainer = new HBox();
+		Label rabiesLabel = new Label("Rabies: ");
+		ChoiceBox<String> rabiesChoiceBox = new ChoiceBox<String>();
+		yesOrNoList = rabiesChoiceBox.getItems();
+		rabiesChoiceBox.setValue("No");
+		rabiesContainer.getChildren().addAll(rabiesLabel, rabiesChoiceBox);
 	
-	HBox rabiesContainer = new HBox();
-	Label rabiesLabel = new Label("Rabies: ");
-	ChoiceBox<String> rabiesChoiceBox = new ChoiceBox<String>();
-	rabiesContainer.getChildren().addAll(rabiesLabel, rabiesChoiceBox);
+		Button doneTerminalIllnessButton = new Button("Done Terminal Illness");
 	
-	Button doneTerminalIllnessButton = new Button("Done Terminal Illness");
-	
-	terminalIllnessInputSceneContainer.getChildren().addAll(alzheimersContainer, creutzfeldtJakobContainer,
+		terminalIllnessInputSceneContainer.getChildren().addAll(alzheimersContainer, creutzfeldtJakobContainer,
 			crohnsContainer, cysticFibrosisContainer, duchenneMDContainer, hepBContainer, heartDiseaseContainer,
 			huntingtonsContainer, multipleSclerosisContainer, rabiesContainer, doneTerminalIllnessButton);
-	
+		
 	}
-
+	
 }
