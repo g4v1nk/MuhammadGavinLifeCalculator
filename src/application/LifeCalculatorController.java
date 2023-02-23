@@ -69,7 +69,7 @@ public class LifeCalculatorController {
 			enterTerminalIllnessButton, calculateLifeExpectancyButton);
 	}
 	
-	Scene mainInputScene = new Scene(mainInputSceneContainer);
+	Scene mainInputScene = new Scene(mainInputSceneContainer, 400, 400);
 
 	//Setting up the Terminal Illness Input Scene.
 	
@@ -179,6 +179,6 @@ public class LifeCalculatorController {
 		
 	}
 	
-	Scene terminalIllnessInputScene = new Scene(terminalIllnessInputSceneContainer);
+	Scene terminalIllnessInputScene = new Scene(terminalIllnessInputSceneContainer, 400, 400);
 	
 }
