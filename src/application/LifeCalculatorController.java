@@ -1,5 +1,7 @@
 package application;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -14,7 +16,7 @@ public class LifeCalculatorController {
 
     @FXML
     void goToMainInputScene(ActionEvent event) {
-
+    	applicationStage.setScene(mainInputScene);
     }
 
     Stage applicationStage;
