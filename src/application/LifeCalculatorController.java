@@ -26,46 +26,46 @@ public class LifeCalculatorController {
 	
 	VBox mainInputSceneContainer = new VBox(); {
 		
-	HBox currentAgeContainer = new HBox();
-	currentAgeContainer.setMinHeight(75);
-	currentAgeContainer.setTranslateY(25);
-	Label currentAgeLabel = new Label("Current age: ");
-	currentAgeLabel.setMinWidth(100);
-	TextField currentAgeTextField = new TextField();
-	currentAgeContainer.getChildren().addAll(currentAgeLabel, currentAgeTextField);
+		HBox currentAgeContainer = new HBox();
+		currentAgeContainer.setMinHeight(75);
+		currentAgeContainer.setTranslateY(25);
+		Label currentAgeLabel = new Label("Current age: ");
+		currentAgeLabel.setMinWidth(100);
+		TextField currentAgeTextField = new TextField();
+		currentAgeContainer.getChildren().addAll(currentAgeLabel, currentAgeTextField);
 	
-	HBox genderContainer = new HBox();
-	genderContainer.setMinHeight(50);
-	Label genderLabel = new Label("Gender: ");
-	genderLabel.setMinWidth(100);
-	ChoiceBox<String> genderChoiceBox = new ChoiceBox<String>();
-	genderChoiceBox.setValue("Male");
-	ObservableList<String> genderList = genderChoiceBox.getItems();
-	genderList.add(0, "Male");
-	genderList.add(1, "Female");
-	genderContainer.getChildren().addAll(genderLabel, genderChoiceBox);
+		HBox genderContainer = new HBox();
+		genderContainer.setMinHeight(50);
+		Label genderLabel = new Label("Gender: ");
+		genderLabel.setMinWidth(100);
+		ChoiceBox<String> genderChoiceBox = new ChoiceBox<String>();
+		genderChoiceBox.setValue("Male");
+		ObservableList<String> genderList = genderChoiceBox.getItems();
+		genderList.add(0, "Male");
+		genderList.add(1, "Female");
+		genderContainer.getChildren().addAll(genderLabel, genderChoiceBox);
 	
-	HBox smokingHabitsContainer = new HBox();
-	smokingHabitsContainer.setMinHeight(75);
-	Label smokingHabitsLabel = new Label("Smoking habits: ");
-	smokingHabitsLabel.setMinWidth(100);
-	ChoiceBox<String> smokingHabitsChoiceBox = new ChoiceBox<String>();
-	smokingHabitsChoiceBox.setValue("Non-smoker");
-	ObservableList<String> smokingHabitsList = smokingHabitsChoiceBox.getItems();
-	smokingHabitsList.add(0, "Non-smoker");
-	smokingHabitsList.add(1, "Light smoker");
-	smokingHabitsList.add(2, "Moderate smoker");
-	smokingHabitsList.add(3, "Heavy smoker");
-	smokingHabitsContainer.getChildren().addAll(smokingHabitsLabel, smokingHabitsChoiceBox);
+		HBox smokingHabitsContainer = new HBox();
+		smokingHabitsContainer.setMinHeight(75);
+		Label smokingHabitsLabel = new Label("Smoking habits: ");
+		smokingHabitsLabel.setMinWidth(100);
+		ChoiceBox<String> smokingHabitsChoiceBox = new ChoiceBox<String>();
+		smokingHabitsChoiceBox.setValue("Non-smoker");
+		ObservableList<String> smokingHabitsList = smokingHabitsChoiceBox.getItems();
+		smokingHabitsList.add(0, "Non-smoker");
+		smokingHabitsList.add(1, "Light smoker");
+		smokingHabitsList.add(2, "Moderate smoker");
+		smokingHabitsList.add(3, "Heavy smoker");
+		smokingHabitsContainer.getChildren().addAll(smokingHabitsLabel, smokingHabitsChoiceBox);
 	
-	Button enterTerminalIllnessButton = new Button("Enter Terminal Illness: ");
-	enterTerminalIllnessButton.setTranslateX(100);
+		Button enterTerminalIllnessButton = new Button("Enter Terminal Illness: ");
+		enterTerminalIllnessButton.setTranslateX(100);
 	
-	Button calculateLifeExpectancyButton = new Button("Calculate Life Expectancy: ");
-	calculateLifeExpectancyButton.setTranslateX(100);
-	calculateLifeExpectancyButton.setTranslateY(25);
+		Button calculateLifeExpectancyButton = new Button("Calculate Life Expectancy: ");
+		calculateLifeExpectancyButton.setTranslateX(100);
+		calculateLifeExpectancyButton.setTranslateY(25);
 	
-	mainInputSceneContainer.getChildren().addAll(currentAgeContainer, genderContainer, smokingHabitsContainer,
+		mainInputSceneContainer.getChildren().addAll(currentAgeContainer, genderContainer, smokingHabitsContainer,
 			enterTerminalIllnessButton, calculateLifeExpectancyButton);
 	}
 	
@@ -73,7 +73,6 @@ public class LifeCalculatorController {
 
 	//Setting up the Terminal Illness Input Scene.
 	
-	Scene terminalIllnessInputScene = new Scene(new Label("Terminal Illness Input Scene"));
 	VBox terminalIllnessInputSceneContainer = new VBox(); {
 		
 		HBox alzheimersContainer = new HBox();
@@ -129,7 +128,7 @@ public class LifeCalculatorController {
 		HBox hepBContainer = new HBox();
 		hepBContainer.setMinHeight(50);
 		Label hepBLabel = new Label("Hepatitis B: ");
-		hepBLabel.setMinWidth(100)
+		hepBLabel.setMinWidth(100);
 		ChoiceBox<String> hepBChoiceBox = new ChoiceBox<String>();
 		yesOrNoList = hepBChoiceBox.getItems();
 		hepBChoiceBox.setValue("No");
@@ -179,5 +178,7 @@ public class LifeCalculatorController {
 			huntingtonsContainer, multipleSclerosisContainer, rabiesContainer, doneTerminalIllnessButton);
 		
 	}
+	
+	Scene terminalIllnessInputScene = new Scene(terminalIllnessInputSceneContainer);
 	
 }
