@@ -23,9 +23,8 @@ public class LifeCalculatorController {
 	
 	//Setting up the Main Input Scene.
 	
-	Scene mainInputScene = new Scene(new Label("Widgets are coming later"));
 	VBox mainInputSceneContainer = new VBox(); {
-	
+		
 	HBox currentAgeContainer = new HBox();
 	Label currentAgeLabel = new Label("Current age: ");
 	TextField currentAgeTextField = new TextField();
@@ -47,6 +46,8 @@ public class LifeCalculatorController {
 	mainInputSceneContainer.getChildren().addAll(currentAgeContainer, genderContainer, smokingHabitsContainer,
 			enterTerminalIllnessButton, calculateLifeExpectancyButton);
 	}
+	
+	Scene mainInputScene = new Scene(mainInputSceneContainer);
 
 	//Setting up the Terminal Illness Input Scene.
 	
