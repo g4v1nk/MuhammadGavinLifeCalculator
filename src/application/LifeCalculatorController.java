@@ -1,5 +1,6 @@
 package application;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -33,11 +34,21 @@ public class LifeCalculatorController {
 	HBox genderContainer = new HBox();
 	Label genderLabel = new Label("Gender: ");
 	ChoiceBox<String> genderChoiceBox = new ChoiceBox<String>();
+	genderChoiceBox.setValue("Male");
+	ObservableList<String> genderList = genderChoiceBox.getItems();
+	genderList.add(0, "Male");
+	genderList.add(1, "Female");
 	genderContainer.getChildren().addAll(genderLabel, genderChoiceBox);
 	
 	HBox smokingHabitsContainer = new HBox();
 	Label smokingHabitsLabel = new Label("Smoking habits: ");
 	ChoiceBox<String> smokingHabitsChoiceBox = new ChoiceBox<String>();
+	smokingHabitsChoiceBox.setValue("Non-smoker");
+	ObservableList<String> smokingHabitsList = smokingHabitsChoiceBox.getItems();
+	smokingHabitsList.add(0, "Non-smoker");
+	smokingHabitsList.add(1, "Light smoker");
+	smokingHabitsList.add(2, "Moderate smoker");
+	smokingHabitsList.add(3, "Heavy smoker");
 	smokingHabitsContainer.getChildren().addAll(smokingHabitsLabel, smokingHabitsChoiceBox);
 	
 	Button enterTerminalIllnessButton = new Button("Enter Terminal Illness: ");
