@@ -14,13 +14,14 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
+			// Giving the primaryStage to the controller and setting up Main Menu Scene
 			FXMLLoader loader = new FXMLLoader();
-			VBox root = loader.load(new FileInputStream("C:\\Users\\CS219-user\\eclipse-workspace\\MuhammadGavinLifeCalculator\\src\\LifeCalculatorView.fxml"));
+			VBox mainMenuContainer = loader.load(new FileInputStream("C:\\Users\\CS219-user\\eclipse-workspace\\MuhammadGavinLifeCalculator\\src\\LifeCalculatorView.fxml"));
 			LifeCalculatorController controller = (LifeCalculatorController)loader.getController();
 			controller.applicationStage = primaryStage;
+			Scene mainMenuScene = new Scene(mainMenuContainer,400,400);
 			
-			Scene scene = new Scene(root,400,400);
-			primaryStage.setScene(scene);
+			primaryStage.setScene(mainMenuScene);
 			primaryStage.setTitle("Muhammad and Gavin's Life Expectancy Calculator");
 			primaryStage.show();
 		} catch(Exception e) {
