@@ -24,19 +24,19 @@ public class LifeExpectancy {
     /** This constructor constructs a LifeExpectancy object with instance variables that keep track of
      * mortality-related information.
      * 
-     * @param ageAtPresent (The user's current age; an integer between 18 and 100)
-     * @param sex (The user's gender; either "m" or "f")
-     * @param smokingStatus (The user's smoking habits: "h"(eavy), "m"(oderate), "l"(ight), or "n"(on-smoker))
-     * @param alzheimersStatus (The user's Alzheimer's Disease status: "y"(es) or "n"(o))
-     * @param creutzfeldtJakobStatus (The user's Creutzfeldt-Jakob Disease status: "y"(es) or "n"(o))
-     * @param crohnsStatus (The user's Crohn's Disease status: "y"(es) or "n"(o))
-     * @param cysticFibrosisStatus (The user's Cystic Fibrosis status: "y"(es) or "n"(o))
-     * @param heartDiseaseStatus (The user's Heart Disease status: "y"(es) or "n"(o))
-     * @param hepBStatus (The user's Hepatitis B status: "y"(es) or "n"(o))
-     * @param huntingtonsStatus (The user's Huntington's Disease status: "y"(es) or "n"(o))
-     * @param multipleSclerosisStatus (The user's Multiple Sclerosis status: "y"(es) or "n"(o))
-     * @param duchenneMDStatus (The user's Duchenne Muscular Dystrophy status: "y"(es) or "n"(o))
-     * @param rabiesStatus (The user's Rabies status: "y"(es) or "n"(o))
+     * @param ageAtPresent (This is the user's current age; an integer between 18 and 100)
+     * @param sex (This is the user's gender; either "m" or "f")
+     * @param smokingStatus (This is the user's smoking habits: "h"(eavy), "m"(oderate), "l"(ight), or "n"(on-smoker))
+     * @param alzheimersStatus (This is the user's Alzheimer's Disease status: "y"(es) or "n"(o))
+     * @param creutzfeldtJakobStatus (This is the user's Creutzfeldt-Jakob Disease status: "y"(es) or "n"(o))
+     * @param crohnsStatus (This is the user's Crohn's Disease status: "y"(es) or "n"(o))
+     * @param cysticFibrosisStatus (This is the user's Cystic Fibrosis status: "y"(es) or "n"(o))
+     * @param heartDiseaseStatus (This is the user's Heart Disease status: "y"(es) or "n"(o))
+     * @param hepBStatus (This is the user's Hepatitis B status: "y"(es) or "n"(o))
+     * @param huntingtonsStatus (This is the user's Huntington's Disease status: "y"(es) or "n"(o))
+     * @param multipleSclerosisStatus (This is the user's Multiple Sclerosis status: "y"(es) or "n"(o))
+     * @param duchenneMDStatus (This is the user's Duchenne Muscular Dystrophy status: "y"(es) or "n"(o))
+     * @param rabiesStatus (This is the user's Rabies status: "y"(es) or "n"(o))
      */
 	LifeExpectancy(int ageAtPresent, String sex, String smokingStatus, String alzheimersStatus,
 			String creutzfeldtJakobStatus, String crohnsStatus, String cysticFibrosisStatus, String heartDiseaseStatus,
@@ -60,7 +60,7 @@ public class LifeExpectancy {
 	 * This method calculates your future lifetime in years based on your current age, gender,
 	 * smoking habits, and based on any terminal illnesses you have.
 	 * 
-	 * @return futureLifetime (The life expectancy that the program has calculated.)
+	 * @return futureLifetime (This is the life expectancy that the program has calculated.)
 	 */
 	int getLifeExpectancy() {
 		

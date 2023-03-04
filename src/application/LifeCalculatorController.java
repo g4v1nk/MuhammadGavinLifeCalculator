@@ -12,7 +12,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-
 	/** This class represents a controller for the GUI this program uses.
 	 * 
 	 * @author CS219-user
@@ -33,7 +32,7 @@ public class LifeCalculatorController {
 	
 	//Setting up the Main Input Scene.
 	
-	VBox mainInputSceneContainer = new VBox(); {
+    SceneContainer mainInputSceneContainer = new SceneContainer(3); {
 		
 		HBox currentAgeContainer = new HBox();
 		currentAgeContainer.setMinHeight(75);
@@ -73,7 +72,7 @@ public class LifeCalculatorController {
 		Button calculateLifeExpectancyButton = new Button("Calculate Life Expectancy: ");
 		calculateLifeExpectancyButton.setTranslateX(100);
 		calculateLifeExpectancyButton.setTranslateY(25);
-	
+
 		mainInputSceneContainer.getChildren().addAll(currentAgeContainer, genderContainer, smokingHabitsContainer,
 			enterTerminalIllnessButton, calculateLifeExpectancyButton);
 	}
@@ -82,7 +81,7 @@ public class LifeCalculatorController {
 
 	//Setting up the Terminal Illness Input Scene.
 	
-	VBox terminalIllnessInputSceneContainer = new VBox(); {
+	SceneContainer terminalIllnessInputSceneContainer = new SceneContainer(10); {
 		
 		HBox alzheimersContainer = new HBox();
 		alzheimersContainer.setMinHeight(75);
