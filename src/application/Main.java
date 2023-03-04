@@ -8,10 +8,17 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 
-
-
+	/** This class represents a specific Application object. 
+	 * 
+	 * @author CS219-user
+	 *
+	 */
 public class Main extends Application {
 	@Override
+	/** This method gets the program running and sets the scene to mainMenuScene.
+	 * 
+	 * @param primaryStage
+	 */
 	public void start(Stage primaryStage) {
 		try {
 			// Giving the primaryStage to the controller and setting up Main Menu Scene
@@ -29,6 +36,10 @@ public class Main extends Application {
 		}
 	}
 	
+	/** This method launches the life expectancy calculator.
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		launch(args);
 	}

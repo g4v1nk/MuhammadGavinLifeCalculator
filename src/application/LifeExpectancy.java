@@ -1,8 +1,11 @@
 package application;
 
-public class LifeExpectancy {
 	/** This class represents the life expectancy of the program user.
+	 * 
+	 * @author CS219-user
+	 *
 	 */
+public class LifeExpectancy {
 	//Variables related to life expectancy defined here.
 	int currentAge;
 	String gender;
@@ -19,6 +22,23 @@ public class LifeExpectancy {
     String rabies;
 	
 	//Creating a constructor for life expectancy.
+    /** This constructor constructs a LifeExpectancy object with instance variables that keep track of
+     * mortality-related information.
+     * 
+     * @param ageAtPresent (The user's current age; an integer between 18 and 100)
+     * @param sex (The user's gender; either "m" or "f")
+     * @param smokingStatus (The user's smoking habits: "h"(eavy), "m"(oderate), "l"(ight), or "n"(on-smoker))
+     * @param alzheimersStatus (The user's Alzheimer's Disease status: "y"(es) or "n"(o))
+     * @param creutzfeldtJakobStatus (The user's Creutzfeldt-Jakob Disease status: "y"(es) or "n"(o))
+     * @param crohnsStatus (The user's Crohn's Disease status: "y"(es) or "n"(o))
+     * @param cysticFibrosisStatus (The user's Cystic Fibrosis status: "y"(es) or "n"(o))
+     * @param heartDiseaseStatus (The user's Heart Disease status: "y"(es) or "n"(o))
+     * @param hepBStatus (The user's Hepatitis B status: "y"(es) or "n"(o))
+     * @param huntingtonsStatus (The user's Huntington's Disease status: "y"(es) or "n"(o))
+     * @param multipleSclerosisStatus (The user's Multiple Sclerosis status: "y"(es) or "n"(o))
+     * @param duchenneMDStatus (The user's Duchenne Muscular Dystrophy status: "y"(es) or "n"(o))
+     * @param rabiesStatus (The user's Rabies status: "y"(es) or "n"(o))
+     */
 	LifeExpectancy(int ageAtPresent, String sex, String smokingStatus, String alzheimersStatus,
 			String creutzfeldtJakobStatus, String crohnsStatus, String cysticFibrosisStatus, String heartDiseaseStatus,
 			String hepBStatus, String huntingtonsStatus, String multipleSclerosisStatus, String duchenneMDStatus, String rabiesStatus) {
@@ -42,7 +62,7 @@ public class LifeExpectancy {
 	 * This method calculates your future lifetime in years based on your current age, gender,
 	 * smoking habits, and based on any terminal illnesses you have.
 	 * 
-	 * @return futureLifetime
+	 * @return futureLifetime (The life expectancy that the program has calculated.)
 	 */
 	int getLifeExpectancy() {
 		

@@ -13,9 +13,18 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 
+	/** This class represents a controller for the GUI this program uses.
+	 * 
+	 * @author CS219-user
+	 *
+	 */
 public class LifeCalculatorController {
 
     @FXML
+    /** This method sets the scene to mainInputScene.
+     * 
+     * @param event (event is something that you want to trigger a scene change to mainInputScene.)
+     */
     void goToMainInputScene(ActionEvent event) {
     	applicationStage.setScene(mainInputScene);
     }
