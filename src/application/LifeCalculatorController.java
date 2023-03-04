@@ -34,13 +34,9 @@ public class LifeCalculatorController {
 	
     SceneContainer mainInputSceneContainer = new SceneContainer(3); {
 		
-		HBox currentAgeContainer = new HBox();
-		currentAgeContainer.setMinHeight(75);
-		currentAgeContainer.setTranslateY(25);
-		Label currentAgeLabel = new Label("Current age: ");
-		currentAgeLabel.setMinWidth(100);
+    	ContainerWithinSceneContainer currentAgeContainer = new ContainerWithinSceneContainer(75, 25, "Current age: ", 100);
 		TextField currentAgeTextField = new TextField();
-		currentAgeContainer.getChildren().addAll(currentAgeLabel, currentAgeTextField);
+		currentAgeContainer.getChildren().add(currentAgeTextField);
 	
 		HBox genderContainer = new HBox();
 		genderContainer.setMinHeight(50);
