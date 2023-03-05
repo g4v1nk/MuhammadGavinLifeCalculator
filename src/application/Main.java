@@ -14,6 +14,7 @@ import javafx.scene.layout.VBox;
 	 *
 	 */
 public class Main extends Application {
+	
 	@Override
 	/** This method gets the program running and sets the scene to mainMenuScene.
 	 * 
@@ -43,5 +44,5 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
+	
 }
-

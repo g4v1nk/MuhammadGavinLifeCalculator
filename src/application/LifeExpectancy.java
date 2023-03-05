@@ -6,6 +6,7 @@ package application;
  *
  */
 public class LifeExpectancy {
+	
 	//Variables related to life expectancy defined here.
 	int currentAge;
 	String gender;
@@ -99,6 +100,7 @@ public class LifeExpectancy {
 			else
 				futureLifetime = 6;	
 		}
+		
 		else {
 			if (currentAge <= 19)
 				futureLifetime = 69;
@@ -171,6 +173,7 @@ public class LifeExpectancy {
         	futureLifetime = 100 - currentAge;
         
 		return futureLifetime;
+		
 	}
 
 }
