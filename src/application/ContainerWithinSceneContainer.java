@@ -24,6 +24,13 @@ public class ContainerWithinSceneContainer extends HBox {
 		label = new Label(labelText);
 		label.setMinWidth(labelMinWidth);
 	}
-	
+
+	/** This method will return the variable "label" from the ContainerWithinSceneContainer class.
+	 * 
+	 * @return label (This is the instance variable for "label" for the ContainerWithinSceneContainer class.)
+	 */
+	public Label getLabel() {
+		return label;
+	}
 
 }
