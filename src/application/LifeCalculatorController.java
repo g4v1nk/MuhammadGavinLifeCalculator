@@ -37,14 +37,8 @@ public class LifeCalculatorController {
     	ContainerWithinSceneContainer currentAgeContainer = new ContainerWithinSceneContainer(75, 25, "Current age: ", 100);
 		currentAgeContainer.getChildren().addAll(currentAgeContainer.getLabel(), new TextField());
 	
-		
-		ContainerWithinSceneContainer genderContainer = new ContainerWithinSceneContainer(50, 0, "Gender: ", 100);
-		ChoiceBox<String> genderChoiceBox = new ChoiceBox<String>();
-		genderChoiceBox.setValue("Male");
-		ObservableList<String> genderList = genderChoiceBox.getItems();
-		genderList.add(0, "Male");
-		genderList.add(1, "Female");
-		genderContainer.getChildren().addAll(genderContainer.getLabel(), genderChoiceBox);
+		ContainerWithinSceneContainerWithChoiceBox genderContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "Gender: ", 100, "Male", "Male", "Female");
+		genderContainer.getChildren().addAll(genderContainer.getLabel(), genderContainer.getChoiceBox());
 	
 		ContainerWithinSceneContainer smokingHabitsContainer = new ContainerWithinSceneContainer(75, 0, "Smoking habits: ", 100);
 		ChoiceBox<String> smokingHabitsChoiceBox = new ChoiceBox<String>();
