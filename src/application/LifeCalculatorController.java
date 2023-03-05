@@ -30,7 +30,7 @@ public class LifeCalculatorController {
 
     Stage applicationStage;
 	
-    SceneContainer mainInputSceneContainer = new SceneContainer(3); {
+    VBox mainInputSceneContainer = new VBox(); {
 		
     	ContainerWithinSceneContainer currentAgeContainer = new ContainerWithinSceneContainer(75, 25, "Current age: ", 100);
 		currentAgeContainer.getChildren().addAll(currentAgeContainer.getLabel(), new TextField());
@@ -56,7 +56,7 @@ public class LifeCalculatorController {
 	
 	Scene mainInputScene = new Scene(mainInputSceneContainer, 400, 400);
 	
-	SceneContainer terminalIllnessInputSceneContainer = new SceneContainer(10); {
+	VBox terminalIllnessInputSceneContainer = new VBox(); {
 		
 		ContainerWithinSceneContainerWithChoiceBox alzheimersContainer = new ContainerWithinSceneContainerWithChoiceBox(75, 25, "Alzheimer's Disease: ", 100, "No", "No", "Yes", null, null);
 		alzheimersContainer.getChildren().addAll(alzheimersContainer.getLabel(), alzheimersContainer.getChoiceBox());
