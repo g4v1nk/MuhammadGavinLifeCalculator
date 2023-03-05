@@ -40,15 +40,9 @@ public class LifeCalculatorController {
 		ContainerWithinSceneContainerWithChoiceBox genderContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "Gender: ", 100, "Male", "Male", "Female", null, null);
 		genderContainer.getChildren().addAll(genderContainer.getLabel(), genderContainer.getChoiceBox());
 	
-		ContainerWithinSceneContainer smokingHabitsContainer = new ContainerWithinSceneContainer(75, 0, "Smoking habits: ", 100);
-		ChoiceBox<String> smokingHabitsChoiceBox = new ChoiceBox<String>();
-		smokingHabitsChoiceBox.setValue("Non-smoker");
-		ObservableList<String> smokingHabitsList = smokingHabitsChoiceBox.getItems();
-		smokingHabitsList.add(0, "Non-smoker");
-		smokingHabitsList.add(1, "Light smoker");
-		smokingHabitsList.add(2, "Moderate smoker");
-		smokingHabitsList.add(3, "Heavy smoker");
-		smokingHabitsContainer.getChildren().addAll(smokingHabitsContainer.getLabel(), smokingHabitsChoiceBox);
+		ContainerWithinSceneContainerWithChoiceBox smokingHabitsContainer = new ContainerWithinSceneContainerWithChoiceBox(75, 0, "Smoking habits: ", 100,
+				"Non-smoker", "Non-smoker", "Light smoker", "Moderate smoker", "Heavy smoker");
+		smokingHabitsContainer.getChildren().addAll(smokingHabitsContainer.getLabel(), smokingHabitsContainer.getChoiceBox());
 	
 		Button enterTerminalIllnessButton = new Button("Enter Terminal Illness: ");
 		enterTerminalIllnessButton.setTranslateX(100);

@@ -32,7 +32,7 @@ public class ContainerWithinSceneContainerWithChoiceBox extends ContainerWithinS
 		choiceBoxOptions.add(0, firstChoiceBoxItem);
 		choiceBoxOptions.add(1, secondChoiceBoxItem);
 		choiceBoxOptions.add(2, thirdChoiceBoxItem);
-		choiceBoxOptions.add(3, thirdChoiceBoxItem);
+		choiceBoxOptions.add(3, fourthChoiceBoxItem);
 	}
 	
 	/** This method returns the ChoiceBox that is created in this class.
