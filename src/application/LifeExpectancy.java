@@ -8,19 +8,19 @@ package application;
 public class LifeExpectancy {
 	
 	//Variables related to life expectancy defined here.
-	int currentAge;
-	String gender;
-	String smokingHabits;
-    String alzheimers;
-    String creutzfeldtJakob;
-    String crohns;
-    String cysticFibrosis;
-    String heartDisease;
-    String hepB;
-    String huntingtons;
-    String multipleSclerosis;
-    String duchenneMD;
-    String rabies;
+	private int currentAge;
+	private String gender;
+	private String smokingHabits;
+	private String alzheimers;
+	private String creutzfeldtJakob;
+	private String crohns;
+	private String cysticFibrosis;
+	private String heartDisease;
+	private String hepB;
+	private String huntingtons;
+	private String multipleSclerosis;
+	private String duchenneMD;
+	private String rabies;
 	
     /** This constructor constructs a LifeExpectancy object with instance variables that keep track of
      * mortality-related information.
