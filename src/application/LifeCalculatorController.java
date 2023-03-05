@@ -30,8 +30,6 @@ public class LifeCalculatorController {
 
     Stage applicationStage;
 	
-	//Setting up the Main Input Scene.
-	
     SceneContainer mainInputSceneContainer = new SceneContainer(3); {
 		
     	ContainerWithinSceneContainer currentAgeContainer = new ContainerWithinSceneContainer(75, 25, "Current age: ", 100);
@@ -53,11 +51,10 @@ public class LifeCalculatorController {
 
 		mainInputSceneContainer.getChildren().addAll(currentAgeContainer, genderContainer, smokingHabitsContainer,
 			enterTerminalIllnessButton, calculateLifeExpectancyButton);
+		
 	}
 	
 	Scene mainInputScene = new Scene(mainInputSceneContainer, 400, 400);
-
-	//Setting up the Terminal Illness Input Scene.
 	
 	SceneContainer terminalIllnessInputSceneContainer = new SceneContainer(10); {
 		
