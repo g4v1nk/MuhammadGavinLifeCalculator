@@ -21,12 +21,18 @@ public class ContainerWithinSceneContainerWithChoiceBox extends ContainerWithinS
 	 * @param choiceBoxDefault (This is the option in the ChoiceBox that is selected by default.)
 	 * @param firstChoiceBoxItem (This is the first item to go in the ChoiceBox.)
 	 * @param secondChoiceBoxItem (This is the second item to go in the ChoiceBox.)
+	 * @param thirdChoiceBoxItem (This is the third item to go in the ChoiceBox.)
+	 * @param fourthChoiceBoxItem (This is the fourth item to go in the ChoiceBox.)
+	 * 
 	 */
-	ContainerWithinSceneContainerWithChoiceBox(int minHeight, int translateY, String labelText, int labelMinWidth, String choiceBoxDefault, String firstChoiceBoxItem, String secondChoiceBoxItem) {
+	ContainerWithinSceneContainerWithChoiceBox(int minHeight, int translateY, String labelText, int labelMinWidth,
+			String choiceBoxDefault, String firstChoiceBoxItem, String secondChoiceBoxItem, String thirdChoiceBoxItem, String fourthChoiceBoxItem) {
 		super(minHeight, translateY, labelText, labelMinWidth);
 		choiceBox.setValue(choiceBoxDefault);
 		choiceBoxOptions.add(0, firstChoiceBoxItem);
 		choiceBoxOptions.add(1, secondChoiceBoxItem);
+		choiceBoxOptions.add(2, thirdChoiceBoxItem);
+		choiceBoxOptions.add(3, thirdChoiceBoxItem);
 	}
 	
 	/** This method returns the ChoiceBox that is created in this class.
