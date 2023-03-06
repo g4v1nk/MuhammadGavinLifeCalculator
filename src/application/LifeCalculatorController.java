@@ -99,4 +99,19 @@ public class LifeCalculatorController {
 	
 	Scene terminalIllnessInputScene = new Scene(terminalIllnessInputSceneContainer, 400, 400);
 	
+	doneTerminalIllnessButton.setOnAction(new EventHandler<ActionEvent>() -> applicationStage.setScene(mainInputScene));
+	
+	VBox outputSceneContainer = new VBox(); {
+		
+		ContainerWithinSceneContainer messageContainer = new ContainerWithinSceneContainer(50, 0, "Your Life Expectancy is '' more years", 100);
+		messageContainer.getChildren().addAll(messageContainer.getLabel());
+		
+		Button newCalculationButton = new Button("New Calculation");
+		newCalculationButton.setTranslateX(100);
+		
+		Button mainMenuButton = new Button("Main Menu");
+		mainMenuButton.setTranslateX(100);
+		
+	}
+	
 }
