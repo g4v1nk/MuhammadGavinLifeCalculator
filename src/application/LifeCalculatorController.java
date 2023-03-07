@@ -33,7 +33,8 @@ public class LifeCalculatorController {
     VBox mainInputSceneContainer = new VBox(); {
 		
     	ContainerWithinSceneContainer currentAgeContainer = new ContainerWithinSceneContainer(75, 25, "Current age: ", 100);
-		currentAgeContainer.getChildren().addAll(currentAgeContainer.getLabel(), new TextField());
+    	TextField currentAgeTextField = new TextField();
+		currentAgeContainer.getChildren().addAll(currentAgeContainer.getLabel(), currentAgeTextField);
 	
 		ContainerWithinSceneContainerWithChoiceBox genderContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "Gender: ", 100, "Male", "Male", "Female", null, null);
 		genderContainer.getChildren().addAll(genderContainer.getLabel(), genderContainer.getChoiceBox());
@@ -99,7 +100,7 @@ public class LifeCalculatorController {
 	
 	Scene terminalIllnessInputScene = new Scene(terminalIllnessInputSceneContainer, 400, 400);
 	
-	doneTerminalIllnessButton.setOnAction(new EventHandler<ActionEvent>() -> applicationStage.setScene(mainInputScene));
+	doneTerminalIllnessButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
 	
 	VBox outputSceneContainer = new VBox(); {
 		
