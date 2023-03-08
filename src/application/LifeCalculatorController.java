@@ -99,12 +99,11 @@ public class LifeCalculatorController {
 			crohnsContainer, cysticFibrosisContainer, duchenneMDContainer, hepBContainer, heartDiseaseContainer,
 			huntingtonsContainer, multipleSclerosisContainer, rabiesContainer, doneTerminalIllnessButton);
 		
-	
+	}
 	
 	Scene terminalIllnessInputScene = new Scene(terminalIllnessInputSceneContainer, 400, 400);
 
-	VBox outputSceneContainer = new VBox(); 
-	{
+	VBox outputSceneContainer = new VBox(); {
 		
 		ContainerWithinSceneContainer messageContainer = new ContainerWithinSceneContainer(50, 0, "Your Life Expectancy is '' more years", 100);
 		messageContainer.getChildren().addAll(messageContainer.getLabel());
@@ -115,8 +114,6 @@ public class LifeCalculatorController {
 		Button mainMenuButton = new Button("Main Menu");
 		mainMenuButton.setTranslateX(100);
 		
-	}
-	
 	}
 }
 	

@@ -68,7 +68,7 @@ public class LifeExpectancy {
 		//Life expectancy variable initialized to 0.
 		int futureLifetime = 0;
 		
-		if (gender.equals("m")) {
+		if (gender.equals("Male")) {
 			if (currentAge <= 19)
 				futureLifetime = 65;
 			else if (currentAge <= 24)
@@ -135,37 +135,37 @@ public class LifeExpectancy {
 		}
 		
 		//We are assuming that the user enters at most one terminal illness.
-        if (alzheimers.equals("y"))
+        if (alzheimers.equals("Yes"))
         	futureLifetime = (int)((-6.0/25)*currentAge + 24.6);
-        else if (creutzfeldtJakob.equals("y"))
+        else if (creutzfeldtJakob.equals("Yes"))
         	futureLifetime = 1;
-        else if (crohns.equals("y") && gender.equals("m"))
+        else if (crohns.equals("Yes") && gender.equals("Male"))
         	futureLifetime = 75 - currentAge;
-        else if (crohns.equals("y") && gender.equals("f"))
+        else if (crohns.equals("Yes") && (!gender.equals("Male")))
         	futureLifetime = 78 - currentAge;
-        else if (cysticFibrosis.equals("y"))
+        else if (cysticFibrosis.equals("Yes"))
         	futureLifetime = 44 - currentAge;
-        else if (heartDisease.equals("y"))
+        else if (heartDisease.equals("Yes"))
         	futureLifetime *= (1-0.08);
-        else if (hepB.equals("y"))
+        else if (hepB.equals("Yes"))
         	futureLifetime -= 14;
-        else if (huntingtons.equals("y"))
+        else if (huntingtons.equals("Yes"))
         	futureLifetime = 30;
-        else if (multipleSclerosis.equals("y"))
+        else if (multipleSclerosis.equals("Yes"))
         	futureLifetime -= 5;
-        else if (duchenneMD.equals("y"))
+        else if (duchenneMD.equals("Yes"))
         	futureLifetime = 30 - currentAge;
-        else if (rabies.equals("y"))
+        else if (rabies.equals("Yes"))
         	futureLifetime = 0;
 		
-        if (smokingHabits.equals("h"))
-        	futureLifetime -= 13;
-        else if (smokingHabits.equals("m"))
-        	futureLifetime -= 9;
-        else if (smokingHabits.equals("l"))
-        	futureLifetime -= 5;
-        else
+        if (smokingHabits.equals("Non-smoker"))
         	futureLifetime -= 0;
+        else if (smokingHabits.equals("Light smoker"))
+        	futureLifetime -= 5;
+        else if (smokingHabits.equals("Moderate smoker"))
+        	futureLifetime -= 9;
+        else
+        	futureLifetime -= 13;
         
         if (futureLifetime < 0)
         	futureLifetime = 0;
