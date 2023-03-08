@@ -2,6 +2,7 @@ package application;
 
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -90,17 +91,23 @@ public class LifeCalculatorController {
 	
 		Button doneTerminalIllnessButton = new Button("Done Terminal Illness");
 		doneTerminalIllnessButton.setTranslateX(100);
+		doneTerminalIllnessButton.setOnAction(new EventHandler<ActionEvent>() {
+		    @Override
+		    public void handle(ActionEvent event) {
+		        applicationStage.setScene(mainInputScene);
+		    }
+		});
+
 		
 		terminalIllnessInputSceneContainer.getChildren().addAll(alzheimersContainer, creutzfeldtJakobContainer,
 			crohnsContainer, cysticFibrosisContainer, duchenneMDContainer, hepBContainer, heartDiseaseContainer,
 			huntingtonsContainer, multipleSclerosisContainer, rabiesContainer, doneTerminalIllnessButton);
 		
-	}
+	
 	
 	Scene terminalIllnessInputScene = new Scene(terminalIllnessInputSceneContainer, 400, 400);
 	
-	doneTerminalIllnessButton.setOnAction(new EventHandler<ActionEvent>() -> applicationStage.setScene(mainInputScene));
-	
+
 	VBox outputSceneContainer = new VBox(); {
 		
 		ContainerWithinSceneContainer messageContainer = new ContainerWithinSceneContainer(50, 0, "Your Life Expectancy is '' more years", 100);
@@ -114,4 +121,6 @@ public class LifeCalculatorController {
 		
 	}
 	
+	}
 }
+	
