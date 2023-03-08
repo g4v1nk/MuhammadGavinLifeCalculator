@@ -34,7 +34,8 @@ public class LifeCalculatorController {
     VBox mainInputSceneContainer = new VBox(); {
 		
     	ContainerWithinSceneContainer currentAgeContainer = new ContainerWithinSceneContainer(75, 25, "Current age: ", 100);
-		currentAgeContainer.getChildren().addAll(currentAgeContainer.getLabel(), new TextField());
+    	TextField currentAgeTextField = new TextField();
+		currentAgeContainer.getChildren().addAll(currentAgeContainer.getLabel(), currentAgeTextField);
 	
 		ContainerWithinSceneContainerWithChoiceBox genderContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "Gender: ", 100, "Male", "Male", "Female", null, null);
 		genderContainer.getChildren().addAll(genderContainer.getLabel(), genderContainer.getChoiceBox());
@@ -107,7 +108,12 @@ public class LifeCalculatorController {
 	
 	Scene terminalIllnessInputScene = new Scene(terminalIllnessInputSceneContainer, 400, 400);
 	
+<<<<<<< HEAD
 
+=======
+	doneTerminalIllnessButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
+	
+>>>>>>> branch 'Adding_Dummy_GUI' of https://github.com/g4v1nk/MuhammadGavinLifeCalculator
 	VBox outputSceneContainer = new VBox(); {
 		
 		ContainerWithinSceneContainer messageContainer = new ContainerWithinSceneContainer(50, 0, "Your Life Expectancy is '' more years", 100);

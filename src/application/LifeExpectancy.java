@@ -15,11 +15,11 @@ public class LifeExpectancy {
 	private String creutzfeldtJakob;
 	private String crohns;
 	private String cysticFibrosis;
+	private String duchenneMD;
 	private String heartDisease;
 	private String hepB;
 	private String huntingtons;
 	private String multipleSclerosis;
-	private String duchenneMD;
 	private String rabies;
 	
     /** This constructor constructs a LifeExpectancy object with instance variables that keep track of
@@ -32,16 +32,16 @@ public class LifeExpectancy {
      * @param creutzfeldtJakobStatus (This is the user's Creutzfeldt-Jakob Disease status: "y"(es) or "n"(o))
      * @param crohnsStatus (This is the user's Crohn's Disease status: "y"(es) or "n"(o))
      * @param cysticFibrosisStatus (This is the user's Cystic Fibrosis status: "y"(es) or "n"(o))
+     * @param duchenneMDStatus (This is the user's Duchenne Muscular Dystrophy status: "y"(es) or "n"(o))
      * @param heartDiseaseStatus (This is the user's Heart Disease status: "y"(es) or "n"(o))
      * @param hepBStatus (This is the user's Hepatitis B status: "y"(es) or "n"(o))
      * @param huntingtonsStatus (This is the user's Huntington's Disease status: "y"(es) or "n"(o))
      * @param multipleSclerosisStatus (This is the user's Multiple Sclerosis status: "y"(es) or "n"(o))
-     * @param duchenneMDStatus (This is the user's Duchenne Muscular Dystrophy status: "y"(es) or "n"(o))
      * @param rabiesStatus (This is the user's Rabies status: "y"(es) or "n"(o))
      */
 	LifeExpectancy(int ageAtPresent, String sex, String smokingStatus, String alzheimersStatus,
-			String creutzfeldtJakobStatus, String crohnsStatus, String cysticFibrosisStatus, String heartDiseaseStatus,
-			String hepBStatus, String huntingtonsStatus, String multipleSclerosisStatus, String duchenneMDStatus, String rabiesStatus) {
+			String creutzfeldtJakobStatus, String crohnsStatus, String cysticFibrosisStatus, String duchenneMDStatus, String heartDiseaseStatus,
+			String hepBStatus, String huntingtonsStatus, String multipleSclerosisStatus, String rabiesStatus) {
 		currentAge = ageAtPresent;
 		gender = sex;
 		smokingHabits = smokingStatus;
@@ -49,11 +49,11 @@ public class LifeExpectancy {
 		creutzfeldtJakob = creutzfeldtJakobStatus;
 		crohns = crohnsStatus;
 		cysticFibrosis = cysticFibrosisStatus;
+		duchenneMD = duchenneMDStatus;
 		heartDisease = heartDiseaseStatus;
 		hepB = hepBStatus;
 		huntingtons = huntingtonsStatus;
 		multipleSclerosis = multipleSclerosisStatus;
-		duchenneMD = duchenneMDStatus;
 		rabies = rabiesStatus;
 	}
 	
