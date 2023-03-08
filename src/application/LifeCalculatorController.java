@@ -92,12 +92,7 @@ public class LifeCalculatorController {
 	
 		Button doneTerminalIllnessButton = new Button("Done Terminal Illness");
 		doneTerminalIllnessButton.setTranslateX(100);
-		doneTerminalIllnessButton.setOnAction(new EventHandler<ActionEvent>() {
-		    @Override
-		    public void handle(ActionEvent event) {
-		        applicationStage.setScene(mainInputScene);
-		    }
-		});
+		doneTerminalIllnessButton.setOnAction(event -> applicationStage.setScene(mainInputScene)); 
 
 		
 		terminalIllnessInputSceneContainer.getChildren().addAll(alzheimersContainer, creutzfeldtJakobContainer,
@@ -107,14 +102,9 @@ public class LifeCalculatorController {
 	
 	
 	Scene terminalIllnessInputScene = new Scene(terminalIllnessInputSceneContainer, 400, 400);
-	
-<<<<<<< HEAD
 
-=======
-	doneTerminalIllnessButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
-	
->>>>>>> branch 'Adding_Dummy_GUI' of https://github.com/g4v1nk/MuhammadGavinLifeCalculator
-	VBox outputSceneContainer = new VBox(); {
+	VBox outputSceneContainer = new VBox(); 
+	{
 		
 		ContainerWithinSceneContainer messageContainer = new ContainerWithinSceneContainer(50, 0, "Your Life Expectancy is '' more years", 100);
 		messageContainer.getChildren().addAll(messageContainer.getLabel());
