@@ -102,10 +102,18 @@ public class LifeCalculatorController {
 	}
 	
 	Scene terminalIllnessInputScene = new Scene(terminalIllnessInputSceneContainer, 400, 400);
+	
+	LifeExpectancy lifeExpectancy = new LifeExpectancy(currentAgeTextField.getText(), genderContainer.getChoiceBox().getValue(), smokingHabitsContainer.getChoiceBox().getValue(),
+			alzheimersContainer.getChoiceBox().getValue(), creutzfeldtJakobContainer.getChoiceBox().getValue(), crohnsContainer.getChoiceBox().getValue(),
+			cysticFibrosisContainer.getChoiceBox().getValue(), duchenneMDContainer.getChoiceBox().getValue(), hepBContainer.getChoiceBox().getValue(),
+			heartDiseaseContainer.getChoiceBox().getValue(), huntingtonsContainer.getChoiceBox().getValue(), multipleSclerosisContainer.getChoiceBox().getValue(),
+			rabiesContainer.getChoiceBox().getValue());
+			
+			int yearsLeftToLive = lifeExpectancy.getLifeExpectancy();
 
 	VBox outputSceneContainer = new VBox(); {
 		
-		ContainerWithinSceneContainer messageContainer = new ContainerWithinSceneContainer(50, 0, "Your Life Expectancy is '' more years", 100);
+		ContainerWithinSceneContainer messageContainer = new ContainerWithinSceneContainer(50, 0, "Your Life Expectancy is " + yearsLeftToLive + " more years", 100);
 		messageContainer.getChildren().addAll(messageContainer.getLabel());
 		
 		Button newCalculationButton = new Button("New Calculation");
@@ -115,5 +123,6 @@ public class LifeCalculatorController {
 		mainMenuButton.setTranslateX(100);
 		
 	}
+	
 }
 	
