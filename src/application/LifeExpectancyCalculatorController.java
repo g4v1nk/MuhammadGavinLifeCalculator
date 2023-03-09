@@ -15,9 +15,18 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+/** This class represents a controller for the GUI this program uses.
+ * 
+ * @author CS219-user
+ *
+ */
 public class LifeExpectancyCalculatorController {
 
     @FXML
+    /** This method sets the scene to mainInputScene.
+     * 
+     * @param event (event is something that you want to trigger a scene change to mainInputScene.)
+     */
     void goToMainInputScene(ActionEvent event) {
     	applicationStage.setScene(mainInputScene);
     }
@@ -97,7 +106,11 @@ public class LifeExpectancyCalculatorController {
     	calculateLifeExpectancyButton.setOnAction(event -> applicationStage.setScene(outputScene));
     	}
     
-	public void setApplicationStage(Stage stage) {
+	/** This method sets the variable applicationStage to the parameter passed in.
+	 * 
+	 * @param stage (This is what you want to be assigned to applicationStage.)
+	 */
+    public void setApplicationStage(Stage stage) {
 		applicationStage = stage;
 	}
 
