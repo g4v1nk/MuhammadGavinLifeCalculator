@@ -24,7 +24,7 @@ public class Main extends Application {
 		try {
 			// Giving the primaryStage to the controller and setting up Main Menu Scene
 			FXMLLoader loader = new FXMLLoader();
-			VBox mainMenuContainer = loader.load(new FileInputStream("/MuhammadGavinLifeCalculator/src/LifeCalculatorView.fxml"));
+			VBox mainMenuContainer = loader.load(new FileInputStream("/CS219-user/git/MuhammadGavinLifeCalculator/src/LifeCalculatorView.fxml"));
 			LifeCalculatorController controller = (LifeCalculatorController)loader.getController();
 			controller.setApplicationStage(primaryStage);
 			Scene mainMenuScene = new Scene(mainMenuContainer,400,400);
@@ -32,6 +32,8 @@ public class Main extends Application {
 			primaryStage.setScene(mainMenuScene);
 			primaryStage.setTitle("Muhammad and Gavin's Life Expectancy Calculator");
 			primaryStage.show();
+			
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

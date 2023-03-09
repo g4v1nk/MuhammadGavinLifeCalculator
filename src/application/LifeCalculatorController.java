@@ -66,6 +66,8 @@ public class LifeCalculatorController {
 		
 		calculateLifeExpectancyButton.setTranslateX(100);
 		calculateLifeExpectancyButton.setTranslateY(25);
+		
+		
 
 		mainInputSceneContainer.getChildren().addAll(currentAgeContainer, genderContainer, smokingHabitsContainer,
 			enterTerminalIllnessButton, calculateLifeExpectancyButton);
@@ -118,8 +120,10 @@ public class LifeCalculatorController {
 
 	VBox outputSceneContainer = new VBox(); {
 		
+		
 		ContainerWithinSceneContainer messageContainer = new ContainerWithinSceneContainer(50, 0, "Your Life Expectancy is " + yearsLeftToLive + " more years", 100);
 		messageContainer.getChildren().addAll(messageContainer.getLabel());
+		
 		
 		
 		newCalculationButton.setTranslateX(100);
@@ -127,12 +131,17 @@ public class LifeCalculatorController {
 		
 		
 		enterTerminalIllnessButton.setOnAction(event -> applicationStage.setScene(terminalIllnessInputScene)); 
-
 		
+	
 		mainMenuButton.setTranslateX(100);
 		mainMenuButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
 		
+		outputSceneContainer.getChildren().addAll(messageContainer, newCalculationButton, mainMenuButton);
+		
 	}
+    Scene outputScene = new Scene(outputSceneContainer, 400, 400);
+    { calculateLifeExpectancyButton.setOnAction(event -> applicationStage.setScene(outputScene)); }
+    
 
 	public void setApplicationStage(Stage stage) {
 		applicationStage = stage;
