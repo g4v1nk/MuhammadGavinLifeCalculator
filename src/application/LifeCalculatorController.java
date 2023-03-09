@@ -1,9 +1,12 @@
 package application;
 
+import java.io.FileInputStream;
+
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -45,11 +48,18 @@ public class LifeCalculatorController {
     private ContainerWithinSceneContainerWithChoiceBox huntingtonsContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "Huntington's Disease: ", 100, "No", "No", "Yes", null, null);
     private ContainerWithinSceneContainerWithChoiceBox multipleSclerosisContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "Multiple Sclerosis: ", 100, "No", "No", "Yes", null, null);
     private ContainerWithinSceneContainerWithChoiceBox rabiesContainer = new ContainerWithinSceneContainerWithChoiceBox(75, 0, "Rabies: ", 100, "No", "No", "Yes", null, null);
+    private Button startCalculationButton = new Button("Start Calculation");
     private Button enterTerminalIllnessButton = new Button("Enter Terminal Illness: ");
     private Button calculateLifeExpectancyButton = new Button("Calculate Life Expectancy: ");
     private Button doneTerminalIllnessButton = new Button("Done Terminal Illness");
     private Button newCalculationButton = new Button("New Calculation");
     private Button mainMenuButton = new Button("Main Menu");
+	
+    VBox mainMenuSceneContainer = new VBox(); {
+    	mainMenuSceneContainer.getChildren().add(startCalculationButton);
+    }
+    
+    Scene mainMenuScene = new Scene(mainMenuSceneContainer, 400, 400);
     
     VBox mainInputSceneContainer = new VBox(); {
     	
@@ -134,7 +144,7 @@ public class LifeCalculatorController {
 		
 	
 		mainMenuButton.setTranslateX(100);
-		mainMenuButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
+		mainMenuButton.setOnAction(event -> applicationStage.setScene(mainMenuScene));
 		
 		outputSceneContainer.getChildren().addAll(messageContainer, newCalculationButton, mainMenuButton);
 		
