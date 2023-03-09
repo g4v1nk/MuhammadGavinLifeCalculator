@@ -45,6 +45,10 @@ public class LifeCalculatorController {
     private ContainerWithinSceneContainerWithChoiceBox multipleSclerosisContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "Multiple Sclerosis: ", 100, "No", "No", "Yes", null, null);
     private ContainerWithinSceneContainerWithChoiceBox rabiesContainer = new ContainerWithinSceneContainerWithChoiceBox(75, 0, "Rabies: ", 100, "No", "No", "Yes", null, null);
     
+    LifeCalculatorController() {
+    	
+    }
+    
     VBox mainInputSceneContainer = new VBox(); {
 		
     	ContainerWithinSceneContainer currentAgeContainer = new ContainerWithinSceneContainer(75, 25, "Current age: ", 100);
@@ -123,8 +127,8 @@ public class LifeCalculatorController {
 		
 	}
 
-	public Stage getApplicationStage() {
-		return applicationStage;
+	public void setApplicationStage(Stage stage) {
+		applicationStage = stage;
 	}
 	
 }
