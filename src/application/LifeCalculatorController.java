@@ -30,6 +30,7 @@ public class LifeCalculatorController {
     }
 
     private Stage applicationStage;
+    private ContainerWithinSceneContainer currentAgeContainer = new ContainerWithinSceneContainer(75, 25, "Current age: ", 100);
     private TextField currentAgeTextField = new TextField();
     private ContainerWithinSceneContainerWithChoiceBox genderContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "Gender: ", 100, "Male", "Male", "Female", null, null);
     private ContainerWithinSceneContainerWithChoiceBox smokingHabitsContainer = new ContainerWithinSceneContainerWithChoiceBox(75, 0, "Smoking habits: ", 100,
@@ -51,8 +52,7 @@ public class LifeCalculatorController {
     private Button mainMenuButton = new Button("Main Menu");
     
     VBox mainInputSceneContainer = new VBox(); {
-		
-    	ContainerWithinSceneContainer currentAgeContainer = new ContainerWithinSceneContainer(75, 25, "Current age: ", 100);
+    	
 		currentAgeContainer.getChildren().addAll(currentAgeContainer.getLabel(), currentAgeTextField);
 	
 		genderContainer.getChildren().addAll(genderContainer.getLabel(), genderContainer.getChoiceBox());
