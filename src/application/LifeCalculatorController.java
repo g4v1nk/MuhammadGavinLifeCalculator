@@ -59,7 +59,10 @@ public class LifeCalculatorController {
 	
 		smokingHabitsContainer.getChildren().addAll(smokingHabitsContainer.getLabel(), smokingHabitsContainer.getChoiceBox());
 		
+		
 		enterTerminalIllnessButton.setTranslateX(100);
+
+		
 		
 		calculateLifeExpectancyButton.setTranslateX(100);
 		calculateLifeExpectancyButton.setTranslateY(25);
@@ -92,7 +95,8 @@ public class LifeCalculatorController {
 		multipleSclerosisContainer.getChildren().addAll(multipleSclerosisContainer.getLabel(), multipleSclerosisContainer.getChoiceBox());
 		
 		rabiesContainer.getChildren().addAll(rabiesContainer.getLabel(), rabiesContainer.getChoiceBox());
-
+        
+		
 		doneTerminalIllnessButton.setTranslateX(100);
 		doneTerminalIllnessButton.setOnAction(event -> applicationStage.setScene(mainInputScene)); 
 		
@@ -117,9 +121,16 @@ public class LifeCalculatorController {
 		ContainerWithinSceneContainer messageContainer = new ContainerWithinSceneContainer(50, 0, "Your Life Expectancy is " + yearsLeftToLive + " more years", 100);
 		messageContainer.getChildren().addAll(messageContainer.getLabel());
 		
+		
 		newCalculationButton.setTranslateX(100);
+		newCalculationButton.setOnAction(event -> applicationStage.setScene(mainInputScene)); 
+		
+		
+		enterTerminalIllnessButton.setOnAction(event -> applicationStage.setScene(terminalIllnessInputScene)); 
+
 		
 		mainMenuButton.setTranslateX(100);
+		mainMenuButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
 		
 	}
 
