@@ -22,10 +22,9 @@ public class Main extends Application {
 	 */
 	public void start(Stage primaryStage) {
 		try {
-			// Giving the primaryStage to the controller and setting up Main Menu Scene
 			FXMLLoader loader = new FXMLLoader();
-			VBox mainMenuContainer = loader.load(new FileInputStream("/MuhammadGavinLifeCalculator/src/LifeCalculatorView.fxml"));
-			LifeCalculatorController controller = (LifeCalculatorController)loader.getController();
+			VBox mainMenuContainer = loader.load(new FileInputStream("src/application/LifeExpectancyCalculatorView.fxml"));
+			LifeExpectancyCalculatorController controller = (LifeExpectancyCalculatorController)loader.getController();
 			controller.setApplicationStage(primaryStage);
 			Scene mainMenuScene = new Scene(mainMenuContainer,400,400);
 			
