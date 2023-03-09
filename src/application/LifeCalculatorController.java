@@ -44,10 +44,11 @@ public class LifeCalculatorController {
     private ContainerWithinSceneContainerWithChoiceBox huntingtonsContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "Huntington's Disease: ", 100, "No", "No", "Yes", null, null);
     private ContainerWithinSceneContainerWithChoiceBox multipleSclerosisContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "Multiple Sclerosis: ", 100, "No", "No", "Yes", null, null);
     private ContainerWithinSceneContainerWithChoiceBox rabiesContainer = new ContainerWithinSceneContainerWithChoiceBox(75, 0, "Rabies: ", 100, "No", "No", "Yes", null, null);
-    
-    LifeCalculatorController() {
-    	
-    }
+    private Button enterTerminalIllnessButton = new Button("Enter Terminal Illness: ");
+    private Button calculateLifeExpectancyButton = new Button("Calculate Life Expectancy: ");
+    private Button doneTerminalIllnessButton = new Button("Done Terminal Illness");
+    private Button newCalculationButton = new Button("New Calculation");
+    private Button mainMenuButton = new Button("Main Menu");
     
     VBox mainInputSceneContainer = new VBox(); {
 		
@@ -57,11 +58,9 @@ public class LifeCalculatorController {
 		genderContainer.getChildren().addAll(genderContainer.getLabel(), genderContainer.getChoiceBox());
 	
 		smokingHabitsContainer.getChildren().addAll(smokingHabitsContainer.getLabel(), smokingHabitsContainer.getChoiceBox());
-	
-		Button enterTerminalIllnessButton = new Button("Enter Terminal Illness: ");
+		
 		enterTerminalIllnessButton.setTranslateX(100);
-	
-		Button calculateLifeExpectancyButton = new Button("Calculate Life Expectancy: ");
+		
 		calculateLifeExpectancyButton.setTranslateX(100);
 		calculateLifeExpectancyButton.setTranslateY(25);
 
@@ -93,8 +92,7 @@ public class LifeCalculatorController {
 		multipleSclerosisContainer.getChildren().addAll(multipleSclerosisContainer.getLabel(), multipleSclerosisContainer.getChoiceBox());
 		
 		rabiesContainer.getChildren().addAll(rabiesContainer.getLabel(), rabiesContainer.getChoiceBox());
-	
-		Button doneTerminalIllnessButton = new Button("Done Terminal Illness");
+
 		doneTerminalIllnessButton.setTranslateX(100);
 		doneTerminalIllnessButton.setOnAction(event -> applicationStage.setScene(mainInputScene)); 
 		
@@ -119,10 +117,8 @@ public class LifeCalculatorController {
 		ContainerWithinSceneContainer messageContainer = new ContainerWithinSceneContainer(50, 0, "Your Life Expectancy is " + yearsLeftToLive + " more years", 100);
 		messageContainer.getChildren().addAll(messageContainer.getLabel());
 		
-		Button newCalculationButton = new Button("New Calculation");
 		newCalculationButton.setTranslateX(100);
 		
-		Button mainMenuButton = new Button("Main Menu");
 		mainMenuButton.setTranslateX(100);
 		
 	}
