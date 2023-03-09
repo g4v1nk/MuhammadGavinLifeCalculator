@@ -51,6 +51,7 @@ public class LifeCalculatorController {
 		currentAgeContainer.getChildren().addAll(currentAgeContainer.getLabel(), currentAgeTextField);
 	
 		genderContainer.getChildren().addAll(genderContainer.getLabel(), genderContainer.getChoiceBox());
+	
 		smokingHabitsContainer.getChildren().addAll(smokingHabitsContainer.getLabel(), smokingHabitsContainer.getChoiceBox());
 	
 		Button enterTerminalIllnessButton = new Button("Enter Terminal Illness: ");
@@ -69,9 +70,7 @@ public class LifeCalculatorController {
 	
 	VBox terminalIllnessInputSceneContainer = new VBox(); {
 		
-		
 		alzheimersContainer.getChildren().addAll(alzheimersContainer.getLabel(), alzheimersContainer.getChoiceBox());
-		
 		
 		creutzfeldtJakobContainer.getChildren().addAll(creutzfeldtJakobContainer.getLabel(), creutzfeldtJakobContainer.getChoiceBox());
 	
@@ -94,7 +93,6 @@ public class LifeCalculatorController {
 		Button doneTerminalIllnessButton = new Button("Done Terminal Illness");
 		doneTerminalIllnessButton.setTranslateX(100);
 		doneTerminalIllnessButton.setOnAction(event -> applicationStage.setScene(mainInputScene)); 
-
 		
 		terminalIllnessInputSceneContainer.getChildren().addAll(alzheimersContainer, creutzfeldtJakobContainer,
 			crohnsContainer, cysticFibrosisContainer, duchenneMDContainer, hepBContainer, heartDiseaseContainer,
@@ -124,6 +122,9 @@ public class LifeCalculatorController {
 		mainMenuButton.setTranslateX(100);
 		
 	}
+
+	public Stage getApplicationStage() {
+		return applicationStage;
+	}
 	
 }
-	
