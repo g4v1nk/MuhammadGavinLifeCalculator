@@ -81,10 +81,10 @@ public class LifeExpectancyCalculatorController {
     
     //Declaring variables that reference objects that will be added to scene containers.
     private Button startCalculationButton = new Button("Start Calculation");
-    private Button enterTerminalIllnessButton = new Button("Enter Terminal Illness: "); {
+    private Button enterTerminalIllnessButton = new Button("Enter Terminal Illness"); {
     	enterTerminalIllnessButton.setTranslateX(100);
 	}
-    private Button calculateLifeExpectancyButton = new Button("Calculate Life Expectancy: "); {
+    private Button calculateLifeExpectancyButton = new Button("Calculate Life Expectancy"); {
     	calculateLifeExpectancyButton.setTranslateX(100);
     	calculateLifeExpectancyButton.setTranslateY(25);
     }
@@ -138,11 +138,11 @@ public class LifeExpectancyCalculatorController {
 	
 	//Setting the "onAction"s for each button.
 	{
+		enterTerminalIllnessButton.setOnAction(event -> applicationStage.setScene(terminalIllnessInputScene));
+		calculateLifeExpectancyButton.setOnAction(event -> applicationStage.setScene(outputScene));
 		doneTerminalIllnessButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
 		newCalculationButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
-		enterTerminalIllnessButton.setOnAction(event -> applicationStage.setScene(terminalIllnessInputScene));
 		mainMenuButton.setOnAction(event -> applicationStage.setScene(mainMenuScene));
-		calculateLifeExpectancyButton.setOnAction(event -> applicationStage.setScene(outputScene));
 	}
     
 	/** This method sets the variable applicationStage to the parameter passed in.
