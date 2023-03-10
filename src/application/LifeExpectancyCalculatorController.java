@@ -131,6 +131,8 @@ public class LifeExpectancyCalculatorController {
 	}
     
     //Declaring variables that reference scenes.
+    /* Note: The Main Menu Scene is also created in the Main class, but it needs to be re-created here since the Main Menu Scene is referenced in this class
+    (outside the scope of where the Main Menu Scene is created in the Main class.) */
     private Scene mainMenuScene = new Scene(mainMenuSceneContainer, 400, 400);
 	private Scene mainInputScene = new Scene(mainInputSceneContainer, 400, 400);
 	private Scene terminalIllnessInputScene = new Scene(terminalIllnessInputSceneContainer, 400, 400);
