@@ -4,10 +4,9 @@ import java.awt.*;
 
 public void
 public class VisualBar{
-	
-	JFrame frame = new JFrame();
-	JVisualBar bar = new JVisualBar();
-	   
+
+private JFrame frame = new JFrame();
+private JVisualBar bar = new JVisualBar();
 	   
 	   VisualBar(){
 		   
@@ -20,9 +19,7 @@ public class VisualBar{
 		   frame.setSize(200,200);
 		   frame.setLayout(Null);
 		   frame.setVisible(true);
-		   
 		
 	}
+	   
 }
-
-
