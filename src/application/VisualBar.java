@@ -14,7 +14,10 @@ public class VisualBar{
 private JFrame frame = new JFrame();
 private JVisualBar bar = new JVisualBar();
 	   
-	   VisualBar(){
+/** This constructor constructs an object of type VisualBar.
+ * 
+ */
+VisualBar(){
 		   
 		   bar.setValue(0);
 		   bar.setBounds(0,0,200,50);
