@@ -35,7 +35,7 @@ public class LifeExpectancyCalculatorController {
     
     /* While the other variables that reference objects that will be added to scene containers are defined lower down in the code (starting on line 84),
     this variables that references a TextField is defined here since the variable is used in line 42 (before line 84). */
-    private TextField currentAgeTextField = new TextField();
+    private TextField currentAgeTextField = new TextField("18");
     
     //Declaring variables that reference containers that will be added to scene containers.
     private ContainerWithinSceneContainer currentAgeContainer = new ContainerWithinSceneContainer(75, 25, "Current age: ", 100); {
@@ -100,7 +100,7 @@ public class LifeExpectancyCalculatorController {
     }
     
 	//Calculating the user's life expectancy.
-	private LifeExpectancy lifeExpectancy = new LifeExpectancy(86, genderContainer.getChoiceBox().getValue(), smokingHabitsContainer.getChoiceBox().getValue(),
+	private LifeExpectancy lifeExpectancy = new LifeExpectancy(Integer.parseInt(currentAgeTextField.getText()), genderContainer.getChoiceBox().getValue(), smokingHabitsContainer.getChoiceBox().getValue(),
 		alzheimersContainer.getChoiceBox().getValue(), creutzfeldtJakobContainer.getChoiceBox().getValue(), crohnsContainer.getChoiceBox().getValue(),
 		cysticFibrosisContainer.getChoiceBox().getValue(), duchenneMDContainer.getChoiceBox().getValue(), hepBContainer.getChoiceBox().getValue(),
 		heartDiseaseContainer.getChoiceBox().getValue(), huntingtonsContainer.getChoiceBox().getValue(), multipleSclerosisContainer.getChoiceBox().getValue(),
