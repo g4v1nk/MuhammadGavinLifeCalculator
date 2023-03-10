@@ -17,7 +17,7 @@ public class Main extends Application {
 			// Giving the primaryStage to the controller and setting up Main Menu Scene
 			FXMLLoader loader = new FXMLLoader();
 			VBox mainMenuContainer = loader.load(new FileInputStream("C:\\Users\\CS219-user\\eclipse-workspace\\MuhammadGavinLifeCalculator\\src\\LifeCalculatorView.fxml"));
-			LifeCalculatorController controller = (LifeCalculatorController)loader.getController();
+			LifeExpectancyCalculatorController controller = (LifeExpectancyCalculatorController)loader.getController();
 			controller.applicationStage = primaryStage;
 			Scene mainMenuScene = new Scene(mainMenuContainer,400,400);
 			
