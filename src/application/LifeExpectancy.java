@@ -1,5 +1,7 @@
 package application;
 
+import java.util.ArrayList;
+
 /** This class represents the life expectancy of the program user.
  * 
  * @author CS219-user
@@ -47,19 +49,50 @@ public class LifeExpectancy {
 			String creutzfeldtJakobStatus, String crohnsStatus, String cysticFibrosisStatus, String duchenneMDStatus, String heartDiseaseStatus,
 			String hepBStatus, String huntingtonsStatus, String multipleSclerosisStatus, String rabiesStatus) {
 		
-		currentAge = Integer.parseInt(ageAtPresent);
+		for (char c : ageAtPresent.toCharArray())
+			if (!Character.isDigit(c))
+				validCurrentAge = false;
+		if (Integer.parseInt(ageAtPresent) < 18)
+			validCurrentAge = false;
+		if (validCurrentAge)
+			currentAge = Integer.parseInt(ageAtPresent);
+		
 		gender = sex;
 		smokingHabits = smokingStatus;
-		alzheimers = alzheimersStatus;
-		creutzfeldtJakob = creutzfeldtJakobStatus;
-		crohns = crohnsStatus;
-		cysticFibrosis = cysticFibrosisStatus;
-		duchenneMD = duchenneMDStatus;
-		heartDisease = heartDiseaseStatus;
-		hepB = hepBStatus;
-		huntingtons = huntingtonsStatus;
-		multipleSclerosis = multipleSclerosisStatus;
-		rabies = rabiesStatus;
+		
+		ArrayList<String> yesOrNoList = new ArrayList<String>();
+	      	yesOrNoList.add(alzheimersStatus);
+	      	yesOrNoList.add(creutzfeldtJakobStatus);
+	      	yesOrNoList.add(crohnsStatus);
+	      	yesOrNoList.add(cysticFibrosisStatus);
+	      	yesOrNoList.add(duchenneMDStatus);
+	      	yesOrNoList.add(heartDiseaseStatus);
+	      	yesOrNoList.add(hepBStatus);
+	      	yesOrNoList.add(huntingtonsStatus);
+	      	yesOrNoList.add(multipleSclerosisStatus);
+	      	yesOrNoList.add(rabiesStatus);
+	      	
+	      	int numberOfYes = 0;
+	      	for (String element : yesOrNoList) {
+	      		if (element.equals("Yes"))
+	      			numberOfYes += 1;
+	      	}
+	      	if (numberOfYes > 1)
+	      		validNumberOfTerminalIllnesses = false;
+	      
+		if (validNumberOfTerminalIllnesses) {
+			alzheimers = alzheimersStatus;
+			creutzfeldtJakob = creutzfeldtJakobStatus;
+			crohns = crohnsStatus;
+			cysticFibrosis = cysticFibrosisStatus;
+			duchenneMD = duchenneMDStatus;
+			heartDisease = heartDiseaseStatus;
+			hepB = hepBStatus;
+			huntingtons = huntingtonsStatus;
+			multipleSclerosis = multipleSclerosisStatus;
+			rabies = rabiesStatus;
+		}
+		
 	}
 	
 	/**

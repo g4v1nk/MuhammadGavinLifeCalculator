@@ -120,8 +120,8 @@ public class LifeExpectancyCalculatorController {
       	yesOrNoList.add(crohnsContainer.getChoiceBox().getValue());
       	yesOrNoList.add(cysticFibrosisContainer.getChoiceBox().getValue());
       	yesOrNoList.add(duchenneMDContainer.getChoiceBox().getValue());
-      	yesOrNoList.add(hepBContainer.getChoiceBox().getValue());
       	yesOrNoList.add(heartDiseaseContainer.getChoiceBox().getValue());
+      	yesOrNoList.add(hepBContainer.getChoiceBox().getValue());
       	yesOrNoList.add(huntingtonsContainer.getChoiceBox().getValue());
       	yesOrNoList.add(multipleSclerosisContainer.getChoiceBox().getValue());
       	yesOrNoList.add(rabiesContainer.getChoiceBox().getValue());
