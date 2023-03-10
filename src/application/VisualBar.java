@@ -3,6 +3,12 @@ import javax.swing.*;
 import java.awt.*;
 
 public void
+
+/** This class represents a bar graph.
+ * 
+ * @author CS219-user
+ *
+ */
 public class VisualBar{
 
 private JFrame frame = new JFrame();
