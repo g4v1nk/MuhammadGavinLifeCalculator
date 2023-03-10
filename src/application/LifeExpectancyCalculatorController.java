@@ -34,9 +34,10 @@ public class LifeExpectancyCalculatorController {
     }
 
     private Stage applicationStage;
+    
     /* While the other variables that reference objects that will be added to scene containers are defined lower down in the code (starting on line 84),
     this variables that references a TextField is defined here since the variable is used in line 42 (before line 84). */
-    private TextField currentAgeTextField = new TextField("18");
+    private TextField currentAgeTextField = new TextField();
     //Declaring variables that reference containers that will be added to scene containers.
     private ContainerWithinSceneContainer currentAgeContainer = new ContainerWithinSceneContainer(75, 25, "Current age: ", 100); 
     private ContainerWithinSceneContainerWithChoiceBox genderContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "Gender: ", 100, "Male", "Male", "Female", null, null); 
@@ -55,60 +56,89 @@ public class LifeExpectancyCalculatorController {
     //Declaring variables that reference objects that will be added to scene containers.
     private Button startCalculationButton = new Button("Start Calculation");
     private Button enterTerminalIllnessButton = new Button("Enter Terminal Illness");
-    private Button calculateLifeExpectancyButton = new Button("Calculate Life Expectancy");
+    private Button saveButton = new Button("Save");
+    private Label saveLabel = new Label("You must press Save before pressing Calculate.");
+    private Button calculateLifeExpectancyButton = new Button("Calculate");
     private Label currentAgeErrorMessage = new Label("Current age error message");
     private Button doneTerminalIllnessButton = new Button("Done Terminal Illness");
     private Label numberOfTerminalIllnessesErrorMessage = new Label("Number of terminal illnesses error message");
     private Button newCalculationButton = new Button("New Calculation");
     private Button mainMenuButton = new Button("Main Menu");
     //Calculating the user's life expectancy (but only if all user input is valid).
-	private LifeExpectancy lifeExpectancy = new LifeExpectancy(currentAgeTextField.getText(), genderContainer.getChoiceBox().getValue(), smokingHabitsContainer.getChoiceBox().getValue(),
-	alzheimersContainer.getChoiceBox().getValue(), creutzfeldtJakobContainer.getChoiceBox().getValue(), crohnsContainer.getChoiceBox().getValue(),
-	cysticFibrosisContainer.getChoiceBox().getValue(), duchenneMDContainer.getChoiceBox().getValue(), hepBContainer.getChoiceBox().getValue(),
-	heartDiseaseContainer.getChoiceBox().getValue(), huntingtonsContainer.getChoiceBox().getValue(), multipleSclerosisContainer.getChoiceBox().getValue(),
-	rabiesContainer.getChoiceBox().getValue());
-	private int yearsLeftToLive = 0;
-	private String outputMessage = "";
 	
     /* Need to define messageContainer separately from the other variables that reference containers that will be added to scene containers,
     because messageContainer is constructed based on the variable yearsLeftToLive, which is not set to a value until just above here. */
-    private ContainerWithinSceneContainer messageContainer = new ContainerWithinSceneContainer(50, 0, outputMessage, 100);
+    
     //Declaring variables that reference scene containers.
     private VBox mainMenuSceneContainer = new VBox();
     private VBox mainInputSceneContainer = new VBox();
+    private Scene mainInputScene = new Scene(mainInputSceneContainer, 400, 400);
     private VBox terminalIllnessInputSceneContainer = new VBox();
     private VBox outputSceneContainer = new VBox();
     //Declaring variables that reference scenes.
     /* Note: The Main Menu Scene is also created in the Main class, but it needs to be re-created here since the Main Menu Scene is referenced in this class
     (outside the scope of where the Main Menu Scene is created in the Main class.) */
-    private Scene mainMenuScene = new Scene(mainMenuSceneContainer, 400, 400);
-	private Scene mainInputScene = new Scene(mainInputSceneContainer, 400, 400);
-	private Scene terminalIllnessInputScene = new Scene(terminalIllnessInputSceneContainer, 400, 400);
-	private Scene outputScene = new Scene(outputSceneContainer, 400, 400);
-	{
-	//Main Menu Scene
-	mainMenuSceneContainer.getChildren().add(startCalculationButton);
+    private LifeExpectancy lifeExpectancy;
 	
-	//Main Input Scene
+    {
 	currentAgeContainer.getChildren().addAll(currentAgeContainer.getLabel(), currentAgeTextField);
 	genderContainer.getChildren().addAll(genderContainer.getLabel(), genderContainer.getChoiceBox());
 	smokingHabitsContainer.getChildren().addAll(smokingHabitsContainer.getLabel(), smokingHabitsContainer.getChoiceBox());
 	enterTerminalIllnessButton.setTranslateX(100);
-	enterTerminalIllnessButton.setOnAction(event -> applicationStage.setScene(terminalIllnessInputScene));
 	calculateLifeExpectancyButton.setTranslateX(100);
 	calculateLifeExpectancyButton.setTranslateY(25);
-	calculateLifeExpectancyButton.setOnAction(event -> applicationStage.setScene(outputScene));
-	mainInputSceneContainer.getChildren().addAll(currentAgeContainer, genderContainer, smokingHabitsContainer,
-		enterTerminalIllnessButton, calculateLifeExpectancyButton);
+	calculateLifeExpectancyButton.setOnAction(event -> lifeExpectancy = new LifeExpectancy(currentAgeTextField.getText(), genderContainer.getChoiceBox().getValue(), smokingHabitsContainer.getChoiceBox().getValue(),
+			alzheimersContainer.getChoiceBox().getValue(), creutzfeldtJakobContainer.getChoiceBox().getValue(), crohnsContainer.getChoiceBox().getValue(),
+			cysticFibrosisContainer.getChoiceBox().getValue(), duchenneMDContainer.getChoiceBox().getValue(), hepBContainer.getChoiceBox().getValue(),
+			heartDiseaseContainer.getChoiceBox().getValue(), huntingtonsContainer.getChoiceBox().getValue(), multipleSclerosisContainer.getChoiceBox().getValue(),
+			rabiesContainer.getChoiceBox().getValue()));
 	
-	//Only invoke getLifeExpectancy() on lifeExpectancy if the parameters passed to the LifeExpectancy constructor survived error handling.
-		//if (!lifeExpectancy.getCurrentAge() == Integer.parseInt(currentAgeTextField.getText()))
-		//	outputMessage = currentAgeErrorMessage;
-		//if (!lifeExpectancy.getAlzheimers() == alzheimersContainer.getChoiceBox().getValue())
-		//	outputMessage = numberOfTerminalIllnessesErrorMessage;
-		//else
+		
+	/* //Main Menu Scene
+	mainMenuSceneContainer.getChildren().add(startCalculationButton);
+	Scene mainMenuScene = new Scene(mainMenuSceneContainer, 400, 400);
+	mainMenuButton.setOnAction(event -> applicationStage.setScene(mainMenuScene));
+	
+	//Main Input Scene
+	 * 
+	 * */
+	
+	
+	
+	
+
+
+	
+	/* int yearsLeftToLive = 0;
+	String outputMessage = "";
+	if (!(lifeExpectancy.getCurrentAge() == Integer.parseInt(currentAgeTextField.getText())))
+			outputMessage = currentAgeErrorMessage.getText();
+	if (!(lifeExpectancy.getAlzheimers() == alzheimersContainer.getChoiceBox().getValue()))
+			outputMessage = numberOfTerminalIllnessesErrorMessage.getText();
+	else
 			yearsLeftToLive = lifeExpectancy.getLifeExpectancy();
 			outputMessage = "Your Life Expectancy is " + yearsLeftToLive + " more years";
+	System.out.println(outputMessage); */
+	
+	
+	mainInputSceneContainer.getChildren().addAll(currentAgeContainer, genderContainer, smokingHabitsContainer,
+		enterTerminalIllnessButton, calculateLifeExpectancyButton);
+	doneTerminalIllnessButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
+	newCalculationButton.setOnAction(event -> applicationStage.setScene(mainInputScene)); }
+	
+	public void printOutputMessage() {int yearsLeftToLive = 0;
+	String outputMessage = "";
+	if (!(lifeExpectancy.getCurrentAge() == Integer.parseInt(currentAgeTextField.getText())))
+			outputMessage = currentAgeErrorMessage.getText();
+	if (!(lifeExpectancy.getAlzheimers() == alzheimersContainer.getChoiceBox().getValue()))
+			outputMessage = numberOfTerminalIllnessesErrorMessage.getText();
+	else
+			yearsLeftToLive = lifeExpectancy.getLifeExpectancy();
+			outputMessage = "Your Life Expectancy is " + yearsLeftToLive + " more years";
+	System.out.println(outputMessage);
+	System.out.println(outputMessage);}/*
+
+// System.out.println(currentAgeTextField.getText()); }/*
 	
 	//Terminal Illness Input Scene
 	
@@ -123,22 +153,43 @@ public class LifeExpectancyCalculatorController {
 	multipleSclerosisContainer.getChildren().addAll(multipleSclerosisContainer.getLabel(), multipleSclerosisContainer.getChoiceBox());
 	rabiesContainer.getChildren().addAll(rabiesContainer.getLabel(), rabiesContainer.getChoiceBox());
 	doneTerminalIllnessButton.setTranslateX(100);
-	doneTerminalIllnessButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
+
 	terminalIllnessInputSceneContainer.getChildren().addAll(alzheimersContainer, creutzfeldtJakobContainer,
 		crohnsContainer, cysticFibrosisContainer, duchenneMDContainer, hepBContainer, heartDiseaseContainer,
 		huntingtonsContainer, multipleSclerosisContainer, rabiesContainer, doneTerminalIllnessButton);
+	Scene terminalIllnessInputScene = new Scene(terminalIllnessInputSceneContainer, 400, 400);
+	
+	enterTerminalIllnessButton.setOnAction(event -> applicationStage.setScene(terminalIllnessInputScene));
 	
 	//Output Scene
 	newCalculationButton.setTranslateX(100);
 	newCalculationButton.setTranslateX(100);
-	newCalculationButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
+
 	mainMenuButton.setTranslateX(100);
-	mainMenuButton.setOnAction(event -> applicationStage.setScene(mainMenuScene));
+	
+	
+	//Check for valid input by checking if the parameters passed to the LifeExpectancy constructor survived error handling.
+	LifeExpectancy lifeExpectancy = new LifeExpectancy(currentAgeTextField.getText(), genderChoiceBox.getValue(), smokingHabitsContainer.getChoiceBox().getValue(),
+			alzheimersContainer.getChoiceBox().getValue(), creutzfeldtJakobContainer.getChoiceBox().getValue(), crohnsContainer.getChoiceBox().getValue(),
+			cysticFibrosisContainer.getChoiceBox().getValue(), duchenneMDContainer.getChoiceBox().getValue(), hepBContainer.getChoiceBox().getValue(),
+			heartDiseaseContainer.getChoiceBox().getValue(), huntingtonsContainer.getChoiceBox().getValue(), multipleSclerosisContainer.getChoiceBox().getValue(),
+			rabiesContainer.getChoiceBox().getValue());
+	int yearsLeftToLive = 0;
+	String outputMessage = "";
+	if (!(lifeExpectancy.getCurrentAge() == Integer.parseInt(currentAgeTextField.getText())))
+			outputMessage = currentAgeErrorMessage.getText();
+	if (!(lifeExpectancy.getAlzheimers() == alzheimersContainer.getChoiceBox().getValue()))
+			outputMessage = numberOfTerminalIllnessesErrorMessage.getText();
+	else
+			yearsLeftToLive = lifeExpectancy.getLifeExpectancy();
+			outputMessage = "Your Life Expectancy is " + yearsLeftToLive + " more years";
+	ContainerWithinSceneContainer messageContainer = new ContainerWithinSceneContainer(50, 0, outputMessage, 100);
  	messageContainer.getChildren().addAll(messageContainer.getLabel());
  	outputSceneContainer.getChildren().addAll(messageContainer, newCalculationButton, mainMenuButton);
+ 	Scene outputScene = new Scene(outputSceneContainer, 400, 400);
+ 	
+ 	calculateLifeExpectancyButton.setOnAction(event -> applicationStage.setScene(outputScene));
 	}
-	//Setting the "onAction"s for each button.
-
     
 	/** This method sets the variable applicationStage to the parameter passed in.
 	 * 
