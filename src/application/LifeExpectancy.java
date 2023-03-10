@@ -23,10 +23,10 @@ public class LifeExpectancy {
 	private String huntingtons = "No";
 	private String multipleSclerosis = "No";
 	private String rabies = "No";
+	private String outputMessage;
 	
 	//Variables related to error handling defined here.
-	private boolean validCurrentAge = true;
-	private boolean validNumberOfTerminalIllnesses = true;
+
 	
     /** This constructor constructs a LifeExpectancy object with instance variables that keep track of
      * mortality-related information.
@@ -53,6 +53,7 @@ public class LifeExpectancy {
 		for (char c : ageAtPresent.toCharArray())
 			if (!Character.isDigit(c))
 				validCurrentAge = false;
+				setOutputMessage("You entered " + "x");
 		if (Integer.parseInt(ageAtPresent) < 18)
 			validCurrentAge = false;
 		
@@ -217,6 +218,10 @@ public class LifeExpectancy {
         
 		return futureLifetime;
 		
+	}
+	
+	public String getOutputMessage() {
+		return outputMessage;
 	}
 	
 	/** This method returns the user's current age.

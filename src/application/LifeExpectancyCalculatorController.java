@@ -48,8 +48,8 @@ public class LifeExpectancyCalculatorController {
     private ContainerWithinSceneContainerWithChoiceBox crohnsContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "Crohn's Disease: ", 100, "No", "No", "Yes", null, null);
     private ContainerWithinSceneContainerWithChoiceBox cysticFibrosisContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "Cystic Fibrosis: ", 100, "No", "No", "Yes", null, null);
     private ContainerWithinSceneContainerWithChoiceBox duchenneMDContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "Duchenne Muscular Dystrophy: ", 100, "No", "No", "Yes", null, null);
-    private ContainerWithinSceneContainerWithChoiceBox hepBContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "Hepatitis B: ", 100, "No", "No", "Yes", null, null);
     private ContainerWithinSceneContainerWithChoiceBox heartDiseaseContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "Heart Disease: ", 100, "No", "No", "Yes", null, null);
+    private ContainerWithinSceneContainerWithChoiceBox hepBContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "Hepatitis B: ", 100, "No", "No", "Yes", null, null);
     private ContainerWithinSceneContainerWithChoiceBox huntingtonsContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "Huntington's Disease: ", 100, "No", "No", "Yes", null, null);
     private ContainerWithinSceneContainerWithChoiceBox multipleSclerosisContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "Multiple Sclerosis: ", 100, "No", "No", "Yes", null, null);
     private ContainerWithinSceneContainerWithChoiceBox rabiesContainer = new ContainerWithinSceneContainerWithChoiceBox(75, 0, "Rabies: ", 100, "No", "No", "Yes", null, null);
@@ -57,7 +57,7 @@ public class LifeExpectancyCalculatorController {
     private Button startCalculationButton = new Button("Start Calculation");
     private Button enterTerminalIllnessButton = new Button("Enter Terminal Illness");
     private Button saveButton = new Button("Save");
-    private Label saveLabel = new Label("You must press Save before pressing Calculate.");
+    private Label saveLabel = new Label("You must press Save just before pressing Calculate.");
     private Button calculateLifeExpectancyButton = new Button("Calculate");
     private Label currentAgeErrorMessage = new Label("Current age error message");
     private Button doneTerminalIllnessButton = new Button("Done Terminal Illness");
@@ -79,19 +79,69 @@ public class LifeExpectancyCalculatorController {
     /* Note: The Main Menu Scene is also created in the Main class, but it needs to be re-created here since the Main Menu Scene is referenced in this class
     (outside the scope of where the Main Menu Scene is created in the Main class.) */
     private LifeExpectancy lifeExpectancy;
+    private String outputMessage = "";
+	private boolean validCurrentAge = true;
+	private boolean validNumberOfTerminalIllnesses = true;
 	
     {
 	currentAgeContainer.getChildren().addAll(currentAgeContainer.getLabel(), currentAgeTextField);
 	genderContainer.getChildren().addAll(genderContainer.getLabel(), genderContainer.getChoiceBox());
 	smokingHabitsContainer.getChildren().addAll(smokingHabitsContainer.getLabel(), smokingHabitsContainer.getChoiceBox());
 	enterTerminalIllnessButton.setTranslateX(100);
+	saveButton.setTranslateX(100);
+	saveButton.setOnAction(event -> lifeExpectancy = new LifeExpectancy(currentAgeTextField.getText(), genderContainer.getChoiceBox().getValue(), smokingHabitsContainer.getChoiceBox().getValue(),
+			alzheimersContainer.getChoiceBox().getValue(), creutzfeldtJakobContainer.getChoiceBox().getValue(), crohnsContainer.getChoiceBox().getValue(),
+			cysticFibrosisContainer.getChoiceBox().getValue(), duchenneMDContainer.getChoiceBox().getValue(), heartDiseaseContainer.getChoiceBox().getValue(), hepBContainer.getChoiceBox().getValue(), huntingtonsContainer.getChoiceBox().getValue(),
+			multipleSclerosisContainer.getChoiceBox().getValue(), rabiesContainer.getChoiceBox().getValue()));
 	calculateLifeExpectancyButton.setTranslateX(100);
 	calculateLifeExpectancyButton.setTranslateY(25);
-	calculateLifeExpectancyButton.setOnAction(event -> lifeExpectancy = new LifeExpectancy(currentAgeTextField.getText(), genderContainer.getChoiceBox().getValue(), smokingHabitsContainer.getChoiceBox().getValue(),
-			alzheimersContainer.getChoiceBox().getValue(), creutzfeldtJakobContainer.getChoiceBox().getValue(), crohnsContainer.getChoiceBox().getValue(),
-			cysticFibrosisContainer.getChoiceBox().getValue(), duchenneMDContainer.getChoiceBox().getValue(), hepBContainer.getChoiceBox().getValue(),
-			heartDiseaseContainer.getChoiceBox().getValue(), huntingtonsContainer.getChoiceBox().getValue(), multipleSclerosisContainer.getChoiceBox().getValue(),
-			rabiesContainer.getChoiceBox().getValue()));
+	calculateLifeExpectancyButton.setOnAction(event -> calculateAndGoToOutputScene()); }
+	
+    /** This method changes the scene to outputScene, setting outputMessage along the way.
+     * 
+     */
+	public void calculateAndGoToOutputScene() {
+		for (char c : currentAgeTextField.getText().toCharArray())
+			if (!Character.isDigit(c)) {
+				validCurrentAge = false;
+				outputMessage = "You entered " + c + " . Please enter a number.";
+			}
+		if (Integer.parseInt(currentAgeTextField.getText()) < 18) {
+			validCurrentAge = false;
+			outputMessage = "You entered " + currentAgeTextField.getText() + " . Please enter a number at least 18.";
+		}
+		
+		//Check if "Yes" is selected for more than one terminal illness.
+		ArrayList<String> yesOrNoList = new ArrayList<String>();
+	      	yesOrNoList.add(alzheimersContainer.getChoiceBox().getValue());
+	      	yesOrNoList.add(creutzfeldtJakobContainer.getChoiceBox().getValue());
+	      	yesOrNoList.add(crohnsContainer.getChoiceBox().getValue());
+	      	yesOrNoList.add(cysticFibrosisContainer.getChoiceBox().getValue());
+	      	yesOrNoList.add(duchenneMDContainer.getChoiceBox().getValue());
+	      	yesOrNoList.add(heartDiseaseContainer.getChoiceBox().getValue());
+	      	yesOrNoList.add(hepBContainer.getChoiceBox().getValue());
+	      	yesOrNoList.add(huntingtonsContainer.getChoiceBox().getValue());
+	      	yesOrNoList.add(multipleSclerosisContainer.getChoiceBox().getValue());
+	      	yesOrNoList.add(rabiesContainer.getChoiceBox().getValue());
+	      	
+	      	int numberOfYes = 0;
+	      	for (String element : yesOrNoList) {
+	      		if (element.equals("Yes"))
+	      			numberOfYes += 1;
+	      	}
+	      	if (numberOfYes > 1)
+	      		validNumberOfTerminalIllnesses = false;
+	      		outputMessage = "You may only select Yes for zero or one terminal illness.";
+
+		if (validCurrentAge && validNumberOfTerminalIllnesses)
+			lifeExpectancy.getLifeExpectancy();
+		applicationStage.setScene(outputScene);
+		
+	}
+	
+    
+	
+	
 	
 		
 	/* //Main Menu Scene
@@ -126,17 +176,17 @@ public class LifeExpectancyCalculatorController {
 	doneTerminalIllnessButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
 	newCalculationButton.setOnAction(event -> applicationStage.setScene(mainInputScene)); }
 	
-	public void printOutputMessage() {int yearsLeftToLive = 0;
-	String outputMessage = "";
-	if (!(lifeExpectancy.getCurrentAge() == Integer.parseInt(currentAgeTextField.getText())))
-			outputMessage = currentAgeErrorMessage.getText();
-	if (!(lifeExpectancy.getAlzheimers() == alzheimersContainer.getChoiceBox().getValue()))
-			outputMessage = numberOfTerminalIllnessesErrorMessage.getText();
-	else
-			yearsLeftToLive = lifeExpectancy.getLifeExpectancy();
-			outputMessage = "Your Life Expectancy is " + yearsLeftToLive + " more years";
-	System.out.println(outputMessage);
-	System.out.println(outputMessage);}/*
+	//public void printOutputMessage() {int yearsLeftToLive = 0;
+	//String outputMessage = "";
+	//if (!(lifeExpectancy.getCurrentAge() == Integer.parseInt(currentAgeTextField.getText())))
+	//		outputMessage = currentAgeErrorMessage.getText();
+	//if (!(lifeExpectancy.getAlzheimers() == alzheimersContainer.getChoiceBox().getValue()))
+	//		outputMessage = numberOfTerminalIllnessesErrorMessage.getText();
+	//else
+	//		yearsLeftToLive = lifeExpectancy.getLifeExpectancy();
+	//		outputMessage = "Your Life Expectancy is " + yearsLeftToLive + " more years";
+	//System.out.println(outputMessage);
+	//System.out.println(outputMessage);}/*
 
 // System.out.println(currentAgeTextField.getText()); }/*
 	
@@ -169,13 +219,13 @@ public class LifeExpectancyCalculatorController {
 	
 	
 	//Check for valid input by checking if the parameters passed to the LifeExpectancy constructor survived error handling.
-	LifeExpectancy lifeExpectancy = new LifeExpectancy(currentAgeTextField.getText(), genderChoiceBox.getValue(), smokingHabitsContainer.getChoiceBox().getValue(),
-			alzheimersContainer.getChoiceBox().getValue(), creutzfeldtJakobContainer.getChoiceBox().getValue(), crohnsContainer.getChoiceBox().getValue(),
-			cysticFibrosisContainer.getChoiceBox().getValue(), duchenneMDContainer.getChoiceBox().getValue(), hepBContainer.getChoiceBox().getValue(),
-			heartDiseaseContainer.getChoiceBox().getValue(), huntingtonsContainer.getChoiceBox().getValue(), multipleSclerosisContainer.getChoiceBox().getValue(),
-			rabiesContainer.getChoiceBox().getValue());
+	//LifeExpectancy lifeExpectancy = new LifeExpectancy(currentAgeTextField.getText(), genderChoiceBox.getValue(), smokingHabitsContainer.getChoiceBox().getValue(),
+		//	alzheimersContainer.getChoiceBox().getValue(), creutzfeldtJakobContainer.getChoiceBox().getValue(), crohnsContainer.getChoiceBox().getValue(),
+			//cysticFibrosisContainer.getChoiceBox().getValue(), duchenneMDContainer.getChoiceBox().getValue(), hepBContainer.getChoiceBox().getValue(),
+//			heartDiseaseContainer.getChoiceBox().getValue(), huntingtonsContainer.getChoiceBox().getValue(), multipleSclerosisContainer.getChoiceBox().getValue(),
+//			rabiesContainer.getChoiceBox().getValue());
 	int yearsLeftToLive = 0;
-	String outputMessage = "";
+//	String outputMessage = "";
 	if (!(lifeExpectancy.getCurrentAge() == Integer.parseInt(currentAgeTextField.getText())))
 			outputMessage = currentAgeErrorMessage.getText();
 	if (!(lifeExpectancy.getAlzheimers() == alzheimersContainer.getChoiceBox().getValue()))
