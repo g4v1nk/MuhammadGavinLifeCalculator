@@ -9,7 +9,6 @@ import java.util.ArrayList;
  */
 public class LifeExpectancy {
 	
-	//Variables related to life expectancy defined here.
 	private int currentAge = 18;
 	private String gender = "Male";
 	private String smokingHabits = "Non-smoker";
@@ -23,10 +22,6 @@ public class LifeExpectancy {
 	private String huntingtons = "No";
 	private String multipleSclerosis = "No";
 	private String rabies = "No";
-	private String outputMessage;
-	
-	//Variables related to error handling defined here.
-
 	
     /** This constructor constructs a LifeExpectancy object with instance variables that keep track of
      * mortality-related information.
@@ -49,56 +44,26 @@ public class LifeExpectancy {
 			String creutzfeldtJakobStatus, String crohnsStatus, String cysticFibrosisStatus, String duchenneMDStatus, String heartDiseaseStatus,
 			String hepBStatus, String huntingtonsStatus, String multipleSclerosisStatus, String rabiesStatus) {
 		
-		//Check if ageAtPresent is a valid value to assign to currentAge.
+		//To avoid an error, only assign ageAtPresent to currentAge if ageAtPresent is an integer.
+		int counter = 0;
 		for (char c : ageAtPresent.toCharArray())
 			if (!Character.isDigit(c))
-				validCurrentAge = false;
-				setOutputMessage("You entered " + "x");
-		if (Integer.parseInt(ageAtPresent) < 18)
-			validCurrentAge = false;
-		
-		//Only update currentAge if it will be assigned a valid value.
-		if (validCurrentAge)
+				counter += 1;
+		if (counter == 0)
 			currentAge = Integer.parseInt(ageAtPresent);
 		
-		//There is no need for error checking when assigning values to gender and smokingHabits.
 		gender = sex;
 		smokingHabits = smokingStatus;
-		
-		//Check if "Yes" is selected for more than one terminal illness.
-		ArrayList<String> yesOrNoList = new ArrayList<String>();
-	      	yesOrNoList.add(alzheimersStatus);
-	      	yesOrNoList.add(creutzfeldtJakobStatus);
-	      	yesOrNoList.add(crohnsStatus);
-	      	yesOrNoList.add(cysticFibrosisStatus);
-	      	yesOrNoList.add(duchenneMDStatus);
-	      	yesOrNoList.add(heartDiseaseStatus);
-	      	yesOrNoList.add(hepBStatus);
-	      	yesOrNoList.add(huntingtonsStatus);
-	      	yesOrNoList.add(multipleSclerosisStatus);
-	      	yesOrNoList.add(rabiesStatus);
-	      	
-	      	int numberOfYes = 0;
-	      	for (String element : yesOrNoList) {
-	      		if (element.equals("Yes"))
-	      			numberOfYes += 1;
-	      	}
-	      	if (numberOfYes > 1)
-	      		validNumberOfTerminalIllnesses = false;
-	      	
-	    //Only update terminal illness variables if "Yes" is selected for at most one illness.
-		if (validNumberOfTerminalIllnesses) {
-			alzheimers = alzheimersStatus;
-			creutzfeldtJakob = creutzfeldtJakobStatus;
-			crohns = crohnsStatus;
-			cysticFibrosis = cysticFibrosisStatus;
-			duchenneMD = duchenneMDStatus;
-			heartDisease = heartDiseaseStatus;
-			hepB = hepBStatus;
-			huntingtons = huntingtonsStatus;
-			multipleSclerosis = multipleSclerosisStatus;
-			rabies = rabiesStatus;
-		}
+		alzheimers = alzheimersStatus;
+		creutzfeldtJakob = creutzfeldtJakobStatus;
+		crohns = crohnsStatus;
+		cysticFibrosis = cysticFibrosisStatus;
+		duchenneMD = duchenneMDStatus;
+		heartDisease = heartDiseaseStatus;
+		hepB = hepBStatus;
+		huntingtons = huntingtonsStatus;
+		multipleSclerosis = multipleSclerosisStatus;
+		rabies = rabiesStatus;
 		
 	}
 	
@@ -218,10 +183,6 @@ public class LifeExpectancy {
         
 		return futureLifetime;
 		
-	}
-	
-	public String getOutputMessage() {
-		return outputMessage;
 	}
 	
 	/** This method returns the user's current age.
