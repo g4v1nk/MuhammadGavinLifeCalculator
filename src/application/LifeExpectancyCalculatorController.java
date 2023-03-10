@@ -65,6 +65,7 @@ public class LifeExpectancyCalculatorController {
     private Scene outputScene = new Scene(outputSceneContainer, 400, 400);
     private Label outputLabel = new Label();
     private VBox terminalIllnessInputSceneContainer = new VBox();
+    private Button outputDisplayButton = new Button("See Graphical Results");
     private LifeExpectancy lifeExpectancy;
     private String outputMessage = "";
 	private boolean validCurrentAge = true;
@@ -72,6 +73,8 @@ public class LifeExpectancyCalculatorController {
 	
 	//Setting up the Main Menu Scene.
 	{
+	startCalculationButton.setTranslateX(50);
+	startCalculationButton.setTranslateY(50);
 	mainMenuSceneContainer.getChildren().add(startCalculationButton);
 	Scene mainMenuScene = new Scene(mainMenuSceneContainer, 400, 400);
 	
@@ -133,19 +136,7 @@ public class LifeExpectancyCalculatorController {
 	outputSceneContainer.getChildren().addAll(outputLabel, newCalculationButton, mainMenuButton);
  	
 	calculateLifeExpectancyButton.setOnAction(event -> calculateAndGoToOutputScene());
-	}
-	
-	//Setting up the Bar Graph Scene
-	{
-	BarGraph visualDisplay = new BarGraph("Your Age at Death", "Age (years)", 1);
-	
-	XYChart.Series yourData = new XYChart.Series<>();
-	yourData.getData().add(new XYChart.Data<>(lifeExpectancy.getLifeExpectancy() + Integer.parseInt(currentAgeTextField.getText()), "Your Age At Death"));
-	
-	
-	
-	}
-	
+	}	
 	
     /** This method changes the scene to outputScene, setting outputMessage along the way.
      * 
@@ -186,10 +177,31 @@ public class LifeExpectancyCalculatorController {
 	    	outputMessage = "You may only select Yes for zero or one terminal illness.";
 	    }
 
-		if (validCurrentAge && validNumberOfTerminalIllnesses)
+		if (validCurrentAge && validNumberOfTerminalIllnesses) {
 			outputMessage = "Your life expectancy is " + lifeExpectancy.getLifeExpectancy() + " more years";
+			outputSceneContainer.getChildren().add(outputDisplayButton);
+			
+			//Create a visual display of the user's results.
+			BarGraph visualDisplay = new BarGraph("Your Age At Death", "Age (years)", 1);
+			
+			XYChart.Series yourData = new XYChart.Series<>();
+			yourData.getData().add(new XYChart.Data<>(lifeExpectancy.getLifeExpectancy() + Integer.parseInt(currentAgeTextField.getText()), "Your Age At Death"));
+			
+			XYChart.Series avgData = new XYChart.Series<>();
+			avgData.getData().add(new XYChart.Data<>(86, "Average Age At Death"));
+			
+			visualDisplay.getData().addAll(yourData, avgData);
+			
+			VBox visualDisplayContainer = new VBox();
+			outputDisplayButton.setTranslateX(50);
+			outputDisplayButton.setTranslateY(70);
+			
+			Scene visualDisplayScene = new Scene(visualDisplayContainer, 400, 400);
+			outputDisplayButton.setOnAction(event -> applicationStage.setScene(visualDisplayScene));
+		}
 		applicationStage.setScene(outputScene);
 		outputLabel.setText(outputMessage);
+		
 	}
     
 	/** This method sets the variable applicationStage to the parameter passed in.

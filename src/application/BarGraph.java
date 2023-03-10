@@ -10,10 +10,7 @@ import javafx.scene.chart.NumberAxis;
  * @author CS219-user
  *
  */
-public class BarGraph {
-	private NumberAxis numAxis = new NumberAxis();
-	private CategoryAxis catAxis = new CategoryAxis();
-	private BarChart<Number, String> barGraph = new BarChart<Number, String>(numAxis, catAxis);
+public class BarGraph extends BarChart<Number, String> {
 	
 	/** This constructor makes a BarGraph object.
 	 * 
@@ -22,9 +19,10 @@ public class BarGraph {
 	 * @param tickIncrements (This is the tick increments of the x-axis of the graph.)
 	 */
 	BarGraph(String titleOfGraph, String numAxisLabel, int tickIncrements) {
-		barGraph.setTitle(titleOfGraph);
-		numAxis.setLabel(numAxisLabel);
-		numAxis.setTickLabelRotation(tickIncrements);
+		super(new NumberAxis(), new CategoryAxis());
+		setTitle(titleOfGraph);
+		//numAxis.setLabel(numAxisLabel);
+		//numAxis.setTickLabelRotation(tickIncrements);
 	}
 	
 
