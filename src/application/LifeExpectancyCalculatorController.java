@@ -34,11 +34,7 @@ public class LifeExpectancyCalculatorController {
     }
 
     private Stage applicationStage;
-    
-    /* While the other variables that reference objects that will be added to scene containers are defined lower down in the code (starting on line 84),
-    this variables that references a TextField is defined here since the variable is used in line 42 (before line 84). */
     private TextField currentAgeTextField = new TextField();
-    //Declaring variables that reference containers that will be added to scene containers.
     private ContainerWithinSceneContainer currentAgeContainer = new ContainerWithinSceneContainer(75, 25, "Current age: ", 100); 
     private ContainerWithinSceneContainerWithChoiceBox genderContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "Gender: ", 100, "Male", "Male", "Female", null, null); 
     private ContainerWithinSceneContainerWithChoiceBox smokingHabitsContainer = new ContainerWithinSceneContainerWithChoiceBox(75, 0, "Smoking habits: ", 100,
@@ -53,7 +49,6 @@ public class LifeExpectancyCalculatorController {
     private ContainerWithinSceneContainerWithChoiceBox huntingtonsContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "Huntington's Disease: ", 100, "No", "No", "Yes", null, null);
     private ContainerWithinSceneContainerWithChoiceBox multipleSclerosisContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "Multiple Sclerosis: ", 100, "No", "No", "Yes", null, null);
     private ContainerWithinSceneContainerWithChoiceBox rabiesContainer = new ContainerWithinSceneContainerWithChoiceBox(75, 0, "Rabies: ", 100, "No", "No", "Yes", null, null);
-    //Declaring variables that reference objects that will be added to scene containers.
     private Button startCalculationButton = new Button("Start Calculation");
     private Button enterTerminalIllnessButton = new Button("Enter Terminal Illness");
     private Button saveButton = new Button("Save");
@@ -62,21 +57,12 @@ public class LifeExpectancyCalculatorController {
     private Button doneTerminalIllnessButton = new Button("Done Terminal Illness");
     private Button newCalculationButton = new Button("New Calculation");
     private Button mainMenuButton = new Button("Main Menu");
-    //Calculating the user's life expectancy (but only if all user input is valid).
-	
-    /* Need to define messageContainer separately from the other variables that reference containers that will be added to scene containers,
-    because messageContainer is constructed based on the variable yearsLeftToLive, which is not set to a value until just above here. */
-    
-    //Declaring variables that reference scene containers.
     private VBox mainMenuSceneContainer = new VBox();
     private VBox mainInputSceneContainer = new VBox();
     private Scene mainInputScene = new Scene(mainInputSceneContainer, 400, 400);
     private VBox outputSceneContainer = new VBox();
     private Scene outputScene = new Scene(outputSceneContainer, 400, 400);
     private VBox terminalIllnessInputSceneContainer = new VBox();
-    //Declaring variables that reference scenes.
-    /* Note: The Main Menu Scene is also created in the Main class, but it needs to be re-created here since the Main Menu Scene is referenced in this class
-    (outside the scope of where the Main Menu Scene is created in the Main class.) */
     private LifeExpectancy lifeExpectancy;
     private String outputMessage = "";
 	private boolean validCurrentAge = true;
@@ -106,10 +92,10 @@ public class LifeExpectancyCalculatorController {
 			multipleSclerosisContainer.getChoiceBox().getValue(), rabiesContainer.getChoiceBox().getValue()));
 	calculateLifeExpectancyButton.setTranslateX(100);
 	calculateLifeExpectancyButton.setTranslateY(60);
-	calculateLifeExpectancyButton.setOnAction(event -> calculateAndGoToOutputScene());
 	
 	mainInputSceneContainer.getChildren().addAll(currentAgeContainer, genderContainer, smokingHabitsContainer,
 		enterTerminalIllnessButton, saveButton, saveLabel, calculateLifeExpectancyButton);
+	startCalculationButton.setOnAction( event -> applicationStage.setScene(mainInputScene));
 	doneTerminalIllnessButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
 	newCalculationButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
 	}
@@ -139,28 +125,30 @@ public class LifeExpectancyCalculatorController {
 	//Setting up the Output Scene
 	{
 	newCalculationButton.setTranslateX(100);
-	newCalculationButton.setTranslateX(100);
 	mainMenuButton.setTranslateX(100);
 	ContainerWithinSceneContainer messageContainer = new ContainerWithinSceneContainer(50, 0, outputMessage, 100);
  	
-	messageContainer.getChildren().addAll(messageContainer.getLabel());
+	messageContainer.getChildren().add(messageContainer.getLabel());
  	outputSceneContainer.getChildren().addAll(messageContainer, newCalculationButton, mainMenuButton);
  	
- 	calculateLifeExpectancyButton.setOnAction(event -> applicationStage.setScene(outputScene));
+	calculateLifeExpectancyButton.setOnAction(event -> calculateAndGoToOutputScene());
 	}
 	
     /** This method changes the scene to outputScene, setting outputMessage along the way.
      * 
      */
 	public void calculateAndGoToOutputScene() {
+		//Check if the current age entered contains a non-digit.
 		for (char c : currentAgeTextField.getText().toCharArray())
 			if (!Character.isDigit(c)) {
 				validCurrentAge = false;
 				outputMessage = "You entered " + c + " . Please enter a number.";
 			}
+		
+		//Check if the current age entered is less than 18.
 		if (Integer.parseInt(currentAgeTextField.getText()) < 18) {
 			validCurrentAge = false;
-			outputMessage = "You entered " + currentAgeTextField.getText() + " . Please enter a number at least 18.";
+			outputMessage = "You entered " + currentAgeTextField.getText() + ". Please enter a number at least 18.";
 		}
 		
 		//Check if "Yes" is selected for more than one terminal illness.
@@ -175,20 +163,22 @@ public class LifeExpectancyCalculatorController {
 	      	yesOrNoList.add(huntingtonsContainer.getChoiceBox().getValue());
 	      	yesOrNoList.add(multipleSclerosisContainer.getChoiceBox().getValue());
 	      	yesOrNoList.add(rabiesContainer.getChoiceBox().getValue());
-	      	
-	      	int numberOfYes = 0;
-	      	for (String element : yesOrNoList) {
-	      		if (element.equals("Yes"))
-	      			numberOfYes += 1;
-	      	}
-	      	if (numberOfYes > 1)
-	      		validNumberOfTerminalIllnesses = false;
-	      		outputMessage = "You may only select Yes for zero or one terminal illness.";
+	    int numberOfYes = 0;
+	    for (String element : yesOrNoList) {
+	    	if (element.equals("Yes"))
+	    		numberOfYes += 1;
+	    }
+	    if (numberOfYes > 1) {
+	    	validNumberOfTerminalIllnesses = false;
+	    	outputMessage = "You may only select Yes for zero or one terminal illness.";
+	    }
 
-		if (validCurrentAge && validNumberOfTerminalIllnesses) {
+		if (validCurrentAge && validNumberOfTerminalIllnesses)
 			outputMessage = "Your life expectancy is " + lifeExpectancy.getLifeExpectancy() + " more years";
-		}
 		applicationStage.setScene(outputScene);
+		System.out.println(outputMessage);
+		System.out.println(yesOrNoList);
+		System.out.println(numberOfYes);
 		
 	}
     
