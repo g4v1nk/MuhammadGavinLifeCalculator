@@ -85,13 +85,13 @@ public class CommandLine {
 	          rabies = input.nextLine();
 	        }
 	        
-	        LifeExpectancy lifeExpectancy = new LifeExpectancy(currentAge, gender, smokingHabits, alzheimers,
-creutzfeldtJakob, crohns, cysticFibrosis, heartDisease, hepB, huntingtons, multipleSclerosis, duchenneMD, rabies);	
+	        //LifeExpectancy lifeExpectancy = new LifeExpectancy(currentAge, gender, smokingHabits, alzheimers,
+//creutzfeldtJakob, crohns, cysticFibrosis, heartDisease, hepB, huntingtons, multipleSclerosis, duchenneMD, rabies);	
 	        
-	        int yearsLeftToLive = lifeExpectancy.getLifeExpectancy();
+	        //int yearsLeftToLive = lifeExpectancy.getLifeExpectancy();
 	        
 	        System.out.println();
-	        System.out.println("You are expected to live " + yearsLeftToLive + " more years.");
+	        //System.out.println("You are expected to live " + yearsLeftToLive + " more years.");
 	   
 	        System.out.println();
 	        System.out.print("Type r to re-start the program: ");
