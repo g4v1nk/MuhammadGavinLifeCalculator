@@ -10,19 +10,19 @@ import java.util.ArrayList;
 public class LifeExpectancy {
 	
 	//Variables related to life expectancy defined here.
-	private int currentAge;
-	private String gender;
-	private String smokingHabits;
-	private String alzheimers;
-	private String creutzfeldtJakob;
-	private String crohns;
-	private String cysticFibrosis;
-	private String duchenneMD;
-	private String heartDisease;
-	private String hepB;
-	private String huntingtons;
-	private String multipleSclerosis;
-	private String rabies;
+	private int currentAge = 18;
+	private String gender = "Male";
+	private String smokingHabits = "Non-smoker";
+	private String alzheimers = "No";
+	private String creutzfeldtJakob = "No";
+	private String crohns = "No";
+	private String cysticFibrosis = "No";
+	private String duchenneMD = "No";
+	private String heartDisease = "No";
+	private String hepB = "No";
+	private String huntingtons = "No";
+	private String multipleSclerosis = "No";
+	private String rabies = "No";
 	
 	//Variables related to error handling defined here.
 	private boolean validCurrentAge = true;
