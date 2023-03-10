@@ -97,16 +97,19 @@ public class LifeExpectancyCalculatorController {
 	smokingHabitsContainer.getChildren().addAll(smokingHabitsContainer.getLabel(), smokingHabitsContainer.getChoiceBox());
 	enterTerminalIllnessButton.setTranslateX(100);
 	saveButton.setTranslateX(100);
+	saveButton.setTranslateY(25);
+	saveLabel.setTranslateX(25);
+	saveLabel.setTranslateY(40);
 	saveButton.setOnAction(event -> lifeExpectancy = new LifeExpectancy(currentAgeTextField.getText(), genderContainer.getChoiceBox().getValue(), smokingHabitsContainer.getChoiceBox().getValue(),
 			alzheimersContainer.getChoiceBox().getValue(), creutzfeldtJakobContainer.getChoiceBox().getValue(), crohnsContainer.getChoiceBox().getValue(),
 			cysticFibrosisContainer.getChoiceBox().getValue(), duchenneMDContainer.getChoiceBox().getValue(), heartDiseaseContainer.getChoiceBox().getValue(), hepBContainer.getChoiceBox().getValue(), huntingtonsContainer.getChoiceBox().getValue(),
 			multipleSclerosisContainer.getChoiceBox().getValue(), rabiesContainer.getChoiceBox().getValue()));
 	calculateLifeExpectancyButton.setTranslateX(100);
-	calculateLifeExpectancyButton.setTranslateY(25);
+	calculateLifeExpectancyButton.setTranslateY(60);
 	calculateLifeExpectancyButton.setOnAction(event -> calculateAndGoToOutputScene());
 	
 	mainInputSceneContainer.getChildren().addAll(currentAgeContainer, genderContainer, smokingHabitsContainer,
-		enterTerminalIllnessButton, saveButton, calculateLifeExpectancyButton);
+		enterTerminalIllnessButton, saveButton, saveLabel, calculateLifeExpectancyButton);
 	doneTerminalIllnessButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
 	newCalculationButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
 	}
