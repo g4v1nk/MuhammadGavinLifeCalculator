@@ -9,6 +9,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -133,6 +134,18 @@ public class LifeExpectancyCalculatorController {
  	
 	calculateLifeExpectancyButton.setOnAction(event -> calculateAndGoToOutputScene());
 	}
+	
+	//Setting up the Bar Graph Scene
+	{
+	BarGraph visualDisplay = new BarGraph("Your Age at Death", "Age (years)", 1);
+	
+	XYChart.Series yourData = new XYChart.Series<>();
+	yourData.getData().add(new XYChart.Data<>(lifeExpectancy.getLifeExpectancy() + Integer.parseInt(currentAgeTextField.getText()), "Your Age At Death"));
+	
+	
+	
+	}
+	
 	
     /** This method changes the scene to outputScene, setting outputMessage along the way.
      * 
