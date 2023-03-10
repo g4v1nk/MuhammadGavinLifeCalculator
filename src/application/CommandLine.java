@@ -1,11 +1,20 @@
 package application;
 import java.util.Scanner;
+
+/** This class represents the command line input that the user enters.
+ * 
+ * @author CS219-user
+ *
+ */
 public class CommandLine {
-	/** This class represents the command line input that the user enters.
+
+	/** This method prompts the user for input,
+	 * calls the getLifeExpectancy() method to calculate life expectancy based on user input,
+	 * and then displays the user's life expectancy and asks the user if they want to
+	 * re-start the program.
 	 * 
 	 * @param args
 	 */
-
 	  public static void main(String[] args) {
 	    String programRun = "r";
 	    Scanner input = new Scanner(System.in);
