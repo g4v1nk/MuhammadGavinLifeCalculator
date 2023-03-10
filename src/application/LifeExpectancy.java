@@ -49,17 +49,22 @@ public class LifeExpectancy {
 			String creutzfeldtJakobStatus, String crohnsStatus, String cysticFibrosisStatus, String duchenneMDStatus, String heartDiseaseStatus,
 			String hepBStatus, String huntingtonsStatus, String multipleSclerosisStatus, String rabiesStatus) {
 		
+		//Check if ageAtPresent is a valid value to assign to currentAge.
 		for (char c : ageAtPresent.toCharArray())
 			if (!Character.isDigit(c))
 				validCurrentAge = false;
 		if (Integer.parseInt(ageAtPresent) < 18)
 			validCurrentAge = false;
+		
+		//Only update currentAge if it will be assigned a valid value.
 		if (validCurrentAge)
 			currentAge = Integer.parseInt(ageAtPresent);
 		
+		//There is no need for error checking when assigning values to gender and smokingHabits.
 		gender = sex;
 		smokingHabits = smokingStatus;
 		
+		//Check if "Yes" is selected for more than one terminal illness.
 		ArrayList<String> yesOrNoList = new ArrayList<String>();
 	      	yesOrNoList.add(alzheimersStatus);
 	      	yesOrNoList.add(creutzfeldtJakobStatus);
@@ -79,7 +84,8 @@ public class LifeExpectancy {
 	      	}
 	      	if (numberOfYes > 1)
 	      		validNumberOfTerminalIllnesses = false;
-	      
+	      	
+	    //Only update terminal illness variables if "Yes" is selected for at most one illness.
 		if (validNumberOfTerminalIllnesses) {
 			alzheimers = alzheimersStatus;
 			creutzfeldtJakob = creutzfeldtJakobStatus;
