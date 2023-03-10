@@ -117,7 +117,7 @@ public class LifeExpectancyCalculatorController {
 	terminalIllnessInputSceneContainer.getChildren().addAll(alzheimersContainer, creutzfeldtJakobContainer,
 		crohnsContainer, cysticFibrosisContainer, duchenneMDContainer, hepBContainer, heartDiseaseContainer,
 		huntingtonsContainer, multipleSclerosisContainer, rabiesContainer, doneTerminalIllnessButton);
-	Scene terminalIllnessInputScene = new Scene(terminalIllnessInputSceneContainer, 400, 400);
+	Scene terminalIllnessInputScene = new Scene(terminalIllnessInputSceneContainer, 400, 800);
 	
 	enterTerminalIllnessButton.setOnAction(event -> applicationStage.setScene(terminalIllnessInputScene));
 	}
