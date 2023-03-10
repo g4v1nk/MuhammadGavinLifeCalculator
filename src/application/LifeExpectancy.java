@@ -134,7 +134,6 @@ public class LifeExpectancy {
 				futureLifetime = 7;	
 		}
 		
-		//We are assuming that the user enters at most one terminal illness.
         if (alzheimers.equals("Yes"))
         	futureLifetime = (int)((-6.0/25)*currentAge + 24.6);
         else if (creutzfeldtJakob.equals("Yes"))

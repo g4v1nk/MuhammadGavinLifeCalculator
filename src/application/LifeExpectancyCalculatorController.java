@@ -1,6 +1,8 @@
 package application;
 
 import java.io.FileInputStream;
+import java.util.ArrayList;
+
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -97,6 +99,44 @@ public class LifeExpectancyCalculatorController {
     }
     private Button mainMenuButton = new Button("Main Menu"); {
     	mainMenuButton.setTranslateX(100);
+    }
+    
+    //Checking for errors in current age entered.
+    private boolean validCurrentAge = true;
+	for (char c : currentAgeTextField.getText().toCharArray())  {
+		if (!Character.isDigit(c)) {
+			validCurrentAge = false;
+			//Display error message. When the user presses "Calculate Life Expectancy", display (next to the TextField, in red) "You entered [entry]. Please enter a number 18 or larger."
+		}
+	}
+		
+	if (Integer.parseInt(currentAgeTextField.getText()) < 18)
+		validCurrentAge = false;
+		//Display error message. When the user presses "Calculate Life Expectancy", display (next to the TextField, in red) "You entered [entry]. Please enter a number."
+		
+			
+    //Checking for errors in number of terminal illnesses entered.
+    private ArrayList<String> yesOrNoList = new ArrayList<String>(); {
+    	yesOrNoList.add(alzheimersContainer.getChoiceBox().getValue());
+    	yesOrNoList.add(creutzfeldtJakobContainer.getChoiceBox().getValue());
+    	yesOrNoList.add(crohnsContainer.getChoiceBox().getValue());
+    	yesOrNoList.add(cysticFibrosisContainer.getChoiceBox().getValue());
+    	yesOrNoList.add(duchenneMDContainer.getChoiceBox().getValue());
+    	yesOrNoList.add(hepBContainer.getChoiceBox().getValue());
+    	yesOrNoList.add(heartDiseaseContainer.getChoiceBox().getValue());
+    	yesOrNoList.add(huntingtonsContainer.getChoiceBox().getValue());
+    	yesOrNoList.add(multipleSclerosisContainer.getChoiceBox().getValue());
+    	yesOrNoList.add(rabiesContainer.getChoiceBox().getValue());
+    	
+    	int numberOfYes = 0;
+    	boolean validTerminalIllnessNumber = true;
+    	for (String element : yesOrNoList) {
+    		if (element.equals("Yes"))
+    			numberOfYes += 1;
+    	}
+    	if (numberOfYes > 1)
+    		validTerminalIllnessNumber = false;
+    		//Display error message. When the user presses "Done Terminal Illness", display "You cannot have more than one terminal illness."
     }
     
 	//Calculating the user's life expectancy.
