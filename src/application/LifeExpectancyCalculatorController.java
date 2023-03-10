@@ -123,6 +123,17 @@ public class LifeExpectancyCalculatorController {
 	enterTerminalIllnessButton.setOnAction(event -> applicationStage.setScene(terminalIllnessInputScene));
 	}
 	
+	//Setting up the Output Scene
+	{
+	newCalculationButton.setTranslateX(100);
+	newCalculationButton.setTranslateY(10);
+	mainMenuButton.setTranslateX(100);
+	mainMenuButton.setTranslateY(40);
+	outputSceneContainer.getChildren().addAll(outputLabel, newCalculationButton, mainMenuButton);
+ 	
+	calculateLifeExpectancyButton.setOnAction(event -> calculateAndGoToOutputScene());
+	}
+	
     /** This method changes the scene to outputScene, setting outputMessage along the way.
      * 
      */
@@ -166,20 +177,6 @@ public class LifeExpectancyCalculatorController {
 			outputMessage = "Your life expectancy is " + lifeExpectancy.getLifeExpectancy() + " more years";
 		applicationStage.setScene(outputScene);
 		outputLabel.setText(outputMessage);
-		System.out.println(outputMessage);
-		System.out.println(yesOrNoList);
-		System.out.println(numberOfYes);
-		
-	}
-	
-	//Setting up the Output Scene
-	{
-	newCalculationButton.setTranslateX(100);
-	mainMenuButton.setTranslateX(100);
-	outputLabel.setTranslateY(50);
-	outputSceneContainer.getChildren().addAll(outputLabel, newCalculationButton, mainMenuButton);
- 	
-	calculateLifeExpectancyButton.setOnAction(event -> calculateAndGoToOutputScene());
 	}
     
 	/** This method sets the variable applicationStage to the parameter passed in.

@@ -184,21 +184,5 @@ public class LifeExpectancy {
 		return futureLifetime;
 		
 	}
-	
-	/** This method returns the user's current age.
-	 * 
-	 * @return currentAge (This is the user's current age.)
-	 */
-	int getCurrentAge() {
-		return currentAge;	
-	}
-	
-	/** This method returns the user's Alzheimer's Disease status.
-	 * 
-	 * @return alzheimers (This is the user's Alzheimer's Disease status.)
-	 */
-	String getAlzheimers() {
-		return alzheimers;
-	}
 
 }
