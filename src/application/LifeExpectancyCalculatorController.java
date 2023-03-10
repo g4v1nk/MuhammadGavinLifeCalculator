@@ -62,6 +62,7 @@ public class LifeExpectancyCalculatorController {
     private Scene mainInputScene = new Scene(mainInputSceneContainer, 400, 400);
     private VBox outputSceneContainer = new VBox();
     private Scene outputScene = new Scene(outputSceneContainer, 400, 400);
+    private Label outputLabel = new Label();
     private VBox terminalIllnessInputSceneContainer = new VBox();
     private LifeExpectancy lifeExpectancy;
     private String outputMessage = "";
@@ -121,18 +122,6 @@ public class LifeExpectancyCalculatorController {
 	
 	enterTerminalIllnessButton.setOnAction(event -> applicationStage.setScene(terminalIllnessInputScene));
 	}
-
-	//Setting up the Output Scene
-	{
-	newCalculationButton.setTranslateX(100);
-	mainMenuButton.setTranslateX(100);
-	ContainerWithinSceneContainer messageContainer = new ContainerWithinSceneContainer(50, 0, outputMessage, 100);
- 	
-	messageContainer.getChildren().add(messageContainer.getLabel());
- 	outputSceneContainer.getChildren().addAll(messageContainer, newCalculationButton, mainMenuButton);
- 	
-	calculateLifeExpectancyButton.setOnAction(event -> calculateAndGoToOutputScene());
-	}
 	
     /** This method changes the scene to outputScene, setting outputMessage along the way.
      * 
@@ -176,10 +165,21 @@ public class LifeExpectancyCalculatorController {
 		if (validCurrentAge && validNumberOfTerminalIllnesses)
 			outputMessage = "Your life expectancy is " + lifeExpectancy.getLifeExpectancy() + " more years";
 		applicationStage.setScene(outputScene);
+		outputLabel.setText(outputMessage);
 		System.out.println(outputMessage);
 		System.out.println(yesOrNoList);
 		System.out.println(numberOfYes);
 		
+	}
+	
+	//Setting up the Output Scene
+	{
+	newCalculationButton.setTranslateX(100);
+	mainMenuButton.setTranslateX(100);
+	outputLabel.setTranslateY(50);
+	outputSceneContainer.getChildren().addAll(outputLabel, newCalculationButton, mainMenuButton);
+ 	
+	calculateLifeExpectancyButton.setOnAction(event -> calculateAndGoToOutputScene());
 	}
     
 	/** This method sets the variable applicationStage to the parameter passed in.
