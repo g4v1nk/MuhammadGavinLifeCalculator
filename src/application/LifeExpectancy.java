@@ -22,6 +22,10 @@ public class LifeExpectancy {
 	private String multipleSclerosis;
 	private String rabies;
 	
+	//Variables related to error handling defined here.
+	private boolean validCurrentAge = true;
+	private boolean validNumberOfTerminalIllnesses = true;
+	
     /** This constructor constructs a LifeExpectancy object with instance variables that keep track of
      * mortality-related information.
      * 
@@ -39,10 +43,11 @@ public class LifeExpectancy {
      * @param multipleSclerosisStatus (This is the user's Multiple Sclerosis status: "y"(es) or "n"(o))
      * @param rabiesStatus (This is the user's Rabies status: "y"(es) or "n"(o))
      */
-	LifeExpectancy(int ageAtPresent, String sex, String smokingStatus, String alzheimersStatus,
+	LifeExpectancy(String ageAtPresent, String sex, String smokingStatus, String alzheimersStatus,
 			String creutzfeldtJakobStatus, String crohnsStatus, String cysticFibrosisStatus, String duchenneMDStatus, String heartDiseaseStatus,
 			String hepBStatus, String huntingtonsStatus, String multipleSclerosisStatus, String rabiesStatus) {
-		currentAge = ageAtPresent;
+		
+		currentAge = Integer.parseInt(ageAtPresent);
 		gender = sex;
 		smokingHabits = smokingStatus;
 		alzheimers = alzheimersStatus;
