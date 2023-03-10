@@ -90,11 +90,11 @@ public class LifeExpectancyCalculatorController {
     	calculateLifeExpectancyButton.setTranslateX(100);
     	calculateLifeExpectancyButton.setTranslateY(25);
     }
-    private Label currentAgeErrorMessage = new Label("Current age error message");
+//    private Label currentAgeErrorMessage = new Label("Current age error message");
     private Button doneTerminalIllnessButton = new Button("Done Terminal Illness"); {
     	doneTerminalIllnessButton.setTranslateX(100);
     }
-    private Label numberOfTerminalIllnessesErrorMessage = new Label("Number of terminal illnesses error message");
+//    private Label numberOfTerminalIllnessesErrorMessage = new Label("Number of terminal illnesses error message");
     private Button newCalculationButton = new Button("New Calculation"); {
     	newCalculationButton.setTranslateX(100);
     	newCalculationButton.setTranslateX(100);
@@ -104,14 +104,14 @@ public class LifeExpectancyCalculatorController {
     }
     
     //Calculating the user's life expectancy (but only if all user input is valid).
-	//private LifeExpectancy lifeExpectancy = new LifeExpectancy(currentAgeTextField.getText(), genderContainer.getChoiceBox().getValue(), smokingHabitsContainer.getChoiceBox().getValue(),
-	//alzheimersContainer.getChoiceBox().getValue(), creutzfeldtJakobContainer.getChoiceBox().getValue(), crohnsContainer.getChoiceBox().getValue(),
-	//cysticFibrosisContainer.getChoiceBox().getValue(), duchenneMDContainer.getChoiceBox().getValue(), hepBContainer.getChoiceBox().getValue(),
-	//heartDiseaseContainer.getChoiceBox().getValue(), huntingtonsContainer.getChoiceBox().getValue(), multipleSclerosisContainer.getChoiceBox().getValue(),
-	//rabiesContainer.getChoiceBox().getValue());
+	private LifeExpectancy lifeExpectancy = new LifeExpectancy(currentAgeTextField.getText(), genderContainer.getChoiceBox().getValue(), smokingHabitsContainer.getChoiceBox().getValue(),
+	alzheimersContainer.getChoiceBox().getValue(), creutzfeldtJakobContainer.getChoiceBox().getValue(), crohnsContainer.getChoiceBox().getValue(),
+	cysticFibrosisContainer.getChoiceBox().getValue(), duchenneMDContainer.getChoiceBox().getValue(), hepBContainer.getChoiceBox().getValue(),
+	heartDiseaseContainer.getChoiceBox().getValue(), huntingtonsContainer.getChoiceBox().getValue(), multipleSclerosisContainer.getChoiceBox().getValue(),
+	rabiesContainer.getChoiceBox().getValue());
 	
 	//Only invoke getLifeExpectancy() on lifeExpectancy if the parameters passed to the LifeExpectancy constructor survived error handling.
-	//if (!lifeExpectancy.currentAge == Integer.parseInt(currentAgeTextField.getText()))
+	if (lifeExpectancy.currentAge != Integer.parseInt(currentAgeTextField.getText()))
 		//Error message
 	//if (!lifeExpectancy.alzheimersStatus == alzheimersContainer.getChoiceBox().getValue())
 		//Error message
