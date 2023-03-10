@@ -37,7 +37,6 @@ public class Main extends Application {
 			e.printStackTrace();
 		}
 	}
-	
 	/** This method launches the life expectancy calculator.
 	 * 
 	 * @param args
