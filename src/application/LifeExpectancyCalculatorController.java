@@ -138,6 +138,14 @@ public class LifeExpectancyCalculatorController {
      * 
      */
 	public void calculateAndGoToOutputScene() {
+		
+		//Update the instance variables of lifeExpectancy based on user input.
+		LifeExpectancy newLifeExpectancy = new LifeExpectancy(currentAgeTextField.getText(), genderContainer.getChoiceBox().getValue(), smokingHabitsContainer.getChoiceBox().getValue(),
+				alzheimersContainer.getChoiceBox().getValue(), creutzfeldtJakobContainer.getChoiceBox().getValue(), crohnsContainer.getChoiceBox().getValue(),
+				cysticFibrosisContainer.getChoiceBox().getValue(), duchenneMDContainer.getChoiceBox().getValue(), heartDiseaseContainer.getChoiceBox().getValue(), hepBContainer.getChoiceBox().getValue(), huntingtonsContainer.getChoiceBox().getValue(),
+				multipleSclerosisContainer.getChoiceBox().getValue(), rabiesContainer.getChoiceBox().getValue());
+		lifeExpectancy = newLifeExpectancy;
+		
 		//Check if the current age entered contains a non-digit.
 		for (char c : currentAgeTextField.getText().toCharArray())
 			if (!Character.isDigit(c)) {
