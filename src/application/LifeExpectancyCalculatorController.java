@@ -133,6 +133,8 @@ public class LifeExpectancyCalculatorController {
 	newCalculationButton.setTranslateY(10);
 	mainMenuButton.setTranslateX(100);
 	mainMenuButton.setTranslateY(40);
+	outputDisplayButton.setTranslateX(50);
+	outputDisplayButton.setTranslateY(70);
 	outputSceneContainer.getChildren().addAll(outputLabel, newCalculationButton, mainMenuButton);
  	
 	calculateLifeExpectancyButton.setOnAction(event -> calculateAndGoToOutputScene());
@@ -193,8 +195,7 @@ public class LifeExpectancyCalculatorController {
 			visualDisplay.getData().addAll(yourData, avgData);
 			
 			VBox visualDisplayContainer = new VBox();
-			outputDisplayButton.setTranslateX(50);
-			outputDisplayButton.setTranslateY(70);
+			visualDisplayContainer.getChildren().add(visualDisplay);
 			
 			Scene visualDisplayScene = new Scene(visualDisplayContainer, 400, 400);
 			outputDisplayButton.setOnAction(event -> applicationStage.setScene(visualDisplayScene));
