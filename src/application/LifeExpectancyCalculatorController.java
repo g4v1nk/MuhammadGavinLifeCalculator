@@ -173,8 +173,8 @@ public class LifeExpectancyCalculatorController {
 
 		if (validCurrentAge && validNumberOfTerminalIllnesses)
 			outputMessage = "Your life expectancy is " + lifeExpectancy.getLifeExpectancy() + " more years";
-		applicationStage.setScene(outputScene);
 		outputLabel.setText(outputMessage);
+		applicationStage.setScene(outputScene);
 	}
     
 	/** This method sets the variable applicationStage to the parameter passed in.
