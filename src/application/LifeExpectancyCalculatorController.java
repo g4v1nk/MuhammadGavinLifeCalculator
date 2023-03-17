@@ -169,6 +169,9 @@ public class LifeExpectancyCalculatorController {
 	    if (numberOfYes > 1) {
 	    	validNumberOfTerminalIllnesses = false;
 	    	outputMessage = "You may only select Yes for zero or one terminal illness.";
+	    } else if (Integer.parseInt(currentAgeTextField.getText()) < 65 && alzheimersContainer.getChoiceBox().getValue().equals("Yes")) {
+	    	validNumberOfTerminalIllnesses = false;
+	    	outputMessage = "You may not select Yes for Alzheimer's Disease if you are under 65.";
 	    }
 
 		if (validCurrentAge && validNumberOfTerminalIllnesses)
