@@ -51,8 +51,8 @@ public class LifeExpectancyCalculatorController {
     private ContainerWithinSceneContainerWithChoiceBox rabiesContainer = new ContainerWithinSceneContainerWithChoiceBox(75, 0, "Rabies: ", 100, "No", "No", "Yes", null, null);
     private Button startCalculationButton = new Button("Start Calculation");
     private Button enterTerminalIllnessButton = new Button("Enter Terminal Illness");
-    private Button saveButton = new Button("Save");
-    private Label saveLabel = new Label("You must press Save just before pressing Calculate.");
+   // private Button saveButton = new Button("Save");
+    //private Label saveLabel = new Label("You must press Save just before pressing Calculate.");
     private Button calculateLifeExpectancyButton = new Button("Calculate");
     private Button doneTerminalIllnessButton = new Button("Done Terminal Illness");
     private Button newCalculationButton = new Button("New Calculation");
@@ -64,7 +64,7 @@ public class LifeExpectancyCalculatorController {
     private Scene outputScene = new Scene(outputSceneContainer, 400, 400);
     private Label outputLabel = new Label();
     private VBox terminalIllnessInputSceneContainer = new VBox();
-    private LifeExpectancy lifeExpectancy;
+    private LifeExpectancy lifeExpectancy = new LifeExpectancy("18", "Male", "Non-smoker", "No", "No", "No", "No", "No", "No", "No", "No", "No", "No");
     private String outputMessage = "";
 	private boolean validCurrentAge = true;
 	private boolean validNumberOfTerminalIllnesses = true;
@@ -83,14 +83,14 @@ public class LifeExpectancyCalculatorController {
 	genderContainer.getChildren().addAll(genderContainer.getLabel(), genderContainer.getChoiceBox());
 	smokingHabitsContainer.getChildren().addAll(smokingHabitsContainer.getLabel(), smokingHabitsContainer.getChoiceBox());
 	enterTerminalIllnessButton.setTranslateX(100);
-	saveButton.setTranslateX(100);
-	saveButton.setTranslateY(25);
-	saveLabel.setTranslateX(25);
-	saveLabel.setTranslateY(40);
-	saveButton.setOnAction(event -> lifeExpectancy = new LifeExpectancy(currentAgeTextField.getText(), genderContainer.getChoiceBox().getValue(), smokingHabitsContainer.getChoiceBox().getValue(),
-			alzheimersContainer.getChoiceBox().getValue(), creutzfeldtJakobContainer.getChoiceBox().getValue(), crohnsContainer.getChoiceBox().getValue(),
-			cysticFibrosisContainer.getChoiceBox().getValue(), duchenneMDContainer.getChoiceBox().getValue(), heartDiseaseContainer.getChoiceBox().getValue(), hepBContainer.getChoiceBox().getValue(), huntingtonsContainer.getChoiceBox().getValue(),
-			multipleSclerosisContainer.getChoiceBox().getValue(), rabiesContainer.getChoiceBox().getValue()));
+	//saveButton.setTranslateX(100);
+	//saveButton.setTranslateY(25);
+	//saveLabel.setTranslateX(25);
+	//saveLabel.setTranslateY(40);
+	//saveButton.setOnAction(event -> lifeExpectancy = new LifeExpectancy(currentAgeTextField.getText(), genderContainer.getChoiceBox().getValue(), smokingHabitsContainer.getChoiceBox().getValue(),
+	//		alzheimersContainer.getChoiceBox().getValue(), creutzfeldtJakobContainer.getChoiceBox().getValue(), crohnsContainer.getChoiceBox().getValue(),
+	//		cysticFibrosisContainer.getChoiceBox().getValue(), duchenneMDContainer.getChoiceBox().getValue(), heartDiseaseContainer.getChoiceBox().getValue(), hepBContainer.getChoiceBox().getValue(), huntingtonsContainer.getChoiceBox().getValue(),
+	//		multipleSclerosisContainer.getChoiceBox().getValue(), rabiesContainer.getChoiceBox().getValue()));
 	calculateLifeExpectancyButton.setTranslateX(100);
 	calculateLifeExpectancyButton.setTranslateY(60);
 	
