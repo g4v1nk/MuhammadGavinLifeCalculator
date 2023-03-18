@@ -9,6 +9,9 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -175,30 +178,51 @@ public class LifeExpectancyCalculatorController {
 	    } else if (Integer.parseInt(currentAgeTextField.getText()) < 65 && alzheimersContainer.getChoiceBox().getValue().equals("Yes")) {
 	    	validNumberOfTerminalIllnesses = false;
 	    	outputMessage = "You may not select Yes for Alzheimer's Disease if you are under 65.";
-	    } else if (validCurrentAge && validNumberOfTerminalIllnesses)
+	    } else if (validCurrentAge && validNumberOfTerminalIllnesses) {
+	    	
 			outputMessage = "Your life expectancy is " + lifeExpectancy.getLifeExpectancy() + " more years";
-	    	outputSceneContainer.getChildren().add(outputDisplayButton);
+	    	
+			//We need to create a graph.
+			
+			NumberAxis ageAxis = new NumberAxis();
+			CategoryAxis youVsAverageAxis = new CategoryAxis();
+			BarChart<Number, String> visualDisplay = new BarChart<Number, String>(ageAxis, youVsAverageAxis);
+			visualDisplay.setTitle("Results");
+			ageAxis.setLabel("Age (years)");
+			ageAxis.setTickLabelRotation(90);
+			
+			XYChart.Series<Number, String> yourData = new XYChart.Series<Number, String>();
+	    	yourData.getData().add(new XYChart.Data<Number, String>(lifeExpectancy.getLifeExpectancy() + Integer.parseInt(currentAgeTextField.getText()), "Your Age At Death"));
+			
+	    	XYChart.Series<Number, String> avgData = new XYChart.Series<Number, String>();
+	    	avgData.getData().add(new XYChart.Data<Number, String>(86, "Average Age At Death"));
+	    	visualDisplay.getData().addAll(yourData, avgData);
+	    	outputSceneContainer.getChildren().add(visualDisplay);
+	    	
+			//outputSceneContainer.getChildren().add(outputDisplayButton);
 		
 	    	//Create a visual display of the user's results.
-	    	BarGraph visualDisplay = new BarGraph("Your Age At Death", "Age (years)", 1);
+	    	//BarGraph visualDisplay = new BarGraph("Your Age At Death", "Age (years)", 1);
 		
-	    	XYChart.Series yourData = new XYChart.Series<>();
-	    	yourData.getData().add(new XYChart.Data<>(lifeExpectancy.getLifeExpectancy() + Integer.parseInt(currentAgeTextField.getText()), "Your Age At Death"));
+	    	//XYChart.Series yourData = new XYChart.Series<>();
+	    	//yourData.getData().add(new XYChart.Data<>(lifeExpectancy.getLifeExpectancy() + Integer.parseInt(currentAgeTextField.getText()), "Your Age At Death"));
 		
-	    	XYChart.Series avgData = new XYChart.Series<>();
-	    	avgData.getData().add(new XYChart.Data<>(86, "Average Age At Death"));
+	    	//XYChart.Series avgData = new XYChart.Series<>();
+	    	//avgData.getData().add(new XYChart.Data<>(86, "Average Age At Death"));
 		
-	    	visualDisplay.getData().addAll(yourData, avgData);
+	    	//visualDisplay.getData().addAll(yourData, avgData);
 		
-	    	VBox visualDisplayContainer = new VBox();
-	    	visualDisplayContainer.getChildren().add(visualDisplay);
+	    	//VBox visualDisplayContainer = new VBox();
+	    	//visualDisplayContainer.getChildren().add(visualDisplay);
 		
-	    	Scene visualDisplayScene = new Scene(visualDisplayContainer, 400, 400);
-	    	outputDisplayButton.setOnAction(event -> applicationStage.setScene(visualDisplayScene));
-		
+	    	//Scene visualDisplayScene = new Scene(visualDisplayContainer, 400, 400);
+	    	//outputDisplayButton.setOnAction(event -> applicationStage.setScene(visualDisplayScene));
+	    	
+	    }
+	    
 	    outputLabel.setText(outputMessage);
 		applicationStage.setScene(outputScene);
-		System.out.println(currentAgeTextField.getText() + "," + genderContainer.getChoiceBox().getValue() + "," + smokingHabitsContainer.getChoiceBox().getValue() + "," + alzheimersContainer.getChoiceBox().getValue());
+	
 	}
     
 	/** This method sets the variable applicationStage to the parameter passed in.
