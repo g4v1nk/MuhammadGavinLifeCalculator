@@ -186,20 +186,16 @@ public class LifeExpectancyCalculatorController {
 			
 			NumberAxis ageAxis = new NumberAxis();
 			CategoryAxis youVsAverageAxis = new CategoryAxis();
-			BarChart<Number, String> visualDisplay = new BarChart<Number, String>(ageAxis, youVsAverageAxis);
-			visualDisplay.setTitle("Results");
-			ageAxis.setLabel("Age (years)");
-			ageAxis.setTickLabelRotation(90);
 			
 			XYChart.Series<Number, String> yourData = new XYChart.Series<Number, String>();
 	    	yourData.getData().add(new XYChart.Data<Number, String>(lifeExpectancy.getLifeExpectancy() + Integer.parseInt(currentAgeTextField.getText()), "Your Age At Death"));
-			
+	    	
 	    	XYChart.Series<Number, String> avgData = new XYChart.Series<Number, String>();
 	    	avgData.getData().add(new XYChart.Data<Number, String>(86, "Average Age At Death"));
-	    	visualDisplay.getData().addAll(yourData, avgData);
-	    	outputSceneContainer.getChildren().add(visualDisplay);
 	    	
-	    	//BarGraph visualDisplay = new BarGraph(ageAxis, youVsAverageAxis, "Results", "Age (years)", 90, yourData, avgData);
+	    	BarGraph visualDisplay = new BarGraph(ageAxis, youVsAverageAxis, "Results", "Age (years)", 90, yourData, avgData);
+	 
+	    	outputSceneContainer.getChildren().add(visualDisplay);
 	    	
 	    }
 	    
