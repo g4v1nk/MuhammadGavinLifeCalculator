@@ -182,7 +182,7 @@ public class LifeExpectancyCalculatorController {
 	    	
 			outputMessage = "Your life expectancy is " + lifeExpectancy.getLifeExpectancy() + " more years";
 	    	
-			//We need to create a graph.
+			//Setting up a bar graph of the user's results.
 			
 			NumberAxis ageAxis = new NumberAxis();
 			CategoryAxis youVsAverageAxis = new CategoryAxis();
@@ -199,24 +199,7 @@ public class LifeExpectancyCalculatorController {
 	    	visualDisplay.getData().addAll(yourData, avgData);
 	    	outputSceneContainer.getChildren().add(visualDisplay);
 	    	
-			//outputSceneContainer.getChildren().add(outputDisplayButton);
-		
-	    	//Create a visual display of the user's results.
-	    	//BarGraph visualDisplay = new BarGraph("Your Age At Death", "Age (years)", 1);
-		
-	    	//XYChart.Series yourData = new XYChart.Series<>();
-	    	//yourData.getData().add(new XYChart.Data<>(lifeExpectancy.getLifeExpectancy() + Integer.parseInt(currentAgeTextField.getText()), "Your Age At Death"));
-		
-	    	//XYChart.Series avgData = new XYChart.Series<>();
-	    	//avgData.getData().add(new XYChart.Data<>(86, "Average Age At Death"));
-		
-	    	//visualDisplay.getData().addAll(yourData, avgData);
-		
-	    	//VBox visualDisplayContainer = new VBox();
-	    	//visualDisplayContainer.getChildren().add(visualDisplay);
-		
-	    	//Scene visualDisplayScene = new Scene(visualDisplayContainer, 400, 400);
-	    	//outputDisplayButton.setOnAction(event -> applicationStage.setScene(visualDisplayScene));
+	    	//BarGraph visualDisplay = new BarGraph(ageAxis, youVsAverageAxis, "Results", "Age (years)", 90, yourData, avgData);
 	    	
 	    }
 	    
