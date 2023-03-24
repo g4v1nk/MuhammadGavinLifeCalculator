@@ -44,5 +44,13 @@ public class BarGraph extends BarChart<Number, String> {
 	public void setLowerData(XYChart.Series<Number, String> data) {
 		lowerData = data;
 	}
+	
+	/** This method sets the value of the instance variable "upperData" based on the parameter.
+	 * 
+	 * @param data (This is what "upperData" is to be set to.)
+	 */
+	public void setUpperData(XYChart.Series<Number, String> data) {
+		upperData = data;
+	}
 
 }

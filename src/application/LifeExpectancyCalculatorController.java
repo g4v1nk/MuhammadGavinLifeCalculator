@@ -71,6 +71,11 @@ public class LifeExpectancyCalculatorController {
     private String outputMessage = "";
 	private boolean validCurrentAge = true;
 	private boolean validNumberOfTerminalIllnesses = true;
+	private NumberAxis ageAxis = new NumberAxis();
+	private CategoryAxis youVsAverageAxis = new CategoryAxis();
+	private XYChart.Series<Number, String> yourData = new XYChart.Series<Number, String>();
+	private XYChart.Series<Number, String> avgData = new XYChart.Series<Number, String>();
+	private BarGraph visualDisplay = new BarGraph(ageAxis, youVsAverageAxis, "Results", "Age (years)", 90, yourData, avgData);
 	
 	//Setting up the Main Menu Scene.
 	{
@@ -124,7 +129,7 @@ public class LifeExpectancyCalculatorController {
 	newCalculationButton.setTranslateY(10);
 	mainMenuButton.setTranslateX(100);
 	mainMenuButton.setTranslateY(40);
-	outputSceneContainer.getChildren().addAll(outputLabel, newCalculationButton, mainMenuButton);
+	outputSceneContainer.getChildren().addAll(outputLabel, newCalculationButton, mainMenuButton, visualDisplay);
  	
 	calculateLifeExpectancyButton.setOnAction(event -> calculateAndGoToOutputScene());
 	}
@@ -184,21 +189,10 @@ public class LifeExpectancyCalculatorController {
 	    	
 			//Setting up a bar graph of the user's results.
 			
-			NumberAxis ageAxis = new NumberAxis();
-			CategoryAxis youVsAverageAxis = new CategoryAxis();
-			
-			XYChart.Series<Number, String> yourData = new XYChart.Series<Number, String>();
-	    	yourData.getData().add(new XYChart.Data<Number, String>(lifeExpectancy.getLifeExpectancy() + Integer.parseInt(currentAgeTextField.getText()), "Your Age At Death"));
-	    	
-	    	XYChart.Series<Number, String> avgData = new XYChart.Series<Number, String>();
-	    	avgData.getData().add(new XYChart.Data<Number, String>(86, "Average Age At Death"));
-	    	
-	    	BarGraph visualDisplay = new BarGraph(ageAxis, youVsAverageAxis, "Results", "Age (years)", 90, yourData, avgData);
-	 
-	    	visualDisplay.lowerData
-	    	outputSceneContainer.getChildren().add(visualDisplay);
-	    	
-	    	
+			yourData.getData().add(new XYChart.Data<Number, String>(lifeExpectancy.getLifeExpectancy() + Integer.parseInt(currentAgeTextField.getText()), "Your Age At Death"));
+			avgData.getData().add(new XYChart.Data<Number, String>(86, "Average Age At Death"));
+			visualDisplay.setLowerData(yourData);
+			visualDisplay.setUpperData(avgData);
 	    	
 	    }
 	    
