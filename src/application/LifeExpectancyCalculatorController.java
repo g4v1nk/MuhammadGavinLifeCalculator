@@ -195,7 +195,10 @@ public class LifeExpectancyCalculatorController {
 	    	
 	    	BarGraph visualDisplay = new BarGraph(ageAxis, youVsAverageAxis, "Results", "Age (years)", 90, yourData, avgData);
 	 
+	    	visualDisplay.lowerData
 	    	outputSceneContainer.getChildren().add(visualDisplay);
+	    	
+	    	
 	    	
 	    }
 	    
