@@ -1,5 +1,6 @@
 package application;
 
+import javafx.scene.paint.Color;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 
@@ -68,6 +69,7 @@ public class LifeExpectancyCalculatorController {
     private Label outputLabel = new Label();
     private VBox terminalIllnessInputSceneContainer = new VBox();
     private LifeExpectancy lifeExpectancy = new LifeExpectancy("18", "Male", "Non-smoker", "No", "No", "No", "No", "No", "No", "No", "No", "No", "No");
+    private Label currentAgeErrorLabel = new Label();
     private String outputMessage = "";
 	private boolean validCurrentAge = true;
 	private boolean validNumberOfTerminalIllnesses = true;
@@ -131,7 +133,26 @@ public class LifeExpectancyCalculatorController {
 	mainMenuButton.setTranslateY(40);
 	outputSceneContainer.getChildren().addAll(outputLabel, newCalculationButton, mainMenuButton, visualDisplay);
  	
-	calculateLifeExpectancyButton.setOnAction(event -> calculateAndGoToOutputScene());
+	calculateLifeExpectancyButton.setOnAction(event -> checkForCurrentAgeError());
+	}
+	
+	/** This method checks for errors in current age input.
+	 * If there is an error, then an error message is added to mainInputScene.
+	 * If there are no errors, then calculateAndGoToOutputScene() is called.
+	 * 
+	 */
+	public void checkForCurrentAgeError() {
+		//Check if the current age entered is less than 18.
+		if (Integer.parseInt(currentAgeTextField.getText()) < 18) {
+			currentAgeErrorLabel.setText("You entered " + currentAgeTextField.getText() + ". Please enter a number at least 18.");
+			currentAgeErrorLabel.setTextFill(Color.RED);
+			currentAgeContainer.getChildren().add(currentAgeErrorLabel);
+			
+			//"Refresh" the scene so that it now has the error message.
+			applicationStage.setScene(mainInputScene);
+		} else
+			calculateAndGoToOutputScene();
+				
 	}
 	
     /** This method changes the scene to outputScene, setting outputMessage along the way.
@@ -146,18 +167,17 @@ public class LifeExpectancyCalculatorController {
 				multipleSclerosisContainer.getChoiceBox().getValue(), rabiesContainer.getChoiceBox().getValue());
 		lifeExpectancy = newLifeExpectancy;
 		
-		//Check if the current age entered contains a non-digit.
+		/**
+		 * 
+		 * //Check if the current age entered contains a non-digit.
 		for (char c : currentAgeTextField.getText().toCharArray())
 			if (!Character.isDigit(c)) {
 				validCurrentAge = false;
 				outputMessage = "You entered " + c + " . Please enter a number.";
 			}
+			
+		**/
 		
-		//Check if the current age entered is less than 18.
-		if (Integer.parseInt(currentAgeTextField.getText()) < 18) {
-			validCurrentAge = false;
-			outputMessage = "You entered " + currentAgeTextField.getText() + ". Please enter a number at least 18.";
-		}
 		
 		//Check if "Yes" is selected for more than one terminal illness.
 		ArrayList<String> yesOrNoList = new ArrayList<String>();
