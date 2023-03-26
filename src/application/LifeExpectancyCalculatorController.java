@@ -70,6 +70,7 @@ public class LifeExpectancyCalculatorController {
     private VBox terminalIllnessInputSceneContainer = new VBox();
     private LifeExpectancy lifeExpectancy = new LifeExpectancy("18", "Male", "Non-smoker", "No", "No", "No", "No", "No", "No", "No", "No", "No", "No");
     private Label currentAgeErrorLabel = new Label();
+    private Label terminalIllnessErrorLabel = new Label();
     private String outputMessage = "";
 	private boolean validCurrentAge = true;
 	private boolean validNumberOfTerminalIllnesses = true;
@@ -155,6 +156,50 @@ public class LifeExpectancyCalculatorController {
 				
 	}
 	
+	/** This method checks if more than one terminal illness has been entered, or if Alzheimer's disease has been entered when current age is less than 65.
+	 * If one of the above errors is present, an error message is added to terminalIllnessInputScene.
+	 * Otherwise, the scene will be set to mainInputScene.
+	 * 
+	 */
+	public void checkForTerminalIllnessErrors() {
+		//Check if "Yes" is selected for more than one terminal illness.
+		ArrayList<String> yesOrNoList = new ArrayList<String>();
+		   	yesOrNoList.add(alzheimersContainer.getChoiceBox().getValue());
+		   	yesOrNoList.add(creutzfeldtJakobContainer.getChoiceBox().getValue());
+		   	yesOrNoList.add(crohnsContainer.getChoiceBox().getValue());
+		   	yesOrNoList.add(cysticFibrosisContainer.getChoiceBox().getValue());
+		   	yesOrNoList.add(duchenneMDContainer.getChoiceBox().getValue());
+		   	yesOrNoList.add(heartDiseaseContainer.getChoiceBox().getValue());
+		   	yesOrNoList.add(hepBContainer.getChoiceBox().getValue());
+		   	yesOrNoList.add(huntingtonsContainer.getChoiceBox().getValue());
+		   	yesOrNoList.add(multipleSclerosisContainer.getChoiceBox().getValue());
+		   	yesOrNoList.add(rabiesContainer.getChoiceBox().getValue());
+		int numberOfYes = 0;
+		for (String element : yesOrNoList) {
+		   	if (element.equals("Yes"))
+		   		numberOfYes += 1;
+		}
+			    
+		if (numberOfYes > 1) {
+		   	terminalIllnessErrorLabel.setText("You selected " + numberOfYes + "terminal illnesses. Please do not select more than one.");
+		   	terminalIllnessErrorLabel.setTextFill(Color.RED);
+		   	terminalIllnessInputSceneContainer.getChildren().add(terminalIllnessErrorLabel);
+		   	
+		   	
+		    //Refresh the scene so that it shows the error message.
+		   	applicationStage.setScene(terminalIllnessInputScene);
+		} else if (Integer.parseInt(currentAgeTextField.getText()) < 65 && alzheimersContainer.getChoiceBox().getValue().equals("Yes")) {
+		   	terminalIllnessErrorLabel.setText("You selected Alzheimer's Disease and your age is " + currentAgeTextField.getText() + ". Please do not select Alzheimer's Disease if you are less than 65.");
+		   	terminalIllnessErrorLabel.setTextFill(Color.RED);
+		   	terminalIllnessInputSceneContainer.getChildren().add(terminalIllnessErrorLabel);
+		   	
+		    //Refresh the scene so that it shows the error message.
+		   	applicationStage.setScene(terminalIllnessInputScene);
+		} else {
+			applicationStage.setScene(mainInputScene);
+		}
+		
+	
     /** This method changes the scene to outputScene, setting outputMessage along the way.
      * 
      */
@@ -179,30 +224,7 @@ public class LifeExpectancyCalculatorController {
 		**/
 		
 		
-		//Check if "Yes" is selected for more than one terminal illness.
-		ArrayList<String> yesOrNoList = new ArrayList<String>();
-	      	yesOrNoList.add(alzheimersContainer.getChoiceBox().getValue());
-	      	yesOrNoList.add(creutzfeldtJakobContainer.getChoiceBox().getValue());
-	      	yesOrNoList.add(crohnsContainer.getChoiceBox().getValue());
-	      	yesOrNoList.add(cysticFibrosisContainer.getChoiceBox().getValue());
-	      	yesOrNoList.add(duchenneMDContainer.getChoiceBox().getValue());
-	      	yesOrNoList.add(heartDiseaseContainer.getChoiceBox().getValue());
-	      	yesOrNoList.add(hepBContainer.getChoiceBox().getValue());
-	      	yesOrNoList.add(huntingtonsContainer.getChoiceBox().getValue());
-	      	yesOrNoList.add(multipleSclerosisContainer.getChoiceBox().getValue());
-	      	yesOrNoList.add(rabiesContainer.getChoiceBox().getValue());
-	    int numberOfYes = 0;
-	    for (String element : yesOrNoList) {
-	    	if (element.equals("Yes"))
-	    		numberOfYes += 1;
-	    }
-	    
-	    if (numberOfYes > 1) {
-	    	validNumberOfTerminalIllnesses = false;
-	    	outputMessage = "You may only select Yes for zero or one terminal illness.";
-	    } else if (Integer.parseInt(currentAgeTextField.getText()) < 65 && alzheimersContainer.getChoiceBox().getValue().equals("Yes")) {
-	    	validNumberOfTerminalIllnesses = false;
-	    	outputMessage = "You may not select Yes for Alzheimer's Disease if you are under 65.";
+		
 	    } else if (validCurrentAge && validNumberOfTerminalIllnesses) {
 	    	
 			outputMessage = "Your life expectancy is " + lifeExpectancy.getLifeExpectancy() + " more years";
