@@ -66,14 +66,10 @@ public class LifeExpectancyCalculatorController {
     private Scene mainInputScene = new Scene(mainInputSceneContainer, 400, 400);
     private VBox outputSceneContainer = new VBox();
     private Scene outputScene = new Scene(outputSceneContainer, 400, 400);
-    private Label outputLabel = new Label();
     private VBox terminalIllnessInputSceneContainer = new VBox();
     private LifeExpectancy lifeExpectancy = new LifeExpectancy("18", "Male", "Non-smoker", "No", "No", "No", "No", "No", "No", "No", "No", "No", "No");
     private Label currentAgeErrorLabel = new Label();
     private Label terminalIllnessErrorLabel = new Label();
-    private String outputMessage = "";
-	private boolean validCurrentAge = true;
-	private boolean validNumberOfTerminalIllnesses = true;
 	private NumberAxis ageAxis = new NumberAxis();
 	private CategoryAxis youVsAverageAxis = new CategoryAxis();
 	private XYChart.Series<Number, String> yourData = new XYChart.Series<Number, String>();
@@ -132,7 +128,7 @@ public class LifeExpectancyCalculatorController {
 	newCalculationButton.setTranslateY(10);
 	mainMenuButton.setTranslateX(100);
 	mainMenuButton.setTranslateY(40);
-	outputSceneContainer.getChildren().addAll(outputLabel, newCalculationButton, mainMenuButton, visualDisplay);
+	outputSceneContainer.getChildren().addAll(newCalculationButton, mainMenuButton, visualDisplay);
  	
 	calculateLifeExpectancyButton.setOnAction(event -> checkForCurrentAgeError());
 	}
@@ -187,17 +183,17 @@ public class LifeExpectancyCalculatorController {
 		   	
 		   	
 		    //Refresh the scene so that it shows the error message.
-		   	applicationStage.setScene(terminalIllnessInputScene);
+		   	//applicationStage.setScene(terminalIllnessInputScene);
 		} else if (Integer.parseInt(currentAgeTextField.getText()) < 65 && alzheimersContainer.getChoiceBox().getValue().equals("Yes")) {
 		   	terminalIllnessErrorLabel.setText("You selected Alzheimer's Disease and your age is " + currentAgeTextField.getText() + ". Please do not select Alzheimer's Disease if you are less than 65.");
 		   	terminalIllnessErrorLabel.setTextFill(Color.RED);
 		   	terminalIllnessInputSceneContainer.getChildren().add(terminalIllnessErrorLabel);
 		   	
 		    //Refresh the scene so that it shows the error message.
-		   	applicationStage.setScene(terminalIllnessInputScene);
-		} else {
+		   	//applicationStage.setScene(terminalIllnessInputScene);
+		} else 
 			applicationStage.setScene(mainInputScene);
-		}
+	}
 		
 	
     /** This method changes the scene to outputScene, setting outputMessage along the way.
@@ -222,23 +218,14 @@ public class LifeExpectancyCalculatorController {
 			}
 			
 		**/
-		
-		
-		
-	    } else if (validCurrentAge && validNumberOfTerminalIllnesses) {
 	    	
-			outputMessage = "Your life expectancy is " + lifeExpectancy.getLifeExpectancy() + " more years";
-	    	
-			//Setting up a bar graph of the user's results.
+		//Setting up a bar graph of the user's results.
 			
-			yourData.getData().add(new XYChart.Data<Number, String>(lifeExpectancy.getLifeExpectancy() + Integer.parseInt(currentAgeTextField.getText()), "Your Age At Death"));
-			avgData.getData().add(new XYChart.Data<Number, String>(86, "Average Age At Death"));
-			visualDisplay.setLowerData(yourData);
-			visualDisplay.setUpperData(avgData);
-	    	
-	    }
-	    
-	    outputLabel.setText(outputMessage);
+		yourData.getData().add(new XYChart.Data<Number, String>(lifeExpectancy.getLifeExpectancy() + Integer.parseInt(currentAgeTextField.getText()), "Your Age At Death"));
+		avgData.getData().add(new XYChart.Data<Number, String>(86, "Average Age At Death"));
+		visualDisplay.setLowerData(yourData);
+		visualDisplay.setUpperData(avgData);
+
 		applicationStage.setScene(outputScene);
 	
 	}
