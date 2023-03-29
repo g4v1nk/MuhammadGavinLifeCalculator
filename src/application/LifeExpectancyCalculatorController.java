@@ -128,7 +128,7 @@ public class LifeExpectancyCalculatorController {
 	newCalculationButton.setTranslateY(10);
 	mainMenuButton.setTranslateX(100);
 	mainMenuButton.setTranslateY(40);
-	outputSceneContainer.getChildren().addAll(newCalculationButton, mainMenuButton, visualDisplay);
+	outputSceneContainer.getChildren().addAll(outputMessageLabel, newCalculationButton, mainMenuButton, visualDisplay);
  	
 	calculateLifeExpectancyButton.setOnAction(event -> checkForCurrentAgeError());
 	}
@@ -223,6 +223,8 @@ public class LifeExpectancyCalculatorController {
 			
 		**/
 	    	
+		outputMessageLabel.setText("You are expected to live" + );
+		
 		//Setting up a bar graph of the user's results.
 			
 		yourData.getData().add(new XYChart.Data<Number, String>(lifeExpectancy.getLifeExpectancy() + Integer.parseInt(currentAgeTextField.getText()), "Your Age At Death"));

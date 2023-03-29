@@ -71,117 +71,117 @@ public class LifeExpectancy {
 	 * This method calculates your future lifetime in years based on your current age, gender,
 	 * smoking habits, and based on any terminal illnesses you have.
 	 * 
-	 * @return futureLifetime (This is the life expectancy that the program has calculated.)
+	 * @return lifeExpectancy (This is the life expectancy that the program has calculated.)
 	 */
 	int getLifeExpectancy() {
 		
 		//Life expectancy variable initialized to 0.
-		int futureLifetime = 0;
+		int lifeExpectancy = 0;
 		
 		if (gender.equals("Male")) {
 			if (currentAge <= 19)
-				futureLifetime = 65;
+				lifeExpectancy = 65;
 			else if (currentAge <= 24)
-				futureLifetime = 60;
+				lifeExpectancy = 60;
 			else if (currentAge <= 29)
-				futureLifetime = 56;
+				lifeExpectancy = 56;
 			else if (currentAge <= 34)
-				futureLifetime = 51;
+				lifeExpectancy = 51;
 			else if (currentAge <= 39)
-				futureLifetime = 46;
+				lifeExpectancy = 46;
 			else if (currentAge <= 44)
-				futureLifetime = 41;
+				lifeExpectancy = 41;
 			else if (currentAge <= 49)
-				futureLifetime = 37;
+				lifeExpectancy = 37;
 			else if (currentAge <= 54)
-				futureLifetime = 32;
+				lifeExpectancy = 32;
 			else if (currentAge <= 59)
-				futureLifetime = 28;
+				lifeExpectancy = 28;
 			else if (currentAge <= 64)
-				futureLifetime = 23;
+				lifeExpectancy = 23;
 			else if (currentAge <= 69)
-				futureLifetime = 19;
+				lifeExpectancy = 19;
 			else if (currentAge <= 74)
-				futureLifetime = 15;
+				lifeExpectancy = 15;
 			else if (currentAge <= 79)
-				futureLifetime = 12;
+				lifeExpectancy = 12;
 			else if (currentAge <= 84)
-				futureLifetime = 9;
+				lifeExpectancy = 9;
 			else
-				futureLifetime = 6;	
+				lifeExpectancy = 6;	
 		}
 		
 		else {
 			if (currentAge <= 19)
-				futureLifetime = 69;
+				lifeExpectancy = 69;
 			else if (currentAge <= 24)
-				futureLifetime = 64;
+				lifeExpectancy = 64;
 			else if (currentAge <= 29)
-				futureLifetime = 59;
+				lifeExpectancy = 59;
 			else if (currentAge <= 34)
-				futureLifetime = 54;
+				lifeExpectancy = 54;
 			else if (currentAge <= 39)
-				futureLifetime = 49;
+				lifeExpectancy = 49;
 			else if (currentAge <= 44)
-				futureLifetime = 45;
+				lifeExpectancy = 45;
 			else if (currentAge <= 49)
-				futureLifetime = 40;
+				lifeExpectancy = 40;
 			else if (currentAge <= 54)
-				futureLifetime = 35;
+				lifeExpectancy = 35;
 			else if (currentAge <= 59)
-				futureLifetime = 30;
+				lifeExpectancy = 30;
 			else if (currentAge <= 64)
-				futureLifetime = 26;
+				lifeExpectancy = 26;
 			else if (currentAge <= 69)
-				futureLifetime = 22;
+				lifeExpectancy = 22;
 			else if (currentAge <= 74)
-				futureLifetime = 17;
+				lifeExpectancy = 17;
 			else if (currentAge <= 79)
-				futureLifetime = 13;
+				lifeExpectancy = 13;
 			else if (currentAge <= 84)
-				futureLifetime = 10;
+				lifeExpectancy = 10;
 			else
-				futureLifetime = 7;	
+				lifeExpectancy = 7;	
 		}
 		
         if (alzheimers.equals("Yes"))
-        	futureLifetime = (int)((-6.0/25)*currentAge + 24.6);
+        	lifeExpectancy = (int)((-6.0/25)*currentAge + 24.6);
         else if (creutzfeldtJakob.equals("Yes"))
-        	futureLifetime = 1;
+        	lifeExpectancy = 1;
         else if (crohns.equals("Yes") && gender.equals("Male"))
-        	futureLifetime = 75 - currentAge;
+        	lifeExpectancy = 75 - currentAge;
         else if (crohns.equals("Yes") && (!gender.equals("Male")))
-        	futureLifetime = 78 - currentAge;
+        	lifeExpectancy = 78 - currentAge;
         else if (cysticFibrosis.equals("Yes"))
-        	futureLifetime = 44 - currentAge;
+        	lifeExpectancy = 44 - currentAge;
         else if (heartDisease.equals("Yes"))
-        	futureLifetime *= (1-0.08);
+        	lifeExpectancy *= (1-0.08);
         else if (hepB.equals("Yes"))
-        	futureLifetime -= 14;
+        	lifeExpectancy -= 14;
         else if (huntingtons.equals("Yes"))
-        	futureLifetime = 30;
+        	lifeExpectancy = 30;
         else if (multipleSclerosis.equals("Yes"))
-        	futureLifetime -= 5;
+        	lifeExpectancy -= 5;
         else if (duchenneMD.equals("Yes"))
-        	futureLifetime = 30 - currentAge;
+        	lifeExpectancy = 30 - currentAge;
         else if (rabies.equals("Yes"))
-        	futureLifetime = 0;
+        	lifeExpectancy = 0;
 		
         if (smokingHabits.equals("Non-smoker"))
-        	futureLifetime -= 0;
+        	lifeExpectancy -= 0;
         else if (smokingHabits.equals("Light smoker"))
-        	futureLifetime -= 5;
+        	lifeExpectancy -= 5;
         else if (smokingHabits.equals("Moderate smoker"))
-        	futureLifetime -= 9;
+        	lifeExpectancy -= 9;
         else
-        	futureLifetime -= 13;
+        	lifeExpectancy -= 13;
         
-        if (futureLifetime < 0)
-        	futureLifetime = 0;
-        else if (currentAge + futureLifetime > 100)
-        	futureLifetime = 100 - currentAge;
+        if (lifeExpectancy < 0)
+        	lifeExpectancy = 0;
+        else if (currentAge + lifeExpectancy > 100)
+        	lifeExpectancy = 100 - currentAge;
         
-		return futureLifetime;
+		return lifeExpectancy;
 		
 	}
 
