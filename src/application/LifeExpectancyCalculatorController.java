@@ -1,24 +1,16 @@
 package application;
 
 import javafx.scene.paint.Color;
-import java.io.FileInputStream;
 import java.util.ArrayList;
-
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -40,6 +32,9 @@ public class LifeExpectancyCalculatorController {
 
     private Stage applicationStage;
     private TextField currentAgeTextField = new TextField();
+    private LifeExpectancy lifeExpectancy = new LifeExpectancy("18", "Male", "Non-smoker", "No", "No", "No", "No", "No", "No", "No", "No", "No", "No");
+    
+    //ContainerWithinSceneContainer objects
     private ContainerWithinSceneContainer currentAgeContainer = new ContainerWithinSceneContainer(75, 25, "Current age: ", 100); 
     private ContainerWithinSceneContainerWithChoiceBox genderContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "Gender: ", 100, "Male", "Male", "Female", null, null); 
     private ContainerWithinSceneContainerWithChoiceBox smokingHabitsContainer = new ContainerWithinSceneContainerWithChoiceBox(75, 0, "Smoking habits: ", 100,
@@ -54,23 +49,30 @@ public class LifeExpectancyCalculatorController {
     private ContainerWithinSceneContainerWithChoiceBox huntingtonsContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "Huntington's Disease: ", 100, "No", "No", "Yes", null, null);
     private ContainerWithinSceneContainerWithChoiceBox multipleSclerosisContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "Multiple Sclerosis: ", 100, "No", "No", "Yes", null, null);
     private ContainerWithinSceneContainerWithChoiceBox rabiesContainer = new ContainerWithinSceneContainerWithChoiceBox(75, 0, "Rabies: ", 100, "No", "No", "Yes", null, null);
+   
+    //Button objects
     private Button startCalculationButton = new Button("Start Calculation");
     private Button enterTerminalIllnessButton = new Button("Enter Terminal Illness");
     private Button calculateLifeExpectancyButton = new Button("Calculate");
     private Button doneTerminalIllnessButton = new Button("Done Terminal Illness");
     private Button newCalculationButton = new Button("New Calculation");
     private Button mainMenuButton = new Button("Main Menu");
-    private VBox mainMenuSceneContainer = new VBox();
-    private VBox mainInputSceneContainer = new VBox();
-    private Scene mainInputScene = new Scene(mainInputSceneContainer, 400, 400);
-    private VBox outputSceneContainer = new VBox();
-    private Scene outputScene = new Scene(outputSceneContainer, 400, 400);
-    private VBox terminalIllnessInputSceneContainer = new VBox();
-    private Scene terminalIllnessInputScene = new Scene(terminalIllnessInputSceneContainer, 400, 800);
-    private LifeExpectancy lifeExpectancy = new LifeExpectancy("18", "Male", "Non-smoker", "No", "No", "No", "No", "No", "No", "No", "No", "No", "No");
+    
+    //Label objects
     private Label currentAgeErrorLabel = new Label();
     private Label terminalIllnessErrorLabel = new Label();
     private Label outputMessageLabel = new Label();
+    
+    //VBox and Scene objects
+    private VBox mainMenuSceneContainer = new VBox();
+    private VBox mainInputSceneContainer = new VBox();
+    private VBox terminalIllnessInputSceneContainer = new VBox();
+    private VBox outputSceneContainer = new VBox();
+    private Scene mainInputScene = new Scene(mainInputSceneContainer, 400, 400);
+    private Scene terminalIllnessInputScene = new Scene(terminalIllnessInputSceneContainer, 400, 800);
+    private Scene outputScene = new Scene(outputSceneContainer, 400, 400);
+
+    //Objects related to the visual display
 	private NumberAxis ageAxis = new NumberAxis();
 	private CategoryAxis youVsAverageAxis = new CategoryAxis();
 	private XYChart.Series<Number, String> yourData = new XYChart.Series<Number, String>();
@@ -182,7 +184,6 @@ public class LifeExpectancyCalculatorController {
 		   	terminalIllnessErrorLabel.setText("You selected " + numberOfYes + "terminal illnesses. Please do not select more than one.");
 		   	terminalIllnessErrorLabel.setTextFill(Color.RED);
 		   	terminalIllnessInputSceneContainer.getChildren().add(terminalIllnessErrorLabel);
-		   	
 		   	
 		    //Refresh the scene so that it shows the error message.
 		   	applicationStage.setScene(terminalIllnessInputScene);
