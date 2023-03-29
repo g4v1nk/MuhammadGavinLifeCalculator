@@ -60,7 +60,6 @@ public class LifeExpectancyCalculatorController {
     private Button doneTerminalIllnessButton = new Button("Done Terminal Illness");
     private Button newCalculationButton = new Button("New Calculation");
     private Button mainMenuButton = new Button("Main Menu");
-    private Button outputDisplayButton = new Button("See Results Visually");
     private VBox mainMenuSceneContainer = new VBox();
     private VBox mainInputSceneContainer = new VBox();
     private Scene mainInputScene = new Scene(mainInputSceneContainer, 400, 400);
@@ -70,6 +69,7 @@ public class LifeExpectancyCalculatorController {
     private LifeExpectancy lifeExpectancy = new LifeExpectancy("18", "Male", "Non-smoker", "No", "No", "No", "No", "No", "No", "No", "No", "No", "No");
     private Label currentAgeErrorLabel = new Label();
     private Label terminalIllnessErrorLabel = new Label();
+    private Label outputMessageLabel = new Label();
 	private NumberAxis ageAxis = new NumberAxis();
 	private CategoryAxis youVsAverageAxis = new CategoryAxis();
 	private XYChart.Series<Number, String> yourData = new XYChart.Series<Number, String>();
