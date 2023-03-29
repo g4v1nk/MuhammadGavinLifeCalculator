@@ -180,7 +180,7 @@ public class LifeExpectancyCalculatorController {
 		}
 			    
 		if (numberOfYes > 1) {
-		   	terminalIllnessErrorLabel.setText("You selected " + numberOfYes + "terminal illnesses. Please do not select more than one.");
+		   	terminalIllnessErrorLabel.setText("You selected " + numberOfYes + " terminal illnesses. Please do not select more than one.");
 		   	terminalIllnessErrorLabel.setTextFill(Color.RED);
 		   	terminalIllnessInputSceneContainer.getChildren().add(terminalIllnessErrorLabel);
 		   	
@@ -193,10 +193,11 @@ public class LifeExpectancyCalculatorController {
 		   	
 		    //Refresh the scene so that it shows the error message.
 		   	applicationStage.setScene(terminalIllnessInputScene);
-		} else 
+		} else {
 			//Clear the error message for future "gameplays".
 			terminalIllnessErrorLabel.setText("");
 			applicationStage.setScene(mainInputScene);
+		}
 	}
 		
 	
