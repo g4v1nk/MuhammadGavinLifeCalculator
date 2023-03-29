@@ -59,7 +59,7 @@ public class LifeExpectancyCalculatorController {
     private Button mainMenuButton = new Button("Main Menu");
     
     //Label objects
-    private Label currentAgeErrorLabel = new Label();
+    private Label currentAgeErrorLabel = new Label("");
     private Label terminalIllnessErrorLabel = new Label("");
     private Label outputMessageLabel = new Label();
     
@@ -92,7 +92,7 @@ public class LifeExpectancyCalculatorController {
 	calculateLifeExpectancyButton.setTranslateX(100);
 	calculateLifeExpectancyButton.setTranslateY(60);
 	
-	mainInputSceneContainer.getChildren().addAll(currentAgeContainer, genderContainer, smokingHabitsContainer,
+	mainInputSceneContainer.getChildren().addAll(currentAgeContainer, currentAgeErrorLabel, genderContainer, smokingHabitsContainer,
 		enterTerminalIllnessButton, calculateLifeExpectancyButton);
 	}
 	
@@ -144,7 +144,6 @@ public class LifeExpectancyCalculatorController {
 		if (Integer.parseInt(currentAgeTextField.getText()) < 18) {
 			currentAgeErrorLabel.setText("You entered " + currentAgeTextField.getText() + ". Please enter a number at least 18.");
 			currentAgeErrorLabel.setTextFill(Color.RED);
-			currentAgeContainer.getChildren().add(currentAgeErrorLabel);
 			
 			//"Refresh" the scene so that it now has the error message.
 			applicationStage.setScene(mainInputScene);
