@@ -68,6 +68,7 @@ public class LifeExpectancyCalculatorController {
     private VBox mainInputSceneContainer = new VBox();
     private VBox terminalIllnessInputSceneContainer = new VBox();
     private VBox outputSceneContainer = new VBox();
+    private Scene mainMenuScene = new Scene(mainMenuSceneContainer, 400, 400);
     private Scene mainInputScene = new Scene(mainInputSceneContainer, 400, 400);
     private Scene terminalIllnessInputScene = new Scene(terminalIllnessInputSceneContainer, 400, 800);
     private Scene outputScene = new Scene(outputSceneContainer, 400, 400);
@@ -80,12 +81,7 @@ public class LifeExpectancyCalculatorController {
 	private BarGraph visualDisplay = new BarGraph(ageAxis, youVsAverageAxis, "Results", "Age (years)", 90, yourData, avgData);
 	
 	//Setting up the Main Menu Scene.
-	{
-	mainMenuSceneContainer.getChildren().add(startCalculationButton);
-	Scene mainMenuScene = new Scene(mainMenuSceneContainer, 400, 400);
-	
-	mainMenuButton.setOnAction(event -> applicationStage.setScene(mainMenuScene));
-	}
+	{mainMenuSceneContainer.getChildren().add(startCalculationButton);}
 	
     //Setting up the Main Input Scene.
 	{
@@ -98,9 +94,6 @@ public class LifeExpectancyCalculatorController {
 	
 	mainInputSceneContainer.getChildren().addAll(currentAgeContainer, genderContainer, smokingHabitsContainer,
 		enterTerminalIllnessButton, calculateLifeExpectancyButton);
-	startCalculationButton.setOnAction( event -> applicationStage.setScene(mainInputScene));
-	doneTerminalIllnessButton.setOnAction(event -> checkForTerminalIllnessErrors());
-	newCalculationButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
 	}
 	
 	//Setting up the Terminal Illness Input Scene.
@@ -120,8 +113,6 @@ public class LifeExpectancyCalculatorController {
 	terminalIllnessInputSceneContainer.getChildren().addAll(alzheimersContainer, creutzfeldtJakobContainer,
 		crohnsContainer, cysticFibrosisContainer, duchenneMDContainer, hepBContainer, heartDiseaseContainer,
 		huntingtonsContainer, multipleSclerosisContainer, rabiesContainer, doneTerminalIllnessButton);
-	
-	enterTerminalIllnessButton.setOnAction(event -> applicationStage.setScene(terminalIllnessInputScene));
 	}
 	
 	//Setting up the Output Scene
@@ -131,7 +122,15 @@ public class LifeExpectancyCalculatorController {
 	mainMenuButton.setTranslateX(100);
 	mainMenuButton.setTranslateY(40);
 	outputSceneContainer.getChildren().addAll(outputMessageLabel, newCalculationButton, mainMenuButton, visualDisplay);
- 	
+	}
+	
+	//Setting the "onAction"s for the buttons.
+	{
+	mainMenuButton.setOnAction(event -> applicationStage.setScene(mainMenuScene));
+	startCalculationButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
+	doneTerminalIllnessButton.setOnAction(event -> checkForTerminalIllnessErrors());
+	newCalculationButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
+	enterTerminalIllnessButton.setOnAction(event -> applicationStage.setScene(terminalIllnessInputScene));
 	calculateLifeExpectancyButton.setOnAction(event -> checkForCurrentAgeError());
 	}
 	
