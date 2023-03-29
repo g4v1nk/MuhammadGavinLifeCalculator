@@ -66,6 +66,7 @@ public class LifeExpectancyCalculatorController {
     private VBox outputSceneContainer = new VBox();
     private Scene outputScene = new Scene(outputSceneContainer, 400, 400);
     private VBox terminalIllnessInputSceneContainer = new VBox();
+    private Scene terminalIllnessInputScene = new Scene(terminalIllnessInputSceneContainer, 400, 800);
     private LifeExpectancy lifeExpectancy = new LifeExpectancy("18", "Male", "Non-smoker", "No", "No", "No", "No", "No", "No", "No", "No", "No", "No");
     private Label currentAgeErrorLabel = new Label();
     private Label terminalIllnessErrorLabel = new Label();
@@ -117,7 +118,6 @@ public class LifeExpectancyCalculatorController {
 	terminalIllnessInputSceneContainer.getChildren().addAll(alzheimersContainer, creutzfeldtJakobContainer,
 		crohnsContainer, cysticFibrosisContainer, duchenneMDContainer, hepBContainer, heartDiseaseContainer,
 		huntingtonsContainer, multipleSclerosisContainer, rabiesContainer, doneTerminalIllnessButton);
-	Scene terminalIllnessInputScene = new Scene(terminalIllnessInputSceneContainer, 400, 800);
 	
 	enterTerminalIllnessButton.setOnAction(event -> applicationStage.setScene(terminalIllnessInputScene));
 	}
