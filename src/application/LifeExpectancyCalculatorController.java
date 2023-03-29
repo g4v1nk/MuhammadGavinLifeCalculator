@@ -147,10 +147,11 @@ public class LifeExpectancyCalculatorController {
 			
 			//"Refresh" the scene so that it now has the error message.
 			applicationStage.setScene(mainInputScene);
-		} else
+		} else {
 			//Clear the error message for future "gameplays".
 			currentAgeErrorLabel.setText("");
 			calculateAndGoToOutputScene();
+		}
 				
 	}
 	
