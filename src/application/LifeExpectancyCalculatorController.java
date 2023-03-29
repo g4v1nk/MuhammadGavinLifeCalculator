@@ -70,7 +70,7 @@ public class LifeExpectancyCalculatorController {
     private VBox outputSceneContainer = new VBox();
     private Scene mainMenuScene = new Scene(mainMenuSceneContainer, 400, 400);
     private Scene mainInputScene = new Scene(mainInputSceneContainer, 400, 400);
-    private Scene terminalIllnessInputScene = new Scene(terminalIllnessInputSceneContainer, 400, 800);
+    private Scene terminalIllnessInputScene = new Scene(terminalIllnessInputSceneContainer, 800, 800);
     private Scene outputScene = new Scene(outputSceneContainer, 400, 400);
 
     //Objects related to the visual display
