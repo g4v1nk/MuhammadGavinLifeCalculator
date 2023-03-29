@@ -97,7 +97,7 @@ public class LifeExpectancyCalculatorController {
 	mainInputSceneContainer.getChildren().addAll(currentAgeContainer, genderContainer, smokingHabitsContainer,
 		enterTerminalIllnessButton, calculateLifeExpectancyButton);
 	startCalculationButton.setOnAction( event -> applicationStage.setScene(mainInputScene));
-	doneTerminalIllnessButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
+	doneTerminalIllnessButton.setOnAction(event -> checkForTerminalIllnessErrors());
 	newCalculationButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
 	}
 	
@@ -185,14 +185,14 @@ public class LifeExpectancyCalculatorController {
 		   	
 		   	
 		    //Refresh the scene so that it shows the error message.
-		   	//applicationStage.setScene(terminalIllnessInputScene);
+		   	applicationStage.setScene(terminalIllnessInputScene);
 		} else if (Integer.parseInt(currentAgeTextField.getText()) < 65 && alzheimersContainer.getChoiceBox().getValue().equals("Yes")) {
 		   	terminalIllnessErrorLabel.setText("You selected Alzheimer's Disease and your age is " + currentAgeTextField.getText() + ". Please do not select Alzheimer's Disease if you are less than 65.");
 		   	terminalIllnessErrorLabel.setTextFill(Color.RED);
 		   	terminalIllnessInputSceneContainer.getChildren().add(terminalIllnessErrorLabel);
 		   	
 		    //Refresh the scene so that it shows the error message.
-		   	//applicationStage.setScene(terminalIllnessInputScene);
+		   	applicationStage.setScene(terminalIllnessInputScene);
 		} else 
 			//Clear the error message for future "gameplays".
 			terminalIllnessErrorLabel.setText("");
