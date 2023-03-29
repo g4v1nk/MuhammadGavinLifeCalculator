@@ -68,12 +68,12 @@ public class LifeExpectancy {
 	}
 	
 	/**
-	 * This method calculates your future lifetime in years based on your current age, gender,
+	 * This method calculates your life expectancy in years based on your current age, gender,
 	 * smoking habits, and based on any terminal illnesses you have.
 	 * 
 	 * @return lifeExpectancy (This is the life expectancy that the program has calculated.)
 	 */
-	int getLifeExpectancy() {
+	int calculateLifeExpectancy() {
 		
 		//Life expectancy variable initialized to 0.
 		int lifeExpectancy = 0;
