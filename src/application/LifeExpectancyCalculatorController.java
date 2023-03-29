@@ -60,7 +60,7 @@ public class LifeExpectancyCalculatorController {
     
     //Label objects
     private Label currentAgeErrorLabel = new Label();
-    private Label terminalIllnessErrorLabel = new Label();
+    private Label terminalIllnessErrorLabel = new Label("");
     private Label outputMessageLabel = new Label();
     
     //VBox and Scene objects
@@ -112,7 +112,7 @@ public class LifeExpectancyCalculatorController {
 
 	terminalIllnessInputSceneContainer.getChildren().addAll(alzheimersContainer, creutzfeldtJakobContainer,
 		crohnsContainer, cysticFibrosisContainer, duchenneMDContainer, hepBContainer, heartDiseaseContainer,
-		huntingtonsContainer, multipleSclerosisContainer, rabiesContainer, doneTerminalIllnessButton);
+		huntingtonsContainer, multipleSclerosisContainer, rabiesContainer, doneTerminalIllnessButton, terminalIllnessErrorLabel);
 	}
 	
 	//Setting up the Output Scene
@@ -182,14 +182,12 @@ public class LifeExpectancyCalculatorController {
 		if (numberOfYes > 1) {
 		   	terminalIllnessErrorLabel.setText("You selected " + numberOfYes + " terminal illnesses. Please do not select more than one.");
 		   	terminalIllnessErrorLabel.setTextFill(Color.RED);
-		   	terminalIllnessInputSceneContainer.getChildren().add(terminalIllnessErrorLabel);
 		   	
 		    //Refresh the scene so that it shows the error message.
 		   	applicationStage.setScene(terminalIllnessInputScene);
 		} else if (Integer.parseInt(currentAgeTextField.getText()) < 65 && alzheimersContainer.getChoiceBox().getValue().equals("Yes")) {
 		   	terminalIllnessErrorLabel.setText("You selected Alzheimer's Disease and your age is " + currentAgeTextField.getText() + ". Please do not select Alzheimer's Disease if you are less than 65.");
 		   	terminalIllnessErrorLabel.setTextFill(Color.RED);
-		   	terminalIllnessInputSceneContainer.getChildren().add(terminalIllnessErrorLabel);
 		   	
 		    //Refresh the scene so that it shows the error message.
 		   	applicationStage.setScene(terminalIllnessInputScene);
