@@ -140,17 +140,23 @@ public class LifeExpectancyCalculatorController {
 	 * 
 	 */
 	public void checkForCurrentAgeError() {
-		//Check if the current age entered is less than 18.
-		if (Integer.parseInt(currentAgeTextField.getText()) < 18) {
-			currentAgeErrorLabel.setText("You entered " + currentAgeTextField.getText() + ". Please enter a number at least 18.");
-			currentAgeErrorLabel.setTextFill(Color.RED);
+		
+		try {
+			//Check if the current age entered is less than 18.
+			if (Integer.parseInt(currentAgeTextField.getText()) < 18) {
+				currentAgeErrorLabel.setText("You entered " + currentAgeTextField.getText() + ". Please enter a number at least 18.");
+				currentAgeErrorLabel.setTextFill(Color.RED);
 			
-			//"Refresh" the scene so that it now has the error message.
-			applicationStage.setScene(mainInputScene);
-		} else {
-			//Clear the error message for future "gameplays".
-			currentAgeErrorLabel.setText("");
-			calculateAndGoToOutputScene();
+				//"Refresh" the scene so that it now has the error message.
+				applicationStage.setScene(mainInputScene);
+			} else {
+				//Clear the error message for future "gameplays".
+				currentAgeErrorLabel.setText("");
+				calculateAndGoToOutputScene();
+			}
+		} catch(NumberFormatException nfe) {
+			currentAgeErrorLabel.setText("You entered " + currentAgeTextField.getText() + " . Please enter a number.");
+			currentAgeErrorLabel.setTextFill(Color.RED);
 		}
 				
 	}
