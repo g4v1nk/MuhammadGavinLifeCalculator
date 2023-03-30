@@ -225,9 +225,12 @@ public class LifeExpectancyCalculatorController {
 		outputMessageLabel.setText("You are expected to live " + lifeExpectancy.calculateLifeExpectancy() + " more years.");
 		
 		//Setting up a bar graph of the user's results.
-			
-		yourData.getData().add(new XYChart.Data<Number, String>(lifeExpectancy.calculateLifeExpectancy() + Integer.parseInt(currentAgeTextField.getText()), "Your Age At Death"));
-		avgData.getData().add(new XYChart.Data<Number, String>(86, "Average Age At Death"));
+		
+		
+		yourData.getData().add(new XYChart.Data<Number, String>(lifeExpectancy.calculateLifeExpectancy() + Integer.parseInt(currentAgeTextField.getText()), ""));
+		yourData.setName("Your Age At Death");
+		avgData.getData().add(new XYChart.Data<Number, String>(86, ""));
+		avgData.setName("Average Age At Death");
 		visualDisplay.setLowerData(yourData);
 		visualDisplay.setUpperData(avgData);
 
