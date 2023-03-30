@@ -1,19 +1,16 @@
 package application;
 
-import java.io.FileInputStream;
+import javafx.scene.paint.Color;
 import java.util.ArrayList;
-
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -35,6 +32,9 @@ public class LifeExpectancyCalculatorController {
 
     private Stage applicationStage;
     private TextField currentAgeTextField = new TextField();
+    private LifeExpectancy lifeExpectancy = new LifeExpectancy("18", "Male", "Non-smoker", "No", "No", "No", "No", "No", "No", "No", "No", "No", "No");
+    
+    //ContainerWithinSceneContainer objects
     private ContainerWithinSceneContainer currentAgeContainer = new ContainerWithinSceneContainer(75, 25, "Current age: ", 100); 
     private ContainerWithinSceneContainerWithChoiceBox genderContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "Gender: ", 100, "Male", "Male", "Female", null, null); 
     private ContainerWithinSceneContainerWithChoiceBox smokingHabitsContainer = new ContainerWithinSceneContainerWithChoiceBox(75, 0, "Smoking habits: ", 100,
@@ -49,31 +49,39 @@ public class LifeExpectancyCalculatorController {
     private ContainerWithinSceneContainerWithChoiceBox huntingtonsContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "Huntington's Disease: ", 100, "No", "No", "Yes", null, null);
     private ContainerWithinSceneContainerWithChoiceBox multipleSclerosisContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "Multiple Sclerosis: ", 100, "No", "No", "Yes", null, null);
     private ContainerWithinSceneContainerWithChoiceBox rabiesContainer = new ContainerWithinSceneContainerWithChoiceBox(75, 0, "Rabies: ", 100, "No", "No", "Yes", null, null);
+   
+    //Button objects
     private Button startCalculationButton = new Button("Start Calculation");
     private Button enterTerminalIllnessButton = new Button("Enter Terminal Illness");
     private Button calculateLifeExpectancyButton = new Button("Calculate");
     private Button doneTerminalIllnessButton = new Button("Done Terminal Illness");
     private Button newCalculationButton = new Button("New Calculation");
     private Button mainMenuButton = new Button("Main Menu");
+    
+    //Label objects
+    private Label currentAgeErrorLabel = new Label("");
+    private Label terminalIllnessErrorLabel = new Label("");
+    private Label outputMessageLabel = new Label();
+    
+    //VBox and Scene objects
     private VBox mainMenuSceneContainer = new VBox();
     private VBox mainInputSceneContainer = new VBox();
-    private Scene mainInputScene = new Scene(mainInputSceneContainer, 400, 400);
-    private VBox outputSceneContainer = new VBox();
-    private Scene outputScene = new Scene(outputSceneContainer, 400, 400);
-    private Label outputLabel = new Label();
     private VBox terminalIllnessInputSceneContainer = new VBox();
-    private LifeExpectancy lifeExpectancy = new LifeExpectancy("18", "Male", "Non-smoker", "No", "No", "No", "No", "No", "No", "No", "No", "No", "No");
-    private String outputMessage = "";
-	private boolean validCurrentAge = true;
-	private boolean validNumberOfTerminalIllnesses = true;
+    private VBox outputSceneContainer = new VBox();
+    private Scene mainMenuScene = new Scene(mainMenuSceneContainer, 400, 400);
+    private Scene mainInputScene = new Scene(mainInputSceneContainer, 400, 400);
+    private Scene terminalIllnessInputScene = new Scene(terminalIllnessInputSceneContainer, 800, 800);
+    private Scene outputScene = new Scene(outputSceneContainer, 400, 400);
+
+    //Objects related to the visual display
+	private NumberAxis ageAxis = new NumberAxis();
+	private CategoryAxis youVsAverageAxis = new CategoryAxis();
+	private XYChart.Series<Number, String> yourData = new XYChart.Series<Number, String>();
+	private XYChart.Series<Number, String> avgData = new XYChart.Series<Number, String>();
+	private BarGraph visualDisplay = new BarGraph(ageAxis, youVsAverageAxis, "Results", "Age (years)", 90, yourData, avgData);
 	
 	//Setting up the Main Menu Scene.
-	{
-	mainMenuSceneContainer.getChildren().add(startCalculationButton);
-	Scene mainMenuScene = new Scene(mainMenuSceneContainer, 400, 400);
-	
-	mainMenuButton.setOnAction(event -> applicationStage.setScene(mainMenuScene));
-	}
+	{mainMenuSceneContainer.getChildren().add(startCalculationButton);}
 	
     //Setting up the Main Input Scene.
 	{
@@ -84,11 +92,8 @@ public class LifeExpectancyCalculatorController {
 	calculateLifeExpectancyButton.setTranslateX(100);
 	calculateLifeExpectancyButton.setTranslateY(60);
 	
-	mainInputSceneContainer.getChildren().addAll(currentAgeContainer, genderContainer, smokingHabitsContainer,
+	mainInputSceneContainer.getChildren().addAll(currentAgeContainer, currentAgeErrorLabel, genderContainer, smokingHabitsContainer,
 		enterTerminalIllnessButton, calculateLifeExpectancyButton);
-	startCalculationButton.setOnAction( event -> applicationStage.setScene(mainInputScene));
-	doneTerminalIllnessButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
-	newCalculationButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
 	}
 	
 	//Setting up the Terminal Illness Input Scene.
@@ -107,10 +112,7 @@ public class LifeExpectancyCalculatorController {
 
 	terminalIllnessInputSceneContainer.getChildren().addAll(alzheimersContainer, creutzfeldtJakobContainer,
 		crohnsContainer, cysticFibrosisContainer, duchenneMDContainer, hepBContainer, heartDiseaseContainer,
-		huntingtonsContainer, multipleSclerosisContainer, rabiesContainer, doneTerminalIllnessButton);
-	Scene terminalIllnessInputScene = new Scene(terminalIllnessInputSceneContainer, 400, 800);
-	
-	enterTerminalIllnessButton.setOnAction(event -> applicationStage.setScene(terminalIllnessInputScene));
+		huntingtonsContainer, multipleSclerosisContainer, rabiesContainer, doneTerminalIllnessButton, terminalIllnessErrorLabel);
 	}
 	
 	//Setting up the Output Scene
@@ -119,10 +121,83 @@ public class LifeExpectancyCalculatorController {
 	newCalculationButton.setTranslateY(10);
 	mainMenuButton.setTranslateX(100);
 	mainMenuButton.setTranslateY(40);
-	outputSceneContainer.getChildren().addAll(outputLabel, newCalculationButton, mainMenuButton);
- 	
-	calculateLifeExpectancyButton.setOnAction(event -> calculateAndGoToOutputScene());
+	outputSceneContainer.getChildren().addAll(outputMessageLabel, newCalculationButton, mainMenuButton, visualDisplay);
 	}
+	
+	//Setting the "onAction"s for the buttons.
+	{
+	mainMenuButton.setOnAction(event -> applicationStage.setScene(mainMenuScene));
+	startCalculationButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
+	doneTerminalIllnessButton.setOnAction(event -> checkForTerminalIllnessErrors());
+	newCalculationButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
+	enterTerminalIllnessButton.setOnAction(event -> applicationStage.setScene(terminalIllnessInputScene));
+	calculateLifeExpectancyButton.setOnAction(event -> checkForCurrentAgeError());
+	}
+	
+	/** This method checks for errors in current age input.
+	 * If there is an error, then an error message is added to mainInputScene.
+	 * If there are no errors, then calculateAndGoToOutputScene() is called.
+	 * 
+	 */
+	public void checkForCurrentAgeError() {
+		//Check if the current age entered is less than 18.
+		if (Integer.parseInt(currentAgeTextField.getText()) < 18) {
+			currentAgeErrorLabel.setText("You entered " + currentAgeTextField.getText() + ". Please enter a number at least 18.");
+			currentAgeErrorLabel.setTextFill(Color.RED);
+			
+			//"Refresh" the scene so that it now has the error message.
+			applicationStage.setScene(mainInputScene);
+		} else {
+			//Clear the error message for future "gameplays".
+			currentAgeErrorLabel.setText("");
+			calculateAndGoToOutputScene();
+		}
+				
+	}
+	
+	/** This method checks if more than one terminal illness has been entered, or if Alzheimer's disease has been entered when current age is less than 65.
+	 * If one of the above errors is present, an error message is added to terminalIllnessInputScene.
+	 * Otherwise, the scene will be set to mainInputScene.
+	 * 
+	 */
+	public void checkForTerminalIllnessErrors() {
+		//Check if "Yes" is selected for more than one terminal illness.
+		ArrayList<String> yesOrNoList = new ArrayList<String>();
+		   	yesOrNoList.add(alzheimersContainer.getChoiceBox().getValue());
+		   	yesOrNoList.add(creutzfeldtJakobContainer.getChoiceBox().getValue());
+		   	yesOrNoList.add(crohnsContainer.getChoiceBox().getValue());
+		   	yesOrNoList.add(cysticFibrosisContainer.getChoiceBox().getValue());
+		   	yesOrNoList.add(duchenneMDContainer.getChoiceBox().getValue());
+		   	yesOrNoList.add(heartDiseaseContainer.getChoiceBox().getValue());
+		   	yesOrNoList.add(hepBContainer.getChoiceBox().getValue());
+		   	yesOrNoList.add(huntingtonsContainer.getChoiceBox().getValue());
+		   	yesOrNoList.add(multipleSclerosisContainer.getChoiceBox().getValue());
+		   	yesOrNoList.add(rabiesContainer.getChoiceBox().getValue());
+		int numberOfYes = 0;
+		for (String element : yesOrNoList) {
+		   	if (element.equals("Yes"))
+		   		numberOfYes += 1;
+		}
+			    
+		if (numberOfYes > 1) {
+		   	terminalIllnessErrorLabel.setText("You selected " + numberOfYes + " terminal illnesses. Please do not select more than one.");
+		   	terminalIllnessErrorLabel.setTextFill(Color.RED);
+		   	
+		    //Refresh the scene so that it shows the error message.
+		   	applicationStage.setScene(terminalIllnessInputScene);
+		} else if (Integer.parseInt(currentAgeTextField.getText()) < 65 && alzheimersContainer.getChoiceBox().getValue().equals("Yes")) {
+		   	terminalIllnessErrorLabel.setText("You selected Alzheimer's Disease and your age is " + currentAgeTextField.getText() + ". Please do not select Alzheimer's Disease if you are less than 65.");
+		   	terminalIllnessErrorLabel.setTextFill(Color.RED);
+		   	
+		    //Refresh the scene so that it shows the error message.
+		   	applicationStage.setScene(terminalIllnessInputScene);
+		} else {
+			//Clear the error message for future "gameplays".
+			terminalIllnessErrorLabel.setText("");
+			applicationStage.setScene(mainInputScene);
+		}
+	}
+		
 	
     /** This method changes the scene to outputScene, setting outputMessage along the way.
      * 
@@ -136,48 +211,29 @@ public class LifeExpectancyCalculatorController {
 				multipleSclerosisContainer.getChoiceBox().getValue(), rabiesContainer.getChoiceBox().getValue());
 		lifeExpectancy = newLifeExpectancy;
 		
-		//Check if the current age entered contains a non-digit.
+		/**
+		 * 
+		 * //Check if the current age entered contains a non-digit.
 		for (char c : currentAgeTextField.getText().toCharArray())
 			if (!Character.isDigit(c)) {
 				validCurrentAge = false;
 				outputMessage = "You entered " + c + " . Please enter a number.";
 			}
+			
+		**/
+	    	
+		outputMessageLabel.setText("You are expected to live " + lifeExpectancy.calculateLifeExpectancy() + " more years.");
 		
-		//Check if the current age entered is less than 18.
-		if (Integer.parseInt(currentAgeTextField.getText()) < 18) {
-			validCurrentAge = false;
-			outputMessage = "You entered " + currentAgeTextField.getText() + ". Please enter a number at least 18.";
-		}
-		
-		//Check if "Yes" is selected for more than one terminal illness.
-		ArrayList<String> yesOrNoList = new ArrayList<String>();
-	      	yesOrNoList.add(alzheimersContainer.getChoiceBox().getValue());
-	      	yesOrNoList.add(creutzfeldtJakobContainer.getChoiceBox().getValue());
-	      	yesOrNoList.add(crohnsContainer.getChoiceBox().getValue());
-	      	yesOrNoList.add(cysticFibrosisContainer.getChoiceBox().getValue());
-	      	yesOrNoList.add(duchenneMDContainer.getChoiceBox().getValue());
-	      	yesOrNoList.add(heartDiseaseContainer.getChoiceBox().getValue());
-	      	yesOrNoList.add(hepBContainer.getChoiceBox().getValue());
-	      	yesOrNoList.add(huntingtonsContainer.getChoiceBox().getValue());
-	      	yesOrNoList.add(multipleSclerosisContainer.getChoiceBox().getValue());
-	      	yesOrNoList.add(rabiesContainer.getChoiceBox().getValue());
-	    int numberOfYes = 0;
-	    for (String element : yesOrNoList) {
-	    	if (element.equals("Yes"))
-	    		numberOfYes += 1;
-	    }
-	    
-	    if (numberOfYes > 1) {
-	    	validNumberOfTerminalIllnesses = false;
-	    	outputMessage = "You may only select Yes for zero or one terminal illness.";
-	    } else if (Integer.parseInt(currentAgeTextField.getText()) < 65 && alzheimersContainer.getChoiceBox().getValue().equals("Yes")) {
-	    	validNumberOfTerminalIllnesses = false;
-	    	outputMessage = "You may not select Yes for Alzheimer's Disease if you are under 65.";
-	    } else if (validCurrentAge && validNumberOfTerminalIllnesses)
-			outputMessage = "Your life expectancy is " + lifeExpectancy.getLifeExpectancy() + " more years";
-		
-	    outputLabel.setText(outputMessage);
+		//Setting up a bar graph of the user's results.
+		yourData.getData().add(new XYChart.Data<Number, String>(lifeExpectancy.calculateLifeExpectancy() + Integer.parseInt(currentAgeTextField.getText()), ""));
+		yourData.setName("Your Age At Death");
+		avgData.getData().add(new XYChart.Data<Number, String>(86, ""));
+		avgData.setName("Average Age At Death");
+		visualDisplay.setLowerData(yourData);
+		visualDisplay.setUpperData(avgData);
+
 		applicationStage.setScene(outputScene);
+	
 	}
     
 	/** This method sets the variable applicationStage to the parameter passed in.
