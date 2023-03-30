@@ -9,6 +9,11 @@ package application;
  */
 public class NumberFormatException extends Exception {
 	
+	/** This constructor constructs a NumberFormatException object.
+	 * 
+	 */
+	NumberFormatException() {}
+	
 	/** This constructor constructs a NumberFormatException object based on
 	 * the message specified in the parameter.
 	 * 
@@ -18,6 +23,27 @@ public class NumberFormatException extends Exception {
 	 */
 	NumberFormatException(String message) {
 		super(message);
+	}
+	
+	/** This constructor constructs a NumberFormatException object
+	 * based on the cause specified in the parameter.
+	 * 
+	 * @param cause (This is the reason for the NumberFormatException.)
+	 */
+	NumberFormatException(Throwable cause) {
+		super(cause);
+	}
+	
+	/** This constructor constructs an object of type NumberFormatException
+	 * based on the message and cause specified in the parameters.
+	 * 
+	 * @param message (This is the message that will be displayed
+	 * when this method is called with a String parameter while
+	 * there is a NumberFormatException.)
+	 * @param cause (This is the reason for the NumberFormatException.)
+	 */
+	NumberFormatException(String message, Throwable cause) {
+		super(message, cause);
 	}
 
 }
