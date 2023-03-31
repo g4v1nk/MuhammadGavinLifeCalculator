@@ -52,5 +52,21 @@ public class BarGraph extends BarChart<Number, String> {
 	public void setUpperData(XYChart.Series<Number, String> data) {
 		upperData = data;
 	}
+	
+	/** This method returns lowerData.
+	 * 
+	 * @return lowerData (This is the data that appears "lower" in the bar graph.)
+	 */
+	public XYChart.Series<Number, String> getLowerData() {
+		return lowerData;
+	}
+	
+	/** This method returns upperData.
+	 * 
+	 * @return upperData (This is the data that appears "higher" in the bar graph.)
+	 */
+	public XYChart.Series<Number, String> getUpperData() {
+		return upperData;
+	}
 
 }
