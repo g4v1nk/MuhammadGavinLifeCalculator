@@ -150,7 +150,7 @@ public class LifeExpectancyCalculatorController {
 		try {
 			//Check if the current age entered is less than 18 or more than 100.
 			if (Integer.parseInt(currentAgeTextField.getText()) < 18 || Integer.parseInt(currentAgeTextField.getText()) > 100) {
-				currentAgeErrorLabel.setText("You entered " + currentAgeTextField.getText() + ". Please enter a number between 18 and 100.");
+				currentAgeErrorLabel.setText("You entered " + currentAgeTextField.getText() + ". Please enter an integer between 18 and 100.");
 				currentAgeErrorLabel.setTextFill(Color.RED);
 			
 				//"Refresh" the scene so that it now has the error message.
@@ -164,7 +164,7 @@ public class LifeExpectancyCalculatorController {
 					applicationStage.setScene(terminalIllnessInputScene);
 			}
 		} catch(Exception numberFormatException) {
-			currentAgeErrorLabel.setText("You entered " + currentAgeTextField.getText() + " . Please enter a number.");
+			currentAgeErrorLabel.setText("You entered " + currentAgeTextField.getText() + " . Please enter an integer.");
 			currentAgeErrorLabel.setTextFill(Color.RED);
 		}
 				
