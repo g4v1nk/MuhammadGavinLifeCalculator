@@ -130,16 +130,21 @@ public class LifeExpectancyCalculatorController {
 	startCalculationButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
 	doneTerminalIllnessButton.setOnAction(event -> checkForTerminalIllnessErrors());
 	newCalculationButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
-	enterTerminalIllnessButton.setOnAction(event -> applicationStage.setScene(terminalIllnessInputScene));
-	calculateLifeExpectancyButton.setOnAction(event -> checkForCurrentAgeError());
+	enterTerminalIllnessButton.setOnAction(event -> checkForCurrentAgeError(2));
+	calculateLifeExpectancyButton.setOnAction(event -> checkForCurrentAgeError(1));
 	}
 	
 	/** This method checks for errors in current age input.
 	 * If there is an error, then an error message is added to mainInputScene.
-	 * If there are no errors, then calculateAndGoToOutputScene() is called.
+	 * If there are no errors, then, depending on the number specified in the parameter,
+	 * either calculateAndGoToOutputScene() will be called, or the scene will be set to terminalIllnessInputScene.
 	 * 
+	 * @param sceneChoice (This is a number that corresponds to the scene that you
+	 * want to go to after current age input errors have been checked for.
+	 * The number should be 1 if you want to go to the Output Scene, and the number
+	 * can be any other integer if you want to go to the Terminal Illness Input Scene.)
 	 */
-	public void checkForCurrentAgeError() {
+	public void checkForCurrentAgeError(int sceneChoice) {
 		
 		try {
 			//Check if the current age entered is less than 18.
@@ -152,7 +157,10 @@ public class LifeExpectancyCalculatorController {
 			} else {
 				//Clear the error message for future "gameplays".
 				currentAgeErrorLabel.setText("");
-				calculateAndGoToOutputScene();
+				if (sceneChoice == 1)
+					calculateAndGoToOutputScene();
+				else
+					applicationStage.setScene(terminalIllnessInputScene);
 			}
 		} catch(Exception numberFormatException) {
 			currentAgeErrorLabel.setText("You entered " + currentAgeTextField.getText() + " . Please enter a number.");
