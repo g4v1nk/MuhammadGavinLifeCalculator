@@ -154,7 +154,7 @@ public class LifeExpectancyCalculatorController {
 				currentAgeErrorLabel.setText("");
 				calculateAndGoToOutputScene();
 			}
-		} catch(NumberFormatException nfe) {
+		} catch(Exception numberFormatException) {
 			currentAgeErrorLabel.setText("You entered " + currentAgeTextField.getText() + " . Please enter a number.");
 			currentAgeErrorLabel.setTextFill(Color.RED);
 		}
