@@ -24,7 +24,7 @@ public class ContainerWithinSceneContainerWithChoiceBox extends ContainerWithinS
 	 * @param thirdChoiceBoxItem (This is the third item to go in the ChoiceBox.)
 	 * @param fourthChoiceBoxItem (This is the fourth item to go in the ChoiceBox.)
 	 */
-	ContainerWithinSceneContainerWithChoiceBox(int minHeight, int translateY, String labelText, int labelMinWidth,
+	public ContainerWithinSceneContainerWithChoiceBox(int minHeight, int translateY, String labelText, int labelMinWidth,
 			String choiceBoxDefault, String firstChoiceBoxItem, String secondChoiceBoxItem, String thirdChoiceBoxItem, String fourthChoiceBoxItem) {
 		
 		super(minHeight, translateY, labelText, labelMinWidth);

@@ -40,7 +40,7 @@ public class LifeExpectancy {
      * @param multipleSclerosisStatus (This is the user's Multiple Sclerosis status: "y"(es) or "n"(o))
      * @param rabiesStatus (This is the user's Rabies status: "y"(es) or "n"(o))
      */
-	LifeExpectancy(String ageAtPresent, String sex, String smokingStatus, String alzheimersStatus,
+	public LifeExpectancy(String ageAtPresent, String sex, String smokingStatus, String alzheimersStatus,
 			String creutzfeldtJakobStatus, String crohnsStatus, String cysticFibrosisStatus, String duchenneMDStatus, String heartDiseaseStatus,
 			String hepBStatus, String huntingtonsStatus, String multipleSclerosisStatus, String rabiesStatus) {
 		
@@ -73,7 +73,7 @@ public class LifeExpectancy {
 	 * 
 	 * @return lifeExpectancy (This is the life expectancy that the program has calculated.)
 	 */
-	int calculateLifeExpectancy() {
+	public int calculateLifeExpectancy() {
 		
 		//Life expectancy variable initialized to 0.
 		int lifeExpectancy = 0;
@@ -183,6 +183,10 @@ public class LifeExpectancy {
         
 		return lifeExpectancy;
 		
+	}
+	
+	public void setCurrentAge(currentAgeToSet) {
+		currentAge = currentAgeToSet;
 	}
 
 }

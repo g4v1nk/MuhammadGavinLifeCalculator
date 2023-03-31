@@ -12,7 +12,7 @@ public class NumberFormatException extends Exception {
 	/** This constructor constructs a NumberFormatException object.
 	 * 
 	 */
-	NumberFormatException() {}
+	public NumberFormatException() {}
 	
 	/** This constructor constructs a NumberFormatException object based on
 	 * the message specified in the parameter.
@@ -21,7 +21,7 @@ public class NumberFormatException extends Exception {
 	 * when this method is called with a String parameter while
 	 * there is a NumberFormatException.)
 	 */
-	NumberFormatException(String message) {
+	public NumberFormatException(String message) {
 		super(message);
 	}
 	
@@ -30,7 +30,7 @@ public class NumberFormatException extends Exception {
 	 * 
 	 * @param cause (This is the reason for the NumberFormatException.)
 	 */
-	NumberFormatException(Throwable cause) {
+	public NumberFormatException(Throwable cause) {
 		super(cause);
 	}
 	
@@ -42,7 +42,7 @@ public class NumberFormatException extends Exception {
 	 * there is a NumberFormatException.)
 	 * @param cause (This is the reason for the NumberFormatException.)
 	 */
-	NumberFormatException(String message, Throwable cause) {
+	public NumberFormatException(String message, Throwable cause) {
 		super(message, cause);
 	}
 
