@@ -81,10 +81,10 @@ public class LifeExpectancyCalculatorController {
 	private BarGraph visualDisplay = new BarGraph(ageAxis, youVsAverageAxis, "Results", "Age (years)", 90, yourData, avgData);
 	
 	//Setting up the Main Menu Scene.
-	{mainMenuSceneContainer.getChildren().add(startCalculationButton);}
+	{mainMenuSceneContainer.getChildren().add(startCalculationButton);
 	
     //Setting up the Main Input Scene.
-	{
+	
 	currentAgeContainer.getChildren().addAll(currentAgeContainer.getLabel(), currentAgeTextField);
 	genderContainer.getChildren().addAll(genderContainer.getLabel(), genderContainer.getChoiceBox());
 	smokingHabitsContainer.getChildren().addAll(smokingHabitsContainer.getLabel(), smokingHabitsContainer.getChoiceBox());
@@ -94,10 +94,11 @@ public class LifeExpectancyCalculatorController {
 	
 	mainInputSceneContainer.getChildren().addAll(currentAgeContainer, currentAgeErrorLabel, genderContainer, smokingHabitsContainer,
 		enterTerminalIllnessButton, calculateLifeExpectancyButton);
-	}
+	
 	
 	//Setting up the Terminal Illness Input Scene.
-	{
+	//
+	
 	alzheimersContainer.getChildren().addAll(alzheimersContainer.getLabel(), alzheimersContainer.getChoiceBox());
 	creutzfeldtJakobContainer.getChildren().addAll(creutzfeldtJakobContainer.getLabel(), creutzfeldtJakobContainer.getChoiceBox());
 	crohnsContainer.getChildren().addAll(crohnsContainer.getLabel(), crohnsContainer.getChoiceBox());
@@ -147,9 +148,9 @@ public class LifeExpectancyCalculatorController {
 	public void checkForCurrentAgeError(int sceneChoice) {
 		
 		try {
-			//Check if the current age entered is less than 18.
-			if (Integer.parseInt(currentAgeTextField.getText()) < 18) {
-				currentAgeErrorLabel.setText("You entered " + currentAgeTextField.getText() + ". Please enter a number at least 18.");
+			//Check if the current age entered is less than 18 or more than 100.
+			if (Integer.parseInt(currentAgeTextField.getText()) < 18 || Integer.parseInt(currentAgeTextField.getText()) > 100) {
+				currentAgeErrorLabel.setText("You entered " + currentAgeTextField.getText() + ". Please enter a number between 18 and 100.");
 				currentAgeErrorLabel.setTextFill(Color.RED);
 			
 				//"Refresh" the scene so that it now has the error message.
@@ -210,8 +211,7 @@ public class LifeExpectancyCalculatorController {
 			terminalIllnessErrorLabel.setText("");
 			applicationStage.setScene(mainInputScene);
 		}
-	}
-		
+	}	
 	
     /** This method changes the scene to outputScene, setting outputMessage along the way.
      * 
