@@ -60,6 +60,19 @@ public class LifeExpectancy {
 		
 	}
 	
+	/** This method converts the parameter from String to boolean.
+	 * 
+	 * @param str (This is what you want to convert to a boolean type.
+	 * This should be either "Yes", or "No".)
+	 * @return true (or @return false) (Either true or false is returned, depending on the parameter.)
+	 */
+	public boolean strToBool (String str) {
+		if (str == "Yes")
+			return true;
+		else
+			return false;
+	}
+	
 	/**
 	 * This method calculates your life expectancy in years based on your current age, gender,
 	 * smoking habits, and based on any terminal illnesses you have.
