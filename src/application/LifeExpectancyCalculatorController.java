@@ -1,5 +1,6 @@
 package application;
 
+import java.lang.NumberFormatException;
 import javafx.scene.paint.Color;
 import java.util.ArrayList;
 import javafx.event.ActionEvent;
@@ -165,7 +166,7 @@ public class LifeExpectancyCalculatorController {
 	 * The number should be 1 if you want to go to the Output Scene, and the number
 	 * can be any other integer if you want to go to the Terminal Illness Input Scene.)
 	 */
-	public void checkForCurrentAgeError(int sceneChoice) {
+	public void checkForCurrentAgeError(int sceneChoice) throws NumberFormatException {
 		
 		try {
 			//Check if the current age entered is less than 18 or more than 100.
@@ -183,7 +184,7 @@ public class LifeExpectancyCalculatorController {
 				else
 					applicationStage.setScene(terminalIllnessInputScene);
 			}
-		} catch(Exception numberFormatException) {
+		} catch(NumberFormatException numberFormatException) {
 			currentAgeErrorLabel.setText("You entered " + currentAgeTextField.getText() + " . Please enter an integer.");
 			currentAgeErrorLabel.setTextFill(Color.RED);
 		}
