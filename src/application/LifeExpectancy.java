@@ -185,8 +185,20 @@ public class LifeExpectancy {
 		
 	}
 	
-	public void setCurrentAge(currentAgeToSet) {
+	/** This method sets currentAge according to the parameter.
+	 * 
+	 * @param currentAgeToSet (This is what you want currentAge to be set to.)
+	 */
+	public void setCurrentAge(int currentAgeToSet) {
 		currentAge = currentAgeToSet;
+	}
+	
+	/** This method returns currentAge.
+	 * 
+	 * @return currentAge (This is the current age of the user of this program.)
+	 */
+	public int getCurrentAge() {
+		return currentAge;
 	}
 
 }
