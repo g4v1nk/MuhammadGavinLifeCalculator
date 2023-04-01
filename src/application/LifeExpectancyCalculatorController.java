@@ -22,23 +22,28 @@ import javafx.stage.Stage;
 public class LifeExpectancyCalculatorController {
 
     @FXML
-    /** This method sets the scene to mainInputScene.
+    /** This method sets up the scenes of the "game", then sets the scene to mainInputScene.
      * 
-     * @param event (event is something that you want to trigger a scene change to mainInputScene.)
+     * @param event (event is something that you want to trigger:
+     * (1) a set-up of all the scenes of the "game", and
+     * (2) a scene change to mainInputScene.)
      */
-    void goToMainInputScene(ActionEvent event) {
+    void setUpScenesAndGoToMainInputScene(ActionEvent event) {
+    	setUpMainMenuScene();
+    	setUpMainInputScene();
+    	setUpTerminalIllnessInputScene();
+    	setUpOutputScene();
     	applicationStage.setScene(mainInputScene);
     }
 
     private Stage applicationStage;
-    private TextField currentAgeTextField = new TextField();
     private LifeExpectancy lifeExpectancy = new LifeExpectancy("18", "Male", "Non-smoker", "No", "No", "No", "No", "No", "No", "No", "No", "No", "No");
     
     //ContainerWithinSceneContainer objects
-    private ContainerWithinSceneContainer currentAgeContainer = new ContainerWithinSceneContainer(75, 25, "Current age: ", 100); 
     private ContainerWithinSceneContainerWithChoiceBox genderContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "Gender: ", 100, "Male", "Male", "Female", null, null); 
     private ContainerWithinSceneContainerWithChoiceBox smokingHabitsContainer = new ContainerWithinSceneContainerWithChoiceBox(75, 0, "Smoking habits: ", 100,
-			"Non-smoker", "Non-smoker", "Light smoker", "Moderate smoker", "Heavy smoker"); 
+		"Non-smoker", "Non-smoker", "Light smoker", "Moderate smoker", "Heavy smoker"); 
+    
     private ContainerWithinSceneContainerWithChoiceBox alzheimersContainer = new ContainerWithinSceneContainerWithChoiceBox(75, 25, "Alzheimer's Disease: ", 100, "No", "No", "Yes", null, null); 
     private ContainerWithinSceneContainerWithChoiceBox creutzfeldtJakobContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "Creutzfeldt-Jakob Disease: ", 100, "No", "No", "Yes", null, null); 
     private ContainerWithinSceneContainerWithChoiceBox crohnsContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "Crohn's Disease: ", 100, "No", "No", "Yes", null, null);
@@ -50,27 +55,23 @@ public class LifeExpectancyCalculatorController {
     private ContainerWithinSceneContainerWithChoiceBox multipleSclerosisContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "Multiple Sclerosis: ", 100, "No", "No", "Yes", null, null);
     private ContainerWithinSceneContainerWithChoiceBox rabiesContainer = new ContainerWithinSceneContainerWithChoiceBox(75, 0, "Rabies: ", 100, "No", "No", "Yes", null, null);
    
-    //Button objects
-    private Button startCalculationButton = new Button("Start Calculation");
-    private Button enterTerminalIllnessButton = new Button("Enter Terminal Illness");
-    private Button calculateLifeExpectancyButton = new Button("Calculate");
-    private Button doneTerminalIllnessButton = new Button("Done Terminal Illness");
-    private Button newCalculationButton = new Button("New Calculation");
-    private Button mainMenuButton = new Button("Main Menu");
-    
-    //Label objects
+    //TextField and Label objects
+    private TextField currentAgeTextField = new TextField();
     private Label currentAgeErrorLabel = new Label("");
     private Label terminalIllnessErrorLabel = new Label("");
     private Label outputMessageLabel = new Label();
     
     //VBox and Scene objects
     private VBox mainMenuSceneContainer = new VBox();
-    private VBox mainInputSceneContainer = new VBox();
-    private VBox terminalIllnessInputSceneContainer = new VBox();
-    private VBox outputSceneContainer = new VBox();
     private Scene mainMenuScene = new Scene(mainMenuSceneContainer, 400, 400);
+    
+    private VBox mainInputSceneContainer = new VBox();
     private Scene mainInputScene = new Scene(mainInputSceneContainer, 400, 400);
+    
+    private VBox terminalIllnessInputSceneContainer = new VBox();
     private Scene terminalIllnessInputScene = new Scene(terminalIllnessInputSceneContainer, 800, 800);
+    
+    private VBox outputSceneContainer = new VBox();
     private Scene outputScene = new Scene(outputSceneContainer, 400, 400);
 
     //Objects related to the visual display
@@ -80,59 +81,80 @@ public class LifeExpectancyCalculatorController {
 	private XYChart.Series<Number, String> avgData = new XYChart.Series<Number, String>();
 	private BarGraph visualDisplay = new BarGraph(ageAxis, youVsAverageAxis, "Results", "Age (years)", 90, yourData, avgData);
 	
-	//Setting up the Main Menu Scene.
-	{mainMenuSceneContainer.getChildren().add(startCalculationButton);
+	/** This method creates the Main Menu Scene.
+	 * 
+	 */
+	public void setUpMainMenuScene() {
+	    Button startCalculationButton = new Button("Start Calculation");
+	    startCalculationButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
+		
+	    mainMenuSceneContainer.getChildren().add(startCalculationButton);
+	}
 	
-    //Setting up the Main Input Scene.
+	/** This method creates the Main Input Scene.
+	 * 
+	 */
+	public void setUpMainInputScene() {
+		ContainerWithinSceneContainer currentAgeContainer = new ContainerWithinSceneContainer(75, 25, "Current age: ", 100); 
+	    currentAgeContainer.getChildren().addAll(currentAgeContainer.getLabel(), currentAgeTextField);
+		
+	    genderContainer.getChildren().addAll(genderContainer.getLabel(), genderContainer.getChoiceBox());
+		
+	    smokingHabitsContainer.getChildren().addAll(smokingHabitsContainer.getLabel(), smokingHabitsContainer.getChoiceBox());
+		
+	    Button enterTerminalIllnessButton = new Button("Enter Terminal Illness");
+	    enterTerminalIllnessButton.setTranslateX(100);
+		enterTerminalIllnessButton.setOnAction(event -> checkForCurrentAgeError(2));
+		
+	    Button calculateLifeExpectancyButton = new Button("Calculate");
+		calculateLifeExpectancyButton.setTranslateX(100);
+		calculateLifeExpectancyButton.setTranslateY(60);
+		calculateLifeExpectancyButton.setOnAction(event -> checkForCurrentAgeError(1));
+		
+		mainInputSceneContainer.getChildren().addAll(currentAgeContainer, currentAgeErrorLabel, genderContainer, smokingHabitsContainer,
+			enterTerminalIllnessButton, calculateLifeExpectancyButton);
+	}
 	
-	currentAgeContainer.getChildren().addAll(currentAgeContainer.getLabel(), currentAgeTextField);
-	genderContainer.getChildren().addAll(genderContainer.getLabel(), genderContainer.getChoiceBox());
-	smokingHabitsContainer.getChildren().addAll(smokingHabitsContainer.getLabel(), smokingHabitsContainer.getChoiceBox());
-	enterTerminalIllnessButton.setTranslateX(100);
-	calculateLifeExpectancyButton.setTranslateX(100);
-	calculateLifeExpectancyButton.setTranslateY(60);
-	
-	mainInputSceneContainer.getChildren().addAll(currentAgeContainer, currentAgeErrorLabel, genderContainer, smokingHabitsContainer,
-		enterTerminalIllnessButton, calculateLifeExpectancyButton);
-	
-	
-	//Setting up the Terminal Illness Input Scene.
-	//
-	
-	alzheimersContainer.getChildren().addAll(alzheimersContainer.getLabel(), alzheimersContainer.getChoiceBox());
-	creutzfeldtJakobContainer.getChildren().addAll(creutzfeldtJakobContainer.getLabel(), creutzfeldtJakobContainer.getChoiceBox());
-	crohnsContainer.getChildren().addAll(crohnsContainer.getLabel(), crohnsContainer.getChoiceBox());
-	cysticFibrosisContainer.getChildren().addAll(cysticFibrosisContainer.getLabel(), cysticFibrosisContainer.getChoiceBox());
-	duchenneMDContainer.getChildren().addAll(duchenneMDContainer.getLabel(), duchenneMDContainer.getChoiceBox());	
-	hepBContainer.getChildren().addAll(hepBContainer.getLabel(), hepBContainer.getChoiceBox());
-	heartDiseaseContainer.getChildren().addAll(heartDiseaseContainer.getLabel(), heartDiseaseContainer.getChoiceBox());
-	huntingtonsContainer.getChildren().addAll(huntingtonsContainer.getLabel(), huntingtonsContainer.getChoiceBox());
-	multipleSclerosisContainer.getChildren().addAll(multipleSclerosisContainer.getLabel(), multipleSclerosisContainer.getChoiceBox());
-	rabiesContainer.getChildren().addAll(rabiesContainer.getLabel(), rabiesContainer.getChoiceBox());
-	doneTerminalIllnessButton.setTranslateX(100);
+	/** This method creates the Terminal Illness Input Scene.
+	 * 
+	 */
+	public void setUpTerminalIllnessInputScene() {
+		alzheimersContainer.getChildren().addAll(alzheimersContainer.getLabel(), alzheimersContainer.getChoiceBox());
+		creutzfeldtJakobContainer.getChildren().addAll(creutzfeldtJakobContainer.getLabel(), creutzfeldtJakobContainer.getChoiceBox());
+		crohnsContainer.getChildren().addAll(crohnsContainer.getLabel(), crohnsContainer.getChoiceBox());
+		cysticFibrosisContainer.getChildren().addAll(cysticFibrosisContainer.getLabel(), cysticFibrosisContainer.getChoiceBox());
+		duchenneMDContainer.getChildren().addAll(duchenneMDContainer.getLabel(), duchenneMDContainer.getChoiceBox());	
+		hepBContainer.getChildren().addAll(hepBContainer.getLabel(), hepBContainer.getChoiceBox());
+		heartDiseaseContainer.getChildren().addAll(heartDiseaseContainer.getLabel(), heartDiseaseContainer.getChoiceBox());
+		huntingtonsContainer.getChildren().addAll(huntingtonsContainer.getLabel(), huntingtonsContainer.getChoiceBox());
+		multipleSclerosisContainer.getChildren().addAll(multipleSclerosisContainer.getLabel(), multipleSclerosisContainer.getChoiceBox());
+		rabiesContainer.getChildren().addAll(rabiesContainer.getLabel(), rabiesContainer.getChoiceBox());
+		
+	    Button doneTerminalIllnessButton = new Button("Done Terminal Illness");
+		doneTerminalIllnessButton.setTranslateX(100);
+		doneTerminalIllnessButton.setOnAction(event -> checkForTerminalIllnessErrors());
+		
+		terminalIllnessInputSceneContainer.getChildren().addAll(alzheimersContainer, creutzfeldtJakobContainer,
+			crohnsContainer, cysticFibrosisContainer, duchenneMDContainer, hepBContainer, heartDiseaseContainer,
+			huntingtonsContainer, multipleSclerosisContainer, rabiesContainer, doneTerminalIllnessButton, terminalIllnessErrorLabel);
+	}
 
-	terminalIllnessInputSceneContainer.getChildren().addAll(alzheimersContainer, creutzfeldtJakobContainer,
-		crohnsContainer, cysticFibrosisContainer, duchenneMDContainer, hepBContainer, heartDiseaseContainer,
-		huntingtonsContainer, multipleSclerosisContainer, rabiesContainer, doneTerminalIllnessButton, terminalIllnessErrorLabel);
-	}
 	
-	//Setting up the Output Scene
-	{
-	newCalculationButton.setTranslateX(100);
-	newCalculationButton.setTranslateY(10);
-	mainMenuButton.setTranslateX(100);
-	mainMenuButton.setTranslateY(40);
-	outputSceneContainer.getChildren().addAll(outputMessageLabel, newCalculationButton, mainMenuButton, visualDisplay);
-	}
-	
-	//Setting the "onAction"s for the buttons.
-	{
-	mainMenuButton.setOnAction(event -> applicationStage.setScene(mainMenuScene));
-	startCalculationButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
-	doneTerminalIllnessButton.setOnAction(event -> checkForTerminalIllnessErrors());
-	newCalculationButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
-	enterTerminalIllnessButton.setOnAction(event -> checkForCurrentAgeError(2));
-	calculateLifeExpectancyButton.setOnAction(event -> checkForCurrentAgeError(1));
+	/** This method sets up the Output Scene.
+	 * 
+	 */
+	public void setUpOutputScene() {
+		Button newCalculationButton = new Button("New Calculation");
+		newCalculationButton.setTranslateX(100);
+		newCalculationButton.setTranslateY(10);
+		newCalculationButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
+		
+	    Button mainMenuButton = new Button("Main Menu");
+	    mainMenuButton.setTranslateX(100);
+		mainMenuButton.setTranslateY(40);
+		mainMenuButton.setOnAction(event -> applicationStage.setScene(mainMenuScene));
+	    
+		outputSceneContainer.getChildren().addAll(outputMessageLabel, newCalculationButton, mainMenuButton, visualDisplay);
 	}
 	
 	/** This method checks for errors in current age input.
