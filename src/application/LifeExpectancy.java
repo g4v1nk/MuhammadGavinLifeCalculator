@@ -1,7 +1,5 @@
 package application;
 
-import java.util.ArrayList;
-
 /** This class represents the life expectancy of the program user.
  * 
  * @author CS219-user

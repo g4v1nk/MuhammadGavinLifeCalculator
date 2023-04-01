@@ -150,8 +150,6 @@ public class LifeExpectancyCalculatorController {
 		newCalculationButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
 		
 	    Button mainMenuButton = new Button("Main Menu");
-	    mainMenuButton.setTranslateX(100);
-		mainMenuButton.setTranslateY(40);
 		mainMenuButton.setOnAction(event -> applicationStage.setScene(mainMenuScene));
 	    
 		outputSceneContainer.getChildren().addAll(outputMessageLabel, newCalculationButton, mainMenuButton, visualDisplay);
