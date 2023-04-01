@@ -26,7 +26,7 @@ public class BarGraph extends BarChart<Number, String> {
 	 * @param dataThatAppearsLower (This is the data that will be displayed in the lower bar in the graph.)
 	 * @param dataThatAppearsHigher (This is the data that will be displayed in the upper bar in the graph.)
 	 */
-	BarGraph(NumberAxis horizontalAxis, CategoryAxis verticalAxis, String titleOfBarGraph, String horizontalAxisLabel, int tickRotation, XYChart.Series<Number, String> dataThatAppearsLower, XYChart.Series<Number, String> dataThatAppearsHigher) {
+	public BarGraph(NumberAxis horizontalAxis, CategoryAxis verticalAxis, String titleOfBarGraph, String horizontalAxisLabel, int tickRotation, XYChart.Series<Number, String> dataThatAppearsLower, XYChart.Series<Number, String> dataThatAppearsHigher) {
 		super(horizontalAxis, verticalAxis);
 		setTitle(titleOfBarGraph);
 		horizontalAxis.setLabel(horizontalAxisLabel);
@@ -51,6 +51,22 @@ public class BarGraph extends BarChart<Number, String> {
 	 */
 	public void setUpperData(XYChart.Series<Number, String> data) {
 		upperData = data;
+	}
+	
+	/** This method returns lowerData.
+	 * 
+	 * @return lowerData (This is the data that appears "lower" in the bar graph.)
+	 */
+	public XYChart.Series<Number, String> getLowerData() {
+		return lowerData;
+	}
+	
+	/** This method returns upperData.
+	 * 
+	 * @return upperData (This is the data that appears "higher" in the bar graph.)
+	 */
+	public XYChart.Series<Number, String> getUpperData() {
+		return upperData;
 	}
 
 }

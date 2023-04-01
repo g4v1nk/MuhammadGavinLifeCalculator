@@ -18,13 +18,21 @@ public class ContainerWithinSceneContainer extends HBox {
 	 * @param labelText (This is the text that will appear in the inner container's label.)
 	 * @param labelMinWidth (This is the minimum width of the inner container's label.)
 	 */
-	ContainerWithinSceneContainer(int minHeight, int translateY, String labelText, int labelMinWidth) {
+	public ContainerWithinSceneContainer(int minHeight, int translateY, String labelText, int labelMinWidth) {
 		setMinHeight(minHeight);
 		setTranslateY(translateY);
 		label = new Label(labelText);
 		label.setMinWidth(labelMinWidth);
 	}
 
+	/** This method sets the instance variable "label" according to the parameter.
+	 * 
+	 * @param labelToSet (This is what you want label to be set to.)
+	 */
+	public void setLabel(Label labelToSet) {
+		label = labelToSet;
+	}
+	
 	/** This method will return the variable "label" from the ContainerWithinSceneContainer class.
 	 * 
 	 * @return label (This is the instance variable for "label" for the ContainerWithinSceneContainer class.)

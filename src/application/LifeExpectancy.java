@@ -1,7 +1,5 @@
 package application;
 
-import java.util.ArrayList;
-
 /** This class represents the life expectancy of the program user.
  * 
  * @author CS219-user
@@ -12,16 +10,16 @@ public class LifeExpectancy {
 	private int currentAge = 18;
 	private String gender = "Male";
 	private String smokingHabits = "Non-smoker";
-	private String alzheimers = "No";
-	private String creutzfeldtJakob = "No";
-	private String crohns = "No";
-	private String cysticFibrosis = "No";
-	private String duchenneMD = "No";
-	private String heartDisease = "No";
-	private String hepB = "No";
-	private String huntingtons = "No";
-	private String multipleSclerosis = "No";
-	private String rabies = "No";
+	private boolean alzheimers = false;
+	private boolean creutzfeldtJakob = false;
+	private boolean crohns = false;
+	private boolean cysticFibrosis = false;
+	private boolean duchenneMD = false;
+	private boolean heartDisease = false;
+	private boolean hepB = false;
+	private boolean huntingtons = false;
+	private boolean multipleSclerosis = false;
+	private boolean rabies = false;
 	
     /** This constructor constructs a LifeExpectancy object with instance variables that keep track of
      * mortality-related information.
@@ -40,31 +38,37 @@ public class LifeExpectancy {
      * @param multipleSclerosisStatus (This is the user's Multiple Sclerosis status: "y"(es) or "n"(o))
      * @param rabiesStatus (This is the user's Rabies status: "y"(es) or "n"(o))
      */
-	LifeExpectancy(String ageAtPresent, String sex, String smokingStatus, String alzheimersStatus,
+	public LifeExpectancy(String ageAtPresent, String sex, String smokingStatus, String alzheimersStatus,
 			String creutzfeldtJakobStatus, String crohnsStatus, String cysticFibrosisStatus, String duchenneMDStatus, String heartDiseaseStatus,
 			String hepBStatus, String huntingtonsStatus, String multipleSclerosisStatus, String rabiesStatus) {
 		
-		//To avoid an error, only assign ageAtPresent to currentAge if ageAtPresent is an integer.
-		int counter = 0;
-		for (char c : ageAtPresent.toCharArray())
-			if (!Character.isDigit(c))
-				counter += 1;
-		if (counter == 0)
-			currentAge = Integer.parseInt(ageAtPresent);
-		
+		currentAge = Integer.parseInt(ageAtPresent);
 		gender = sex;
 		smokingHabits = smokingStatus;
-		alzheimers = alzheimersStatus;
-		creutzfeldtJakob = creutzfeldtJakobStatus;
-		crohns = crohnsStatus;
-		cysticFibrosis = cysticFibrosisStatus;
-		duchenneMD = duchenneMDStatus;
-		heartDisease = heartDiseaseStatus;
-		hepB = hepBStatus;
-		huntingtons = huntingtonsStatus;
-		multipleSclerosis = multipleSclerosisStatus;
-		rabies = rabiesStatus;
+		alzheimers = strToBool(alzheimersStatus);
+		creutzfeldtJakob = strToBool(creutzfeldtJakobStatus);
+		crohns = strToBool(crohnsStatus);
+		cysticFibrosis = strToBool(cysticFibrosisStatus);
+		duchenneMD = strToBool(duchenneMDStatus);
+		heartDisease = strToBool(heartDiseaseStatus);
+		hepB = strToBool(hepBStatus);
+		huntingtons = strToBool(huntingtonsStatus);
+		multipleSclerosis = strToBool(multipleSclerosisStatus);
+		rabies = strToBool(rabiesStatus);
 		
+	}
+	
+	/** This method converts the parameter from String to boolean.
+	 * 
+	 * @param str (This is what you want to convert to a boolean type.
+	 * This should be either "Yes", or "No".)
+	 * @return true (or @return false) (Either true or false is returned, depending on the parameter.)
+	 */
+	public boolean strToBool (String str) {
+		if (str == "Yes")
+			return true;
+		else
+			return false;
 	}
 	
 	/**
@@ -73,7 +77,7 @@ public class LifeExpectancy {
 	 * 
 	 * @return lifeExpectancy (This is the life expectancy that the program has calculated.)
 	 */
-	int calculateLifeExpectancy() {
+	public int calculateLifeExpectancy() {
 		
 		//Life expectancy variable initialized to 0.
 		int lifeExpectancy = 0;
@@ -144,27 +148,27 @@ public class LifeExpectancy {
 				lifeExpectancy = 7;	
 		}
 		
-        if (alzheimers.equals("Yes"))
+        if (alzheimers)
         	lifeExpectancy = (int)((-6.0/25)*currentAge + 24.6);
-        else if (creutzfeldtJakob.equals("Yes"))
+        else if (creutzfeldtJakob)
         	lifeExpectancy = 1;
-        else if (crohns.equals("Yes") && gender.equals("Male"))
+        else if (crohns && gender.equals("Male"))
         	lifeExpectancy = 75 - currentAge;
-        else if (crohns.equals("Yes") && (!gender.equals("Male")))
+        else if (crohns && (!gender.equals("Male")))
         	lifeExpectancy = 78 - currentAge;
-        else if (cysticFibrosis.equals("Yes"))
+        else if (cysticFibrosis)
         	lifeExpectancy = 44 - currentAge;
-        else if (heartDisease.equals("Yes"))
+        else if (heartDisease)
         	lifeExpectancy *= (1-0.08);
-        else if (hepB.equals("Yes"))
+        else if (hepB)
         	lifeExpectancy -= 14;
-        else if (huntingtons.equals("Yes"))
+        else if (huntingtons)
         	lifeExpectancy = 30;
-        else if (multipleSclerosis.equals("Yes"))
+        else if (multipleSclerosis)
         	lifeExpectancy -= 5;
-        else if (duchenneMD.equals("Yes"))
+        else if (duchenneMD)
         	lifeExpectancy = 30 - currentAge;
-        else if (rabies.equals("Yes"))
+        else if (rabies)
         	lifeExpectancy = 0;
 		
         if (smokingHabits.equals("Non-smoker"))
@@ -184,5 +188,235 @@ public class LifeExpectancy {
 		return lifeExpectancy;
 		
 	}
-
+	
+	/** This method sets currentAge according to the parameter.
+	 * 
+	 * @param currentAgeToSet (This is what you want currentAge to be set to.
+	 * currentAge should be an integer between 18 and 100.)
+	 */
+	public void setCurrentAge(int currentAgeToSet) {
+		currentAge = currentAgeToSet;
+	}
+	
+	/** This method returns currentAge.
+	 * 
+	 * @return currentAge (This is the current age of the user of this program.)
+	 */
+	public int getCurrentAge() {
+		return currentAge;
+	}
+	
+	/** This method sets gender according to the parameter.
+	 * 
+	 * @param genderToSet (This is what you want gender to be set to.
+	 * gender should be either "Male" or "Female".)
+	 */
+	public void setGender(String genderToSet) {
+		gender = genderToSet;
+	}
+	
+	/** This method returns gender.
+	 * 
+	 * @return gender (This is the gender of the user of this program.)
+	 */
+	public String getGender() {
+		return gender;
+	}
+	
+	/** This method sets smokingHabits according to the parameter.
+	 * 
+	 * @param smokingHabitsToSet (This is what you want smokingHabits to be set to.)
+	 */
+	public void setSmokingHabits(String smokingHabitsToSet) {
+		smokingHabits = smokingHabitsToSet;
+	}
+	
+	/** This method returns smokingHabits.
+	 * 
+	 * @return smokingHabits (This is the smoking habits of the user of this program.)
+	 */
+	public String getSmokingHabits() {
+		return smokingHabits;
+	}
+	
+	/** This method sets alzheimers according to the parameter.
+	 * 
+	 * @param alzheimersStatus (This is what you want alzheimers to be set to
+	 * (either true or false).)
+	 */
+	public void setAlzheimers (boolean alzheimersStatus) {
+		alzheimers = alzheimersStatus;
+	}
+	
+	/** This method returns alzheimers.
+	 * 
+	 * @return alzheimers (This is the Alzheimer's Disease status of the user of this program
+	 * (either true or false).)
+	 */
+	public boolean getAlzheimers() {
+		return alzheimers;
+	}
+	
+	/** This method sets creutzfeldtJakob according to the parameter.
+	 * 
+	 * @param creutzfeldtJakobStatus (This is what you want creutzfeldtJakob to be set to
+	 * (either true or false).)
+	 */
+	public void setCreutzfeldtJakob (boolean creutzfeldtJakobStatus) {
+		creutzfeldtJakob = creutzfeldtJakobStatus;
+	}
+	
+	/** This method returns creutzfeldtJakob.
+	 * 
+	 * @return creutzfeldtJakob (This is the Creutzfeldt-Jakob Disease status of the user of this program
+	 * (either true or false).)
+	 */
+	public boolean getCreutzfeldtJakob() {
+		return creutzfeldtJakob;
+	}
+	
+	/** This method sets crohns according to the parameter.
+	 * 
+	 * @param crohnsStatus (This is what you want crohns to be set to
+	 * (either true or false).)
+	 */
+	public void setCrohns (boolean crohnsStatus) {
+		crohns = crohnsStatus;
+	}
+	
+	/** This method returns crohns.
+	 * 
+	 * @return crohns (This is the Crohn's Disease status of the user of this program
+	 * (either true or false).)
+	 */
+	public boolean getCrohns() {
+		return crohns;
+	}
+	
+	/** This method sets cysticFibrosis according to the parameter.
+	 * 
+	 * @param cysticFibrosisStatus (This is what you want cysticFibrosis to be set to
+	 * (either true or false).)
+	 */
+	public void setCysticFibrosis (boolean cysticFibrosisStatus) {
+		cysticFibrosis = cysticFibrosisStatus;
+	}
+	
+	/** This method returns cysticFibrosis.
+	 * 
+	 * @return cysticFibrosis (This is the Cystic Fibrosis status of the user of this program
+	 * (either true or false).)
+	 */
+	public boolean getCysticFibrosis() {
+		return cysticFibrosis;
+	}
+	
+	/** This method sets duchenneMD according to the parameter.
+	 * 
+	 * @param duchenneMDStatus (This is what you want duchenneMD to be set to
+	 * (either true or false).)
+	 */
+	public void setDuchenneMD (boolean duchenneMDStatus) {
+		duchenneMD = duchenneMDStatus;
+	}
+	
+	/** This method returns duchenneMD.
+	 * 
+	 * @return duchenneMD (This is the Duchenne Muscular Dystrophy status of the user of this program
+	 * (either true or false).)
+	 */
+	public boolean getDuchenneMD() {
+		return duchenneMD;
+	}
+	
+	/** This method sets heartDisease according to the parameter.
+	 * 
+	 * @param heartDiseaseStatus (This is what you want heartDisease to be set to
+	 * (either true or false).)
+	 */
+	public void setHeartDisease (boolean heartDiseaseStatus) {
+		heartDisease = heartDiseaseStatus;
+	}
+	
+	/** This method returns heartDisease.
+	 * 
+	 * @return heartDisease (This is the Heart Disease status of the user of this program
+	 * (either true or false).)
+	 */
+	public boolean getHeartDisease() {
+		return heartDisease;
+	}
+	
+	/** This method sets hepB according to the parameter.
+	 * 
+	 * @param hepBStatus (This is what you want hepB to be set to
+	 * (either true or false).)
+	 */
+	public void setHepB (boolean hepBStatus) {
+		hepB = hepBStatus;
+	}
+	
+	/** This method returns hepB.
+	 * 
+	 * @return hepB (This is the Hepatitis B status of the user of this program
+	 * (either true or false).)
+	 */
+	public boolean getHepB() {
+		return hepB;
+	}
+	
+	/** This method sets huntingtons according to the parameter.
+	 * 
+	 * @param huntingtonsStatus (This is what you want huntingtons to be set to
+	 * (either true or false).)
+	 */
+	public void setHuntingtons (boolean huntingtonsStatus) {
+		huntingtons = huntingtonsStatus;
+	}
+	
+	/** This method returns huntingtons.
+	 * 
+	 * @return huntingtons (This is the Huntington's Disease status of the user of this program
+	 * (either true or false).)
+	 */
+	public boolean getHuntingtons() {
+		return huntingtons;
+	}
+	
+	/** This method sets multipleSclerosis according to the parameter.
+	 * 
+	 * @param multipleSclerosisStatus (This is what you want multipleSclerosis to be set to
+	 * (either true or false).)
+	 */
+	public void setMultipleSclerosis (boolean multipleSclerosisStatus) {
+		multipleSclerosis = multipleSclerosisStatus;
+	}
+	
+	/** This method returns multipleSclerosis.
+	 * 
+	 * @return multipleSclerosis (This is the Multiple Sclerosis status of the user of this program
+	 * (either true or false).)
+	 */
+	public boolean getMultipleSclerosis() {
+		return multipleSclerosis;
+	}
+	
+	/** This method sets rabies according to the parameter.
+	 * 
+	 * @param rabiesStatus (This is what you want rabies to be set to
+	 * (either true or false).)
+	 */
+	public void setRabies (boolean rabiesStatus) {
+		rabies = rabiesStatus;
+	}
+	
+	/** This method returns rabies.
+	 * 
+	 * @return rabies (This is the Rabies status of the user of this program
+	 * (either true or false).)
+	 */
+	public boolean getRabies() {
+		return rabies;
+	}
+	
 }

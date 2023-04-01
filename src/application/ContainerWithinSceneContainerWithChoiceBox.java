@@ -24,7 +24,7 @@ public class ContainerWithinSceneContainerWithChoiceBox extends ContainerWithinS
 	 * @param thirdChoiceBoxItem (This is the third item to go in the ChoiceBox.)
 	 * @param fourthChoiceBoxItem (This is the fourth item to go in the ChoiceBox.)
 	 */
-	ContainerWithinSceneContainerWithChoiceBox(int minHeight, int translateY, String labelText, int labelMinWidth,
+	public ContainerWithinSceneContainerWithChoiceBox(int minHeight, int translateY, String labelText, int labelMinWidth,
 			String choiceBoxDefault, String firstChoiceBoxItem, String secondChoiceBoxItem, String thirdChoiceBoxItem, String fourthChoiceBoxItem) {
 		
 		super(minHeight, translateY, labelText, labelMinWidth);
@@ -36,12 +36,36 @@ public class ContainerWithinSceneContainerWithChoiceBox extends ContainerWithinS
 		
 	}
 	
+	/** This method sets choiceBox according to the parameter.
+	 * 
+	 * @param choiceBoxToSet (This is what you want choiceBox to be set to.)
+	 */
+	public void setChoiceBox(ChoiceBox<String> choiceBoxToSet) {
+		choiceBox = choiceBoxToSet;
+	}
+	
+	/** This method changes what choiceBoxOptions references, according to the parameter.
+	 * 
+	 * @param choiceBoxOptionsToSet (This is the options you want choiceBoxOptions to be set to.)
+	 */
+	public void setChoiceBoxOptions(ObservableList<String> choiceBoxOptionsToSet) {
+		choiceBoxOptions = choiceBoxOptionsToSet;
+	}
+	
 	/** This method returns the ChoiceBox that is created in this class.
 	 * 
 	 * @return choiceBox (This is the ChoiceBox that is created when a ContainerWithinSceneContainerWithChoiceBox is constructed.)
 	 */
 	public ChoiceBox<String> getChoiceBox() {
 		return choiceBox;
+	}
+	
+	/** This method returns the choiceBoxOptions (the options for the ChoiceBox called choiceBox).
+	 * 
+	 * @return choiceBoxOptions (This is the options that appear in the ChoiceBox called choiceBox.)
+	 */
+	public ObservableList<String> getChoiceBoxOptions() {
+		return choiceBoxOptions;
 	}
 	
 }
