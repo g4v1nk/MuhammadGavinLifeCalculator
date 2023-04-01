@@ -12,16 +12,16 @@ public class LifeExpectancy {
 	private int currentAge = 18;
 	private String gender = "Male";
 	private String smokingHabits = "Non-smoker";
-	private String alzheimers = "No";
-	private String creutzfeldtJakob = "No";
-	private String crohns = "No";
-	private String cysticFibrosis = "No";
-	private String duchenneMD = "No";
-	private String heartDisease = "No";
-	private String hepB = "No";
-	private String huntingtons = "No";
-	private String multipleSclerosis = "No";
-	private String rabies = "No";
+	private boolean alzheimers = false;
+	private boolean creutzfeldtJakob = false;
+	private boolean crohns = false;
+	private boolean cysticFibrosis = false;
+	private boolean duchenneMD = false;
+	private boolean heartDisease = false;
+	private boolean hepB = false;
+	private boolean huntingtons = false;
+	private boolean multipleSclerosis = false;
+	private boolean rabies = false;
 	
     /** This constructor constructs a LifeExpectancy object with instance variables that keep track of
      * mortality-related information.
@@ -47,16 +47,16 @@ public class LifeExpectancy {
 		currentAge = Integer.parseInt(ageAtPresent);
 		gender = sex;
 		smokingHabits = smokingStatus;
-		alzheimers = alzheimersStatus;
-		creutzfeldtJakob = creutzfeldtJakobStatus;
-		crohns = crohnsStatus;
-		cysticFibrosis = cysticFibrosisStatus;
-		duchenneMD = duchenneMDStatus;
-		heartDisease = heartDiseaseStatus;
-		hepB = hepBStatus;
-		huntingtons = huntingtonsStatus;
-		multipleSclerosis = multipleSclerosisStatus;
-		rabies = rabiesStatus;
+		alzheimers = strToBool(alzheimersStatus);
+		creutzfeldtJakob = strToBool(creutzfeldtJakobStatus);
+		crohns = strToBool(crohnsStatus);
+		cysticFibrosis = strToBool(cysticFibrosisStatus);
+		duchenneMD = strToBool(duchenneMDStatus);
+		heartDisease = strToBool(heartDiseaseStatus);
+		hepB = strToBool(hepBStatus);
+		huntingtons = strToBool(huntingtonsStatus);
+		multipleSclerosis = strToBool(multipleSclerosisStatus);
+		rabies = strToBool(rabiesStatus);
 		
 	}
 	
@@ -150,27 +150,27 @@ public class LifeExpectancy {
 				lifeExpectancy = 7;	
 		}
 		
-        if (alzheimers.equals("Yes"))
+        if (alzheimers)
         	lifeExpectancy = (int)((-6.0/25)*currentAge + 24.6);
-        else if (creutzfeldtJakob.equals("Yes"))
+        else if (creutzfeldtJakob)
         	lifeExpectancy = 1;
-        else if (crohns.equals("Yes") && gender.equals("Male"))
+        else if (crohns && gender.equals("Male"))
         	lifeExpectancy = 75 - currentAge;
-        else if (crohns.equals("Yes") && (!gender.equals("Male")))
+        else if (crohns && (!gender.equals("Male")))
         	lifeExpectancy = 78 - currentAge;
-        else if (cysticFibrosis.equals("Yes"))
+        else if (cysticFibrosis)
         	lifeExpectancy = 44 - currentAge;
-        else if (heartDisease.equals("Yes"))
+        else if (heartDisease)
         	lifeExpectancy *= (1-0.08);
-        else if (hepB.equals("Yes"))
+        else if (hepB)
         	lifeExpectancy -= 14;
-        else if (huntingtons.equals("Yes"))
+        else if (huntingtons)
         	lifeExpectancy = 30;
-        else if (multipleSclerosis.equals("Yes"))
+        else if (multipleSclerosis)
         	lifeExpectancy -= 5;
-        else if (duchenneMD.equals("Yes"))
+        else if (duchenneMD)
         	lifeExpectancy = 30 - currentAge;
-        else if (rabies.equals("Yes"))
+        else if (rabies)
         	lifeExpectancy = 0;
 		
         if (smokingHabits.equals("Non-smoker"))
