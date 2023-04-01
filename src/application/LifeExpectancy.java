@@ -190,217 +190,235 @@ public class LifeExpectancy {
 		return lifeExpectancy;
 		
 	}
-	/**
-	
 	
 	/** This method sets currentAge according to the parameter.
 	 * 
 	 * @param currentAgeToSet (This is what you want currentAge to be set to.
 	 * currentAge should be an integer between 18 and 100.)
 	 */
-	//public void setCurrentAge(int currentAgeToSet) {
-		//currentAge = currentAgeToSet;
-	//}
+	public void setCurrentAge(int currentAgeToSet) {
+		currentAge = currentAgeToSet;
+	}
 	
 	/** This method returns currentAge.
 	 * 
 	 * @return currentAge (This is the current age of the user of this program.)
 	 */
-	//public int getCurrentAge() {
-	//	return currentAge;
-	//}
+	public int getCurrentAge() {
+		return currentAge;
+	}
 	
 	/** This method sets gender according to the parameter.
 	 * 
 	 * @param genderToSet (This is what you want gender to be set to.
 	 * gender should be either "Male" or "Female".)
 	 */
-	//public void setGender(String genderToSet) {
-	//	gender = genderToSet;
-	//}
+	public void setGender(String genderToSet) {
+		gender = genderToSet;
+	}
 	
 	/** This method returns gender.
 	 * 
 	 * @return gender (This is the gender of the user of this program.)
 	 */
-	//public String getGender() {
-	//	return gender;
-	//}
+	public String getGender() {
+		return gender;
+	}
 	
 	/** This method sets smokingHabits according to the parameter.
 	 * 
 	 * @param smokingHabitsToSet (This is what you want smokingHabits to be set to.)
 	 */
-	//public void setSmokingHabits(String smokingHabitsToSet) {
-	//	smokingHabits = smokingHabitsToSet;
-	//}
+	public void setSmokingHabits(String smokingHabitsToSet) {
+		smokingHabits = smokingHabitsToSet;
+	}
 	
 	/** This method returns smokingHabits.
 	 * 
 	 * @return smokingHabits (This is the smoking habits of the user of this program.)
 	 */
-	//public String getSmokingHabits() {
-	//	return smokingHabits;
-	//}
+	public String getSmokingHabits() {
+		return smokingHabits;
+	}
 	
 	/** This method sets alzheimers according to the parameter.
 	 * 
-	 * @param alzheimersToSet (This is what you want alzheimers to be set to.)
+	 * @param alzheimersStatus (This is what you want alzheimers to be set to
+	 * (either true or false).)
 	 */
-	//public void setCurrentAge(int currentAgeToSet) {
-	//	currentAge = currentAgeToSet;
-	//}
+	public void setAlzheimers (boolean alzheimersStatus) {
+		alzheimers = alzheimersStatus;
+	}
 	
-	/** This method returns currentAge.
+	/** This method returns alzheimers.
 	 * 
-	 * @return currentAge (This is the current age of the user of this program.)
+	 * @return alzheimers (This is the Alzheimer's Disease status of the user of this program
+	 * (either true or false).)
 	 */
-	//public int getCurrentAge() {
-	//	return currentAge;
-	//}
+	public boolean getAlzheimers() {
+		return alzheimers;
+	}
 	
-	/** This method sets currentAge according to the parameter.
+	/** This method sets creutzfeldtJakob according to the parameter.
 	 * 
-	 * @param currentAgeToSet (This is what you want currentAge to be set to.)
+	 * @param creutzfeldtJakobStatus (This is what you want creutzfeldtJakob to be set to
+	 * (either true or false).)
 	 */
-	//public void setCurrentAge(int currentAgeToSet) {
-	//	currentAge = currentAgeToSet;
-	//}
+	public void setCreutzfeldtJakob (boolean creutzfeldtJakobStatus) {
+		creutzfeldtJakob = creutzfeldtJakobStatus;
+	}
 	
-	/** This method returns currentAge.
+	/** This method returns creutzfeldtJakob.
 	 * 
-	 * @return currentAge (This is the current age of the user of this program.)
+	 * @return creutzfeldtJakob (This is the Creutzfeldt-Jakob Disease status of the user of this program
+	 * (either true or false).)
 	 */
-	//public int getCurrentAge() {
-	//	return currentAge;
-	//}
+	public boolean getCreutzfeldtJakob() {
+		return creutzfeldtJakob;
+	}
 	
-	/** This method sets currentAge according to the parameter.
+	/** This method sets crohns according to the parameter.
 	 * 
-	 * @param currentAgeToSet (This is what you want currentAge to be set to.)
+	 * @param crohnsStatus (This is what you want crohns to be set to
+	 * (either true or false).)
 	 */
-	//public void setCurrentAge(int currentAgeToSet) {
-	//	currentAge = currentAgeToSet;
-	//}
+	public void setCrohns (boolean crohnsStatus) {
+		crohns = crohnsStatus;
+	}
 	
-	/** This method returns currentAge.
+	/** This method returns crohns.
 	 * 
-	 * @return currentAge (This is the current age of the user of this program.)
+	 * @return crohns (This is the Crohn's Disease status of the user of this program
+	 * (either true or false).)
 	 */
-	//public int getCurrentAge() {
-	//	return currentAge;
-	//}
+	public boolean getCrohns() {
+		return crohns;
+	}
 	
-	/** This method sets currentAge according to the parameter.
+	/** This method sets cysticFibrosis according to the parameter.
 	 * 
-	 * @param currentAgeToSet (This is what you want currentAge to be set to.)
+	 * @param cysticFibrosisStatus (This is what you want cysticFibrosis to be set to
+	 * (either true or false).)
 	 */
-	//public void setCurrentAge(int currentAgeToSet) {
-	//	currentAge = currentAgeToSet;
-	//}
+	public void setCysticFibrosis (boolean cysticFibrosisStatus) {
+		cysticFibrosis = cysticFibrosisStatus;
+	}
 	
-	/** This method returns currentAge.
+	/** This method returns cysticFibrosis.
 	 * 
-	 * @return currentAge (This is the current age of the user of this program.)
+	 * @return cysticFibrosis (This is the Cystic Fibrosis status of the user of this program
+	 * (either true or false).)
 	 */
-	//public int getCurrentAge() {
-	//	return currentAge;
-	//}
+	public boolean getCysticFibrosis() {
+		return cysticFibrosis;
+	}
 	
-	/** This method sets currentAge according to the parameter.
+	/** This method sets duchenneMD according to the parameter.
 	 * 
-	 * @param currentAgeToSet (This is what you want currentAge to be set to.)
+	 * @param duchenneMDStatus (This is what you want duchenneMD to be set to
+	 * (either true or false).)
 	 */
-	//public void setCurrentAge(int currentAgeToSet) {
-		//	currentAge = currentAgeToSet;
-	//}
+	public void setDuchenneMD (boolean duchenneMDStatus) {
+		duchenneMD = duchenneMDStatus;
+	}
 	
-	/** This method returns currentAge.
+	/** This method returns duchenneMD.
 	 * 
-	 * @return currentAge (This is the current age of the user of this program.)
+	 * @return duchenneMD (This is the Duchenne Muscular Dystrophy status of the user of this program
+	 * (either true or false).)
 	 */
-	//public int getCurrentAge() {
-	//	return currentAge;
-	//}
+	public boolean getDuchenneMD() {
+		return duchenneMD;
+	}
 	
-	/** This method sets currentAge according to the parameter.
+	/** This method sets heartDisease according to the parameter.
 	 * 
-	 * @param currentAgeToSet (This is what you want currentAge to be set to.)
+	 * @param heartDiseaseStatus (This is what you want heartDisease to be set to
+	 * (either true or false).)
 	 */
-	//public void setCurrentAge(int currentAgeToSet) {
-	//	currentAge = currentAgeToSet;
-	//}
+	public void setHeartDisease (boolean heartDiseaseStatus) {
+		heartDisease = heartDiseaseStatus;
+	}
 	
-	/** This method returns currentAge.
+	/** This method returns heartDisease.
 	 * 
-	 * @return currentAge (This is the current age of the user of this program.)
+	 * @return heartDisease (This is the Heart Disease status of the user of this program
+	 * (either true or false).)
 	 */
-	//public int getCurrentAge() {
-	//	return currentAge;
-	//}
+	public boolean getHeartDisease() {
+		return heartDisease;
+	}
 	
-	/** This method sets currentAge according to the parameter.
+	/** This method sets hepB according to the parameter.
 	 * 
-	 * @param currentAgeToSet (This is what you want currentAge to be set to.)
+	 * @param hepBStatus (This is what you want hepB to be set to
+	 * (either true or false).)
 	 */
-	//public void setCurrentAge(int currentAgeToSet) {
-	//	currentAge = currentAgeToSet;
-	//}
+	public void setHepB (boolean hepBStatus) {
+		hepB = hepBStatus;
+	}
 	
-	/** This method returns currentAge.
+	/** This method returns hepB.
 	 * 
-	 * @return currentAge (This is the current age of the user of this program.)
+	 * @return hepB (This is the Hepatitis B status of the user of this program
+	 * (either true or false).)
 	 */
-	//public int getCurrentAge() {
-	//	return currentAge;
-	//}
+	public boolean getHepB() {
+		return hepB;
+	}
 	
-	/** This method sets currentAge according to the parameter.
+	/** This method sets huntingtons according to the parameter.
 	 * 
-	 * @param currentAgeToSet (This is what you want currentAge to be set to.)
+	 * @param huntingtonsStatus (This is what you want huntingtons to be set to
+	 * (either true or false).)
 	 */
-	//public void setCurrentAge(int currentAgeToSet) {
-	//	currentAge = currentAgeToSet;
-	//}
+	public void setHuntingtons (boolean huntingtonsStatus) {
+		huntingtons = huntingtonsStatus;
+	}
 	
-	/** This method returns currentAge.
+	/** This method returns huntingtons.
 	 * 
-	 * @return currentAge (This is the current age of the user of this program.)
+	 * @return huntingtons (This is the Huntington's Disease status of the user of this program
+	 * (either true or false).)
 	 */
-	//public int getCurrentAge() {
-	//	return currentAge;
-	//}
+	public boolean getHuntingtons() {
+		return huntingtons;
+	}
 	
-	/** This method sets currentAge according to the parameter.
+	/** This method sets multipleSclerosis according to the parameter.
 	 * 
-	 * @param currentAgeToSet (This is what you want currentAge to be set to.)
+	 * @param multipleSclerosisStatus (This is what you want multipleSclerosis to be set to
+	 * (either true or false).)
 	 */
-	//public void setCurrentAge(int currentAgeToSet) {
-	//	currentAge = currentAgeToSet;
-	//}
+	public void setMultipleSclerosis (boolean multipleSclerosisStatus) {
+		multipleSclerosis = multipleSclerosisStatus;
+	}
 	
-	/** This method returns currentAge.
+	/** This method returns multipleSclerosis.
 	 * 
-	 * @return currentAge (This is the current age of the user of this program.)
+	 * @return multipleSclerosis (This is the Multiple Sclerosis status of the user of this program
+	 * (either true or false).)
 	 */
-	//public int getCurrentAge() {
-	//	return currentAge;
-	//}
+	public boolean getMultipleSclerosis() {
+		return multipleSclerosis;
+	}
 	
-	/** This method sets currentAge according to the parameter.
+	/** This method sets rabies according to the parameter.
 	 * 
-	 * @param currentAgeToSet (This is what you want currentAge to be set to.)
+	 * @param rabiesStatus (This is what you want rabies to be set to
+	 * (either true or false).)
 	 */
-	//public void setCurrentAge(int currentAgeToSet) {
-	//	currentAge = currentAgeToSet;
-	//}
+	public void setRabies (boolean rabiesStatus) {
+		rabies = rabiesStatus;
+	}
 	
-	/** This method returns currentAge.
+	/** This method returns rabies.
 	 * 
-	 * @return currentAge (This is the current age of the user of this program.)
+	 * @return rabies (This is the Rabies status of the user of this program
+	 * (either true or false).)
 	 */
-	//public int getCurrentAge() {
-	//	return currentAge;
-	//}
-
+	public boolean getRabies() {
+		return rabies;
+	}
+	
 }
