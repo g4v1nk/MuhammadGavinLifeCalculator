@@ -44,14 +44,7 @@ public class LifeExpectancy {
 			String creutzfeldtJakobStatus, String crohnsStatus, String cysticFibrosisStatus, String duchenneMDStatus, String heartDiseaseStatus,
 			String hepBStatus, String huntingtonsStatus, String multipleSclerosisStatus, String rabiesStatus) {
 		
-		//To avoid an error, only assign ageAtPresent to currentAge if ageAtPresent is an integer.
-		int counter = 0;
-		for (char c : ageAtPresent.toCharArray())
-			if (!Character.isDigit(c))
-				counter += 1;
-		if (counter == 0)
-			currentAge = Integer.parseInt(ageAtPresent);
-		
+		currentAge = Integer.parseInt(ageAtPresent);
 		gender = sex;
 		smokingHabits = smokingStatus;
 		alzheimers = alzheimersStatus;
@@ -184,21 +177,217 @@ public class LifeExpectancy {
 		return lifeExpectancy;
 		
 	}
+	/**
+	
 	
 	/** This method sets currentAge according to the parameter.
 	 * 
-	 * @param currentAgeToSet (This is what you want currentAge to be set to.)
+	 * @param currentAgeToSet (This is what you want currentAge to be set to.
+	 * currentAge should be an integer between 18 and 100.)
 	 */
-	public void setCurrentAge(int currentAgeToSet) {
-		currentAge = currentAgeToSet;
-	}
+	//public void setCurrentAge(int currentAgeToSet) {
+		//currentAge = currentAgeToSet;
+	//}
 	
 	/** This method returns currentAge.
 	 * 
 	 * @return currentAge (This is the current age of the user of this program.)
 	 */
-	public int getCurrentAge() {
-		return currentAge;
-	}
+	//public int getCurrentAge() {
+	//	return currentAge;
+	//}
+	
+	/** This method sets gender according to the parameter.
+	 * 
+	 * @param genderToSet (This is what you want gender to be set to.
+	 * gender should be either "Male" or "Female".)
+	 */
+	//public void setGender(String genderToSet) {
+	//	gender = genderToSet;
+	//}
+	
+	/** This method returns gender.
+	 * 
+	 * @return gender (This is the gender of the user of this program.)
+	 */
+	//public String getGender() {
+	//	return gender;
+	//}
+	
+	/** This method sets smokingHabits according to the parameter.
+	 * 
+	 * @param smokingHabitsToSet (This is what you want smokingHabits to be set to.)
+	 */
+	//public void setSmokingHabits(String smokingHabitsToSet) {
+	//	smokingHabits = smokingHabitsToSet;
+	//}
+	
+	/** This method returns smokingHabits.
+	 * 
+	 * @return smokingHabits (This is the smoking habits of the user of this program.)
+	 */
+	//public String getSmokingHabits() {
+	//	return smokingHabits;
+	//}
+	
+	/** This method sets alzheimers according to the parameter.
+	 * 
+	 * @param alzheimersToSet (This is what you want alzheimers to be set to.)
+	 */
+	//public void setCurrentAge(int currentAgeToSet) {
+	//	currentAge = currentAgeToSet;
+	//}
+	
+	/** This method returns currentAge.
+	 * 
+	 * @return currentAge (This is the current age of the user of this program.)
+	 */
+	//public int getCurrentAge() {
+	//	return currentAge;
+	//}
+	
+	/** This method sets currentAge according to the parameter.
+	 * 
+	 * @param currentAgeToSet (This is what you want currentAge to be set to.)
+	 */
+	//public void setCurrentAge(int currentAgeToSet) {
+	//	currentAge = currentAgeToSet;
+	//}
+	
+	/** This method returns currentAge.
+	 * 
+	 * @return currentAge (This is the current age of the user of this program.)
+	 */
+	//public int getCurrentAge() {
+	//	return currentAge;
+	//}
+	
+	/** This method sets currentAge according to the parameter.
+	 * 
+	 * @param currentAgeToSet (This is what you want currentAge to be set to.)
+	 */
+	//public void setCurrentAge(int currentAgeToSet) {
+	//	currentAge = currentAgeToSet;
+	//}
+	
+	/** This method returns currentAge.
+	 * 
+	 * @return currentAge (This is the current age of the user of this program.)
+	 */
+	//public int getCurrentAge() {
+	//	return currentAge;
+	//}
+	
+	/** This method sets currentAge according to the parameter.
+	 * 
+	 * @param currentAgeToSet (This is what you want currentAge to be set to.)
+	 */
+	//public void setCurrentAge(int currentAgeToSet) {
+	//	currentAge = currentAgeToSet;
+	//}
+	
+	/** This method returns currentAge.
+	 * 
+	 * @return currentAge (This is the current age of the user of this program.)
+	 */
+	//public int getCurrentAge() {
+	//	return currentAge;
+	//}
+	
+	/** This method sets currentAge according to the parameter.
+	 * 
+	 * @param currentAgeToSet (This is what you want currentAge to be set to.)
+	 */
+	//public void setCurrentAge(int currentAgeToSet) {
+		//	currentAge = currentAgeToSet;
+	//}
+	
+	/** This method returns currentAge.
+	 * 
+	 * @return currentAge (This is the current age of the user of this program.)
+	 */
+	//public int getCurrentAge() {
+	//	return currentAge;
+	//}
+	
+	/** This method sets currentAge according to the parameter.
+	 * 
+	 * @param currentAgeToSet (This is what you want currentAge to be set to.)
+	 */
+	//public void setCurrentAge(int currentAgeToSet) {
+	//	currentAge = currentAgeToSet;
+	//}
+	
+	/** This method returns currentAge.
+	 * 
+	 * @return currentAge (This is the current age of the user of this program.)
+	 */
+	//public int getCurrentAge() {
+	//	return currentAge;
+	//}
+	
+	/** This method sets currentAge according to the parameter.
+	 * 
+	 * @param currentAgeToSet (This is what you want currentAge to be set to.)
+	 */
+	//public void setCurrentAge(int currentAgeToSet) {
+	//	currentAge = currentAgeToSet;
+	//}
+	
+	/** This method returns currentAge.
+	 * 
+	 * @return currentAge (This is the current age of the user of this program.)
+	 */
+	//public int getCurrentAge() {
+	//	return currentAge;
+	//}
+	
+	/** This method sets currentAge according to the parameter.
+	 * 
+	 * @param currentAgeToSet (This is what you want currentAge to be set to.)
+	 */
+	//public void setCurrentAge(int currentAgeToSet) {
+	//	currentAge = currentAgeToSet;
+	//}
+	
+	/** This method returns currentAge.
+	 * 
+	 * @return currentAge (This is the current age of the user of this program.)
+	 */
+	//public int getCurrentAge() {
+	//	return currentAge;
+	//}
+	
+	/** This method sets currentAge according to the parameter.
+	 * 
+	 * @param currentAgeToSet (This is what you want currentAge to be set to.)
+	 */
+	//public void setCurrentAge(int currentAgeToSet) {
+	//	currentAge = currentAgeToSet;
+	//}
+	
+	/** This method returns currentAge.
+	 * 
+	 * @return currentAge (This is the current age of the user of this program.)
+	 */
+	//public int getCurrentAge() {
+	//	return currentAge;
+	//}
+	
+	/** This method sets currentAge according to the parameter.
+	 * 
+	 * @param currentAgeToSet (This is what you want currentAge to be set to.)
+	 */
+	//public void setCurrentAge(int currentAgeToSet) {
+	//	currentAge = currentAgeToSet;
+	//}
+	
+	/** This method returns currentAge.
+	 * 
+	 * @return currentAge (This is the current age of the user of this program.)
+	 */
+	//public int getCurrentAge() {
+	//	return currentAge;
+	//}
 
 }
