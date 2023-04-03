@@ -10,11 +10,12 @@
    <children>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#setUpScenesAndGoToMainInputScene" text="Start Calculation">
+            <Button mnemonicParsing="false" onAction="#setUpScenesAndGoToMainInputScene" text="Single Person">
                <HBox.margin>
                   <Insets left="50.0" top="50.0" />
                </HBox.margin>
             </Button>
+            <Button mnemonicParsing="false" text="Multiple Person" />
          </children>
       </HBox>
    </children>
