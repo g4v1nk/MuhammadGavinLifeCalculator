@@ -81,7 +81,9 @@ public class LifeExpectancyCalculatorController {
     private TextField currentAgeTextField = new TextField();
     private Label currentAgeErrorLabel = new Label("");
     private Label terminalIllnessErrorLabel = new Label("");
-    private Label outputMessageLabel = new Label();
+    private Label person1OutputMessageLabel = new Label();
+    private Label person2OutputMessageLabel = new Label();
+    private Label person3OutputMessageLabel = new Label();
     
     //VBox and Scene objects
     private VBox mainMenuSceneContainer = new VBox();
@@ -375,7 +377,7 @@ public class LifeExpectancyCalculatorController {
     /** This method changes the scene to outputScene, setting outputMessage along the way.
      * 
      */
-	public void calculateAndGoToOutputScene() {
+	public void calculate() {
 		
 		//Update the instance variables of lifeExpectancy based on user input.
 		LifeExpectancy newLifeExpectancy = new LifeExpectancy(currentAgeTextField.getText(), genderContainer.getChoiceBox().getValue(), smokingHabitsContainer.getChoiceBox().getValue(),
@@ -395,6 +397,13 @@ public class LifeExpectancyCalculatorController {
 			
 		**/
 	    	
+
+		
+	}
+	
+	
+	public void goToOutputScene() {
+		
 		outputMessageLabel.setText("You are expected to live " + lifeExpectancy.calculateLifeExpectancy() + " more years.");
 		
 		//Setting up a bar graph of the user's results.
