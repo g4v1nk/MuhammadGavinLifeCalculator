@@ -96,17 +96,6 @@ public class LifeExpectancyCalculatorController {
 	private XYChart.Series<Number, String> avgData = new XYChart.Series<Number, String>();
 	private BarGraph visualDisplay = new BarGraph(ageAxis, youVsAverageAxis, "Results", "Age (years)", 90, yourData, avgData);
 	
-	/** This method sets up the input scene for the number
-	 * of people to calculate life expectancies for.
-	 * 
-	 */
-	public void setUpNumOfPeopleInputScene() {
-		Button doneButton = new Button();
-		doneButton.setText("Done");
-		//doneButton.setOnAction(event -> getNumOfPeopleAndGoToPerson1InputScene);
-	 	numOfPeopleInputSceneContainer.getChildren().addAll(howManyPeopleContainer, doneButton);
-	}
-
 	/** This method records the number of people entered
 	 * in the numOfPeopleInputScene and
 	 * changes the scene to person1InputScene.
@@ -169,6 +158,18 @@ public class LifeExpectancyCalculatorController {
 		
 	    mainMenuSceneContainer.getChildren().addAll(title, startCalculationButton);
 	}
+	
+	/** This method sets up the input scene for the number
+	 * of people to calculate life expectancies for.
+	 * 
+	 */
+	public void setUpNumOfPeopleInputScene() {
+		Button doneButton = new Button();
+		doneButton.setText("Done");
+		//doneButton.setOnAction(event -> getNumOfPeopleAndGoToPerson1InputScene);
+	 	numOfPeopleInputSceneContainer.getChildren().addAll(howManyPeopleContainer, doneButton);
+	}
+
 	
 	/** This method creates the Main Input Scene.
 	 * 
