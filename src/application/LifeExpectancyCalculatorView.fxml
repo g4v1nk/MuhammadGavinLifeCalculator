@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
@@ -8,11 +9,19 @@
 
 <VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LifeExpectancyCalculatorController">
    <children>
-      <HBox prefHeight="100.0" prefWidth="200.0">
+      <HBox prefHeight="400.0" prefWidth="400.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#setUpScenesAndGoToMainInputScene" text="Start Calculation">
+            <Label text="Life Expectancy Calculator" textAlignment="CENTER">
                <HBox.margin>
-                  <Insets left="50.0" top="50.0" />
+                  <Insets left="55" top="80" />
+               </HBox.margin>
+               <font>
+                  <Font name="Verdana Bold" size="20.0" />
+               </font>
+            </Label>
+            <Button mnemonicParsing="false" onAction="#setUpScenesAndGoToMainInputScene" text="Start Calculation" textAlignment="CENTER">
+               <HBox.margin>
+                  <Insets left="-200.0" top="170.0" />
                </HBox.margin>
             </Button>
          </children>

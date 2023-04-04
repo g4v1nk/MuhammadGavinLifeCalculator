@@ -2,6 +2,10 @@ package application;
 
 import java.lang.NumberFormatException;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+
 import java.util.ArrayList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -70,7 +74,7 @@ public class LifeExpectancyCalculatorController {
     private Scene mainInputScene = new Scene(mainInputSceneContainer, 400, 400);
     
     private VBox terminalIllnessInputSceneContainer = new VBox();
-    private Scene terminalIllnessInputScene = new Scene(terminalIllnessInputSceneContainer, 800, 800);
+    private Scene terminalIllnessInputScene = new Scene(terminalIllnessInputSceneContainer, 650, 650);
     
     private VBox outputSceneContainer = new VBox();
     private Scene outputScene = new Scene(outputSceneContainer, 400, 400);
@@ -86,10 +90,17 @@ public class LifeExpectancyCalculatorController {
 	 * 
 	 */
 	public void setUpMainMenuScene() {
-	    Button startCalculationButton = new Button("Start Calculation");
+		Label title = new Label("Life Expectancy Calculator");
+		title.setTranslateX(60);
+		title.setTranslateY(80);
+		title.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));
+		Button startCalculationButton = new Button("Start Calculation");
+		startCalculationButton.setTranslateX(150);
+		startCalculationButton.setTranslateY(150);
+		
 	    startCalculationButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
 		
-	    mainMenuSceneContainer.getChildren().add(startCalculationButton);
+	    mainMenuSceneContainer.getChildren().addAll(title, startCalculationButton);
 	}
 	
 	/** This method creates the Main Input Scene.
