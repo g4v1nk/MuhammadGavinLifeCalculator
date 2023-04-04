@@ -85,6 +85,7 @@ public class LifeExpectancyCalculatorController {
     private TextField currentAgeTextField = new TextField();
     private Label currentAgeErrorLabel = new Label("");
     private Label terminalIllnessErrorLabel = new Label("");
+    private Label outputMessageLabel = new Label();
     private Label person1OutputMessageLabel = new Label();
     private Label person2OutputMessageLabel = new Label();
     private Label person3OutputMessageLabel = new Label();
