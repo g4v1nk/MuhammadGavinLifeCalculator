@@ -166,13 +166,18 @@ public class LifeExpectancyCalculatorController {
 		title.setTranslateX(60);
 		title.setTranslateY(80);
 		title.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));
-		Button startCalculationButton = new Button("Start Calculation");
-		startCalculationButton.setTranslateX(150);
-		startCalculationButton.setTranslateY(150);
 		
-	    startCalculationButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
+		Button singlePersonButton = new Button("Single Person");
+		singlePersonButton.setTranslateX(150);
+		singlePersonButton.setTranslateY(150);
+		singlePersonButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
 		
-	    mainMenuSceneContainer.getChildren().addAll(title, startCalculationButton);
+		Button multiplePeopleButton = new Button("Multiple People");
+		multiplePeopleButton.setTranslateX(150);
+		multiplePeopleButton.setTranslateY(250);
+		multiplePeopleButton.setOnAction(event -> applicationStage.setScene(numOfPeopleInputScene));
+		
+	    mainMenuSceneContainer.getChildren().addAll(title, singlePersonButton);
 	}
 	
 	/** This method sets up the input scene for the number
