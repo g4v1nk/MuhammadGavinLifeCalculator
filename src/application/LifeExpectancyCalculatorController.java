@@ -28,30 +28,18 @@ import javafx.stage.Stage;
 public class LifeExpectancyCalculatorController {
 
     @FXML
-    /** This method sets up the scenes of the "game", then sets the scene to mainInputScene.
+    /** This method sets up the scenes of the "game", then sets the scene to numOfPeopleInputScene.
      * 
      * @param event (event is something that you want to trigger:
      * (1) a set-up of all the scenes of the "game", and
-     * (2) a scene change to mainInputScene.)
+     * (2) a scene change to numOfPeopleInputScene.)
      */
     public void setUpScenesAndGoToMainInputScene(ActionEvent event) {
     	setUpMainMenuScene();
+    	setUpNumOfPeopleInputScene();
     	setUpMainInputScene();
     	setUpTerminalIllnessInputScene();
     	setUpOutputScene();
-    	applicationStage.setScene(mainInputScene);
-    }
-    
-    @FXML
-    /** This method sets up the scenes for calculating life expectancies
-     * for multiple people, then sets the scene to numOfPeopleInputScene.
-     * 
-     * @param event (This is something that you want to trigger:
-     * (1) a set-up of all the scenes for calculating life expectancies for multiple people, andf
-     * (2) a scene change to numOfPeopleInputScene.)
-     */
-    public void setUpScenesAndGoToFirstInputScene(ActionEvent event) {
-    	setUpNumOfPeopleInputScene();
     	applicationStage.setScene(numOfPeopleInputScene);
     }
 
