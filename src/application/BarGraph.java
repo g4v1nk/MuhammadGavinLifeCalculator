@@ -12,11 +12,14 @@ import javafx.scene.chart.XYChart;
  *
  */
 public class BarGraph extends BarChart<Number, String> {
-	private XYChart.Series<Number, String> lowerData;
+	private XYChart.Series<Number, String> bottomData;
 	private XYChart.Series<Number, String> upperData;
+	private  XYChart.Series<Number, String> person3Data;
+	private  XYChart.Series<Number, String> person2Data;
+	private  XYChart.Series<Number, String> person1Data;
 	
 
-	/** This constructor makes a BarGraph object.
+	/** This constructor makes a BarGraph object with two bars.
 	 * 
 	 * @param horizontalAxis (This is the x-axis of the bar graph.)
 	 * @param verticalAxis (This is the y-axis of the bar graph.)
@@ -27,22 +30,51 @@ public class BarGraph extends BarChart<Number, String> {
 	 * @param dataThatAppearsHigher (This is the data that will be displayed in the upper bar in the graph.)
 	 */
 	public BarGraph(NumberAxis horizontalAxis, CategoryAxis verticalAxis, String titleOfBarGraph, String horizontalAxisLabel, int tickRotation, XYChart.Series<Number, String> dataThatAppearsLower, XYChart.Series<Number, String> dataThatAppearsHigher) {
+		
 		super(horizontalAxis, verticalAxis);
 		setTitle(titleOfBarGraph);
 		horizontalAxis.setLabel(horizontalAxisLabel);
 		horizontalAxis.setTickLabelRotation(tickRotation);
-		lowerData = dataThatAppearsLower;
+		bottomData = dataThatAppearsLower;
 		upperData = dataThatAppearsHigher;
-		getData().addAll(lowerData, upperData);
+		getData().addAll(bottomData, upperData);
 		
 	}
 	
-	/** This method sets the value of the instance variable "lowerData" based on the parameter.
+	/** This constructor makes a BarGraph object with four bars.
 	 * 
-	 * @param data (This is what "lowerData" is to be set to.)
+	 * @param horizontalAxis (This is the x-axis of the bar graph.)
+	 * @param verticalAxis (This is the y-axis of the bar graph.)
+	 * @param titleOfBarGraph (This is the title of the bar graph.)
+	 * @param horizontalAxisLabel (This is the label for the x-axis of the graph.)
+	 * @param tickRotation (This is the angle (in degrees, with respect to the x-axis) of the ticks on the x-axis.)
+	 * @param dataThatAppearsLowest (This is the data that will be displayed in the lowest bar in the graph.)
+	 * @param dataFromPerson3 (This is the data that will be displayed in the second-lowest bar in the graph.)
+	 * @param dataFromPerson2 (This is the data that will be displayed in the third-lowest bar in the graph.)
+	 * @param dataFromPerson1 (This is the data that will be displayed in the highest bar in the graph.)
 	 */
-	public void setLowerData(XYChart.Series<Number, String> data) {
-		lowerData = data;
+	public BarGraph(NumberAxis horizontalAxis, CategoryAxis verticalAxis, String titleOfBarGraph, String horizontalAxisLabel, int tickRotation, 
+			XYChart.Series<Number, String> dataThatAppearsLowest,  
+			XYChart.Series<Number, String> dataFromPerson3, XYChart.Series<Number, String> dataFromPerson2, XYChart.Series<Number, String> dataFromPerson1) {
+		
+		super(horizontalAxis, verticalAxis);
+		setTitle(titleOfBarGraph);
+		horizontalAxis.setLabel(horizontalAxisLabel);
+		horizontalAxis.setTickLabelRotation(tickRotation);
+		bottomData = dataThatAppearsLowest;
+		person3Data = dataFromPerson3;
+		person2Data = dataFromPerson2;
+		person1Data = dataFromPerson1;
+		getData().addAll(bottomData, person3Data, person2Data, person1Data);
+		
+	}
+	
+	/** This method sets the value of the instance variable "bottomData" based on the parameter.
+	 * 
+	 * @param data (This is what "bottomData" is to be set to.)
+	 */
+	public void setBottomData(XYChart.Series<Number, String> data) {
+		bottomData = data;
 	}
 	
 	/** This method sets the value of the instance variable "upperData" based on the parameter.
@@ -57,8 +89,8 @@ public class BarGraph extends BarChart<Number, String> {
 	 * 
 	 * @return lowerData (This is the data that appears "lower" in the bar graph.)
 	 */
-	public XYChart.Series<Number, String> getLowerData() {
-		return lowerData;
+	public XYChart.Series<Number, String> getBottomData() {
+		return bottomData;
 	}
 	
 	/** This method returns upperData.
