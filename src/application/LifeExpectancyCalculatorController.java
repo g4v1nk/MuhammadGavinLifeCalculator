@@ -16,6 +16,7 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -77,7 +78,7 @@ public class LifeExpectancyCalculatorController {
     private Scene terminalIllnessInputScene = new Scene(terminalIllnessInputSceneContainer, 650, 650);
     
     private VBox outputSceneContainer = new VBox();
-    private Scene outputScene = new Scene(outputSceneContainer, 400, 400);
+    private Scene outputScene = new Scene(outputSceneContainer, 400, 550);
 
     //Objects related to the visual display
 	private NumberAxis ageAxis = new NumberAxis();
@@ -156,15 +157,25 @@ public class LifeExpectancyCalculatorController {
 	 * 
 	 */
 	public void setUpOutputScene() {
+		outputMessageLabel.setTranslateX(70);
+		outputMessageLabel.setTranslateY(20);
+		outputMessageLabel.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
+		
+		visualDisplay.setTranslateY(40);
+		
 		Button newCalculationButton = new Button("New Calculation");
-		newCalculationButton.setTranslateX(100);
-		newCalculationButton.setTranslateY(10);
 		newCalculationButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
 		
 	    Button mainMenuButton = new Button("Main Menu");
+	    mainMenuButton.setTranslateX(20);
 		mainMenuButton.setOnAction(event -> applicationStage.setScene(mainMenuScene));
 	    
-		outputSceneContainer.getChildren().addAll(outputMessageLabel, newCalculationButton, mainMenuButton, visualDisplay);
+		HBox buttonBox = new HBox();
+		buttonBox.setTranslateX(100);
+		buttonBox.setTranslateY(70);
+		buttonBox.getChildren().addAll(newCalculationButton, mainMenuButton);
+		
+		outputSceneContainer.getChildren().addAll(outputMessageLabel, visualDisplay, buttonBox);
 	}
 	
 	/** This method checks for errors in current age input.
