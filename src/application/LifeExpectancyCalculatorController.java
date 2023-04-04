@@ -110,18 +110,26 @@ public class LifeExpectancyCalculatorController {
 	public void setUpMainInputScene() {
 		ContainerWithinSceneContainer currentAgeContainer = new ContainerWithinSceneContainer(75, 25, "Current age: ", 100); 
 	    currentAgeContainer.getChildren().addAll(currentAgeContainer.getLabel(), currentAgeTextField);
+		currentAgeContainer.setTranslateX(20);
 		
-	    genderContainer.getChildren().addAll(genderContainer.getLabel(), genderContainer.getChoiceBox());
+		currentAgeErrorLabel.setTranslateX(20);
+		currentAgeErrorLabel.setTranslateY(-20);
 		
-	    smokingHabitsContainer.getChildren().addAll(smokingHabitsContainer.getLabel(), smokingHabitsContainer.getChoiceBox());
+		genderContainer.getChildren().addAll(genderContainer.getLabel(), genderContainer.getChoiceBox());
+		genderContainer.setTranslateX(20);
+		genderContainer.setTranslateY(-10);
 		
+		smokingHabitsContainer.getChildren().addAll(smokingHabitsContainer.getLabel(), smokingHabitsContainer.getChoiceBox());
+		smokingHabitsContainer.setTranslateX(20);
+				
 	    Button enterTerminalIllnessButton = new Button("Enter Terminal Illness");
-	    enterTerminalIllnessButton.setTranslateX(100);
+	    enterTerminalIllnessButton.setTranslateX(120);
+	    enterTerminalIllnessButton.setTranslateY(-10);
 		enterTerminalIllnessButton.setOnAction(event -> checkForCurrentAgeError(2));
 		
 	    Button calculateLifeExpectancyButton = new Button("Calculate");
-		calculateLifeExpectancyButton.setTranslateX(100);
-		calculateLifeExpectancyButton.setTranslateY(60);
+		calculateLifeExpectancyButton.setTranslateX(165);
+		calculateLifeExpectancyButton.setTranslateY(50);
 		calculateLifeExpectancyButton.setOnAction(event -> checkForCurrentAgeError(1));
 		
 		mainInputSceneContainer.getChildren().addAll(currentAgeContainer, currentAgeErrorLabel, genderContainer, smokingHabitsContainer,
