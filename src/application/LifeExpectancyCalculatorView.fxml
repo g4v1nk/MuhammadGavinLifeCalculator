@@ -24,6 +24,11 @@
                   <Insets left="-200.0" top="170.0" />
                </HBox.margin>
             </Button>
+            <Button mnemonicParsing="false" onAction="#setUpScenesAndGoToNumOfPeopleInputScene" text="Multiple Person" textAlignment="CENTER">
+               <HBox.margin>
+                  <Insets left="-200.0" top="270.0" />
+               </HBox.margin>
+            </Button>
          </children>
       </HBox>
    </children>

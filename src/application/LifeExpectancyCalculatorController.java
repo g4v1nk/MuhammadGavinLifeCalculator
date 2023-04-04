@@ -28,13 +28,29 @@ import javafx.stage.Stage;
 public class LifeExpectancyCalculatorController {
 
     @FXML
+    /** This method sets up the scenes of the "game", then sets the scene to mainInputScene.
+     * 
+     * @param event (event is something that you want to trigger:
+     * (1) a set-up of all the scenes of the "game", and
+     * (2) a scene change to mainInputScene.)
+     */
+    public void setUpScenesAndGoToMainInputScene(ActionEvent event) {
+    	setUpMainMenuScene();
+    	setUpNumOfPeopleInputScene();
+    	setUpMainInputScene();
+    	setUpTerminalIllnessInputScene();
+    	setUpOutputScene();
+    	applicationStage.setScene(mainInputScene);
+    }
+    
+    @FXML
     /** This method sets up the scenes of the "game", then sets the scene to numOfPeopleInputScene.
      * 
      * @param event (event is something that you want to trigger:
      * (1) a set-up of all the scenes of the "game", and
      * (2) a scene change to numOfPeopleInputScene.)
      */
-    public void setUpScenesAndGoToMainInputScene(ActionEvent event) {
+    public void setUpScenesAndGoToNumOfPeopleInputScene(ActionEvent event) {
     	setUpMainMenuScene();
     	setUpNumOfPeopleInputScene();
     	setUpMainInputScene();
@@ -48,6 +64,8 @@ public class LifeExpectancyCalculatorController {
     private LifeExpectancy lifeExpectancy = new LifeExpectancy("18", "Male", "Non-smoker", "No", "No", "No", "No", "No", "No", "No", "No", "No", "No");
     
     //ContainerWithinSceneContainer objects
+    private ContainerWithinSceneContainerWithChoiceBox howManyPeopleContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "How many people?", 100, "1", "1", "2", "3");
+    
     private ContainerWithinSceneContainerWithChoiceBox genderContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "Gender: ", 100, "Male", "Male", "Female"); 
     private ContainerWithinSceneContainerWithChoiceBox smokingHabitsContainer = new ContainerWithinSceneContainerWithChoiceBox(75, 0, "Smoking habits: ", 100,
 		"Non-smoker", "Non-smoker", "Light smoker", "Moderate smoker", "Heavy smoker"); 
@@ -62,8 +80,6 @@ public class LifeExpectancyCalculatorController {
     private ContainerWithinSceneContainerWithChoiceBox huntingtonsContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "Huntington's Disease: ", 0, "No", "No", "Yes");
     private ContainerWithinSceneContainerWithChoiceBox multipleSclerosisContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "Multiple Sclerosis: ", 0, "No", "No", "Yes");
     private ContainerWithinSceneContainerWithChoiceBox rabiesContainer = new ContainerWithinSceneContainerWithChoiceBox(75, 0, "Rabies: ", 0, "No", "No", "Yes");
-   
-    private ContainerWithinSceneContainerWithChoiceBox howManyPeopleContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "How many people?", 100, "1", "1", "2", "3", "4");
     
     //TextField and Label objects
     private TextField currentAgeTextField = new TextField();
