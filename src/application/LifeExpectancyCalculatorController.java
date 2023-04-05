@@ -84,7 +84,7 @@ public class LifeExpectancyCalculatorController {
     private ContainerWithinSceneContainerWithChoiceBox multipleSclerosisContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "Multiple Sclerosis: ", 0, "No", "No", "Yes");
     private ContainerWithinSceneContainerWithChoiceBox rabiesContainer = new ContainerWithinSceneContainerWithChoiceBox(75, 0, "Rabies: ", 0, "No", "No", "Yes");
     
-    //TextField and Label objects
+    //TextField, Label, and Button objects
     private TextField person1NameTextField = new TextField();
     private TextField person2NameTextField = new TextField();
     private TextField person3NameTextField = new TextField();
@@ -95,6 +95,7 @@ public class LifeExpectancyCalculatorController {
     private Label person1OutputMessageLabel = new Label();
     private Label person2OutputMessageLabel = new Label();
     private Label person3OutputMessageLabel = new Label();
+    private Button doneTerminalIllnessButton = new Button("Done Terminal Illness");
     
     //VBox and Scene objects
     private VBox mainMenuSceneContainer = new VBox();
@@ -279,6 +280,9 @@ public class LifeExpectancyCalculatorController {
 		doneButton.setText("Done");
 		doneButton.setOnAction(event -> applicationStage.setScene(person1InputScene));
 	 	numOfPeopleInputSceneContainer.getChildren().addAll(howManyPeopleContainer, doneButton);
+	 	
+	 	//Set the doneTerminalIllnessButton to change the scene to person1InputScene.
+	 	doneTerminalIllnessButton.setOnAction(event -> checkForTerminalIllnessErrors(1));
 	}
 
 	
@@ -305,10 +309,12 @@ public class LifeExpectancyCalculatorController {
 	    enterTerminalIllnessButton.setTranslateY(-10);
 		enterTerminalIllnessButton.setOnAction(event -> processEnterTerminalIllnessButtonClick(0));
 		
+		doneTerminalIllnessButton.setOnAction(event -> checkForTerminalIllnessErrors(0));
+		
 	    Button calculateLifeExpectancyButton = new Button("Calculate");
 		calculateLifeExpectancyButton.setTranslateX(165);
 		calculateLifeExpectancyButton.setTranslateY(50);
-		calculateLifeExpectancyButton.setOnAction(event -> process);
+		calculateLifeExpectancyButton.setOnAction(event -> processCalculateLifeExpectancyButtonClick());
 		
 		mainInputSceneContainer.getChildren().addAll(currentAgeContainer, currentAgeErrorLabel, genderContainer, smokingHabitsContainer,
 			enterTerminalIllnessButton, calculateLifeExpectancyButton);
@@ -358,9 +364,7 @@ public class LifeExpectancyCalculatorController {
 		rabiesContainer.setTranslateX(20);
 		rabiesContainer.getChoiceBox().setTranslateX(10);
 		
-	    Button doneTerminalIllnessButton = new Button("Done Terminal Illness");
 		doneTerminalIllnessButton.setTranslateX(250);
-		doneTerminalIllnessButton.setOnAction(event -> checkForTerminalIllnessErrors());
 		
 		terminalIllnessErrorLabel.setTranslateX(20);
 		terminalIllnessErrorLabel.setTranslateY(20);
@@ -421,7 +425,6 @@ public class LifeExpectancyCalculatorController {
 		
 		avgData.getData().add(new XYChart.Data<Number, String>(86, ""));
 		avgData.setName("Average Age At Death");
-		multiplePeopleVisualDisplay.setTranslateY(40);
 		
 		Button newCalculationButton = new Button("New Calculation");
 		newCalculationButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
@@ -434,17 +437,20 @@ public class LifeExpectancyCalculatorController {
 			multiplePeopleOutputSceneContainer.getChildren().addAll(person1OutputMessageLabel, multiplePeopleVisualDisplayOnePerson);
 			multiplePeopleVisualDisplayOnePerson.setPerson1Data(person1Data);
 			multiplePeopleVisualDisplayOnePerson.setBottomData(avgData);
+			multiplePeopleVisualDisplayOnePerson.setTranslateY(40);
 		} else if (Integer.parseInt(howManyPeopleContainer.getChoiceBox().getValue()) == 2) {
 			multiplePeopleOutputSceneContainer.getChildren().addAll(person2OutputMessageLabel, multiplePeopleVisualDisplayTwoPeople);
 			multiplePeopleVisualDisplayTwoPeople.setPerson1Data(person1Data);
 			multiplePeopleVisualDisplayTwoPeople.setPerson2Data(person2Data);
 			multiplePeopleVisualDisplayTwoPeople.setBottomData(avgData);
+			multiplePeopleVisualDisplayTwoPeople.setTranslateY(40);
 		} else {
 			multiplePeopleOutputSceneContainer.getChildren().addAll(person3OutputMessageLabel, multiplePeopleVisualDisplayThreePeople);
 			multiplePeopleVisualDisplayThreePeople.setPerson1Data(person1Data);
 			multiplePeopleVisualDisplayThreePeople.setPerson2Data(person2Data);
 			multiplePeopleVisualDisplayThreePeople.setPerson3Data(person3Data);
 			multiplePeopleVisualDisplayThreePeople.setBottomData(avgData);
+			multiplePeopleVisualDisplayThreePeople.setTranslateY(40);
 		}
 		
 		HBox buttonBox = new HBox();
@@ -538,8 +544,12 @@ public class LifeExpectancyCalculatorController {
 			multipleSclerosisContainer.getChoiceBox().setValue("No");
 			rabiesContainer.getChoiceBox().setValue("No");
 			
-			if (Integer.parseInt(howManyPeopleContainer.getChoiceBox().getValue()) > 1) applicationStage.setScene(person2InputScene);
-			else applicationStage.setScene(multiplePeopleOutputScene);
+			if (Integer.parseInt(howManyPeopleContainer.getChoiceBox().getValue()) > 1) {
+				applicationStage.setScene(person2InputScene);
+				
+				//Set the doneTerminalIllnessButton to change the scene to person2InputScene.
+				doneTerminalIllnessButton.setOnAction(event -> checkForTerminalIllnessErrors(2));
+			} else applicationStage.setScene(multiplePeopleOutputScene);
 		}
 	}
 	
@@ -575,8 +585,12 @@ public class LifeExpectancyCalculatorController {
 			multipleSclerosisContainer.getChoiceBox().setValue("No");
 			rabiesContainer.getChoiceBox().setValue("No");
 			
-			if (Integer.parseInt(howManyPeopleContainer.getChoiceBox().getValue()) > 2) applicationStage.setScene(person3InputScene);
-			else applicationStage.setScene(multiplePeopleOutputScene);
+			if (Integer.parseInt(howManyPeopleContainer.getChoiceBox().getValue()) > 2) {
+				applicationStage.setScene(person3InputScene);
+				
+				//Set the doneTerminalIllnessButton to change the scene to person3InputScene.
+				doneTerminalIllnessButton.setOnAction(event -> checkForTerminalIllnessErrors(3));
+			} else applicationStage.setScene(multiplePeopleOutputScene);
 		}
 	}
 	
