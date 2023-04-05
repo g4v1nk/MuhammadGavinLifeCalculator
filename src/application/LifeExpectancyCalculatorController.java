@@ -133,7 +133,9 @@ public class LifeExpectancyCalculatorController {
 	private XYChart.Series<Number, String> person2Data = new XYChart.Series<Number, String>();
 	private XYChart.Series<Number, String> person3Data = new XYChart.Series<Number, String>();
 	private BarGraph singlePersonVisualDisplay = new BarGraph(ageAxis, youVsAverageAxis, "Results", "Age (years)", 90, yourData, avgData);
-	private BarGraph multiplePeopleVisualDisplay = new BarGraph(ageAxis, youVsAverageAxis, "Results", "Age (years)", 90, person1Data, person2Data, person3Data, avgData);
+	private BarGraph multiplePeopleVisualDisplayOnePerson = new BarGraph(ageAxis, youVsAverageAxis, "Results", "Age (years)", 90, person1Data, avgData);
+	private BarGraph multiplePeopleVisualDisplayTwoPeople = new BarGraph(ageAxis, youVsAverageAxis, "Results", "Age (years)", 90, person1Data, person2Data, avgData);
+	private BarGraph multiplePeopleVisualDisplayThreePeople = new BarGraph(ageAxis, youVsAverageAxis, "Results", "Age (years)", 90, person1Data, person2Data, person3Data, avgData);
 	
 	/** This method records the number of people entered
 	 * in the numOfPeopleInputScene and
@@ -408,6 +410,7 @@ public class LifeExpectancyCalculatorController {
 	 * 
 	 */
 	public void setUpMultiplePeopleOutputScene() {
+		
 		person1OutputMessageLabel.setTranslateX(70);
 		person1OutputMessageLabel.setTranslateY(20);
 		person1OutputMessageLabel.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
@@ -420,6 +423,8 @@ public class LifeExpectancyCalculatorController {
 		person3OutputMessageLabel.setTranslateY(20);
 		person3OutputMessageLabel.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
 		
+		avgData.getData().add(new XYChart.Data<Number, String>(86, ""));
+		avgData.setName("Average Age At Death");
 		multiplePeopleVisualDisplay.setTranslateY(40);
 		
 		Button newCalculationButton = new Button("New Calculation");
@@ -428,13 +433,30 @@ public class LifeExpectancyCalculatorController {
 	    Button mainMenuButton = new Button("Main Menu");
 	    mainMenuButton.setTranslateX(20);
 		mainMenuButton.setOnAction(event -> applicationStage.setScene(mainMenuScene));
-	    
+		
+		if (Integer.parseInt(howManyPeopleContainer.getChoiceBox().getValue()) == 1) {
+			multiplePeopleOutputSceneContainer.getChildren().addAll(person1OutputMessageLabel, multiplePeopleVisualDisplayOnePerson);
+			multiplePeopleVisualDisplayOnePerson.setPerson1Data(person1Data);
+			multiplePeopleVisualDisplayOnePerson.setBottomData(avgData);
+		} else if (Integer.parseInt(howManyPeopleContainer.getChoiceBox().getValue()) == 2) {
+			multiplePeopleOutputSceneContainer.getChildren().addAll(person2OutputMessageLabel, multiplePeopleVisualDisplayTwoPeople);
+			multiplePeopleVisualDisplayTwoPeople.setPerson1Data(person1Data);
+			multiplePeopleVisualDisplayTwoPeople.setPerson2Data(person2Data);
+			multiplePeopleVisualDisplayTwoPeople.setBottomData(avgData);
+		} else {
+			multiplePeopleOutputSceneContainer.getChildren().addAll(person3OutputMessageLabel, multiplePeopleVisualDisplayThreePeople);
+			multiplePeopleVisualDisplayThreePeople.setPerson1Data(person1Data);
+			multiplePeopleVisualDisplayThreePeople.setPerson2Data(person2Data);
+			multiplePeopleVisualDisplayThreePeople.setPerson3Data(person3Data);
+			multiplePeopleVisualDisplayThreePeople.setBottomData(avgData);
+		}
+		
 		HBox buttonBox = new HBox();
 		buttonBox.setTranslateX(100);
 		buttonBox.setTranslateY(70);
 		buttonBox.getChildren().addAll(newCalculationButton, mainMenuButton);
+		multiplePeopleOutputSceneContainer.getChildren().add(buttonBox);
 		
-		multiplePeopleOutputSceneContainer.getChildren().addAll(person1OutputMessageLabel, person2OutputMessageLabel, person3OutputMessageLabel, multiplePeopleVisualDisplay, buttonBox);
 	}
 	
 	/** This method processes the action of clicking the Enter Terminal Illness button.
