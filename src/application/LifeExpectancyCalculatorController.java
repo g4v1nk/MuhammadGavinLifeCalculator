@@ -309,7 +309,7 @@ public class LifeExpectancyCalculatorController {
 		singlePersonOutputMessageLabel.setTranslateY(20);
 		singlePersonOutputMessageLabel.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
 		
-		visualDisplay.setTranslateY(40);
+		singlePersonVisualDisplay.setTranslateY(40);
 		
 		Button newCalculationButton = new Button("New Calculation");
 		newCalculationButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
@@ -323,7 +323,7 @@ public class LifeExpectancyCalculatorController {
 		buttonBox.setTranslateY(70);
 		buttonBox.getChildren().addAll(newCalculationButton, mainMenuButton);
 		
-		singlePersonOutputSceneContainer.getChildren().addAll(outputMessageLabel, visualDisplay, buttonBox);
+		singlePersonOutputSceneContainer.getChildren().addAll(singlePersonOutputMessageLabel, singlePersonVisualDisplay, buttonBox);
 	}
 	
 	/** This method checks for errors in current age input.
