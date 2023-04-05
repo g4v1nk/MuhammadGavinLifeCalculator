@@ -41,6 +41,32 @@ public class BarGraph extends BarChart<Number, String> {
 		
 	}
 	
+	/** This constructor makes a BarGraph object with three bars.
+	 * 
+	 * @param horizontalAxis (This is the x-axis of the bar graph.)
+	 * @param verticalAxis (This is the y-axis of the bar graph.)
+	 * @param titleOfBarGraph (This is the title of the bar graph.)
+	 * @param horizontalAxisLabel (This is the label for the x-axis of the graph.)
+	 * @param tickRotation (This is the angle (in degrees, with respect to the x-axis) of the ticks on the x-axis.)
+	 * @param dataThatAppearsLowest (This is the data that will be displayed in the lowest bar in the graph.)
+	 * @param dataFromPerson1 (This is the data that will be displayed in the highest bar in the graph.)
+	 * @param dataFromPerson2 (This is the data that will be displayed in the second-highest bar in the graph.)
+	 */
+	public BarGraph(NumberAxis horizontalAxis, CategoryAxis verticalAxis, String titleOfBarGraph, String horizontalAxisLabel, int tickRotation, 
+			XYChart.Series<Number, String> dataThatAppearsLowest,  
+			XYChart.Series<Number, String> dataFromPerson1, XYChart.Series<Number, String> dataFromPerson2) {
+		
+		super(horizontalAxis, verticalAxis);
+		setTitle(titleOfBarGraph);
+		horizontalAxis.setLabel(horizontalAxisLabel);
+		horizontalAxis.setTickLabelRotation(tickRotation);
+		bottomData = dataThatAppearsLowest;
+		person2Data = dataFromPerson2;
+		person1Data = dataFromPerson1;
+		getData().addAll(bottomData, person2Data, person1Data);
+		
+	}
+	
 	/** This constructor makes a BarGraph object with four bars.
 	 * 
 	 * @param horizontalAxis (This is the x-axis of the bar graph.)
@@ -111,7 +137,7 @@ public class BarGraph extends BarChart<Number, String> {
 	
 	/** This method returns person1Data.
 	 * 
-	 * @return person1Data (This is the data that appears above "bottomData" in the bar graph.)
+	 * @return person1Data (This is the data that appears "highest" in the bar graph.)
 	 */
 	public XYChart.Series<Number, String> getPerson1Data() {
 		return person1Data;
@@ -127,7 +153,7 @@ public class BarGraph extends BarChart<Number, String> {
 	
 	/** This method returns person2Data.
 	 * 
-	 * @return person2Data (This is the data that appears above "person1Data" in the bar graph.)
+	 * @return person2Data (This is the data that appears below "person1Data" in the bar graph.)
 	 */
 	public XYChart.Series<Number, String> getPerson2Data() {
 		return person2Data;
@@ -143,7 +169,7 @@ public class BarGraph extends BarChart<Number, String> {
 	
 	/** This method returns person3Data.
 	 * 
-	 * @return person3Data (This is the data that appears above "person2Data" in the bar graph.)
+	 * @return person3Data (This is the data that appears below "person2Data" in the bar graph.)
 	 */
 	public XYChart.Series<Number, String> getPerson3Data() {
 		return person3Data;
