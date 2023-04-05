@@ -385,10 +385,15 @@ public class LifeExpectancyCalculatorController {
 	 * 
 	 */
 	public void setUpSinglePersonOutputScene() {
+		
 		singlePersonOutputMessageLabel.setTranslateX(70);
 		singlePersonOutputMessageLabel.setTranslateY(20);
 		singlePersonOutputMessageLabel.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
 		
+		avgData.getData().add(new XYChart.Data<Number, String>(86, ""));
+		avgData.setName("Average Age At Death");
+		singlePersonVisualDisplay.setBottomData(yourData);
+		singlePersonVisualDisplay.setUpperData(avgData);
 		singlePersonVisualDisplay.setTranslateY(40);
 		
 		Button newCalculationButton = new Button("New Calculation");
@@ -404,6 +409,7 @@ public class LifeExpectancyCalculatorController {
 		buttonBox.getChildren().addAll(newCalculationButton, mainMenuButton);
 		
 		singlePersonOutputSceneContainer.getChildren().addAll(singlePersonOutputMessageLabel, singlePersonVisualDisplay, buttonBox);
+	
 	}
 	
 	/** This method sets up the Multiple People Output Scene.
@@ -784,39 +790,7 @@ public class LifeExpectancyCalculatorController {
 			multipleSclerosisContainer.getChoiceBox().setValue("No");
 			rabiesContainer.getChoiceBox().setValue("No");
 	
-	public void addDataToBarGraph() {
-		
-	}
-	
-	
-	public void goToOutputScene() {
-		
-		outputMessageLabel.setText("You are expected to live " + lifeExpectancy.calculateLifeExpectancy() + " more years.");
-		
-		//Setting up a bar graph of the user's results.
-		yourData.getData().add(new XYChart.Data<Number, String>(lifeExpectancy.calculateLifeExpectancy() + Integer.parseInt(currentAgeTextField.getText()), ""));
-		yourData.setName("Your Age At Death");
-		avgData.getData().add(new XYChart.Data<Number, String>(86, ""));
-		avgData.setName("Average Age At Death");
-		visualDisplay.setBottomData(yourData);
-		visualDisplay.setUpperData(avgData);
 
-		applicationStage.setScene(outputScene);
-		
-		//Re-setting the default "No" values for all terminal illnesses (for the next calculation).
-		alzheimersContainer.getChoiceBox().setValue("No");
-		creutzfeldtJakobContainer.getChoiceBox().setValue("No");
-		crohnsContainer.getChoiceBox().setValue("No");
-		cysticFibrosisContainer.getChoiceBox().setValue("No");
-		duchenneMDContainer.getChoiceBox().setValue("No");
-		heartDiseaseContainer.getChoiceBox().setValue("No");
-		hepBContainer.getChoiceBox().setValue("No");
-		huntingtonsContainer.getChoiceBox().setValue("No");
-		multipleSclerosisContainer.getChoiceBox().setValue("No");
-		rabiesContainer.getChoiceBox().setValue("No");
-		
-	}
-    
 	/** This method sets the variable applicationStage to the parameter passed in.
 	 * 
 	 * @param stage (This is what you want to be assigned to applicationStage.)
