@@ -17,20 +17,20 @@ public class ContainerWithinSceneContainerWithTextField extends ContainerWithinS
 		super(minHeight, translateY, labelText, labelMinWidth);
 	}
 	
-	/** This method sets textField according to the parameter.
-	 * 
-	 * @param textFieldToSet (This is what you want textField to be set to.)
-	 */
-	public void setTextField(TextField textFieldToSet) {
-		textField = textFieldToSet;
-	}
-	
 	/** This method returns the TextField that is created in this class.
 	 * 
 	 * @return textField (This is the textField that is created when a ContainerWithinSceneContainerWithTextField is constructed.)
 	 */
 	public TextField getControl() {
 		return textField;
+	}
+	
+	/** This method sets textField according to the parameter.
+	 * 
+	 * @param textFieldToSet (This is what you want textField to be set to.)
+	 */
+	public void setTextField(TextField textFieldToSet) {
+		textField = textFieldToSet;
 	}
 	
 }

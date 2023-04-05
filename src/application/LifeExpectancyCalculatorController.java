@@ -66,7 +66,7 @@ public class LifeExpectancyCalculatorController implements ErrorHandlable {
     private Label terminalIllnessErrorLabel = new Label("");
     private Label outputMessageLabel = new Label();
     
-    //VBox and Scene objects
+    //VBox and Scene objects  
     private VBox mainMenuSceneContainer = new VBox();
     private Scene mainMenuScene = new Scene(mainMenuSceneContainer, 400, 400);
     
@@ -344,12 +344,500 @@ public class LifeExpectancyCalculatorController implements ErrorHandlable {
 	
 	}
     
+	/** This method returns applicationStage.
+	 * 
+	 * @return applicationStage (This is the application stage.)
+	 */
+	public Stage getApplicationStage() {
+		return applicationStage;
+	}
+	
 	/** This method sets the variable applicationStage to the parameter passed in.
 	 * 
 	 * @param stage (This is what you want to be assigned to applicationStage.)
 	 */
     public void setApplicationStage(Stage stage) {
 		applicationStage = stage;
-	}	
+	}
+    
+    /** This method returns lifeExpectancy.
+     * 
+     * @return lifeExpectancy (This is the life expectancy of the user of the program.)
+     */
+    public LifeExpectancy getLifeExpectancy() {
+    	return lifeExpectancy;
+    }
+    
+    /** This method sets lifeExpectancy according to the parameter.
+     * 
+     * @param lifeExpectancyToSet (This is what you want to set lifeExpectancy to.)
+     */
+    public void setLifeExpectancy(LifeExpectancy lifeExpectancyToSet) {
+    	lifeExpectancy = lifeExpectancyToSet;
+    }
+    
+    /** This method returns currentAgeContainer.
+     * 
+     * @return currentAgeContainer (This is a container that holds widgets related to current age.)
+     */
+    public ContainerWithinSceneContainerWithTextField getCurrentAgeContainer() {
+    	return currentAgeContainer;
+    }
+    
+    /** This method sets currentAgeContainer according to the parameter.
+     * 
+     * @param currentAgeContainerToSet (This is what you want currentAgeContainer to be set to.)
+     */
+    public void setCurrentAgeContainer(ContainerWithinSceneContainerWithTextField currentAgeContainerToSet) {
+    	currentAgeContainer = currentAgeContainerToSet;
+    }
+    
+    /** This method returns genderContainer.
+     * 
+     * @return genderContainer (This is a container that holds widgets related to gender.)
+     */
+    public ContainerWithinSceneContainerWithChoiceBox getGenderContainer() {
+    	return genderContainer;
+    }
+    
+    /** This method sets genderContainer according to the parameter.
+     * 
+     * @param genderContainerToSet (This is what you want genderContainer to be set to.)
+     */
+    public void setGenderContainer(ContainerWithinSceneContainerWithChoiceBox genderContainerToSet) {
+    	genderContainer = genderContainerToSet;
+    }
+    
+    /** This method returns smokingHabitsContainer.
+     * 
+     * @return smokingHabitsContainer (This is a container that holds widgets related to smoking habits.)
+     */
+    public ContainerWithinSceneContainerWithChoiceBox getSmokingHabitsContainer() {
+    	return smokingHabitsContainer;
+    }
+    
+    /** This method sets smokingHabitsContainer according to the parameter.
+     * 
+     * @param smokingHabitsContainerToSet (This is what you want smokingHabitsContainer to be set to.)
+     */
+    public void setSmokingHabitsContainer(ContainerWithinSceneContainerWithChoiceBox smokingHabitsContainerToSet) {
+    	smokingHabitsContainer = smokingHabitsContainerToSet;    	
+    }
+    
+    /** This method returns alzheimersContainer.
+     * 
+     * @return alzheimersContainer (This is a container that holds widgets related to Alzheimer's.)
+     */
+    public ContainerWithinSceneContainerWithChoiceBox getAlzheimersContainer() {
+    	return alzheimersContainer;
+    }
+    
+    /** This method sets alzheimersContainer according to the parameter.
+     * 
+     * @param alzheimersContainerToSet (This is what you want alzheimersContainer to be set to.)
+     */
+    public void setAlzheimersContainer(ContainerWithinSceneContainerWithChoiceBox alzheimersContainerToSet) {
+    	alzheimersContainer = alzheimersContainerToSet;
+    }
+    
+    /** This method returns creutzfeldtJakobContainer.
+     * 
+     * @return creutzfeldtJakobContainer (This is a container that holds widgets related to Creutzfeldt-Jakob.)
+     */
+    public ContainerWithinSceneContainerWithChoiceBox getCreutzfeldtJakobContainer() {
+    	return creutzfeldtJakobContainer;
+    }
+    
+    /** This method sets creutzfeldtJakobContainer according to the parameter.
+     * 
+     * @param creutzfeldtJakobContainerToSet (This is what you want creutzfeldtJakobContainer to be set to.)
+     */
+    public void setCreutzfeldtJakobContainer(ContainerWithinSceneContainerWithChoiceBox creutzfeldtJakobContainerToSet) {
+    	creutzfeldtJakobContainer = creutzfeldtJakobContainerToSet;    	
+    }
+    
+    /** This method returns crohnsContainer.
+     * 
+     * @return crohnsContainer (This is a container that holds widgets related to Crohns.)
+     */
+    public ContainerWithinSceneContainerWithChoiceBox getCrohnsContainer() {
+    	return crohnsContainer;
+    }
+    
+    /** This method sets crohnsContainer according to the parameter.
+     * 
+     * @param crohnsContainerToSet (This is what you want crohnsContainer to be set to.)
+     */
+    public void setCrohnsContainer(ContainerWithinSceneContainerWithChoiceBox crohnsContainerToSet) {
+    	crohnsContainer = crohnsContainerToSet;    	
+    }
+    
+    /** This method returns cysticFibrosisContainer.
+     * 
+     * @return cysticFibrosisContainer (This is a container that holds widgets related to Cystic Fibrosis.)
+     */
+    public ContainerWithinSceneContainerWithChoiceBox getCysticFibrosisContainer() {
+    	return cysticFibrosisContainer;
+    }
+    
+    /** This method sets cysticFibrosisContainer according to the parameter.
+     * 
+     * @param cysticFibrosisContainerToSet (This is what you want cysticFibrosisContainer to be set to.)
+     */
+    public void setCysticFibrosisContainer(ContainerWithinSceneContainerWithChoiceBox cysticFibrosisContainerToSet) {
+    	cysticFibrosisContainer = cysticFibrosisContainerToSet;    	
+    }
+    
+    /** This method returns duchenneMDContainer.
+     * 
+     * @return duchenneMDContainer (This is a container that holds widgets related to Duchenne MD.)
+     */
+    public ContainerWithinSceneContainerWithChoiceBox getDuchenneMDContainer() {
+    	return duchenneMDContainer;
+    }
+    
+    /** This method sets duchenneMDContainer according to the parameter.
+     * 
+     * @param duchenneMDContainerToSet (This is what you want duchenneMDContainer to be set to.)
+     */
+    public void setDuchenneMDContainer(ContainerWithinSceneContainerWithChoiceBox duchenneMDContainerToSet) {
+    	duchenneMDContainer = duchenneMDContainerToSet;    	
+    }
+    
+    /** This method returns heartDiseaseContainer.
+     * 
+     * @return heartDiseaseContainer (This is a container that holds widgets related to Heart Disease.)
+     */
+    public ContainerWithinSceneContainerWithChoiceBox getHeartDiseaseContainer() {
+    	return heartDiseaseContainer;
+    }
+    
+    /** This method sets heartDiseaseContainer according to the parameter.
+     * 
+     * @param heartDiseaseContainerToSet (This is what you want heartDiseaseContainer to be set to.)
+     */
+    public void setHeartDiseaseContainer(ContainerWithinSceneContainerWithChoiceBox heartDiseaseContainerToSet) {
+    	heartDiseaseContainer = heartDiseaseContainerToSet;    	
+    }
+    
+    /** This method returns hepBContainer.
+     * 
+     * @return hepBContainer (This is a container that holds widgets related to Hep B.)
+     */
+    public ContainerWithinSceneContainerWithChoiceBox getHepBContainer() {
+    	return hepBContainer;
+    }
+    
+    /** This method sets hepBContainer according to the parameter.
+     * 
+     * @param hepBContainerToSet (This is what you want hepBContainer to be set to.)
+     */
+    public void setHepBContainer(ContainerWithinSceneContainerWithChoiceBox hepBContainerToSet) {
+    	hepBContainer = hepBContainerToSet;    	
+    }
+    
+    /** This method returns huntingtonsContainer.
+     * 
+     * @return huntingtonsContainer (This is a container that holds widgets related to Huntington's.)
+     */
+    public ContainerWithinSceneContainerWithChoiceBox getHuntingtonsContainer() {
+    	return huntingtonsContainer;
+    }
+    
+    /** This method sets huntingtonsContainer according to the parameter.
+     * 
+     * @param huntingtonsContainerToSet (This is what you want huntingtonsContainer to be set to.)
+     */
+    public void setHuntingtonsContainer(ContainerWithinSceneContainerWithChoiceBox huntingtonsContainerToSet) {
+    	huntingtonsContainer = huntingtonsContainerToSet;    	
+    }
+    
+    /** This method returns multipleSclerosisContainer.
+     * 
+     * @return multipleSclerosisContainer (This is a container that holds widgets related to Multiple Sclerosis.)
+     */
+    public ContainerWithinSceneContainerWithChoiceBox getMultipleSclerosisContainer() {
+    	return multipleSclerosisContainer;
+    }
+    
+    /** This method sets multipleSclerosisContainer according to the parameter.
+     * 
+     * @param multipleSclerosisContainerToSet (This is what you want multipleSclerosisContainer to be set to.)
+     */
+    public void setMultipleSclerosisContainer(ContainerWithinSceneContainerWithChoiceBox multipleSclerosisContainerToSet) {
+    	multipleSclerosisContainer = multipleSclerosisContainerToSet;    	
+    }
+    
+    /** This method returns rabiesContainer.
+     * 
+     * @return rabiesContainer (This is a container that holds widgets related to Rabies.)
+     */
+    public ContainerWithinSceneContainerWithChoiceBox getRabiesContainer() {
+    	return rabiesContainer;
+    }
+    
+    /** This method sets rabiesContainer according to the parameter.
+     * 
+     * @param rabiesContainerToSet (This is what you want rabiesContainer to be set to.)
+     */
+    public void setRabiesContainer(ContainerWithinSceneContainerWithChoiceBox rabiesContainerToSet) {
+    	rabiesContainer = rabiesContainerToSet;    	
+    }
+    
+    /** This method returns currentAgeErrorLabel.
+     * 
+     * @return currentAgeErrorLabel (This is the error message for current age input.)
+     */
+    public Label getCurrentAgeErrorLabel() {
+    	return currentAgeErrorLabel;
+    }
+    
+    /** This method sets currentAgeErrorLabel according to the parameter.
+     * 
+     * @param currentAgeErrorLabelToSet (This is what you want currentAgeErrorLabel to be set to.)
+     */
+    public void setCurrentAgeErrorLabel(Label currentAgeErrorLabelToSet) {
+    	currentAgeErrorLabel = currentAgeErrorLabelToSet;    	
+    }
+    
+    /** This method returns terminalIllnessErrorLabel.
+     * 
+     * @return terminalIllnessErrorLabel (This is the error message for terminal illness input.)
+     */
+    public Label getTerminalIllnessLabel() {
+    	return terminalIllnessErrorLabel;
+    }
+    
+    /** This method sets terminalIllnessErrorLabel according to the parameter.
+     * 
+     * @param terminalIllnessErrorLabelToSet (This is what you want terminalIllnessErrorLabel to be set to.)
+     */
+    public void setTerminalIllnessErrorLabel(Label terminalIllnessErrorLabelToSet) {
+    	terminalIllnessErrorLabel = terminalIllnessErrorLabelToSet;    	
+    }
+    
+    /** This method returns outputMessageLabel.
+     * 
+     * @return outputMessageLabel (This is the output message.)
+     */
+    public Label getoutputMessageLabel() {
+    	return outputMessageLabel;
+    }
+    
+    /** This method sets outputMessageLabel according to the parameter.
+     * 
+     * @param outputMessageLabelToSet (This is what you want outputMessageErrorLabel to be set to.)
+     */
+    public void setOutputMessageLabel(Label outputMessageLabelToSet) {
+    	outputMessageLabel = outputMessageLabelToSet;    	
+    }
+    
+    /** This method returns mainMenuSceneContainer.
+     * 
+     * @return mainMenuSceneContainer (This is what shows in the Main Menu Scene.)
+     */
+    public VBox getMainMenuSceneContainer() {
+    	return mainMenuSceneContainer;
+    }
+    
+    /** This method sets mainMenuSceneContainer according to the parameter.
+     * 
+     * @param mainMenuSceneContainerToSet (This is what you want mainMenuSceneContainer to be set to.)
+     */
+    public void setMainMenuSceneContainer(VBox mainMenuSceneContainerToSet) {
+    	mainMenuSceneContainer = mainMenuSceneContainerToSet;    	
+    }
+    
+    /** This method returns mainMenuScene.
+     * 
+     * @return mainMenuScene (This is the Main Menu Scene.)
+     */
+    public Scene getMainMenuScene() {
+    	return mainMenuScene;
+    }
+    
+    /** This method sets mainMenuScene according to the parameter.
+     * 
+     * @param mainMenuSceneToSet (This is what you want mainMenuScene to be set to.)
+     */
+    public void setMainMenuScene(Scene mainMenuSceneToSet) {
+    	mainMenuScene = mainMenuSceneToSet;    	
+    }
+    
+    /** This method returns mainInputSceneContainer.
+     * 
+     * @return mainInputSceneContainer (This is what shows in the Main Input Scene.)
+     */
+    public VBox getMainInputSceneContainer() {
+    	return mainInputSceneContainer;
+    }
+    
+    /** This method sets mainInputSceneContainer according to the parameter.
+     * 
+     * @param mainInputSceneContainerToSet (This is what you want mainInputSceneContainer to be set to.)
+     */
+    public void setMainInputSceneContainer(VBox mainInputSceneContainerToSet) {
+    	mainInputSceneContainer = mainInputSceneContainerToSet;    	
+    }
+    
+    /** This method returns mainInputScene.
+     * 
+     * @return mainInputScene (This is the Main Input Scene.)
+     */
+    public Scene getMainInputScene() {
+    	return mainInputScene;
+    }
+    
+    /** This method sets mainInputScene according to the parameter.
+     * 
+     * @param mainInputSceneToSet (This is what you want mainInputScene to be set to.)
+     */
+    public void setMainInputScene(Scene mainInputSceneToSet) {
+    	mainInputScene = mainInputSceneToSet;    	
+    }
+    
+    /** This method returns terminalIllnessInputSceneContainer.
+     * 
+     * @return terminalIllnessInputSceneContainer (This is what shows in the Terminal Illness Input Scene.)
+     */
+    public VBox getTerminalIllnessInputSceneContainer() {
+    	return terminalIllnessInputSceneContainer;
+    }
+    
+    /** This method sets terminalIllnessInputSceneContainer according to the parameter.
+     * 
+     * @param terminalIllnessInputSceneContainerToSet (This is what you want terminalIllnessInputSceneContainer to be set to.)
+     */
+    public void setTerminalIllnessInputSceneContainer(VBox terminalIllnessInputSceneContainerToSet) {
+    	terminalIllnessInputSceneContainer = terminalIllnessInputSceneContainerToSet;    	
+    }
+    
+    /** This method returns terminalIllnessInputScene.
+     * 
+     * @return terminalIllnessInputScene (This is the Terminal Illness Input Scene.)
+     */
+    public Scene getTerminalIllnessInputScene() {
+    	return terminalIllnessInputScene;
+    }
+    
+    /** This method sets terminalIllnessInputScene according to the parameter.
+     * 
+     * @param terminalIllnessInputSceneToSet (This is what you want terminalIllnessInputScene to be set to.)
+     */
+    public void setTerminalIllnessInputScene(Scene terminalIllnessInputSceneToSet) {
+    	terminalIllnessInputScene = terminalIllnessInputSceneToSet;    	
+    }
+    
+    /** This method returns outputSceneContainer.
+     * 
+     * @return outputSceneContainer (This is what shows in the Output Scene.)
+     */
+    public VBox getOutputSceneContainer() {
+    	return outputSceneContainer;
+    }
+    
+    /** This method sets outputSceneContainer according to the parameter.
+     * 
+     * @param outputContainerToSet (This is what you want outputSceneContainer to be set to.)
+     */
+    public void setOutputSceneContainer(VBox outputSceneContainerToSet) {
+    	outputSceneContainer = outputSceneContainerToSet;    	
+    }
+    
+    /** This method returns outputScene.
+     * 
+     * @return outputScene (This is the Output Scene.)
+     */
+    public Scene getOutputScene() {
+    	return outputScene;
+    }
+    
+    /** This method sets outputScene according to the parameter.
+     * 
+     * @param outputSceneToSet (This is what you want outputScene to be set to.)
+     */
+    public void setOutputScene(Scene outputSceneToSet) {
+    	outputScene = outputSceneToSet;    	
+    }
+    
+    /** This method returns ageAxis.
+     * 
+     * @return ageAxis (This is the x-axis of the bar graph.)
+     */
+    public NumberAxis getAgeAxis() {
+    	return ageAxis;
+    }
+    
+    /** This method sets ageAxis according to the parameter.
+     * 
+     * @param ageAxisToSet (This is what you want ageAxis to be set to.)
+     */
+    public void setAgeAxis(NumberAxis ageAxisToSet) {
+    	ageAxis = ageAxisToSet;    	
+    }
+    
+    /** This method returns youVsAverageAxis.
+     * 
+     * @return youVsAverageAxis (This is the y-axis of the bar graph.)
+     */
+    public CategoryAxis getYouVsAverageAxis() {
+    	return youVsAverageAxis;
+    }
+    
+    /** This method sets youVsAverageAxis according to the parameter.
+     * 
+     * @param youVsAverageAxisToSet (This is what you want youVsAverageAxis to be set to.)
+     */
+    public void setYouVsAverageAxis(CategoryAxis youVsAverageAxisToSet) {
+    	youVsAverageAxis = youVsAverageAxisToSet;    	
+    }
+    
+    /** This method returns yourData.
+     * 
+     * @return yourData (This is your data in the bar graph.)
+     */
+    public XYChart.Series<Number, String> getYourData() {
+    	return yourData;
+    }
+    
+    /** This method sets yourData according to the parameter.
+     * 
+     * @param yourData (This is what you want yourData to be set to.)
+     */
+    public void setYourData(XYChart.Series<Number, String> yourDataToSet) {
+    	yourData = yourDataToSet;    	
+    }
+    
+    /** This method returns avgData.
+     * 
+     * @return avgData (This is the "average" data in the bar graph.)
+     */
+    public XYChart.Series<Number, String> getAvgData() {
+    	return avgData;
+    }
+    
+    /** This method sets avgData according to the parameter.
+     * 
+     * @param avgData (This is what you want avgData to be set to.)
+     */
+    public void setAvgData(XYChart.Series<Number, String> avgDataToSet) {
+    	avgData = avgDataToSet;    	
+    }
+    
+    /** This method returns visualDisplay.
+     * 
+     * @return visualDisplay (This is the bar graph.)
+     */
+    public BarGraph getVisualDisplay() {
+    	return visualDisplay;
+    }
+    
+    /** This method sets visualDisplay according to the parameter.
+     * 
+     * @param visualDisplay (This is what you want visualDisplay to be set to.)
+     */
+    public void setVisualDisplay(BarGraph visualDisplayToSet) {
+    	visualDisplay = visualDisplayToSet;    	
+    }
     
 }
