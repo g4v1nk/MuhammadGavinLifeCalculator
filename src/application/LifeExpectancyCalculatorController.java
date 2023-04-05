@@ -217,6 +217,43 @@ public class LifeExpectancyCalculatorController {
 			enterTerminalIllnessButton, donePerson2Button);
 		}
 	
+	/** This method sets up the Person 3 Input Scene.
+	 * 
+	 */
+	public void setUpPerson3InputScene() {
+		Label person3Label = new Label("Person 3");
+		
+		ContainerWithinSceneContainer person3NameContainer = new ContainerWithinSceneContainer(75, 25, "Name:  ", 100);
+		person3NameContainer.getChildren().addAll(person3NameContainer.getLabel(), person3NameTextField);
+
+		ContainerWithinSceneContainer currentAgeContainer = new ContainerWithinSceneContainer(75, 25, "Current age: ", 100); 
+	    currentAgeContainer.getChildren().addAll(currentAgeContainer.getLabel(), currentAgeTextField);
+		currentAgeContainer.setTranslateX(20);
+		
+		currentAgeErrorLabel.setTranslateX(20);
+		currentAgeErrorLabel.setTranslateY(-20);
+		
+		genderContainer.getChildren().addAll(genderContainer.getLabel(), genderContainer.getChoiceBox());
+		genderContainer.setTranslateX(20);
+		genderContainer.setTranslateY(-10);
+		
+		smokingHabitsContainer.getChildren().addAll(smokingHabitsContainer.getLabel(), smokingHabitsContainer.getChoiceBox());
+		smokingHabitsContainer.setTranslateX(20);
+				
+	    Button enterTerminalIllnessButton = new Button("Enter Terminal Illness");
+	    enterTerminalIllnessButton.setTranslateX(120);
+	    enterTerminalIllnessButton.setTranslateY(-10);
+		enterTerminalIllnessButton.setOnAction(event -> checkForCurrentAgeError(3, 0));
+		
+	    Button donePerson3Button = new Button("Done Person 3");
+	    donePerson3Button.setTranslateX(165);
+	    donePerson3Button.setTranslateY(50);
+	    donePerson3Button.setOnAction(event -> checkForCurrentAgeError(3, 1));
+		
+	    person3InputSceneContainer.getChildren().addAll(person3Label, person3NameContainer, currentAgeContainer, currentAgeErrorLabel, genderContainer, smokingHabitsContainer,
+			enterTerminalIllnessButton, donePerson3Button);
+		}
+	
 	/** This method creates the Main Menu Scene.
 	 * 
 	 */
@@ -425,47 +462,87 @@ public class LifeExpectancyCalculatorController {
 				//Clear the error message for future "gameplays".
 				currentAgeErrorLabel.setText("");
 				if (nextScene == 0) applicationStage.setScene(terminalIllnessInputScene);
-				else {
-					if (numOfPeople > 0)
-						if (currentScene == 1) {
-							LifeExpectancy newLifeExpectancy = new LifeExpectancy(currentAgeTextField.getText(), genderContainer.getChoiceBox().getValue(), smokingHabitsContainer.getChoiceBox().getValue(),
-									alzheimersContainer.getChoiceBox().getValue(), creutzfeldtJakobContainer.getChoiceBox().getValue(), crohnsContainer.getChoiceBox().getValue(),
-									cysticFibrosisContainer.getChoiceBox().getValue(), duchenneMDContainer.getChoiceBox().getValue(), heartDiseaseContainer.getChoiceBox().getValue(), hepBContainer.getChoiceBox().getValue(), huntingtonsContainer.getChoiceBox().getValue(),
-									multipleSclerosisContainer.getChoiceBox().getValue(), rabiesContainer.getChoiceBox().getValue());
-							
-							lifeExpectancy = newLifeExpectancy;
-							person1OutputMessageLabel.setText(person1NameTextField + " is expected to live " + lifeExpectancy.calculateLifeExpectancy() + " more years.");
-							person1Data.getData().add(new XYChart.Data<Number, String>(lifeExpectancy.calculateLifeExpectancy() + Integer.parseInt(currentAgeTextField.getText()), ""));
-							person1Data.setName(person1NameTextField + "'s Age At Death");
-							multiplePeopleVisualDisplay.setPerson1Data(person1Data);
-							applicationStage.setScene(person2InputScene);
-						}
-						else if (currentScene == 2) {
-							LifeExpectancy newLifeExpectancy = new LifeExpectancy(currentAgeTextField.getText(), genderContainer.getChoiceBox().getValue(), smokingHabitsContainer.getChoiceBox().getValue(),
-									alzheimersContainer.getChoiceBox().getValue(), creutzfeldtJakobContainer.getChoiceBox().getValue(), crohnsContainer.getChoiceBox().getValue(),
-									cysticFibrosisContainer.getChoiceBox().getValue(), duchenneMDContainer.getChoiceBox().getValue(), heartDiseaseContainer.getChoiceBox().getValue(), hepBContainer.getChoiceBox().getValue(), huntingtonsContainer.getChoiceBox().getValue(),
-									multipleSclerosisContainer.getChoiceBox().getValue(), rabiesContainer.getChoiceBox().getValue());
-							
-							lifeExpectancy = newLifeExpectancy;
-							person2OutputMessageLabel.setText(person2NameTextField + " is expected to live " + lifeExpectancy.calculateLifeExpectancy() + " more years.");
-							person2Data.getData().add(new XYChart.Data<Number, String>(lifeExpectancy.calculateLifeExpectancy() + Integer.parseInt(currentAgeTextField.getText()), ""));
-							person2Data.setName(person3NameTextField + "'s Age At Death");
-							multiplePeopleVisualDisplay.setPerson2Data(person2Data);
-							applicationStage.setScene(person3InputScene);
-						}
-						else
-							LifeExpectancy newLifeExpectancy = new LifeExpectancy(currentAgeTextField.getText(), genderContainer.getChoiceBox().getValue(), smokingHabitsContainer.getChoiceBox().getValue(),
-									alzheimersContainer.getChoiceBox().getValue(), creutzfeldtJakobContainer.getChoiceBox().getValue(), crohnsContainer.getChoiceBox().getValue(),
-									cysticFibrosisContainer.getChoiceBox().getValue(), duchenneMDContainer.getChoiceBox().getValue(), heartDiseaseContainer.getChoiceBox().getValue(), hepBContainer.getChoiceBox().getValue(), huntingtonsContainer.getChoiceBox().getValue(),
-									multipleSclerosisContainer.getChoiceBox().getValue(), rabiesContainer.getChoiceBox().getValue());
-							
-							lifeExpectancy = newLifeExpectancy;
-							person3OutputMessageLabel.setText(person3NameTextField + " is expected to live " + lifeExpectancy.calculateLifeExpectancy() + " more years.");
-							person3Data.getData().add(new XYChart.Data<Number, String>(lifeExpectancy.calculateLifeExpectancy() + Integer.parseInt(currentAgeTextField.getText()), ""));
-							person3Data.setName(person3NameTextField + "'s Age At Death");
-							multiplePeopleVisualDisplay.setPerson3Data(person3Data);
-							applicationStage.setScene(multiplePeopleOutputScene);
+				else if (nextScene == 1) {
+					if (numOfPeople == 0) applicationStage.setScene(singlePersonOutputScene);
+					else applicationStage.setScene(multiplePeopleOutputScene);
 				}
+				else {
+					if (currentScene == 1) {
+						LifeExpectancy newLifeExpectancy = new LifeExpectancy(currentAgeTextField.getText(), genderContainer.getChoiceBox().getValue(), smokingHabitsContainer.getChoiceBox().getValue(),
+								alzheimersContainer.getChoiceBox().getValue(), creutzfeldtJakobContainer.getChoiceBox().getValue(), crohnsContainer.getChoiceBox().getValue(),
+								cysticFibrosisContainer.getChoiceBox().getValue(), duchenneMDContainer.getChoiceBox().getValue(), heartDiseaseContainer.getChoiceBox().getValue(), hepBContainer.getChoiceBox().getValue(), huntingtonsContainer.getChoiceBox().getValue(),
+								multipleSclerosisContainer.getChoiceBox().getValue(), rabiesContainer.getChoiceBox().getValue());
+						
+						lifeExpectancy = newLifeExpectancy;
+						person1OutputMessageLabel.setText(person1NameTextField + " is expected to live " + lifeExpectancy.calculateLifeExpectancy() + " more years.");
+						person1Data.getData().add(new XYChart.Data<Number, String>(lifeExpectancy.calculateLifeExpectancy() + Integer.parseInt(currentAgeTextField.getText()), ""));
+						person1Data.setName(person1NameTextField + "'s Age At Death");
+						multiplePeopleVisualDisplay.setPerson1Data(person1Data);
+						applicationStage.setScene(person2InputScene);
+						
+						//Re-setting the default "No" values for all terminal illnesses (for the next calculation).
+						alzheimersContainer.getChoiceBox().setValue("No");
+						creutzfeldtJakobContainer.getChoiceBox().setValue("No");
+						crohnsContainer.getChoiceBox().setValue("No");
+						cysticFibrosisContainer.getChoiceBox().setValue("No");
+						duchenneMDContainer.getChoiceBox().setValue("No");
+						heartDiseaseContainer.getChoiceBox().setValue("No");
+						hepBContainer.getChoiceBox().setValue("No");
+						huntingtonsContainer.getChoiceBox().setValue("No");
+						multipleSclerosisContainer.getChoiceBox().setValue("No");
+						rabiesContainer.getChoiceBox().setValue("No");
+					}
+					else if (currentScene == 2) {
+						LifeExpectancy newLifeExpectancy = new LifeExpectancy(currentAgeTextField.getText(), genderContainer.getChoiceBox().getValue(), smokingHabitsContainer.getChoiceBox().getValue(),
+								alzheimersContainer.getChoiceBox().getValue(), creutzfeldtJakobContainer.getChoiceBox().getValue(), crohnsContainer.getChoiceBox().getValue(),
+								cysticFibrosisContainer.getChoiceBox().getValue(), duchenneMDContainer.getChoiceBox().getValue(), heartDiseaseContainer.getChoiceBox().getValue(), hepBContainer.getChoiceBox().getValue(), huntingtonsContainer.getChoiceBox().getValue(),
+								multipleSclerosisContainer.getChoiceBox().getValue(), rabiesContainer.getChoiceBox().getValue());
+						
+						lifeExpectancy = newLifeExpectancy;
+						person2OutputMessageLabel.setText(person2NameTextField + " is expected to live " + lifeExpectancy.calculateLifeExpectancy() + " more years.");
+						person2Data.getData().add(new XYChart.Data<Number, String>(lifeExpectancy.calculateLifeExpectancy() + Integer.parseInt(currentAgeTextField.getText()), ""));
+						person2Data.setName(person3NameTextField + "'s Age At Death");
+						multiplePeopleVisualDisplay.setPerson2Data(person2Data);
+						applicationStage.setScene(person3InputScene);
+						
+						//Re-setting the default "No" values for all terminal illnesses (for the next calculation).
+						alzheimersContainer.getChoiceBox().setValue("No");
+						creutzfeldtJakobContainer.getChoiceBox().setValue("No");
+						crohnsContainer.getChoiceBox().setValue("No");
+						cysticFibrosisContainer.getChoiceBox().setValue("No");
+						duchenneMDContainer.getChoiceBox().setValue("No");
+						heartDiseaseContainer.getChoiceBox().setValue("No");
+						hepBContainer.getChoiceBox().setValue("No");
+						huntingtonsContainer.getChoiceBox().setValue("No");
+						multipleSclerosisContainer.getChoiceBox().setValue("No");
+						rabiesContainer.getChoiceBox().setValue("No");
+					}
+					else {
+						LifeExpectancy newLifeExpectancy = new LifeExpectancy(currentAgeTextField.getText(), genderContainer.getChoiceBox().getValue(), smokingHabitsContainer.getChoiceBox().getValue(),
+								alzheimersContainer.getChoiceBox().getValue(), creutzfeldtJakobContainer.getChoiceBox().getValue(), crohnsContainer.getChoiceBox().getValue(),
+								cysticFibrosisContainer.getChoiceBox().getValue(), duchenneMDContainer.getChoiceBox().getValue(), heartDiseaseContainer.getChoiceBox().getValue(), hepBContainer.getChoiceBox().getValue(), huntingtonsContainer.getChoiceBox().getValue(),
+								multipleSclerosisContainer.getChoiceBox().getValue(), rabiesContainer.getChoiceBox().getValue());
+						
+						lifeExpectancy = newLifeExpectancy;
+						person3OutputMessageLabel.setText(person3NameTextField + " is expected to live " + lifeExpectancy.calculateLifeExpectancy() + " more years.");
+						person3Data.getData().add(new XYChart.Data<Number, String>(lifeExpectancy.calculateLifeExpectancy() + Integer.parseInt(currentAgeTextField.getText()), ""));
+						person3Data.setName(person3NameTextField + "'s Age At Death");
+						multiplePeopleVisualDisplay.setPerson3Data(person3Data);
+						applicationStage.setScene(multiplePeopleOutputScene);
+						
+						//Re-setting the default "No" values for all terminal illnesses (for the next calculation).
+						alzheimersContainer.getChoiceBox().setValue("No");
+						creutzfeldtJakobContainer.getChoiceBox().setValue("No");
+						crohnsContainer.getChoiceBox().setValue("No");
+						cysticFibrosisContainer.getChoiceBox().setValue("No");
+						duchenneMDContainer.getChoiceBox().setValue("No");
+						heartDiseaseContainer.getChoiceBox().setValue("No");
+						hepBContainer.getChoiceBox().setValue("No");
+						huntingtonsContainer.getChoiceBox().setValue("No");
+						multipleSclerosisContainer.getChoiceBox().setValue("No");
+						rabiesContainer.getChoiceBox().setValue("No");
+					}
+				}	
 			}
 		} catch(NumberFormatException numberFormatException) {
 			currentAgeErrorLabel.setText("You entered " + currentAgeTextField.getText() + " . Please enter an integer.");
