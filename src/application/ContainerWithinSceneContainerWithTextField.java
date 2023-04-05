@@ -1,28 +1,26 @@
 package application;
 
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
+import javafx.scene.control.TextField;
 
-/** This class represents a container within a scene container.
+/** This class represents a container within a scene container with a TextField.
  * 
  * @author CS219-user
  *
  */
-public class ContainerWithinSceneContainerWithTextField extends HBox {
+public class ContainerWithinSceneContainerWithTextField extends ContainerWithinSceneContainer {
 	private Label label;
+	private TextField textField;
 	
-	/** This constructor constructs a container within a scene container according to the parameter specifications.
+	/** This constructor constructs a container within a scene container with a TextField according to the parameter specifications.
 	 * 
 	 * @param minHeight (This is the minimum height of the inner container.)
 	 * @param translateY (This is the amount you want the inner container to be moved down by.)
 	 * @param labelText (This is the text that will appear in the inner container's label.)
 	 * @param labelMinWidth (This is the minimum width of the inner container's label.)
 	 */
-	public ContainerWithinSceneContainer(int minHeight, int translateY, String labelText, int labelMinWidth) {
-		setMinHeight(minHeight);
-		setTranslateY(translateY);
-		label = new Label(labelText);
-		label.setMinWidth(labelMinWidth);
+	public ContainerWithinSceneContainerWithTextField(int minHeight, int translateY, String labelText, int labelMinWidth) {
+		super(minHeight, translateY, labelText, labelMinWidth);
 	}
 
 	/** This method sets the instance variable "label" according to the parameter.
@@ -39,6 +37,13 @@ public class ContainerWithinSceneContainerWithTextField extends HBox {
 	 */
 	public Label getLabel() {
 		return label;
+	}
+	
+	/** This method returns textField.
+	 * 
+	 */
+	public TextField getControl() {
+		return textField;
 	}
 
 }

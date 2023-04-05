@@ -42,32 +42,14 @@ public class LifeExpectancyCalculatorController implements ErrorHandlable{
     	applicationStage.setScene(mainInputScene);
     }
     
-    @FXML
-    /** This method sets up the scenes of the "game", then sets the scene to numOfPeopleInputScene.
-     * 
-     * @param event (event is something that you want to trigger:
-     * (1) a set-up of all the scenes of the "game", and
-     * (2) a scene change to numOfPeopleInputScene.)
-     */
-    public void setUpScenesAndGoToNumOfPeopleInputScene(ActionEvent event) {
-    	setUpMainMenuScene();
-    	setUpNumOfPeopleInputScene();
-    	setUpPerson1InputScene();
-    	setUpPerson2InputScene();
-    	setUpPerson3InputScene();
-    	setUpTerminalIllnessInputScene();
-    	setUpMultiplePeopleOutputScene();
-    	applicationStage.setScene(numOfPeopleInputScene);
-    }
+   
 
     private Stage applicationStage;
     private boolean currentAgeError = false;
     private LifeExpectancy lifeExpectancy = new LifeExpectancy("18", "Male", "Non-smoker", "No", "No", "No", "No", "No", "No", "No", "No", "No", "No");
     
     //ContainerWithinSceneContainer objects
-    private ContainerWithinSceneContainerWithChoiceBox howManyPeopleContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "How many people?", 100, "1", "1", "2", "3");
-    
-    private ContainerWithinSceneContainer currentAgeContainer = new ContainerWithinSceneContainer(75, 25, "Current age: ", 100); 
+   private ContainerWithinSceneContainer currentAgeContainer = new ContainerWithinSceneContainer(75, 25, "Current age: ", 100); 
     private ContainerWithinSceneContainerWithChoiceBox genderContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "Gender: ", 100, "Male", "Male", "Female"); 
     private ContainerWithinSceneContainerWithChoiceBox smokingHabitsContainer = new ContainerWithinSceneContainerWithChoiceBox(75, 0, "Smoking habits: ", 100,
 		"Non-smoker", "Non-smoker", "Light smoker", "Moderate smoker", "Heavy smoker"); 
