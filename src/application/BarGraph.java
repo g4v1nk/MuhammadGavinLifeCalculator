@@ -77,6 +77,14 @@ public class BarGraph extends BarChart<Number, String> {
 		bottomData = data;
 	}
 	
+	/** This method returns bottomData.
+	 * 
+	 * @return bottomData (This is the data that appears "lowest" in the bar graph.)
+	 */
+	public XYChart.Series<Number, String> getBottomData() {
+		return bottomData;
+	}
+	
 	/** This method sets the value of the instance variable "upperData" based on the parameter.
 	 * 
 	 * @param data (This is what "upperData" is to be set to.)
@@ -85,20 +93,60 @@ public class BarGraph extends BarChart<Number, String> {
 		upperData = data;
 	}
 	
-	/** This method returns lowerData.
-	 * 
-	 * @return lowerData (This is the data that appears "lower" in the bar graph.)
-	 */
-	public XYChart.Series<Number, String> getBottomData() {
-		return bottomData;
-	}
-	
 	/** This method returns upperData.
 	 * 
 	 * @return upperData (This is the data that appears "higher" in the bar graph.)
 	 */
 	public XYChart.Series<Number, String> getUpperData() {
 		return upperData;
+	}
+	
+	/** This method sets the value of the instance variable "person1Data" based on the parameter.
+	 * 
+	 * @param data (This is what "person1Data" is to be set to.)
+	 */
+	public void setPerson1Data(XYChart.Series<Number, String> data) {
+		person1Data = data;
+	}
+	
+	/** This method returns person1Data.
+	 * 
+	 * @return person1Data (This is the data that appears above "bottomData" in the bar graph.)
+	 */
+	public XYChart.Series<Number, String> getPerson1Data() {
+		return person1Data;
+	}
+	
+	/** This method sets the value of the instance variable "person2Data" based on the parameter.
+	 * 
+	 * @param data (This is what "person2Data" is to be set to.)
+	 */
+	public void setPerson2Data(XYChart.Series<Number, String> data) {
+		person2Data = data;
+	}
+	
+	/** This method returns person2Data.
+	 * 
+	 * @return person2Data (This is the data that appears above "person1Data" in the bar graph.)
+	 */
+	public XYChart.Series<Number, String> getPerson2Data() {
+		return person2Data;
+	}
+	
+	/** This method sets the value of the instance variable "person3Data" based on the parameter.
+	 * 
+	 * @param data (This is what "person3Data" is to be set to.)
+	 */
+	public void setPerson3Data(XYChart.Series<Number, String> data) {
+		person3Data = data;
+	}
+	
+	/** This method returns person3Data.
+	 * 
+	 * @return person3Data (This is the data that appears above "person2Data" in the bar graph.)
+	 */
+	public XYChart.Series<Number, String> getPerson3Data() {
+		return person3Data;
 	}
 
 }
