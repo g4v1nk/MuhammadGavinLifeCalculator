@@ -34,23 +34,6 @@ public class BarGraph extends BarChart<Number, String> {
 		lowerData = dataThatAppearsLower;
 		upperData = dataThatAppearsHigher;
 		getData().addAll(lowerData, upperData);
-		
-	}
-	
-	/** This method sets the value of the instance variable "lowerData" based on the parameter.
-	 * 
-	 * @param data (This is what "lowerData" is to be set to.)
-	 */
-	public void setLowerData(XYChart.Series<Number, String> data) {
-		lowerData = data;
-	}
-	
-	/** This method sets the value of the instance variable "upperData" based on the parameter.
-	 * 
-	 * @param data (This is what "upperData" is to be set to.)
-	 */
-	public void setUpperData(XYChart.Series<Number, String> data) {
-		upperData = data;
 	}
 	
 	/** This method returns lowerData.
@@ -61,6 +44,14 @@ public class BarGraph extends BarChart<Number, String> {
 		return lowerData;
 	}
 	
+	/** This method sets the value of the instance variable "lowerData" based on the parameter.
+	 * 
+	 * @param data (This is what "lowerData" is to be set to.)
+	 */
+	public void setLowerData(XYChart.Series<Number, String> data) {
+		lowerData = data;
+	}
+	
 	/** This method returns upperData.
 	 * 
 	 * @return upperData (This is the data that appears "higher" in the bar graph.)
@@ -68,5 +59,12 @@ public class BarGraph extends BarChart<Number, String> {
 	public XYChart.Series<Number, String> getUpperData() {
 		return upperData;
 	}
-
+	
+	/** This method sets the value of the instance variable "upperData" based on the parameter.
+	 * 
+	 * @param data (This is what "upperData" is to be set to.)
+	 */
+	public void setUpperData(XYChart.Series<Number, String> data) {
+		upperData = data;
+	}
 }
