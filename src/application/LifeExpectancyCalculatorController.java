@@ -52,11 +52,11 @@ public class LifeExpectancyCalculatorController {
     public void setUpScenesAndGoToNumOfPeopleInputScene(ActionEvent event) {
     	setUpMainMenuScene();
     	setUpNumOfPeopleInputScene();
-    	setUpPerson1InputScene();
+    	//setUpPerson1InputScene();
     	setUpPerson2InputScene();
-    	setUpPerson3InputScene();
-    	setUpTerminalIllnessInputScene();
-    	setUpMultiplePeopleOutputScene();
+    	//setUpPerson3InputScene();
+    	//setUpTerminalIllnessInputScene();
+    	//setUpMultiplePeopleOutputScene();
     	applicationStage.setScene(numOfPeopleInputScene);
     }
 
@@ -67,6 +67,7 @@ public class LifeExpectancyCalculatorController {
     //ContainerWithinSceneContainer objects
     private ContainerWithinSceneContainerWithChoiceBox howManyPeopleContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "How many people?", 100, "1", "1", "2", "3");
     
+    private ContainerWithinSceneContainer currentAgeContainer = new ContainerWithinSceneContainer(75, 25, "Current age: ", 100); 
     private ContainerWithinSceneContainerWithChoiceBox genderContainer = new ContainerWithinSceneContainerWithChoiceBox(50, 0, "Gender: ", 100, "Male", "Male", "Female"); 
     private ContainerWithinSceneContainerWithChoiceBox smokingHabitsContainer = new ContainerWithinSceneContainerWithChoiceBox(75, 0, "Smoking habits: ", 100,
 		"Non-smoker", "Non-smoker", "Light smoker", "Moderate smoker", "Heavy smoker"); 
@@ -131,7 +132,7 @@ public class LifeExpectancyCalculatorController {
 	private XYChart.Series<Number, String> person1Data = new XYChart.Series<Number, String>();
 	private XYChart.Series<Number, String> person2Data = new XYChart.Series<Number, String>();
 	private XYChart.Series<Number, String> person3Data = new XYChart.Series<Number, String>();
-	private BarGraph singlePersonVisualDisplay = new BarGraph(ageAxis, yAxis, "Results", "Age (years)", 90, yourData, avgData);
+	private BarGraph singlePersonVisualDisplay = new BarGraph(ageAxis, yAxis, "Results", "Age (years)", 90, avgData, yourData);
 	private BarGraph multiplePeopleVisualDisplayOnePerson = new BarGraph(ageAxis, yAxis, "Results", "Age (years)", 90, person1Data, avgData);
 	private BarGraph multiplePeopleVisualDisplayTwoPeople = new BarGraph(ageAxis, yAxis, "Results", "Age (years)", 90, person1Data, person2Data, avgData);
 	private BarGraph multiplePeopleVisualDisplayThreePeople = new BarGraph(ageAxis, yAxis, "Results", "Age (years)", 90, person1Data, person2Data, person3Data, avgData);
@@ -181,7 +182,6 @@ public class LifeExpectancyCalculatorController {
 	 */
 	public void setUpMainInputScene() {
 		
-		ContainerWithinSceneContainer currentAgeContainer = new ContainerWithinSceneContainer(75, 25, "Current age: ", 100); 
 	    currentAgeContainer.getChildren().addAll(currentAgeContainer.getLabel(), currentAgeTextField);
 		currentAgeContainer.setTranslateX(20);
 		
@@ -223,7 +223,6 @@ public class LifeExpectancyCalculatorController {
 		ContainerWithinSceneContainer person1NameContainer = new ContainerWithinSceneContainer(75, 25, "Name:  ", 100);
 		person1NameContainer.getChildren().addAll(person1NameContainer.getLabel(), person1NameTextField);
 
-		ContainerWithinSceneContainer currentAgeContainer = new ContainerWithinSceneContainer(75, 25, "Current age: ", 100); 
 	    currentAgeContainer.getChildren().addAll(currentAgeContainer.getLabel(), currentAgeTextField);
 		currentAgeContainer.setTranslateX(20);
 		
@@ -262,7 +261,6 @@ public class LifeExpectancyCalculatorController {
 		ContainerWithinSceneContainer person2NameContainer = new ContainerWithinSceneContainer(75, 25, "Name:  ", 100);
 		person2NameContainer.getChildren().addAll(person2NameContainer.getLabel(), person2NameTextField);
 
-		ContainerWithinSceneContainer currentAgeContainer = new ContainerWithinSceneContainer(75, 25, "Current age: ", 100); 
 	    currentAgeContainer.getChildren().addAll(currentAgeContainer.getLabel(), currentAgeTextField);
 		currentAgeContainer.setTranslateX(20);
 		
@@ -301,7 +299,6 @@ public class LifeExpectancyCalculatorController {
 		ContainerWithinSceneContainer person3NameContainer = new ContainerWithinSceneContainer(75, 25, "Name:  ", 100);
 		person3NameContainer.getChildren().addAll(person3NameContainer.getLabel(), person3NameTextField);
 
-		ContainerWithinSceneContainer currentAgeContainer = new ContainerWithinSceneContainer(75, 25, "Current age: ", 100); 
 	    currentAgeContainer.getChildren().addAll(currentAgeContainer.getLabel(), currentAgeTextField);
 		currentAgeContainer.setTranslateX(20);
 		
@@ -398,8 +395,6 @@ public class LifeExpectancyCalculatorController {
 		
 		avgData.getData().add(new XYChart.Data<Number, String>(86, ""));
 		avgData.setName("Average Age At Death");
-		singlePersonVisualDisplay.setBottomData(yourData);
-		singlePersonVisualDisplay.setUpperData(avgData);
 		singlePersonVisualDisplay.setTranslateY(40);
 		
 		Button newCalculationButton = new Button("New Calculation");
@@ -506,7 +501,7 @@ public class LifeExpectancyCalculatorController {
 			
 			singlePersonOutputMessageLabel.setText("You are expected to live " + lifeExpectancy.calculateLifeExpectancy() + " more years.");
 			yourData.getData().add(new XYChart.Data<Number, String>(lifeExpectancy.calculateLifeExpectancy() + Integer.parseInt(currentAgeTextField.getText()), ""));
-			yourData.setName(person1NameTextField + "Your Age At Death");
+			yourData.setName("Your Age At Death");
 			
 			//Re-setting the default "No" values for all terminal illnesses (for the next calculation).
 			alzheimersContainer.getChoiceBox().setValue("No");

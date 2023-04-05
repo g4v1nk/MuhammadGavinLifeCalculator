@@ -53,8 +53,7 @@ public class BarGraph extends BarChart<Number, String> {
 	 * @param dataFromPerson2 (This is the data that will be displayed in the second-highest bar in the graph.)
 	 */
 	public BarGraph(NumberAxis horizontalAxis, CategoryAxis verticalAxis, String titleOfBarGraph, String horizontalAxisLabel, int tickRotation, 
-			XYChart.Series<Number, String> dataThatAppearsLowest,  
-			XYChart.Series<Number, String> dataFromPerson1, XYChart.Series<Number, String> dataFromPerson2) {
+			XYChart.Series<Number, String> dataThatAppearsLowest,  XYChart.Series<Number, String> dataFromPerson2, XYChart.Series<Number, String> dataFromPerson1) {
 		
 		super(horizontalAxis, verticalAxis);
 		setTitle(titleOfBarGraph);
@@ -81,7 +80,7 @@ public class BarGraph extends BarChart<Number, String> {
 	 */
 	public BarGraph(NumberAxis horizontalAxis, CategoryAxis verticalAxis, String titleOfBarGraph, String horizontalAxisLabel, int tickRotation, 
 			XYChart.Series<Number, String> dataThatAppearsLowest,  
-			XYChart.Series<Number, String> dataFromPerson1, XYChart.Series<Number, String> dataFromPerson2, XYChart.Series<Number, String> dataFromPerson3) {
+			XYChart.Series<Number, String> dataFromPerson3, XYChart.Series<Number, String> dataFromPerson2, XYChart.Series<Number, String> dataFromPerson1) {
 		
 		super(horizontalAxis, verticalAxis);
 		setTitle(titleOfBarGraph);
