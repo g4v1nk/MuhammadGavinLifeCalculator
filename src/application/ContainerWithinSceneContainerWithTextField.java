@@ -8,7 +8,7 @@ import javafx.scene.layout.HBox;
  * @author CS219-user
  *
  */
-public abstract class ContainerWithinSceneContainer extends HBox {
+public class ContainerWithinSceneContainerWithTextField extends HBox {
 	private Label label;
 	
 	/** This constructor constructs a container within a scene container according to the parameter specifications.
@@ -40,11 +40,5 @@ public abstract class ContainerWithinSceneContainer extends HBox {
 	public Label getLabel() {
 		return label;
 	}
-	
-	/** This method returns the control corresponding to the particular child class of ContainerWithinSceneContainer.
-	 * 
-	 * @return (This is the control corresponding to the particular child class of ContainerWithinSceneContainer.)
-	 */
-	public abstract Object getControl();
 
 }
