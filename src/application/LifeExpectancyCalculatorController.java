@@ -25,7 +25,7 @@ import javafx.stage.Stage;
  * @author CS219-user
  *
  */
-public class LifeExpectancyCalculatorController {
+public class LifeExpectancyCalculatorController implements ErrorHandlable{
 
     @FXML
     /** This method sets up the scenes of the "game", then sets the scene to mainInputScene.
