@@ -52,11 +52,11 @@ public class LifeExpectancyCalculatorController {
     public void setUpScenesAndGoToNumOfPeopleInputScene(ActionEvent event) {
     	setUpMainMenuScene();
     	setUpNumOfPeopleInputScene();
-    	//setUpPerson1InputScene();
+    	setUpPerson1InputScene();
     	setUpPerson2InputScene();
-    	//setUpPerson3InputScene();
-    	//setUpTerminalIllnessInputScene();
-    	//setUpMultiplePeopleOutputScene();
+    	setUpPerson3InputScene();
+    	setUpTerminalIllnessInputScene();
+    	setUpMultiplePeopleOutputScene();
     	applicationStage.setScene(numOfPeopleInputScene);
     }
 
@@ -222,8 +222,9 @@ public class LifeExpectancyCalculatorController {
 		
 		ContainerWithinSceneContainer person1NameContainer = new ContainerWithinSceneContainer(75, 25, "Name:  ", 100);
 		person1NameContainer.getChildren().addAll(person1NameContainer.getLabel(), person1NameTextField);
-
-	    currentAgeContainer.getChildren().addAll(currentAgeContainer.getLabel(), currentAgeTextField);
+		
+		ContainerWithinSceneContainer person1CurrentAgeContainer = new ContainerWithinSceneContainer(75, 25, "Current age: ", 100);		
+	    person1CurrentAgeContainer.getChildren().addAll(person1CurrentAgeContainer.getLabel(), currentAgeTextField);
 		currentAgeContainer.setTranslateX(20);
 		
 		currentAgeErrorLabel.setTranslateX(20);
