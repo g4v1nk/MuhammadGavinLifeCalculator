@@ -186,9 +186,8 @@ public class LifeExpectancyCalculatorController {
 	public void setUpPerson2InputScene() {
 		Label person2Label = new Label("Person 2");
 		
-		
-		ContainerWithinSceneContainer person1NameContainer = new ContainerWithinSceneContainer(75, 25, "Name:  ", 100);
-		person1NameContainer.getChildren().addAll(person1NameContainer.getLabel(), person1NameTextField);
+		ContainerWithinSceneContainer person2NameContainer = new ContainerWithinSceneContainer(75, 25, "Name:  ", 100);
+		person2NameContainer.getChildren().addAll(person2NameContainer.getLabel(), person2NameTextField);
 
 		ContainerWithinSceneContainer currentAgeContainer = new ContainerWithinSceneContainer(75, 25, "Current age: ", 100); 
 	    currentAgeContainer.getChildren().addAll(currentAgeContainer.getLabel(), currentAgeTextField);
@@ -207,15 +206,15 @@ public class LifeExpectancyCalculatorController {
 	    Button enterTerminalIllnessButton = new Button("Enter Terminal Illness");
 	    enterTerminalIllnessButton.setTranslateX(120);
 	    enterTerminalIllnessButton.setTranslateY(-10);
-		enterTerminalIllnessButton.setOnAction(event -> checkForCurrentAgeError(1, 0));
+		enterTerminalIllnessButton.setOnAction(event -> checkForCurrentAgeError(2, 0));
 		
-	    Button donePerson1Button = new Button("Done Person 1");
-	    donePerson1Button.setTranslateX(165);
-	    donePerson1Button.setTranslateY(50);
-	    donePerson1Button.setOnAction(event -> checkForCurrentAgeError(1, 2));
+	    Button donePerson2Button = new Button("Done Person 2");
+	    donePerson2Button.setTranslateX(165);
+	    donePerson2Button.setTranslateY(50);
+	    donePerson2Button.setOnAction(event -> checkForCurrentAgeError(2, 3));
 		
-	    person1InputSceneContainer.getChildren().addAll(person1Label, person1NameContainer, currentAgeContainer, currentAgeErrorLabel, genderContainer, smokingHabitsContainer,
-			enterTerminalIllnessButton, donePerson1Button);
+	    person2InputSceneContainer.getChildren().addAll(person2Label, person2NameContainer, currentAgeContainer, currentAgeErrorLabel, genderContainer, smokingHabitsContainer,
+			enterTerminalIllnessButton, donePerson2Button);
 		}
 	
 	/** This method creates the Main Menu Scene.
