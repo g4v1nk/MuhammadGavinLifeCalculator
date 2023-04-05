@@ -38,7 +38,7 @@ public class LifeExpectancyCalculatorController {
     	setUpMainMenuScene();
     	setUpMainInputScene();
     	setUpTerminalIllnessInputScene();
-    	setUpOutputScene();
+    	setUpSinglePersonOutputScene();
     	applicationStage.setScene(mainInputScene);
     }
     
@@ -62,6 +62,8 @@ public class LifeExpectancyCalculatorController {
 
     private Stage applicationStage;
     private int numOfPeople = 0;
+    private boolean currentAgeError = false;
+    private boolean terminalIllnessError = false;
     private LifeExpectancy lifeExpectancy = new LifeExpectancy("18", "Male", "Non-smoker", "No", "No", "No", "No", "No", "No", "No", "No", "No", "No");
     
     //ContainerWithinSceneContainer objects
@@ -309,12 +311,12 @@ public class LifeExpectancyCalculatorController {
 	    Button enterTerminalIllnessButton = new Button("Enter Terminal Illness");
 	    enterTerminalIllnessButton.setTranslateX(120);
 	    enterTerminalIllnessButton.setTranslateY(-10);
-		enterTerminalIllnessButton.setOnAction(event -> checkForCurrentAgeError(2));
+		enterTerminalIllnessButton.setOnAction(event -> checkForCurrentAgeError(0, 0));
 		
 	    Button calculateLifeExpectancyButton = new Button("Calculate");
 		calculateLifeExpectancyButton.setTranslateX(165);
 		calculateLifeExpectancyButton.setTranslateY(50);
-		calculateLifeExpectancyButton.setOnAction(event -> checkForCurrentAgeError(1));
+		calculateLifeExpectancyButton.setOnAction(event -> checkForCurrentAgeError(0, 1));
 		
 		mainInputSceneContainer.getChildren().addAll(currentAgeContainer, currentAgeErrorLabel, genderContainer, smokingHabitsContainer,
 			enterTerminalIllnessButton, calculateLifeExpectancyButton);
@@ -445,7 +447,7 @@ public class LifeExpectancyCalculatorController {
 	 * @param nextScene (This is the scene that you want to be on the stage if there are no current age errors.
 	 * 0, 1, 2, and 3 correspond to terminalIllnessInputScene, outputScene, person2InputScene, and person3InputScene, respectively.)
 	 */
-	public void checkForCurrentAgeError(int currentScene, int nextScene) throws NumberFormatException {
+	public boolean checkForCurrentAgeError(int currentScene, int nextScene) throws NumberFormatException {
 		
 		try {
 			//Check if the current age entered is less than 18 or more than 100.
@@ -461,8 +463,12 @@ public class LifeExpectancyCalculatorController {
 			} else {
 				//Clear the error message for future "gameplays".
 				currentAgeErrorLabel.setText("");
+				
 				if (nextScene == 0) applicationStage.setScene(terminalIllnessInputScene);
 				else if (nextScene == 1) {
+					calculateAndGoToOutputScene()
+					avgData.getData().add(new XYChart.Data<Number, String>(86, ""));
+					avgData.setName("Average Age At Death");
 					if (numOfPeople == 0) applicationStage.setScene(singlePersonOutputScene);
 					else applicationStage.setScene(multiplePeopleOutputScene);
 				}
