@@ -76,20 +76,8 @@ public class LifeExpectancyCalculatorController implements ErrorHandlable{
     private VBox mainMenuSceneContainer = new VBox();
     private Scene mainMenuScene = new Scene(mainMenuSceneContainer, 400, 400);
     
-    private VBox numOfPeopleInputSceneContainer = new VBox();
-    private Scene numOfPeopleInputScene = new Scene(numOfPeopleInputSceneContainer, 400, 400);
-    
     private VBox mainInputSceneContainer = new VBox();
     private Scene mainInputScene = new Scene(mainInputSceneContainer, 400, 400);
-    
-    private VBox person1InputSceneContainer = new VBox();
-    private Scene person1InputScene = new Scene(person1InputSceneContainer, 400, 400);
-    
-    private VBox person2InputSceneContainer = new VBox();
-    private Scene person2InputScene = new Scene(person2InputSceneContainer, 400, 400);
-    
-    private VBox person3InputSceneContainer = new VBox();
-    private Scene person3InputScene = new Scene(person3InputSceneContainer, 400, 400);
     
     private VBox terminalIllnessInputSceneContainer = new VBox();
     private Scene terminalIllnessInputScene = new Scene(terminalIllnessInputSceneContainer, 650, 650);
@@ -115,17 +103,12 @@ public class LifeExpectancyCalculatorController implements ErrorHandlable{
 		title.setTranslateY(80);
 		title.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));
 		
-		Button singlePersonButton = new Button("Single Person");
-		singlePersonButton.setTranslateX(150);
-		singlePersonButton.setTranslateY(150);
-		singlePersonButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
+		Button startCalculationButton = new Button("Start Calculation");
+		startCalculationButton.setTranslateX(150);
+		startCalculationButton.setTranslateY(150);
+		startCalculationButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
 		
-		Button multiplePeopleButton = new Button("Multiple People");
-		multiplePeopleButton.setTranslateX(150);
-		multiplePeopleButton.setTranslateY(250);
-		multiplePeopleButton.setOnAction(event -> applicationStage.setScene(numOfPeopleInputScene));
-		
-	    mainMenuSceneContainer.getChildren().addAll(title, singlePersonButton);
+	    mainMenuSceneContainer.getChildren().addAll(title, startCalculationButton);
 	
 	}
 	
@@ -150,14 +133,12 @@ public class LifeExpectancyCalculatorController implements ErrorHandlable{
 	    Button enterTerminalIllnessButton = new Button("Enter Terminal Illness");
 	    enterTerminalIllnessButton.setTranslateX(120);
 	    enterTerminalIllnessButton.setTranslateY(-10);
-		enterTerminalIllnessButton.setOnAction(event -> processEnterTerminalIllnessButtonClick(0));
-		
-		doneTerminalIllnessButton.setOnAction(event -> checkForTerminalIllnessErrors(0));
+		enterTerminalIllnessButton.setOnAction(event -> processEnterTerminalIllnessButtonClick());
 		
 	    Button calculateLifeExpectancyButton = new Button("Calculate");
 		calculateLifeExpectancyButton.setTranslateX(165);
 		calculateLifeExpectancyButton.setTranslateY(50);
-		calculateLifeExpectancyButton.setOnAction(event -> processCalculateLifeExpectancyButtonClick());
+		//calculateLifeExpectancyButton.setOnAction(event -> processCalculateLifeExpectancyButtonClick());
 		
 		mainInputSceneContainer.getChildren().addAll(currentAgeContainer, currentAgeErrorLabel, genderContainer, smokingHabitsContainer,
 			enterTerminalIllnessButton, calculateLifeExpectancyButton);
@@ -172,47 +153,48 @@ public class LifeExpectancyCalculatorController implements ErrorHandlable{
 	 */
 	public void setUpTerminalIllnessInputScene() {
 		
-		alzheimersContainer.getChildren().addAll(alzheimersContainer.getLabel(), alzheimersContainer.getControl());
+		//alzheimersContainer.getChildren().addAll(alzheimersContainer.getLabel(), alzheimersContainer.getControl());
 		alzheimersContainer.setTranslateX(20);
 		alzheimersContainer.getControl().setTranslateX(10);
 		
-		creutzfeldtJakobContainer.getChildren().addAll(creutzfeldtJakobContainer.getLabel(), creutzfeldtJakobContainer.getControl());
+		//creutzfeldtJakobContainer.getChildren().addAll(creutzfeldtJakobContainer.getLabel(), creutzfeldtJakobContainer.getControl());
 		creutzfeldtJakobContainer.setTranslateX(20);
 		creutzfeldtJakobContainer.getControl().setTranslateX(10);
 		
-		crohnsContainer.getChildren().addAll(crohnsContainer.getLabel(), crohnsContainer.getControl());
+		//crohnsContainer.getChildren().addAll(crohnsContainer.getLabel(), crohnsContainer.getControl());
 		crohnsContainer.setTranslateX(20);
 		crohnsContainer.getControl().setTranslateX(10);
 		
-		cysticFibrosisContainer.getChildren().addAll(cysticFibrosisContainer.getLabel(), cysticFibrosisContainer.getControl());
+		//cysticFibrosisContainer.getChildren().addAll(cysticFibrosisContainer.getLabel(), cysticFibrosisContainer.getControl());
 		cysticFibrosisContainer.setTranslateX(20);
 		cysticFibrosisContainer.getControl().setTranslateX(10);
 		
-		duchenneMDContainer.getChildren().addAll(duchenneMDContainer.getLabel(), duchenneMDContainer.getControl());	
+		//duchenneMDContainer.getChildren().addAll(duchenneMDContainer.getLabel(), duchenneMDContainer.getControl());	
 		duchenneMDContainer.setTranslateX(20);
 		duchenneMDContainer.getControl().setTranslateX(10);
 		
-		hepBContainer.getChildren().addAll(hepBContainer.getLabel(), hepBContainer.getControl());
+		//hepBContainer.getChildren().addAll(hepBContainer.getLabel(), hepBContainer.getControl());
 		hepBContainer.setTranslateX(20);
 		hepBContainer.getControl().setTranslateX(10);
 		
-		heartDiseaseContainer.getChildren().addAll(heartDiseaseContainer.getLabel(), heartDiseaseContainer.getControl());
+		//heartDiseaseContainer.getChildren().addAll(heartDiseaseContainer.getLabel(), heartDiseaseContainer.getControl());
 		heartDiseaseContainer.setTranslateX(20);
 		heartDiseaseContainer.getControl().setTranslateX(10);
 		
-		huntingtonsContainer.getChildren().addAll(huntingtonsContainer.getLabel(), huntingtonsContainer.getControl());
+		//huntingtonsContainer.getChildren().addAll(huntingtonsContainer.getLabel(), huntingtonsContainer.getControl());
 		huntingtonsContainer.setTranslateX(20);
 		huntingtonsContainer.getControl().setTranslateX(10);
 		
-		multipleSclerosisContainer.getChildren().addAll(multipleSclerosisContainer.getLabel(), multipleSclerosisContainer.getControl());
+		//multipleSclerosisContainer.getChildren().addAll(multipleSclerosisContainer.getLabel(), multipleSclerosisContainer.getControl());
 		multipleSclerosisContainer.setTranslateX(20);
 		multipleSclerosisContainer.getControl().setTranslateX(10);
 		
-		rabiesContainer.getChildren().addAll(rabiesContainer.getLabel(), rabiesContainer.getControl());
+		//rabiesContainer.getChildren().addAll(rabiesContainer.getLabel(), rabiesContainer.getControl());
 		rabiesContainer.setTranslateX(20);
 		rabiesContainer.getControl().setTranslateX(10);
 		
 		doneTerminalIllnessButton.setTranslateX(250);
+		doneTerminalIllnessButton.setOnAction(event -> checkForTerminalIllnessErrors());
 		
 		terminalIllnessErrorLabel.setTranslateX(20);
 		terminalIllnessErrorLabel.setTranslateY(20);
@@ -257,11 +239,9 @@ public class LifeExpectancyCalculatorController implements ErrorHandlable{
 	
 	/** This method processes the action of clicking the Enter Terminal Illness button.
 	 * 
-	 * @param currentScene (This is the scene from which the button is pressed.
-	 * 0, 1, 2, and 3 correspond to mainInputScene, person1InputScene, person2InputScene, and person3InputScene, respectively.)
 	 */
-	public void processEnterTerminalIllnessButtonClick(int currentScene) {
-		checkForCurrentAgeError(currentScene);
+	public void processEnterTerminalIllnessButtonClick() {
+		checkForCurrentAgeError();
 		if (!currentAgeError) {
 			//Clear the error message for future "gameplays".
 			currentAgeErrorLabel.setText("");
@@ -274,7 +254,7 @@ public class LifeExpectancyCalculatorController implements ErrorHandlable{
 	 * 
 	 */
 	public void processCalculateLifeExpectancyButtonClick() {
-		checkForCurrentAgeError(0);
+		checkForCurrentAgeError();
 		if (!currentAgeError) {
 			//Clear the error message for future "gameplays".
 			currentAgeErrorLabel.setText("");
@@ -311,10 +291,8 @@ public class LifeExpectancyCalculatorController implements ErrorHandlable{
 	/** This method checks for errors in current age input.
 	 * If there is an error, then an error message is added to the scene.
 	 * 
-	 * @param currentScene (This is the scene that is on the stage when this method is called.
-	 * 0, 1, 2, and 3 correspond to mainInputScene, person1InputScene, person2InputScene, and person3InputScene, respectively.)
 	 */
-	public void checkForCurrentAgeError(int currentScene) throws NumberFormatException {
+	public void checkForCurrentAgeError() throws NumberFormatException {
 		
 		try {
 			//Check if the current age entered is less than 18 or more than 100.
@@ -324,10 +302,7 @@ public class LifeExpectancyCalculatorController implements ErrorHandlable{
 				currentAgeErrorLabel.setTextFill(Color.RED);
 			
 				//"Refresh" the scene so that it now has the error message.
-				if (currentScene == 0 ) applicationStage.setScene(mainInputScene);
-				else if (currentScene == 1) applicationStage.setScene(person1InputScene);
-				else if (currentScene == 2) applicationStage.setScene(person2InputScene);
-				else applicationStage.setScene(person3InputScene);
+				applicationStage.setScene(mainInputScene);
 			}
 		} catch(NumberFormatException numberFormatException) {
 			currentAgeErrorLabel.setText("You entered " + currentAgeContainer.getControl().getText() + " . Please enter an integer.");
@@ -341,12 +316,8 @@ public class LifeExpectancyCalculatorController implements ErrorHandlable{
 	 * If one of the above errors is present, an error message is added to terminalIllnessInputScene.
 	 * Otherwise, the scene will be set to the previous scene that was displayed.
 	 * 
-	 * @param sceneToReturnTo (This is an integer from 0 to 3, corresponding
-	 * to the input scene that you want the program to return to after
-	 * checking for terminal illness errors. 0, 1, 2, and 3 correspond to
-	 * mainInputScene, person1InputScene, person2InputScene, and person3InputScene, respectively.)
 	 */
-	public void checkForTerminalIllnessErrors(int inputSceneToReturnTo) {
+	public void checkForTerminalIllnessErrors() {
 		
 		//Check if "Yes" is selected for more than one terminal illness.
 		ArrayList<String> yesOrNoList = new ArrayList<String>();
@@ -381,10 +352,7 @@ public class LifeExpectancyCalculatorController implements ErrorHandlable{
 		} else {
 			//Clear the error message for future "gameplays".
 			terminalIllnessErrorLabel.setText("");
-			if (inputSceneToReturnTo == 0) applicationStage.setScene(mainInputScene);
-			else if (inputSceneToReturnTo == 1) applicationStage.setScene(person1InputScene);
-			else if (inputSceneToReturnTo == 2) applicationStage.setScene(person2InputScene);
-			else applicationStage.setScene(person3InputScene);
+			applicationStage.setScene(mainInputScene);
 		}
 		
 	}

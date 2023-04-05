@@ -19,7 +19,7 @@
                   <Font name="Verdana Bold" size="20.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" onAction="#setUpScenesAndGoToMainInputScene" text="Single Person" textAlignment="CENTER">
+            <Button mnemonicParsing="false" onAction="#setUpScenesAndGoToMainInputScene" text="Start Calculation" textAlignment="CENTER">
                <HBox.margin>
                   <Insets left="-200.0" top="170.0" />
                </HBox.margin>
