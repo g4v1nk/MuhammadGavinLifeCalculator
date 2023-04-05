@@ -313,12 +313,12 @@ public class LifeExpectancyCalculatorController {
 	    Button enterTerminalIllnessButton = new Button("Enter Terminal Illness");
 	    enterTerminalIllnessButton.setTranslateX(120);
 	    enterTerminalIllnessButton.setTranslateY(-10);
-		enterTerminalIllnessButton.setOnAction(event -> checkForCurrentAgeError(0, 0));
+		enterTerminalIllnessButton.setOnAction(event -> processEnterTerminalIllnessButtonClick(0));
 		
 	    Button calculateLifeExpectancyButton = new Button("Calculate");
 		calculateLifeExpectancyButton.setTranslateX(165);
 		calculateLifeExpectancyButton.setTranslateY(50);
-		calculateLifeExpectancyButton.setOnAction(event -> checkForCurrentAgeError(0, 1));
+		calculateLifeExpectancyButton.setOnAction(event -> process);
 		
 		mainInputSceneContainer.getChildren().addAll(currentAgeContainer, currentAgeErrorLabel, genderContainer, smokingHabitsContainer,
 			enterTerminalIllnessButton, calculateLifeExpectancyButton);
@@ -467,6 +467,38 @@ public class LifeExpectancyCalculatorController {
 	public void processEnterTerminalIllnessButtonClick(int currentScene) {
 		checkForCurrentAgeError(currentScene);
 		if (!currentAgeError) applicationStage.setScene(terminalIllnessInputScene);
+	}
+	
+	/** This method processes the action of clicking the Calculate Life Expectancy button.
+	 * 
+	 */
+	public void processCalculateLifeExpectancyButtonClick() {
+		checkForCurrentAgeError(0);
+		if (!currentAgeError) {
+			LifeExpectancy newLifeExpectancy = new LifeExpectancy(currentAgeTextField.getText(), genderContainer.getChoiceBox().getValue(), smokingHabitsContainer.getChoiceBox().getValue(),
+					alzheimersContainer.getChoiceBox().getValue(), creutzfeldtJakobContainer.getChoiceBox().getValue(), crohnsContainer.getChoiceBox().getValue(),
+					cysticFibrosisContainer.getChoiceBox().getValue(), duchenneMDContainer.getChoiceBox().getValue(), heartDiseaseContainer.getChoiceBox().getValue(), hepBContainer.getChoiceBox().getValue(), huntingtonsContainer.getChoiceBox().getValue(),
+					multipleSclerosisContainer.getChoiceBox().getValue(), rabiesContainer.getChoiceBox().getValue());
+			
+			lifeExpectancy = newLifeExpectancy;
+			singlePersonOutputMessageLabel.setText("You are expected to live " + lifeExpectancy.calculateLifeExpectancy() + " more years.");
+			yourData.getData().add(new XYChart.Data<Number, String>(lifeExpectancy.calculateLifeExpectancy() + Integer.parseInt(currentAgeTextField.getText()), ""));
+			yourData.setName(person1NameTextField + "Your Age At Death");
+			
+			//Re-setting the default "No" values for all terminal illnesses (for the next calculation).
+			alzheimersContainer.getChoiceBox().setValue("No");
+			creutzfeldtJakobContainer.getChoiceBox().setValue("No");
+			crohnsContainer.getChoiceBox().setValue("No");
+			cysticFibrosisContainer.getChoiceBox().setValue("No");
+			duchenneMDContainer.getChoiceBox().setValue("No");
+			heartDiseaseContainer.getChoiceBox().setValue("No");
+			hepBContainer.getChoiceBox().setValue("No");
+			huntingtonsContainer.getChoiceBox().setValue("No");
+			multipleSclerosisContainer.getChoiceBox().setValue("No");
+			rabiesContainer.getChoiceBox().setValue("No");
+			
+			applicationStage.setScene(singlePersonOutputScene);
+		}
 	}
 	
 	/** This method processes the action of clicking the Done Person 1 button.
