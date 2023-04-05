@@ -49,13 +49,13 @@ public class BarGraph extends BarChart<Number, String> {
 	 * @param horizontalAxisLabel (This is the label for the x-axis of the graph.)
 	 * @param tickRotation (This is the angle (in degrees, with respect to the x-axis) of the ticks on the x-axis.)
 	 * @param dataThatAppearsLowest (This is the data that will be displayed in the lowest bar in the graph.)
-	 * @param dataFromPerson3 (This is the data that will be displayed in the second-lowest bar in the graph.)
-	 * @param dataFromPerson2 (This is the data that will be displayed in the third-lowest bar in the graph.)
 	 * @param dataFromPerson1 (This is the data that will be displayed in the highest bar in the graph.)
+	 * @param dataFromPerson2 (This is the data that will be displayed in the third-lowest bar in the graph.)
+     * @param dataFromPerson3 (This is the data that will be displayed in the second-lowest bar in the graph.)
 	 */
 	public BarGraph(NumberAxis horizontalAxis, CategoryAxis verticalAxis, String titleOfBarGraph, String horizontalAxisLabel, int tickRotation, 
 			XYChart.Series<Number, String> dataThatAppearsLowest,  
-			XYChart.Series<Number, String> dataFromPerson3, XYChart.Series<Number, String> dataFromPerson2, XYChart.Series<Number, String> dataFromPerson1) {
+			XYChart.Series<Number, String> dataFromPerson1, XYChart.Series<Number, String> dataFromPerson2, XYChart.Series<Number, String> dataFromPerson3) {
 		
 		super(horizontalAxis, verticalAxis);
 		setTitle(titleOfBarGraph);

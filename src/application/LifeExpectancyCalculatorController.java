@@ -86,7 +86,7 @@ public class LifeExpectancyCalculatorController {
     private TextField currentAgeTextField = new TextField();
     private Label currentAgeErrorLabel = new Label("");
     private Label terminalIllnessErrorLabel = new Label("");
-    private Label outputMessageLabel = new Label();
+    private Label singlePersonOutputMessageLabel = new Label();
     private Label person1OutputMessageLabel = new Label();
     private Label person2OutputMessageLabel = new Label();
     private Label person3OutputMessageLabel = new Label();
@@ -124,7 +124,11 @@ public class LifeExpectancyCalculatorController {
 	private CategoryAxis youVsAverageAxis = new CategoryAxis();
 	private XYChart.Series<Number, String> yourData = new XYChart.Series<Number, String>();
 	private XYChart.Series<Number, String> avgData = new XYChart.Series<Number, String>();
-	private BarGraph visualDisplay = new BarGraph(ageAxis, youVsAverageAxis, "Results", "Age (years)", 90, yourData, avgData);
+	private XYChart.Series<Number, String> person1Data = new XYChart.Series<Number, String>();
+	private XYChart.Series<Number, String> person2Data = new XYChart.Series<Number, String>();
+	private XYChart.Series<Number, String> person3Data = new XYChart.Series<Number, String>();
+	private BarGraph singlePersonVisualDisplay = new BarGraph(ageAxis, youVsAverageAxis, "Results", "Age (years)", 90, yourData, avgData);
+	private BarGraph multiplePeopleVisualDisplay = new BarGraph(ageAxis, youVsAverageAxis, "Results", "Age (years)", 90, person1Data, person2Data, person3Data, avgData);
 	
 	/** This method records the number of people entered
 	 * in the numOfPeopleInputScene and
@@ -297,13 +301,13 @@ public class LifeExpectancyCalculatorController {
 	}
 
 	
-	/** This method sets up the Output Scene.
+	/** This method sets up the Single Person Output Scene.
 	 * 
 	 */
-	public void setUpOutputScene() {
-		outputMessageLabel.setTranslateX(70);
-		outputMessageLabel.setTranslateY(20);
-		outputMessageLabel.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
+	public void setUpSinglePersonOutputScene() {
+		singlePersonOutputMessageLabel.setTranslateX(70);
+		singlePersonOutputMessageLabel.setTranslateY(20);
+		singlePersonOutputMessageLabel.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
 		
 		visualDisplay.setTranslateY(40);
 		
@@ -319,7 +323,7 @@ public class LifeExpectancyCalculatorController {
 		buttonBox.setTranslateY(70);
 		buttonBox.getChildren().addAll(newCalculationButton, mainMenuButton);
 		
-		outputSceneContainer.getChildren().addAll(outputMessageLabel, visualDisplay, buttonBox);
+		singlePersonOutputSceneContainer.getChildren().addAll(outputMessageLabel, visualDisplay, buttonBox);
 	}
 	
 	/** This method checks for errors in current age input.
