@@ -56,7 +56,7 @@ public class ContainerWithinSceneContainerWithChoiceBox extends ContainerWithinS
 	 * 
 	 * @return choiceBox (This is the ChoiceBox that is created when a ContainerWithinSceneContainerWithChoiceBox is constructed.)
 	 */
-	public ChoiceBox<String> getChoiceBox() {
+	public ChoiceBox<String> getControl() {
 		return choiceBox;
 	}
 	
