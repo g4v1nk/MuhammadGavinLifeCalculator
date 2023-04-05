@@ -326,6 +326,39 @@ public class LifeExpectancyCalculatorController {
 		singlePersonOutputSceneContainer.getChildren().addAll(singlePersonOutputMessageLabel, singlePersonVisualDisplay, buttonBox);
 	}
 	
+	/** This method sets up the Multiple People Output Scene.
+	 * 
+	 */
+	public void setUpMultiplePeopleOutputScene() {
+		person1OutputMessageLabel.setTranslateX(70);
+		person1OutputMessageLabel.setTranslateY(20);
+		person1OutputMessageLabel.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
+		
+		person2OutputMessageLabel.setTranslateX(70);
+		person2OutputMessageLabel.setTranslateY(20);
+		person2OutputMessageLabel.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
+		
+		person3OutputMessageLabel.setTranslateX(70);
+		person3OutputMessageLabel.setTranslateY(20);
+		person3OutputMessageLabel.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 12));
+		
+		multiplePeopleVisualDisplay.setTranslateY(40);
+		
+		Button newCalculationButton = new Button("New Calculation");
+		newCalculationButton.setOnAction(event -> applicationStage.setScene(mainInputScene));
+		
+	    Button mainMenuButton = new Button("Main Menu");
+	    mainMenuButton.setTranslateX(20);
+		mainMenuButton.setOnAction(event -> applicationStage.setScene(mainMenuScene));
+	    
+		HBox buttonBox = new HBox();
+		buttonBox.setTranslateX(100);
+		buttonBox.setTranslateY(70);
+		buttonBox.getChildren().addAll(newCalculationButton, mainMenuButton);
+		
+		multiplePeopleOutputSceneContainer.getChildren().addAll(person1OutputMessageLabel, person2OutputMessageLabel, person3OutputMessageLabel, multiplePeopleVisualDisplay, buttonBox);
+	}
+	
 	/** This method checks for errors in current age input.
 	 * If there is an error, then an error message is added to the scene.
 	 * If there are no errors, then, depending on the number specified in the parameter,
