@@ -63,7 +63,7 @@ public class LifeExpectancyCalculatorController {
     private Stage applicationStage;
     private int numOfPeople = 0;
     private boolean currentAgeError = false;
-    private boolean terminalIllnessError = false;
+    //private boolean terminalIllnessError = false;
     private LifeExpectancy lifeExpectancy = new LifeExpectancy("18", "Male", "Non-smoker", "No", "No", "No", "No", "No", "No", "No", "No", "No", "No");
     
     //ContainerWithinSceneContainer objects
@@ -171,7 +171,7 @@ public class LifeExpectancyCalculatorController {
 	    Button enterTerminalIllnessButton = new Button("Enter Terminal Illness");
 	    enterTerminalIllnessButton.setTranslateX(120);
 	    enterTerminalIllnessButton.setTranslateY(-10);
-		enterTerminalIllnessButton.setOnAction(event -> checkForCurrentAgeError(1, 0));
+		enterTerminalIllnessButton.setOnAction(event -> processEnterTerminalIllnessButtonClick(1));
 		
 	    Button donePerson1Button = new Button("Done Person 1");
 	    donePerson1Button.setTranslateX(165);
@@ -208,12 +208,12 @@ public class LifeExpectancyCalculatorController {
 	    Button enterTerminalIllnessButton = new Button("Enter Terminal Illness");
 	    enterTerminalIllnessButton.setTranslateX(120);
 	    enterTerminalIllnessButton.setTranslateY(-10);
-		enterTerminalIllnessButton.setOnAction(event -> checkForCurrentAgeError(2, 0));
+		enterTerminalIllnessButton.setOnAction(event -> processEnterTerminalIllnessButtonClick(2));
 		
 	    Button donePerson2Button = new Button("Done Person 2");
 	    donePerson2Button.setTranslateX(165);
 	    donePerson2Button.setTranslateY(50);
-	    donePerson2Button.setOnAction(event -> checkForCurrentAgeError(2, 3));
+	    donePerson2Button.setOnAction(event -> processDonePerson2ButtonClick());
 		
 	    person2InputSceneContainer.getChildren().addAll(person2Label, person2NameContainer, currentAgeContainer, currentAgeErrorLabel, genderContainer, smokingHabitsContainer,
 			enterTerminalIllnessButton, donePerson2Button);
@@ -437,12 +437,22 @@ public class LifeExpectancyCalculatorController {
 		multiplePeopleOutputSceneContainer.getChildren().addAll(person1OutputMessageLabel, person2OutputMessageLabel, person3OutputMessageLabel, multiplePeopleVisualDisplay, buttonBox);
 	}
 	
+	/** This method processes the action of clicking the Enter Terminal Illness button.
+	 * 
+	 * @param currentScene (This is the scene from which the button is pressed.
+	 * 0, 1, 2, and 3 correspond to mainInputScene, person1InputScene, person2InputScene, and person3InputScene, respectively.)
+	 */
+	public void processEnterTerminalIllnessButtonClick(int currentScene) {
+		checkForCurrentAgeError(currentScene);
+		if (!currentAgeError) applicationStage.setScene(terminalIllnessInputScene);
+	}
+	
 	/** This method processes the action of clicking the Done Person 1 button.
 	 * 
 	 */
 	public void processDonePerson1ButtonClick() {
 		checkForCurrentAgeError(1);
-		if (currentAgeError == false) {
+		if (!currentAgeError) {
 			LifeExpectancy newLifeExpectancy = new LifeExpectancy(currentAgeTextField.getText(), genderContainer.getChoiceBox().getValue(), smokingHabitsContainer.getChoiceBox().getValue(),
 					alzheimersContainer.getChoiceBox().getValue(), creutzfeldtJakobContainer.getChoiceBox().getValue(), crohnsContainer.getChoiceBox().getValue(),
 					cysticFibrosisContainer.getChoiceBox().getValue(), duchenneMDContainer.getChoiceBox().getValue(), heartDiseaseContainer.getChoiceBox().getValue(), hepBContainer.getChoiceBox().getValue(), huntingtonsContainer.getChoiceBox().getValue(),
@@ -470,6 +480,39 @@ public class LifeExpectancyCalculatorController {
 		}
 	}
 	
+	/** This method processes the action of clicking the Done Person 2 button.
+	 * 
+	 */
+	public void processDonePerson2ButtonClick() {
+		checkForCurrentAgeError(2);
+		if (!currentAgeError) {
+			LifeExpectancy newLifeExpectancy = new LifeExpectancy(currentAgeTextField.getText(), genderContainer.getChoiceBox().getValue(), smokingHabitsContainer.getChoiceBox().getValue(),
+					alzheimersContainer.getChoiceBox().getValue(), creutzfeldtJakobContainer.getChoiceBox().getValue(), crohnsContainer.getChoiceBox().getValue(),
+					cysticFibrosisContainer.getChoiceBox().getValue(), duchenneMDContainer.getChoiceBox().getValue(), heartDiseaseContainer.getChoiceBox().getValue(), hepBContainer.getChoiceBox().getValue(), huntingtonsContainer.getChoiceBox().getValue(),
+					multipleSclerosisContainer.getChoiceBox().getValue(), rabiesContainer.getChoiceBox().getValue());
+			
+			lifeExpectancy = newLifeExpectancy;
+			person2OutputMessageLabel.setText(person2NameTextField + " is expected to live " + lifeExpectancy.calculateLifeExpectancy() + " more years.");
+			person2Data.getData().add(new XYChart.Data<Number, String>(lifeExpectancy.calculateLifeExpectancy() + Integer.parseInt(currentAgeTextField.getText()), ""));
+			person2Data.setName(person2NameTextField + "'s Age At Death");
+			
+			//Re-setting the default "No" values for all terminal illnesses (for the next calculation).
+			alzheimersContainer.getChoiceBox().setValue("No");
+			creutzfeldtJakobContainer.getChoiceBox().setValue("No");
+			crohnsContainer.getChoiceBox().setValue("No");
+			cysticFibrosisContainer.getChoiceBox().setValue("No");
+			duchenneMDContainer.getChoiceBox().setValue("No");
+			heartDiseaseContainer.getChoiceBox().setValue("No");
+			hepBContainer.getChoiceBox().setValue("No");
+			huntingtonsContainer.getChoiceBox().setValue("No");
+			multipleSclerosisContainer.getChoiceBox().setValue("No");
+			rabiesContainer.getChoiceBox().setValue("No");
+			
+			if (Integer.parseInt(howManyPeopleContainer.getChoiceBox().getValue()) > 2) applicationStage.setScene(person3InputScene);
+			else applicationStage.setScene(multiplePeopleOutputScene);
+		}
+	}
+	
 	/** This method checks for errors in current age input.
 	 * If there is an error, then an error message is added to the scene.
 	 * If there are no errors, then "false" is returned.
@@ -477,7 +520,7 @@ public class LifeExpectancyCalculatorController {
 	 * @param currentScene (This is the scene that is on the stage when this method is called.
 	 * 0, 1, 2, and 3 correspond to mainInputScene, person1InputScene, person2InputScene, and person3InputScene, respectively.)
 	 */
-	public boolean checkForCurrentAgeError(int currentScene) throws NumberFormatException {
+	public void checkForCurrentAgeError(int currentScene) throws NumberFormatException {
 		
 		try {
 			//Check if the current age entered is less than 18 or more than 100.
@@ -491,10 +534,7 @@ public class LifeExpectancyCalculatorController {
 				else if (currentScene == 1) applicationStage.setScene(person1InputScene);
 				else if (currentScene == 2) applicationStage.setScene(person2InputScene);
 				else applicationStage.setScene(person3InputScene);
-				
-				return currentAgeError;
-			} else 
-				return currentAgeError;
+			}
 		} catch(NumberFormatException numberFormatException) {
 			currentAgeErrorLabel.setText("You entered " + currentAgeTextField.getText() + " . Please enter an integer.");
 			currentAgeErrorLabel.setTextFill(Color.RED);
