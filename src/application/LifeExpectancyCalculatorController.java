@@ -330,6 +330,18 @@ public class LifeExpectancyCalculatorController {
 		visualDisplay.setUpperData(avgData);
 
 		applicationStage.setScene(outputScene);
+		
+		//Re-setting the default "No" values for all terminal illnesses (for the next calculation).
+		alzheimersContainer.getChoiceBox().setValue("No");
+		creutzfeldtJakobContainer.getChoiceBox().setValue("No");
+		crohnsContainer.getChoiceBox().setValue("No");
+		cysticFibrosisContainer.getChoiceBox().setValue("No");
+		duchenneMDContainer.getChoiceBox().setValue("No");
+		heartDiseaseContainer.getChoiceBox().setValue("No");
+		hepBContainer.getChoiceBox().setValue("No");
+		huntingtonsContainer.getChoiceBox().setValue("No");
+		multipleSclerosisContainer.getChoiceBox().setValue("No");
+		rabiesContainer.getChoiceBox().setValue("No");
 	
 	}
     
