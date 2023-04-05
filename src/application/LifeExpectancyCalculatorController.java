@@ -306,17 +306,6 @@ public class LifeExpectancyCalculatorController implements ErrorHandlable {
 				cysticFibrosisContainer.getControl().getValue(), duchenneMDContainer.getControl().getValue(), heartDiseaseContainer.getControl().getValue(), hepBContainer.getControl().getValue(),
 				huntingtonsContainer.getControl().getValue(), multipleSclerosisContainer.getControl().getValue(), rabiesContainer.getControl().getValue());
 		lifeExpectancy = newLifeExpectancy;
-		
-		/**
-		 * 
-		 * //Check if the current age entered contains a non-digit.
-		for (char c : currentAgeTextField.getText().toCharArray())
-			if (!Character.isDigit(c)) {
-				validCurrentAge = false;
-				outputMessage = "You entered " + c + " . Please enter a number.";
-			}
-			
-		**/
 	    	
 		outputMessageLabel.setText("You are expected to live " + lifeExpectancy.calculateLifeExpectancy() + " more years.");
 		
