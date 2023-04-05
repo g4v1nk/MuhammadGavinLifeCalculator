@@ -12,10 +12,13 @@ public interface ErrorHandlable {
 	 * 
 	 * @param SceneChoice (This is the scene you want the stage to be set to
 	 * once errors are checked for.
-	 * 1 corresponds to Output Scene; any other number corresponds to Terminal Illness Input Scene.
+	 * 1 corresponds to Output Scene; any other number corresponds to Terminal Illness Input Scene.)
 	 */
 	public void checkForCurrentAgeError(int SceneChoice);
 	
+	/** This method checks for errors in terminal illness input.
+	 * 
+	 */
 	public void checkForTerminalIllnessErrors();
 
 }
