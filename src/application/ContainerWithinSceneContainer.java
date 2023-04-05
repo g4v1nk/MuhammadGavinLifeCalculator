@@ -8,7 +8,7 @@ import javafx.scene.layout.HBox;
  * @author CS219-user
  *
  */
-public class ContainerWithinSceneContainer extends HBox {
+public abstract class ContainerWithinSceneContainer extends HBox {
 	private Label label;
 	
 	/** This constructor constructs a container within a scene container according to the parameter specifications.
@@ -25,6 +25,14 @@ public class ContainerWithinSceneContainer extends HBox {
 		label.setMinWidth(labelMinWidth);
 	}
 
+	/** This method will return the variable "label" from the ContainerWithinSceneContainer class.
+	 * 
+	 * @return label (This is the instance variable for "label" for the ContainerWithinSceneContainer class.)
+	 */
+	public Label getLabel() {
+		return label;
+	}
+	
 	/** This method sets the instance variable "label" according to the parameter.
 	 * 
 	 * @param labelToSet (This is what you want label to be set to.)
@@ -33,12 +41,11 @@ public class ContainerWithinSceneContainer extends HBox {
 		label = labelToSet;
 	}
 	
-	/** This method will return the variable "label" from the ContainerWithinSceneContainer class.
+	/** This method returns the control for the class on which the method is invoked.
 	 * 
-	 * @return label (This is the instance variable for "label" for the ContainerWithinSceneContainer class.)
+	 * @return (This method will return the control (such as TextField or ChoiceBox)
+	 * that corresponds to the particular class on which this method is invoked.)
 	 */
-	public Label getLabel() {
-		return label;
-	}
+	public abstract Object getControl();
 
 }
