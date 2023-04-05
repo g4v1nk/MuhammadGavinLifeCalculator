@@ -83,6 +83,9 @@ public class LifeExpectancyCalculatorController {
     private ContainerWithinSceneContainerWithChoiceBox rabiesContainer = new ContainerWithinSceneContainerWithChoiceBox(75, 0, "Rabies: ", 0, "No", "No", "Yes");
     
     //TextField and Label objects
+    private TextField person1NameTextField = new TextField();
+    private TextField person2NameTextField = new TextField();
+    private TextField person3NameTextField = new TextField();
     private TextField currentAgeTextField = new TextField();
     private Label currentAgeErrorLabel = new Label("");
     private Label terminalIllnessErrorLabel = new Label("");
@@ -146,7 +149,6 @@ public class LifeExpectancyCalculatorController {
 	public void setUpPerson1InputScene() {
 		Label person1Label = new Label("Person 1");
 		
-		TextField person1NameTextField = new TextField();
 		ContainerWithinSceneContainer person1NameContainer = new ContainerWithinSceneContainer(75, 25, "Name:  ", 100);
 		person1NameContainer.getChildren().addAll(person1NameContainer.getLabel(), person1NameTextField);
 
@@ -167,12 +169,50 @@ public class LifeExpectancyCalculatorController {
 	    Button enterTerminalIllnessButton = new Button("Enter Terminal Illness");
 	    enterTerminalIllnessButton.setTranslateX(120);
 	    enterTerminalIllnessButton.setTranslateY(-10);
-		enterTerminalIllnessButton.setOnAction(event -> checkForCurrentAgeError(2));
+		enterTerminalIllnessButton.setOnAction(event -> checkForCurrentAgeError(1, 0));
 		
 	    Button donePerson1Button = new Button("Done Person 1");
 	    donePerson1Button.setTranslateX(165);
 	    donePerson1Button.setTranslateY(50);
-	    donePerson1Button.setOnAction(event -> checkForCurrentAgeError(1));
+	    donePerson1Button.setOnAction(event -> checkForCurrentAgeError(1, 2));
+		
+	    person1InputSceneContainer.getChildren().addAll(person1Label, person1NameContainer, currentAgeContainer, currentAgeErrorLabel, genderContainer, smokingHabitsContainer,
+			enterTerminalIllnessButton, donePerson1Button);
+		}
+	
+	/** This method sets up the Person 2 Input Scene.
+	 * 
+	 */
+	public void setUpPerson2InputScene() {
+		Label person2Label = new Label("Person 2");
+		
+		
+		ContainerWithinSceneContainer person1NameContainer = new ContainerWithinSceneContainer(75, 25, "Name:  ", 100);
+		person1NameContainer.getChildren().addAll(person1NameContainer.getLabel(), person1NameTextField);
+
+		ContainerWithinSceneContainer currentAgeContainer = new ContainerWithinSceneContainer(75, 25, "Current age: ", 100); 
+	    currentAgeContainer.getChildren().addAll(currentAgeContainer.getLabel(), currentAgeTextField);
+		currentAgeContainer.setTranslateX(20);
+		
+		currentAgeErrorLabel.setTranslateX(20);
+		currentAgeErrorLabel.setTranslateY(-20);
+		
+		genderContainer.getChildren().addAll(genderContainer.getLabel(), genderContainer.getChoiceBox());
+		genderContainer.setTranslateX(20);
+		genderContainer.setTranslateY(-10);
+		
+		smokingHabitsContainer.getChildren().addAll(smokingHabitsContainer.getLabel(), smokingHabitsContainer.getChoiceBox());
+		smokingHabitsContainer.setTranslateX(20);
+				
+	    Button enterTerminalIllnessButton = new Button("Enter Terminal Illness");
+	    enterTerminalIllnessButton.setTranslateX(120);
+	    enterTerminalIllnessButton.setTranslateY(-10);
+		enterTerminalIllnessButton.setOnAction(event -> checkForCurrentAgeError(1, 0));
+		
+	    Button donePerson1Button = new Button("Done Person 1");
+	    donePerson1Button.setTranslateX(165);
+	    donePerson1Button.setTranslateY(50);
+	    donePerson1Button.setOnAction(event -> checkForCurrentAgeError(1, 2));
 		
 	    person1InputSceneContainer.getChildren().addAll(person1Label, person1NameContainer, currentAgeContainer, currentAgeErrorLabel, genderContainer, smokingHabitsContainer,
 			enterTerminalIllnessButton, donePerson1Button);
